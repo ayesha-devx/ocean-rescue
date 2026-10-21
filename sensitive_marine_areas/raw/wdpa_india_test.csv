@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<title>Explore the World&#39;s Protected Areas</title>
+<meta name="description" content="Protected Planet is the most up to date and complete source of data on protected areas and other effective area-based conservation measures (OECMs), updated monthly with submissions from governments, non-governmental organizations, landowners and communities.">
+
+<!-- social meta tags -->
+<meta property="og:site_name" content="Protected Planet">
+<meta property="og:title" content="Explore the World's Protected Areas">
+<meta property="og:description" content="Protected Planet is the most up to date and complete source of data on protected areas and other effective area-based conservation measures (OECMs), updated monthly with submissions from governments, non-governmental organizations, landowners and communities.">
+<meta property="og:url" content="https://www.protectedplanet.net/en/search?country=102&main=country">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.protectedplanet.net/assets/social-cce192f2e7a0b5be655ef28149aef43bd28e378d6589c8b599f9e45d64d7a6e4.png">
+<meta property="og:image:alt" content="Screenshot of the Protected Planet website">
+<meta property="og:image:height" content="630">
+<meta property="og:image:width" content="1200">
+<meta property="og:locale" content="en_GB">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:site" content="@protectedplanet">
+<meta property="twitter:creator" content="@protectedplanet">
+<!-- end social meta tags -->
+
+<!-- IE stuff -->
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+<!-- end IE stuff -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+<!-- Mixed content issue for downloads -->
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+
+<link rel="manifest" href="/manifest.json">
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="piTnKLChaLLyY0KMvk5hTG6OhK5e5vKV3gLqCWNh89O9QNUROoX7WHqXn2qhFOsZilIWP8XmFDN6DpMuiYgKvg==" />
+
+<!-- stylesheets -->
+<link href="https://fonts.googleapis.com/css?family=Hind+Siliguri:400,700|Playfair+Display:400,700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet'>
+
+
+<link rel="stylesheet" media="all" href="/assets/application-8402be0950f3f7278994c4ecf64fcbf149eed5bf7363b21fe86530d68a78b334.css" />
+<link rel="stylesheet" media="screen" href="/packs/css/application-6671b716.css" />
+<!-- end stylesheets -->
+
+<!-- scripts -->
+<script src="/packs/js/application-dbf0dd593d095d262822.js"></script>
+
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-12920389-2', 'auto');
+    ga('require', 'linkid');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  </script>
+
+
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+<!-- end scripts -->
+
+<!-- Hotjar Tracking Code for https://www.protectedplanet.net -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2001805,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+  </head>
+
+  <body>
+    
+    <script>
+  cookieconsent.initialise({
+    palette: {
+      popup: {
+        background: "#404040",
+        text: '#fff'
+      },
+      button: {
+        background: "#71A32B",
+        text: '#fff'
+      },
+    },
+    revokable: true,
+    onStatusChange: function(status) {
+      console.log(this.hasConsented() ? 'enable cookies' : 'disable cookies');
+    },
+    law: {
+      regionalLaw: false,
+    },
+    location: true,
+  });
+</script>
+   
+
+    <div id="v-app" class="">
+          <banner-banner 
+    :banners="[{&quot;id&quot;:2,&quot;title&quot;:&quot;&quot;,&quot;content&quot;:&quot;\u003cp\u003e\u003cstrong\u003eProtected Planet is evolving:\u003c/strong\u003e The Protected Planet Initiative has undergone some changes! Read about how we have brought together our flagship databases into the \u003cstrong\u003eWorld Database on Protected and Conserved Areas (WDPCA)\u003c/strong\u003e and expanded the \u003cstrong\u003eGlobal Database on Protected Area Management Effectiveness (GD-PAME) \u003c/strong\u003e\u003ca target=\&quot;_blank\&quot; class=\&quot;c-link\&quot; data-stringify-link=\&quot;https://www.protectedplanet.net/news-and-stories/introducing-the-wdpca\&quot; data-sk=\&quot;tooltip_parent\&quot; href=\&quot;https://www.protectedplanet.net/news-and-stories/introducing-the-wdpca\&quot; rel=\&quot;noopener noreferrer\&quot;\u003ehere\u003c/a\u003e. Important changes to the Protected Planet API are summarized \u003ca target=\&quot;_blank\&quot; class=\&quot;c-link\&quot; data-stringify-link=\&quot;https://api.protectedplanet.net/\&quot; data-sk=\&quot;tooltip_parent\&quot; href=\&quot;https://api.protectedplanet.net/\&quot; rel=\&quot;noopener noreferrer\&quot;\u003ehere\u003c/a\u003e.\u003c/p\u003e&quot;,&quot;is_active&quot;:true,&quot;created_at&quot;:&quot;2025-12-02T13:55:21.645Z&quot;,&quot;updated_at&quot;:&quot;2025-12-02T13:56:18.484Z&quot;}]"
+    :signature="&quot;da4b9237bacccdf19c0760cab7aec4a8359010b0&quot;"
+  ></banner-banner>
+
+      <div class="topbar">
+  <div class="topbar__container container">
+    <a title="Visit: Protected Planet" class="topbar__logo" href="/en">
+  <i class="logo--protected-planet" alt="Protected Planet logo"></i>
+</a>
+
+      <nav-burger 
+        :links="[{&quot;id&quot;:&quot;about&quot;,&quot;label&quot;:&quot;About&quot;,&quot;url&quot;:&quot;/en/about&quot;,&quot;is_current_page&quot;:false},{&quot;id&quot;:&quot;news-and-stories&quot;,&quot;label&quot;:&quot;News \u0026 Stories&quot;,&quot;url&quot;:&quot;/en/news-and-stories&quot;,&quot;is_current_page&quot;:false},{&quot;id&quot;:&quot;resources&quot;,&quot;label&quot;:&quot;Resources&quot;,&quot;url&quot;:&quot;/en/resources&quot;,&quot;is_current_page&quot;:false},{&quot;id&quot;:&quot;monthly-release-news&quot;,&quot;label&quot;:&quot;Update Tracker&quot;,&quot;url&quot;:&quot;/en/monthly-release-news&quot;,&quot;is_current_page&quot;:false},{&quot;id&quot;:&quot;thematic-areas&quot;,&quot;label&quot;:&quot;Thematic Areas&quot;,&quot;url&quot;:&quot;/en/thematic-areas&quot;,&quot;is_current_page&quot;:false,&quot;children&quot;:[{&quot;id&quot;:&quot;wdpa&quot;,&quot;label&quot;:&quot;Protected Areas (WDPA)&quot;,&quot;url&quot;:&quot;/en/thematic-areas/wdpa&quot;,&quot;is_current_page&quot;:false},{&quot;id&quot;:&quot;protected-areas-management-effectiveness-pame&quot;,&quot;label&quot;:&quot;Protected and Conserved Area Effectiveness (GD-PAME)&quot;,&quot;url&quot;:&quot;/en/thematic-areas/protected-areas-management-effectiveness-pame&quot;,&quot;is_current_page&quot;:false},{&quot;id&quot;:&quot;oecms&quot;,&quot;label&quot;:&quot;Other Effective Area-Based Conservation Measures (WD-OECM)&quot;,&quot;url&quot;:&quot;/en/thematic-areas/oecms&quot;,&quot;is_current_page&quot;:false},{&quot;id&quot;:&quot;indigenous-and-community-conserved-areas&quot;,&quot;label&quot;:&quot;Territories and areas conserved by indigenous peoples and local communities (ICCAs)&quot;,&quot;url&quot;:&quot;/en/thematic-areas/indigenous-and-community-conserved-areas&quot;,&quot;is_current_page&quot;:false},{&quot;id&quot;:&quot;green-list&quot;,&quot;label&quot;:&quot;The IUCN Green List of Protected and Conserved Areas&quot;,&quot;url&quot;:&quot;/en/thematic-areas/green-list&quot;,&quot;is_current_page&quot;:false},{&quot;id&quot;:&quot;connectivity-conservation&quot;,&quot;label&quot;:&quot;Connectivity &quot;,&quot;url&quot;:&quot;/en/thematic-areas/connectivity-conservation&quot;,&quot;is_current_page&quot;:false},{&quot;id&quot;:&quot;equity&quot;,&quot;label&quot;:&quot;Equitable Governance&quot;,&quot;url&quot;:&quot;/en/thematic-areas/equity&quot;,&quot;is_current_page&quot;:false},{&quot;id&quot;:&quot;marine-protected-areas&quot;,&quot;label&quot;:&quot;Marine Protected and Conserved Areas&quot;,&quot;url&quot;:&quot;/en/thematic-areas/marine-protected-areas&quot;,&quot;is_current_page&quot;:false}]}]" 
+        class="topbar__nav nav--primary"
+      ></nav-burger>
+
+    <search-site-topbar 
+      class="topbar__search" 
+      endpoint="/en/search?search_term="
+      placeholder="Search..."
+      :popout="true"
+    ></search-site-topbar>
+  </div>
+</div>
+        
+      <div class="container--medium spacer-large--top spacer-medium--bottom">
+  <search-site
+    :categories="[{&quot;id&quot;:&quot;all&quot;,&quot;title&quot;:&quot;All&quot;},{&quot;id&quot;:&quot;430&quot;,&quot;title&quot;:&quot;News \u0026 Stories&quot;},{&quot;id&quot;:&quot;513&quot;,&quot;title&quot;:&quot;Resources&quot;},{&quot;id&quot;:&quot;areas&quot;,&quot;title&quot;:&quot;Areas&quot;}]"
+    :data-page-load="{&quot;search_term&quot;:null,&quot;current_page&quot;:1,&quot;page_items_start&quot;:1,&quot;page_items_end&quot;:0,&quot;total_items&quot;:10000,&quot;results&quot;:[{&quot;title&quot;:&quot;Afghanistan&quot;,&quot;url&quot;:&quot;/country/AFG&quot;,&quot;summary&quot;:&quot;Afghanistan&quot;,&quot;image&quot;:&quot;placeholder_image&quot;},{&quot;title&quot;:&quot;Åland Islands&quot;,&quot;url&quot;:&quot;/country/ALA&quot;,&quot;summary&quot;:&quot;Åland Islands&quot;,&quot;image&quot;:&quot;placeholder_image&quot;},{&quot;title&quot;:&quot;Albania&quot;,&quot;url&quot;:&quot;/country/ALB&quot;,&quot;summary&quot;:&quot;Albania&quot;,&quot;image&quot;:&quot;placeholder_image&quot;},{&quot;title&quot;:&quot;Algeria&quot;,&quot;url&quot;:&quot;/country/DZA&quot;,&quot;summary&quot;:&quot;Algeria&quot;,&quot;image&quot;:&quot;placeholder_image&quot;},{&quot;title&quot;:&quot;American Samoa&quot;,&quot;url&quot;:&quot;/country/ASM&quot;,&quot;summary&quot;:&quot;American Samoa&quot;,&quot;image&quot;:&quot;placeholder_image&quot;},{&quot;title&quot;:&quot;Andorra&quot;,&quot;url&quot;:&quot;/country/AND&quot;,&quot;summary&quot;:&quot;Andorra&quot;,&quot;image&quot;:&quot;placeholder_image&quot;},{&quot;title&quot;:&quot;Angola&quot;,&quot;url&quot;:&quot;/country/AGO&quot;,&quot;summary&quot;:&quot;Angola&quot;,&quot;image&quot;:&quot;placeholder_image&quot;},{&quot;title&quot;:&quot;Anguilla&quot;,&quot;url&quot;:&quot;/country/AIA&quot;,&quot;summary&quot;:&quot;Anguilla&quot;,&quot;image&quot;:&quot;placeholder_image&quot;},{&quot;title&quot;:&quot;Antigua and Barbuda&quot;,&quot;url&quot;:&quot;/country/ATG&quot;,&quot;summary&quot;:&quot;Antigua and Barbuda&quot;,&quot;image&quot;:&quot;placeholder_image&quot;}]}"
+    endpoint="/en/search-results"
+    ga-id="Component: search site"
+    placeholder="Search..."
+    query=""
+    no-results-text="No results. Please search again."
+    results-text="results"
+  ></search-site>
+</div>
+
+      
+        
+  <footer class="footer bg--primary spacer-large--top spacer-medium--bottom">
+    <div class="container footer__container">
+      <div class="footer__col">
+        <a title="Visit: Protected Planet" class="topbar__logo" href="/en">
+  <i class="logo--protected-planet" alt="Protected Planet logo"></i>
+</a>
+      </div>
+
+      <div class="footer__col">
+        <h3>Explore</h3>
+
+          <a title="Visit: Resources" class="footer__link" href="/en/resources">Resources</a>
+          <a title="Visit: OECMs" class="footer__link" href="/en/thematic-areas/oecms">OECMs</a>
+          <a title="Visit: WDPA
+" class="footer__link" href="/en/thematic-areas/wdpa">WDPA
+</a>
+      </div>
+
+      <div class="footer__col">
+        <h3>General Info</h3>
+        
+          <a title="Visit: About" class="footer__link" href="/en/about">About</a>
+          <a title="Visit: Legal" class="footer__link" href="/en/legal">Legal</a>
+      </div>
+
+      <div class="footer__col">
+        <h3>Follow us</h3>
+        
+        <div class="social--media-white">
+          <div class="social--media">
+    <a title="Follow us on Twitter" class="social__icon--twitter" target="_blank" href="https://twitter.com/protectedplanet?lang=en"></a>
+    <a title="Follow us on Facebook" class="social__icon--facebook" target="_blank" href="https://facebook.com/protectedplanet"></a>
+    <a title="Follow us on LinkedIn" class="social__icon--linkedin" target="_blank" href="https://www.linkedin.com/company/unep-wcmc"></a>
+</div>
+        </div>
+
+        <h3>Get in touch</h3>
+        <a title="Email: protectedareas@unep-wcmc.org" class="footer__link" href="/cdn-cgi/l/email-protection#daaaa8b5aebfb9aebfbebba8bfbba99aafb4bfaaf7adb9b7b9f4b5a8bd"><span class="__cf_email__" data-cfemail="66161409120305120302071403071526130803164b11050b0548091401">[email&#160;protected]</span></a>
+      </div>
+
+      <div class="footer__col">
+        <div>
+          <a title="here" target="_blank" class="footer__link-partner" href="http://www.iucn.org">
+            <img alt="IUCN logo" class="footer__logo-partner" src="/assets/logos/iucn-bfa016c746dca970c39aeabad4c47ab9bee9ba357fc9750f4e557047c4c1e963.svg" />
+</a>
+          <a title="here" target="_blank" class="footer__link-partner" href="http://unep-wcmc.org">
+            <img alt="UN Environment World Conservation Monitoring logo" class="footer__logo-partner" src="https://s3.amazonaws.com/wcmc.logo/UNEP_WCMC_logo_white.svg" />
+</a>        </div>
+
+        <span>&copy;ProtectedPlanet 2014-2026. All rights reserved</span>
+      </div>
+    </div>
+  </footer>
+  
+
+      <download-modal
+        endpoint-create="/downloads"
+        endpoint-poll="/downloads/poll"
+        ga-id="Download modal"
+        :text-download="{&quot;citationText&quot;:&quot;UNEP-WCMC and IUCN (2026), Protected Planet: The World Database on Protected Areas (WDPA) and World Database on Other Effective Area-based Conservation Measures (WD-OECM) [Online],  October 2026, Cambridge, UK: UNEP-WCMC and IUCN. Available at: \u003ca href=&#39;http://protectedplanet.net&#39; target=&#39;_blank&#39; title=&#39;Visit Protected Planet&#39;\u003ewww.protectedplanet.net\u003c/a\u003e.&quot;,&quot;citationTitle&quot;:&quot;Citation&quot;,&quot;title&quot;:&quot;Downloads&quot;}"
+        :text-status="{&quot;download&quot;:&quot;Download&quot;,&quot;failed&quot;:&quot;Download Failed&quot;,&quot;generating&quot;:&quot;Generating...&quot;}"
+      ></download-modal>
+    </div>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

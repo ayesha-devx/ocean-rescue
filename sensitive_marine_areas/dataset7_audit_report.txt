@@ -1,0 +1,181 @@
+================================================================================
+OceanRescue Third-Year Mini-Project
+Dataset 7: Sensitive Marine Areas - Audit & Integrity Report
+================================================================================
+Report generated : 10-Oct-2026
+Study region     : Arabian Sea  |  14.0° N to 20.0° N, 68.0° E to 74.0° E
+Folder audited   : C:\Users\KRIN\Downloads\ocean rescue dataset\sensitive_marine_areas\
+Audited files    :
+  (1) raw/sensitive_marine_areas_all.geojson
+  (2) processed/sensitive_marine_areas_study_bbox.geojson
+  (3) processed/sensitive_marine_areas_study_bbox.csv
+  (4) processed/osm_protected_areas_bbox_points.geojson
+  (5) dataset7_research_report.txt
+  (6) dataset7_validation_report.txt
+================================================================================
+
+--------------------------------------------------------------------------------
+1. VERIFICATION OF FEATURE NAMES, GEOMETRY TYPES, CRS & ATTRIBUTES
+--------------------------------------------------------------------------------
+File: raw/sensitive_marine_areas_all.geojson
+  - Format / CRS    : RFC 7946 GeoJSON, implicit WGS 84 (EPSG:4326)
+  - Feature Count   : 12 regional features
+  - Geometry Types  : 2 Polygons (Malvan Marine Sanctuary, India EEZ segment),
+                      10 Points (Centroids of major regional MPAs & Ramsar sites:
+                      Gulf of Kutch MNP & MS, Khijadia, Pitti Island, Vembanad-Kol,
+                      Chilika Lake, Coringa, Astola Island, Churna Island, Miani Hor).
+  - Spatial Bounding: Lat 9.6000° N to 25.8500° N, Lon 63.8500° E to 85.3200° E.
+
+File: processed/sensitive_marine_areas_study_bbox.geojson
+  - Format / CRS    : RFC 7946 GeoJSON, implicit WGS 84 (EPSG:4326)
+  - Feature Count   : 2 features
+  - Geometry Types  : 2 Polygons
+  - Feature Details :
+    1) Name        : Malvan Marine Sanctuary
+       WDPA ID     : 15868
+       Designation : Wildlife Sanctuary (Maharashtra Govt, WPA 1972)
+       Category    : Marine Protected Area (IUCN Cat IV)
+       Geometry    : Polygon (5-vertex rectangle: 73.40°E–73.55°E, 15.95°N–16.15°N)
+       Area        : ~29.12 km²
+    2) Name        : India Exclusive Economic Zone (within study bbox segment)
+       WDPA ID     : EEZ-IND
+       Designation : EEZ (Maritime Zone, Act No. 80 of 1976)
+       Category    : EEZ Reference Zone
+       Geometry    : Polygon (5-vertex rectangle: 68.00°E–74.00°E, 14.00°N–20.00°N)
+
+File: processed/sensitive_marine_areas_study_bbox.csv
+  - Format / Schema : CSV, 2 rows x 17 columns.
+  - Verification    : 100% attribute alignment with `sensitive_marine_areas_study_bbox.geojson`.
+
+File: processed/osm_protected_areas_bbox_points.geojson
+  - Format / CRS    : RFC 7946 GeoJSON, implicit WGS 84 (EPSG:4326)
+  - Feature Count   : 37 features
+  - Geometry Types  : 37 Points (Centroids computed from OpenStreetMap Overpass query)
+  - Geographic Bounds: Lat 15.2912° N to 19.6142° N, Lon 72.9160° E to 74.1451° E.
+
+--------------------------------------------------------------------------------
+2. MALVAN MARINE SANCTUARY BOUNDARY AUDIT (WDPA ID 15868)
+--------------------------------------------------------------------------------
+  - Authoritative Status : VERIFIED. Notified on 13 April 1987 under Indian Wildlife
+                           Protection Act 1972. Listed under WDPA ID 15868 (UNEP-WCMC).
+  - Boundary Type Check  : APPROXIMATE RECTANGULAR POLYGON (NOT High-Res GIS Shapefile).
+    * The geometry in `processed/sensitive_marine_areas_study_bbox.geojson` is a
+      synthetic 5-vertex bounding polygon (`[73.40, 15.95]` to `[73.55, 16.15]`).
+    * The exact official boundary polygon requires authenticated GIS download from
+      UNEP-WCMC Protected Planet or Maharashtra Forest Dept.
+    * Limitation: Suitable for spatial bounding box filtering, but MUST NOT be
+      misrepresented as the exact digitized coastline/reef boundary.
+
+--------------------------------------------------------------------------------
+3. DISTINCTION OF LEGAL PROTECTED AREAS VS OTHER ZONES
+--------------------------------------------------------------------------------
+  CRITICAL AUDIT FINDING:
+  - The India Exclusive Economic Zone (EEZ) segment is included in
+    `processed/sensitive_marine_areas_study_bbox.geojson` alongside Malvan Sanctuary.
+  - RECTIFICATION REQUIRED: The EEZ is a sovereign maritime jurisdiction under UNCLOS,
+    NOT an environmentally protected area. Downstream drift-forecasting and retrieval
+    algorithms MUST filter by `category == 'Marine Protected Area'` and NEVER treat
+    the EEZ polygon as an environmental restriction zone.
+
+  Legal Category Breakdown Across Dataset 7:
+    1) Legally Designated MPAs   : Malvan Marine Sanctuary (WDPA 15868) -- ONLY offshore
+                                   sanctuary directly within study region (14-20N, 68-74E).
+    2) Ramsar / Estuarine Sites  : Thane Creek Flamingo Sanctuary (Ramsar Site 2490),
+                                   Salim Ali Bird Sanctuary (Goa). Coastal/estuarine.
+    3) OpenStreetMap Features    : Community-contributed reserves, lake buffer zones
+                                   (Carambolim, Pilerne, Toyyar), tiger reserves, and
+                                   terrestrial national parks (Sanjay Gandhi, Kaas Valley).
+                                   Out of 37 OSM points, 22 are coastal/estuarine/lake
+                                   related and 15 are inland/terrestrial.
+    4) Maritime Boundary         : India EEZ segment (Jurisdictional reference only).
+
+--------------------------------------------------------------------------------
+4. SPATIAL FILTERING & FEATURE COUNTS (CLIPPING VS INTERSECTION)
+--------------------------------------------------------------------------------
+  - Total Raw Regional Features  : 12 features in `raw/sensitive_marine_areas_all.geojson`
+  - Bounding Box Filter Criteria : Latitude 14.0°N to 20.0°N, Longitude 68.0°E to 74.0°E
+  - Features Within Study Bbox   : 2 features in `processed/sensitive_marine_areas_study_bbox.geojson`
+    * Malvan Marine Sanctuary    : Fully inside study region (16.04°–16.08°N, 73.44°–73.49°E).
+    * India EEZ Study Segment    : Matches the exact 14.0°–20.0°N, 68.0°–74.0°E rectangle.
+  - Features Excluded (Out-Bbox): 10 features (Gulf of Kutch, Pitti Island, Astola Island,
+                                   Vembanad, Chilika, Coringa, Churna, Miani Hor).
+  - OpenStreetMap Centroids      : 37 total features returned by Overpass query in bbox
+                                   `[14, 68, 20, 74]`; 35 centroids lie strictly within
+                                   the bbox, 2 on the boundary.
+
+--------------------------------------------------------------------------------
+5. OSM CENTROIDS AUDIT
+--------------------------------------------------------------------------------
+  - All 37 features in `processed/osm_protected_areas_bbox_points.geojson` are
+    Point geometries representing center coordinates (centroids).
+  - Label Integrity: Verified. These are point locations ONLY, NOT polygon boundaries.
+  - Downstream Usage Rule: Retrieval algorithms must use these points for proximity
+    tagging / nearest-neighbor lookups, NOT for polygon intersection or exact area math.
+
+--------------------------------------------------------------------------------
+6. DATA INTEGRITY, DUPLICATES, MISSING ATTRIBUTES & LICENCES
+--------------------------------------------------------------------------------
+  - Geometries        : 0 null or empty geometries across all files. All coordinates
+                        in valid WGS84 decimal degrees.
+  - Duplicate Features: 1 duplicate feature name detected in OSM dataset:
+                        `Toyyar Lake Zone Of Influence` appears 2 times due to multi-part
+                        OSM way relations.
+  - Missing Attributes: OSM points lack official WDPA IDs, IUCN categories, and gazette
+                        notification dates.
+  - Data Licences     :
+    * OpenStreetMap data : ODbL (Open Database License) (c) OpenStreetMap contributors.
+    * WDPA / Protected Planet : UNEP-WCMC / IUCN terms of use (Academic/Non-commercial).
+    * Marine Regions EEZ : Flanders Marine Institute (VLIZ), CC-BY 4.0.
+
+--------------------------------------------------------------------------------
+7. AUDIT SUMMARY & CORRECTIONS NEEDED
+--------------------------------------------------------------------------------
+  1. DO NOT label India EEZ as a sensitive or protected area in retrieval path planning.
+  2. Acknowledge that Malvan Marine Sanctuary geometry is a 5-vertex bounding polygon,
+     not the official high-resolution digitized reef outline.
+  3. Treat OSM point features as reference centroids only.
+  4. Note that 15 of 37 OSM points represent inland/terrestrial parks (e.g. Sanjay
+     Gandhi National Park, Kaas Valley of Flowers) rather than marine zones.
+
+================================================================================
+8. FINAL AUDIT VERDICT
+================================================================================
+
+  Verdict: PASS WITH WARNINGS
+
+  Reasoning:
+  - The dataset successfully identifies Malvan Marine Sanctuary as the primary marine
+    protected area within the study region and provides clear geospatial points for
+    coastal/estuarine reserves.
+  - WARNING 1: EEZ polygon is present in the processed file and must be filtered out
+    when checking environmental protection rules.
+  - WARNING 2: Malvan boundary is an approximate bounding rectangle (`Polygon_Approximate`),
+    not an exact digitized GIS polygon.
+  - WARNING 3: OSM points contain inland terrestrial reserves alongside coastal features.
+
+--------------------------------------------------------------------------------
+9. FILES SAFE FOR USE IN OCEANRESCUE & USAGE LIMITATIONS
+--------------------------------------------------------------------------------
+
+  Safe File 1: `sensitive_marine_areas/processed/sensitive_marine_areas_study_bbox.geojson`
+    - Safe Use    : Environmental risk scoring during ALDFG retrieval planning.
+    - Limitation  : Must filter by `category == 'Marine Protected Area'` (Malvan Sanctuary).
+                    Do NOT include `category == 'EEZ Reference Zone'` in sensitivity weighting.
+                    Malvan polygon is an approximate bounding box.
+
+  Safe File 2: `sensitive_marine_areas/processed/sensitive_marine_areas_study_bbox.csv`
+    - Safe Use    : Tabular reporting, metadata summaries, and quick database queries.
+    - Limitation  : Same filtering rules apply as GeoJSON file.
+
+  Safe File 3: `sensitive_marine_areas/processed/osm_protected_areas_bbox_points.geojson`
+    - Safe Use    : Proximity calculations (distance to nearest coastal reserve/wetland centroid).
+    - Limitation  : Point centroids only; cannot calculate polygon area or boundary overlap.
+                    Contains 15 terrestrial reserves.
+
+  Safe File 4: `sensitive_marine_areas/raw/sensitive_marine_areas_all.geojson`
+    - Safe Use    : Regional spatial context across the broader Northern Indian Ocean / Arabian Sea.
+    - Limitation  : Contains points outside the 14-20N, 68-74E study bounding box.
+
+================================================================================
+END OF AUDIT REPORT
+================================================================================

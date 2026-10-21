@@ -1,0 +1,410 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "dataset": "OceanRescue Dataset 7 \u2014 Sensitive Marine Areas",
+    "compiled": "2026-10-10",
+    "study_region": "Arabian Sea 14-20N, 68-74E",
+    "total_features": 12,
+    "in_bbox_count": 2,
+    "crs": "EPSG:4326 (WGS84)",
+    "geometry_note": "Geometry types are labelled in geometry_type field. Point_Centroid = approximate centroid from WDPA website. Polygon_Approximate = bbox approximation; NOT a legal boundary. Full polygon boundaries require authenticated WDPA bulk download.",
+    "sources": [
+      "WDPA / Protected Planet (protectedplanet.net) \u2014 CC BY 4.0 non-commercial",
+      "Ramsar RSIS (rsis.ramsar.org) \u2014 open access, citation required",
+      "MoEFCC Wildlife Division notifications",
+      "IUCN Pakistan MPA reports (2017, 2024, 2025)",
+      "Marine Regions / VLIZ (marineregions.org) for EEZ reference"
+    ],
+    "licence_note": "WDPA data: CC BY 4.0, non-commercial use only. Full polygon geometries must be downloaded from protectedplanet.net after free registration. This file contains APPROXIMATE centroids and bounding-box polygons only."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              73.4,
+              15.95
+            ],
+            [
+              73.55,
+              15.95
+            ],
+            [
+              73.55,
+              16.15
+            ],
+            [
+              73.4,
+              16.15
+            ],
+            [
+              73.4,
+              15.95
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "wdpa_id": "15868",
+        "name": "Malvan Marine Sanctuary",
+        "designation": "Wildlife Sanctuary",
+        "iucn_cat": "IV",
+        "marine_type": "Coastal/Marine",
+        "area_km2": 29.12,
+        "status": "Designated",
+        "status_year": 1987,
+        "state": "Maharashtra",
+        "country": "India",
+        "geometry_type": "Polygon_Approximate",
+        "in_study_bbox": true,
+        "category": "Marine Protected Area",
+        "ramsar_id": null,
+        "source_url": "https://www.protectedplanet.net/15868",
+        "notes": "Centroid 16.06N, 73.47E. Approx polygon bbox derived from published boundary description. Full boundary in WDPA (auth download required). Covers coral reefs and rocky substrate off Sindhudurg coast. Area: core 3.2 km2 + buffer 25.95 km2 = 29.12 km2 total.",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.04,
+          22.59
+        ]
+      },
+      "properties": {
+        "wdpa_id": "5640",
+        "name": "Marine National Park Gulf of Kutch",
+        "designation": "National Park",
+        "iucn_cat": "II",
+        "marine_type": "Coastal/Marine",
+        "area_km2": 162.89,
+        "status": "Designated",
+        "status_year": 1982,
+        "state": "Gujarat",
+        "country": "India",
+        "geometry_type": "Point_Centroid",
+        "in_study_bbox": false,
+        "category": "Marine Protected Area",
+        "ramsar_id": null,
+        "source_url": "https://www.protectedplanet.net/5640",
+        "notes": "North of study region (22.6N). IUCN Cat II. Marine biodiversity hotspot.",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.79,
+          22.46
+        ]
+      },
+      "properties": {
+        "wdpa_id": "5639",
+        "name": "Marine Sanctuary Gulf of Kutch",
+        "designation": "Wildlife Sanctuary",
+        "iucn_cat": "IV",
+        "marine_type": "Coastal/Marine",
+        "area_km2": 295.03,
+        "status": "Designated",
+        "status_year": 1980,
+        "state": "Gujarat",
+        "country": "India",
+        "geometry_type": "Point_Centroid",
+        "in_study_bbox": false,
+        "category": "Marine Protected Area",
+        "ramsar_id": null,
+        "source_url": "https://www.protectedplanet.net/5639",
+        "notes": "North of study region (22.5N). Surrounds and buffers the Marine NP.",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.12,
+          22.58
+        ]
+      },
+      "properties": {
+        "wdpa_id": "900101",
+        "name": "Khijadia Wildlife Sanctuary",
+        "designation": "Wildlife Sanctuary / Ramsar Site",
+        "iucn_cat": "IV",
+        "marine_type": "Coastal",
+        "area_km2": 5.05,
+        "status": "Designated",
+        "status_year": 1981,
+        "state": "Gujarat",
+        "country": "India",
+        "geometry_type": "Point_Centroid",
+        "in_study_bbox": false,
+        "category": "Coastal Protected Area",
+        "ramsar_id": "2508",
+        "source_url": "https://www.protectedplanet.net/555548159",
+        "notes": "North of study region. Designated as Ramsar site 2021. Coastal wetland.",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.95,
+          12.0
+        ]
+      },
+      "properties": {
+        "wdpa_id": "15956",
+        "name": "Pitti Island Bird Sanctuary",
+        "designation": "Wildlife Sanctuary",
+        "iucn_cat": "IV",
+        "marine_type": "Coastal/Marine",
+        "area_km2": 0.01,
+        "status": "Designated",
+        "status_year": 1995,
+        "state": "Lakshadweep",
+        "country": "India",
+        "geometry_type": "Point_Centroid",
+        "in_study_bbox": false,
+        "category": "Marine Protected Area",
+        "ramsar_id": null,
+        "source_url": "https://www.protectedplanet.net/15956",
+        "notes": "South of study region (12N). Lakshadweep atolls. Seabird nesting site.",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          76.3,
+          9.6
+        ]
+      },
+      "properties": {
+        "wdpa_id": "15959",
+        "name": "Vembanad-Kol Wetland",
+        "designation": "Ramsar Wetland",
+        "iucn_cat": "Ramsar",
+        "marine_type": "Coastal",
+        "area_km2": 1512.5,
+        "status": "Designated",
+        "status_year": 2002,
+        "state": "Kerala",
+        "country": "India",
+        "geometry_type": "Point_Centroid",
+        "in_study_bbox": false,
+        "category": "Ramsar Wetland",
+        "ramsar_id": "1212",
+        "source_url": "https://rsis.ramsar.org/ris/1212",
+        "notes": "South of study region (9.6N) and east of bbox. Ramsar No. 1212.",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.32,
+          19.73
+        ]
+      },
+      "properties": {
+        "wdpa_id": "62429",
+        "name": "Chilika Lake",
+        "designation": "Ramsar Wetland",
+        "iucn_cat": "Ramsar",
+        "marine_type": "Coastal",
+        "area_km2": 1100.0,
+        "status": "Designated",
+        "status_year": 1981,
+        "state": "Odisha",
+        "country": "India",
+        "geometry_type": "Point_Centroid",
+        "in_study_bbox": false,
+        "category": "Ramsar Wetland",
+        "ramsar_id": "229",
+        "source_url": "https://rsis.ramsar.org/ris/229",
+        "notes": "East coast of India; not in study bbox but notable Ramsar reference.",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          82.25,
+          16.82
+        ]
+      },
+      "properties": {
+        "wdpa_id": "15843",
+        "name": "Coringa Wildlife Sanctuary",
+        "designation": "Wildlife Sanctuary / Ramsar Site",
+        "iucn_cat": "IV",
+        "marine_type": "Coastal",
+        "area_km2": 235.7,
+        "status": "Designated",
+        "status_year": 1978,
+        "state": "Andhra Pradesh",
+        "country": "India",
+        "geometry_type": "Point_Centroid",
+        "in_study_bbox": false,
+        "category": "Ramsar Wetland",
+        "ramsar_id": "534",
+        "source_url": "https://rsis.ramsar.org/ris/534",
+        "notes": "East coast of India; not in study bbox.",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          63.85,
+          25.12
+        ]
+      },
+      "properties": {
+        "wdpa_id": "PAK-001",
+        "name": "Astola Island Marine Protected Area",
+        "designation": "Marine Protected Area",
+        "iucn_cat": "Unset",
+        "marine_type": "Marine",
+        "area_km2": 0,
+        "status": "Designated",
+        "status_year": 2017,
+        "state": "Balochistan",
+        "country": "Pakistan",
+        "geometry_type": "Point_Centroid",
+        "in_study_bbox": false,
+        "category": "Marine Protected Area",
+        "ramsar_id": null,
+        "source_url": "https://iucn.org/",
+        "notes": "Pakistan's first MPA. Coral reefs, turtle nesting. West of study region (63.8E vs 68E western boundary).",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          66.8,
+          24.86
+        ]
+      },
+      "properties": {
+        "wdpa_id": "PAK-002",
+        "name": "Churna Island Marine Protected Area",
+        "designation": "Marine Protected Area",
+        "iucn_cat": "Unset",
+        "marine_type": "Marine",
+        "area_km2": 0,
+        "status": "Designated",
+        "status_year": 2024,
+        "state": "Sindh / Balochistan boundary",
+        "country": "Pakistan",
+        "geometry_type": "Point_Centroid",
+        "in_study_bbox": false,
+        "category": "Marine Protected Area",
+        "ramsar_id": null,
+        "source_url": "https://iucn.org/",
+        "notes": "Near Karachi. Designated September 2024. West of study region (66.8E vs 68E western boundary).",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          66.25,
+          25.85
+        ]
+      },
+      "properties": {
+        "wdpa_id": "PAK-003",
+        "name": "Miani Hor Marine Protected Area / Ramsar Site",
+        "designation": "Marine Protected Area / Ramsar Site",
+        "iucn_cat": "Unset",
+        "marine_type": "Coastal/Marine",
+        "area_km2": 0,
+        "status": "Designated",
+        "status_year": 2025,
+        "state": "Balochistan",
+        "country": "Pakistan",
+        "geometry_type": "Point_Centroid",
+        "in_study_bbox": false,
+        "category": "Marine Protected Area",
+        "ramsar_id": "Ramsar-PAK",
+        "source_url": "https://rsis.ramsar.org/",
+        "notes": "Pakistan's largest coastal lagoon. Mangroves. Ramsar site. West of study region (66.3E vs 68E western boundary). MPA designated Jul 2025.",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              68.0,
+              14.0
+            ],
+            [
+              74.0,
+              14.0
+            ],
+            [
+              74.0,
+              20.0
+            ],
+            [
+              68.0,
+              20.0
+            ],
+            [
+              68.0,
+              14.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "wdpa_id": "EEZ-IND",
+        "name": "India Exclusive Economic Zone (within study bbox segment)",
+        "designation": "EEZ",
+        "iucn_cat": "N/A",
+        "marine_type": "Maritime Zone",
+        "area_km2": 0,
+        "status": "Established",
+        "status_year": 1977,
+        "state": "Multiple states",
+        "country": "India",
+        "geometry_type": "Polygon_Approximate",
+        "in_study_bbox": true,
+        "category": "EEZ Reference Zone",
+        "ramsar_id": null,
+        "source_url": "https://www.marineregions.org/eez.php",
+        "notes": "Approximate bbox outline of Indian EEZ portion within the study region. Precise EEZ boundary from Marine Regions / VLIZ. Not a protected area \u2014 included for jurisdictional reference only.",
+        "compiled_date": "2026-10-10"
+      }
+    }
+  ]
+}

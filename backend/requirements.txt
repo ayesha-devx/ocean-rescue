@@ -1,0 +1,25 @@
+# OceanRescue backend dependencies
+# Install with:  pip install -r backend/requirements.txt
+
+# Core framework
+fastapi>=0.100.0
+uvicorn[standard]>=0.20.0
+python-multipart>=0.0.7
+
+# AI / CV
+ultralytics>=8.0.0
+# torch and torchvision must be installed separately from pytorch.org
+# (already installed on this machine as torch 2.11.0+cpu)
+# torch>=1.8.0
+# torchvision>=0.9.0
+opencv-python>=4.7.0
+Pillow>=9.0.0
+
+# Config and validation
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+python-dotenv>=1.0.0
+
+# Testing
+pytest>=7.0.0
+httpx>=0.23.0

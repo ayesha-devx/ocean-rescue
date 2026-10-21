@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-[#061522]" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OceanRescue — Marine Geospatial AI Decision-Support Platform</title>
+<!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: {
+              main: '#061522',
+              sidebar: '#071D33',
+              card: '#0B2638',
+              surface: '#103B50',
+              border: '#16465A',
+              cyan: '#00E5FF',
+              teal: '#16B8A6',
+              success: '#00D6A3',
+              aqua: '#75E6DA',
+              textPrimary: '#EAF6FF',
+              textSecondary: '#91A9BB',
+              riskHigh: '#FF6B61',
+              riskMed: '#FFB547',
+              info: '#4C9AFF',
+              review: '#B8A4FF'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+<!-- BEGIN: Custom Map and Telemetry Styles -->
+<style data-purpose="layout-grid-and-effects">
+    /* Subtle radar sweep effect */
+    @keyframes radar-pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.4); opacity: 0; }
+      100% { transform: scale(0.95); opacity: 0; }
+    }
+    .pulse-ring {
+      animation: radar-pulse 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+    .pulse-ring-delayed {
+      animation: radar-pulse 3s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      animation-delay: 1.5s;
+    }
+
+    /* Custom tactical scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #061522;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #16465A;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00E5FF;
+    }
+
+    /* Hydrographic grid background pattern */
+    .bg-hydro-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(22, 70, 90, 0.25) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(22, 70, 90, 0.25) 1px, transparent 1px);
+    }
+  </style>
+<!-- END: Custom Map and Telemetry Styles -->
+</head>
+<body class="h-full bg-ocean-main text-ocean-textPrimary font-sans antialiased overflow-x-hidden selection:bg-ocean-cyan selection:text-ocean-main">
+<!-- BEGIN: ApplicationLayout -->
+<div class="flex min-h-screen w-full max-w-[1920px] mx-auto">
+<!-- BEGIN: LeftSidebar -->
+<aside class="w-[260px] flex-shrink-0 bg-ocean-sidebar border-r border-ocean-border flex flex-col justify-between select-none" data-purpose="sidebar">
+<!-- Top Brand & Nav Block -->
+<div>
+<!-- Brand Header -->
+<div class="p-5 border-b border-ocean-border">
+<div class="flex items-center gap-3">
+<!-- Ocean wave mark in cyan -->
+<div class="w-10 h-10 rounded-lg bg-ocean-card border border-ocean-cyan/30 flex items-center justify-center text-ocean-cyan shadow-[0_0_15px_rgba(0,229,255,0.25)]">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
+<path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
+<path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
+</svg>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-display font-bold text-lg tracking-wider text-ocean-textPrimary">OceanRescue</span>
+</div>
+<p class="text-[9px] font-mono tracking-widest text-ocean-cyan uppercase font-semibold">Geospatial AI Command</p>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-[#00E5FF1A] text-ocean-cyan border border-ocean-cyan/30">
+              ACADEMIC DEMO v0.8
+            </span>
+<span class="text-[10px] font-mono text-ocean-textSecondary">YOLOv8-seg</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="p-3 space-y-1">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-md text-sm font-medium bg-[#00E5FF18] border-l-[3px] border-ocean-cyan text-ocean-textPrimary shadow-[inset_0_1px_0_0_rgba(255,255,255,0.05)]" href="#dashboard">
+<svg class="w-4 h-4 text-ocean-cyan" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Dashboard</span>
+</a>
+<!-- Ocean Map -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-md text-sm font-medium text-ocean-textSecondary hover:text-ocean-textPrimary hover:bg-ocean-card/60 transition-colors" href="#map">
+<svg class="w-4 h-4 text-ocean-textSecondary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></polygon>
+<line stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="8" x2="8" y1="2" y2="18"></line>
+<line stroke-linecap="round" stroke-linejoin="round" stroke-width="2" x1="16" x2="16" y1="6" y2="22"></line>
+</svg>
+<span>Ocean Map</span>
+</a>
+<!-- AI Detection -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-sm font-medium text-ocean-textSecondary hover:text-ocean-textPrimary hover:bg-ocean-card/60 transition-colors" href="#detection">
+<div class="flex items-center gap-3">
+<svg class="w-4 h-4 text-ocean-textSecondary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="9" stroke-width="2"></circle>
+<path d="M12 3v4m0 10v4m-9-9h4m10 0h4m-7-5l2 2m-6 6l2 2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>AI Detection</span>
+</div>
+<span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-ocean-surface text-ocean-cyan">YOLOv8</span>
+</a>
+<!-- Drift Forecast -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-md text-sm font-medium text-ocean-textSecondary hover:text-ocean-textPrimary hover:bg-ocean-card/60 transition-colors" href="#drift">
+<svg class="w-4 h-4 text-ocean-textSecondary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Drift Forecast</span>
+</a>
+<!-- Risk Assessment -->
+<a class="flex items-center justify-between px-3.5 py-2.5 rounded-md text-sm font-medium text-ocean-textSecondary hover:text-ocean-textPrimary hover:bg-ocean-card/60 transition-colors" href="#risk">
+<div class="flex items-center gap-3">
+<svg class="w-4 h-4 text-ocean-textSecondary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Risk Assessment</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-ocean-riskHigh"></span>
+</a>
+<!-- Recovery Planning -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-md text-sm font-medium text-ocean-textSecondary hover:text-ocean-textPrimary hover:bg-ocean-card/60 transition-colors" href="#recovery">
+<svg class="w-4 h-4 text-ocean-textSecondary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Recovery Planning</span>
+</a>
+<!-- Reports & Analytics -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-md text-sm font-medium text-ocean-textSecondary hover:text-ocean-textPrimary hover:bg-ocean-card/60 transition-colors" href="#reports">
+<svg class="w-4 h-4 text-ocean-textSecondary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span>Reports &amp; Analytics</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-md text-sm font-medium text-ocean-textSecondary hover:text-ocean-textPrimary hover:bg-ocean-card/60 transition-colors" href="#settings">
+<svg class="w-4 h-4 text-ocean-textSecondary" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<circle cx="12" cy="12" r="3" stroke-width="2"></circle>
+</svg>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Sidebar Footer: Model Status & Telemetry -->
+<div class="p-4 border-t border-ocean-border bg-ocean-card/30">
+<div class="text-[11px] font-mono space-y-2">
+<div class="flex items-center justify-between">
+<span class="text-ocean-textSecondary">MODEL ENGINE</span>
+<span class="text-ocean-success flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-ocean-success inline-block"></span> YOLOv8s-seg
+            </span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-ocean-textSecondary">DATASET</span>
+<span class="text-ocean-textPrimary font-medium">SIMULATED / DEMO</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-ocean-textSecondary">LATENCY</span>
+<span class="text-ocean-cyan">42 ms (TensorRT)</span>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-ocean-border/60">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-ocean-cyan animate-ping"></div>
+<p class="text-[10px] text-ocean-textSecondary font-mono tracking-tight leading-tight">
+              Mini-Project: CompEng Y3<br/>
+<span class="text-ocean-aqua">"Every Net Found. Every Life Saved."</span>
+</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- END: LeftSidebar -->
+<!-- BEGIN: MainContentArea -->
+<div class="flex-1 flex flex-col min-w-0 overflow-y-auto">
+<!-- BEGIN: TopHeader -->
+<header class="h-16 px-8 bg-ocean-sidebar/80 backdrop-blur border-b border-ocean-border flex items-center justify-between sticky top-0 z-30" data-purpose="top-navigation-header">
+<!-- Title and Breadcrumbs -->
+<div>
+<nav class="flex items-center gap-2 text-[11px] font-mono text-ocean-textSecondary">
+<span>OceanRescue</span>
+<span class="text-ocean-border">/</span>
+<span>Dashboard</span>
+<span class="text-ocean-border">/</span>
+<span class="text-ocean-cyan font-semibold">Operational View</span>
+</nav>
+<div class="flex items-center gap-3">
+<h1 class="text-lg font-display font-bold text-ocean-textPrimary tracking-tight">Ocean Intelligence Dashboard</h1>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-amber-500/10 text-ocean-riskMed border border-ocean-riskMed/30">
+<span class="w-1.5 h-1.5 rounded-full bg-ocean-riskMed animate-pulse"></span>
+              SIMULATED DATASET [DEMO RUN]
+            </span>
+</div>
+</div>
+<!-- Center Search & Quick Telemetry -->
+<div class="hidden xl:flex items-center gap-3">
+<div class="relative w-80">
+<input class="w-full bg-ocean-card border border-ocean-border rounded-lg pl-8 pr-3 py-1.5 text-xs text-ocean-textPrimary placeholder-ocean-textSecondary focus:outline-none focus:border-ocean-cyan font-mono" placeholder="Search by Observation ID or Lat/Lon..." type="text"/>
+<svg class="w-3.5 h-3.5 text-ocean-textSecondary absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="text-xs font-mono text-ocean-textSecondary flex items-center gap-1 bg-ocean-card px-2.5 py-1.5 rounded-lg border border-ocean-border">
+<svg class="w-3.5 h-3.5 text-ocean-cyan" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+<polyline points="12 6 12 12 16 14" stroke-width="2"></polyline>
+</svg>
+            14:32 UTC (Refreshed 2m ago)
+          </span>
+</div>
+<!-- Right Utilities & Profile -->
+<div class="flex items-center gap-3">
+<!-- Coordinate Datum Switch -->
+<div class="flex items-center bg-ocean-card border border-ocean-border rounded-lg p-0.5 text-[11px] font-mono">
+<button class="px-2 py-1 rounded bg-ocean-surface text-ocean-cyan font-semibold">WGS84</button>
+<button class="px-2 py-1 rounded text-ocean-textSecondary hover:text-ocean-textPrimary">UTM</button>
+</div>
+<!-- Notification Bell -->
+<button class="relative p-2 rounded-lg bg-ocean-card border border-ocean-border text-ocean-textSecondary hover:text-ocean-textPrimary transition-colors" title="Notifications">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-ocean-riskHigh ring-2 ring-ocean-card"></span>
+</button>
+<!-- User Profile -->
+<div class="flex items-center gap-2.5 pl-2 border-l border-ocean-border">
+<div class="w-8 h-8 rounded-full bg-gradient-to-tr from-ocean-cyan/30 to-ocean-surface border border-ocean-cyan/50 flex items-center justify-center text-xs font-mono font-bold text-ocean-cyan">
+              CE
+            </div>
+<div class="text-left hidden sm:block">
+<div class="text-xs font-semibold leading-tight text-ocean-textPrimary">Eng. Team Lead</div>
+<div class="text-[10px] font-mono text-ocean-textSecondary leading-tight">Y3 Project Admin</div>
+</div>
+</div>
+</div>
+</header>
+<!-- END: TopHeader -->
+<!-- BEGIN: DashboardBodyContent -->
+<main class="p-8 space-y-6">
+<!-- BEGIN: KPISummaryRow -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4" data-purpose="kpi-metrics-row">
+<!-- Metric 1: Total Detections -->
+<div class="bg-ocean-card border border-ocean-border rounded-xl p-4 relative overflow-hidden group hover:border-ocean-cyan/50 transition-all">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-ocean-cyan/5 rounded-full pointer-events-none group-hover:scale-125 transition-transform"></div>
+<div class="flex items-center justify-between text-xs font-mono text-ocean-textSecondary">
+<span>TOTAL DETECTIONS</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] bg-ocean-surface text-ocean-cyan border border-ocean-cyan/20">YOLOv8 Annotated</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-3xl font-display font-bold text-ocean-textPrimary tracking-tight">148</span>
+<span class="text-xs font-medium text-ocean-success flex items-center">
+                ↑ +12
+              </span>
+</div>
+<p class="mt-1 text-[11px] text-ocean-textSecondary font-mono">From latest aerial survey batch</p>
+</div>
+<!-- Metric 2: High-Risk Observations -->
+<div class="bg-ocean-card border border-ocean-border rounded-xl p-4 relative overflow-hidden group hover:border-ocean-riskHigh/50 transition-all">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-ocean-riskHigh/5 rounded-full pointer-events-none group-hover:scale-125 transition-transform"></div>
+<div class="flex items-center justify-between text-xs font-mono text-ocean-textSecondary">
+<span class="text-ocean-riskHigh font-semibold">HIGH-RISK DETECTIONS</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] bg-ocean-riskHigh/10 text-ocean-riskHigh border border-ocean-riskHigh/30">Immediate Action</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-3xl font-display font-bold text-ocean-riskHigh tracking-tight">09</span>
+<span class="text-xs font-mono text-ocean-riskHigh/80 font-medium">Critical</span>
+</div>
+<p class="mt-1 text-[11px] text-ocean-textSecondary font-mono">Coral nursery &amp; turtle sanctuary proximity</p>
+</div>
+<!-- Metric 3: Active Drift Forecasts -->
+<div class="bg-ocean-card border border-ocean-border rounded-xl p-4 relative overflow-hidden group hover:border-ocean-cyan/50 transition-all">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-ocean-cyan/5 rounded-full pointer-events-none group-hover:scale-125 transition-transform"></div>
+<div class="flex items-center justify-between text-xs font-mono text-ocean-textSecondary">
+<span>DRIFT FORECASTS</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] bg-ocean-cyan/10 text-ocean-cyan border border-ocean-cyan/30">48h Projected</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-3xl font-display font-bold text-ocean-cyan tracking-tight">24</span>
+<span class="text-xs font-mono text-ocean-aqua">Hydro-Lagrangian</span>
+</div>
+<p class="mt-1 text-[11px] text-ocean-textSecondary font-mono">Active hydrodynamic vector runs</p>
+</div>
+<!-- Metric 4: Recovery Priorities -->
+<div class="bg-ocean-card border border-ocean-border rounded-xl p-4 relative overflow-hidden group hover:border-ocean-riskMed/50 transition-all">
+<div class="absolute -right-4 -bottom-4 w-20 h-20 bg-ocean-riskMed/5 rounded-full pointer-events-none group-hover:scale-125 transition-transform"></div>
+<div class="flex items-center justify-between text-xs font-mono text-ocean-textSecondary">
+<span>RECOVERY PRIORITIES</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] bg-ocean-riskMed/10 text-ocean-riskMed border border-ocean-riskMed/30">Queue Ready</span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-3xl font-display font-bold text-ocean-riskMed tracking-tight">05</span>
+<span class="text-xs font-mono text-ocean-textSecondary">Target Vessels 2</span>
+</div>
+<p class="mt-1 text-[11px] text-ocean-textSecondary font-mono">Assigned for vessel interception</p>
+</div>
+</section>
+<!-- END: KPISummaryRow -->
+<!-- BEGIN: MainMiddleSplitSection -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6" data-purpose="gis-map-and-priority-panel">
+<!-- BEGIN: OceanGISMapCenterpiece (65% on desktop -> col-span-8) -->
+<div class="lg:col-span-8 bg-ocean-card border border-ocean-border rounded-xl overflow-hidden flex flex-col shadow-2xl relative">
+<!-- Map Top Toolbar -->
+<div class="p-3.5 bg-ocean-sidebar/90 border-b border-ocean-border flex flex-wrap items-center justify-between gap-3 text-xs">
+<!-- Layer Toggles -->
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-[11px] font-mono text-ocean-textSecondary mr-1 font-semibold">LAYERS:</span>
+<label class="flex items-center gap-1.5 px-2 py-1 rounded bg-ocean-surface/60 border border-ocean-border cursor-pointer hover:border-ocean-cyan/40 transition">
+<input checked="" class="rounded border-ocean-border text-ocean-cyan focus:ring-0 w-3.5 h-3.5 bg-ocean-main" type="checkbox"/>
+<span class="text-[11px] font-mono text-ocean-textPrimary">Detections (YOLOv8)</span>
+</label>
+<label class="flex items-center gap-1.5 px-2 py-1 rounded bg-ocean-surface/60 border border-ocean-border cursor-pointer hover:border-ocean-cyan/40 transition">
+<input checked="" class="rounded border-ocean-border text-ocean-cyan focus:ring-0 w-3.5 h-3.5 bg-ocean-main" type="checkbox"/>
+<span class="text-[11px] font-mono text-ocean-cyan">Drift Vectors</span>
+</label>
+<label class="flex items-center gap-1.5 px-2 py-1 rounded bg-ocean-surface/60 border border-ocean-border cursor-pointer hover:border-ocean-cyan/40 transition">
+<input checked="" class="rounded border-ocean-border text-ocean-riskHigh focus:ring-0 w-3.5 h-3.5 bg-ocean-main" type="checkbox"/>
+<span class="text-[11px] font-mono text-ocean-textPrimary">Risk Zones</span>
+</label>
+<label class="flex items-center gap-1.5 px-2 py-1 rounded bg-ocean-card border border-ocean-border cursor-pointer text-ocean-textSecondary hover:text-ocean-textPrimary transition">
+<input class="rounded border-ocean-border text-ocean-cyan focus:ring-0 w-3.5 h-3.5 bg-ocean-main" type="checkbox"/>
+<span class="text-[11px] font-mono">Bathymetry Contours</span>
+</label>
+<label class="flex items-center gap-1.5 px-2 py-1 rounded bg-ocean-card border border-ocean-border cursor-pointer text-ocean-textSecondary hover:text-ocean-textPrimary transition">
+<input class="rounded border-ocean-border text-ocean-cyan focus:ring-0 w-3.5 h-3.5 bg-ocean-main" type="checkbox"/>
+<span class="text-[11px] font-mono">SST Currents</span>
+</label>
+</div>
+<!-- HUD Coordinate Overlay (Top-Right) -->
+<div class="hidden xl:flex items-center gap-2 font-mono text-[10px] text-ocean-textSecondary bg-ocean-main/80 px-2.5 py-1 rounded border border-ocean-border">
+<span class="text-ocean-cyan">CURSOR:</span> 17.2860° S, 178.4100° E | <span class="text-ocean-aqua">DEPTH: -38.4m</span>
+</div>
+</div>
+<!-- Interactive Marine Map Canvas (Simulated Hydrographic View) -->
+<div class="relative flex-1 min-h-[500px] bg-[#04101B] bg-hydro-grid overflow-hidden flex flex-col justify-between p-6 select-none">
+<!-- Subtle Bathymetric Depth SVG Lines Background -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40" xmlns="http://www.w3.org/2000/svg">
+<!-- Bathymetry Contours -->
+<path d="M-100,200 Q200,80 500,220 T1100,180" fill="none" stroke="#16465A" stroke-dasharray="3,3" stroke-width="1.2"></path>
+<path d="M-50,320 Q240,240 540,360 T1150,310" fill="none" stroke="#16465A" stroke-width="1.5"></path>
+<path d="M-20,440 Q300,380 620,480 T1200,430" fill="none" stroke="#103B50" stroke-width="1.2"></path>
+<path d="M50,120 Q350,60 700,140 T1300,100" fill="none" stroke="#16465A" stroke-dasharray="2,4" stroke-width="0.8"></path>
+<!-- Current Streamlines (Oceanic Flow Vectors) -->
+<path d="M120,400 C 260,380 340,340 460,350 C 580,360 680,410 820,390" fill="none" stroke="#00E5FF" stroke-opacity="0.25" stroke-width="1"></path>
+<path d="M100,250 C 240,230 320,190 440,200 C 560,210 660,260 800,240" fill="none" stroke="#00E5FF" stroke-opacity="0.15" stroke-width="1"></path>
+</svg>
+<!-- Map Header Overlay Badges -->
+<div class="relative z-10 flex items-start justify-between">
+<div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-ocean-sidebar/90 border border-ocean-border backdrop-blur">
+<span class="w-2 h-2 rounded-full bg-ocean-cyan animate-pulse"></span>
+<span class="text-xs font-mono font-medium text-ocean-textPrimary">GIS REGION: LAU BASIN &amp; TAVARU REEF SECTOR</span>
+</div>
+<div class="mt-1 text-[10px] font-mono text-ocean-aqua pl-1">
+                    RADAR SWEEP FREQUENCY: 1.2 GHz • SATELLITE: SENTINEL-2 / UAV SYNC
+                  </div>
+</div>
+<div class="bg-amber-500/10 border border-ocean-riskMed/40 text-ocean-riskMed px-2.5 py-1 rounded text-[10px] font-mono tracking-wide">
+                  DEMONSTRATION RUN — GEOSPATIAL ESTIMATES ONLY
+                </div>
+</div>
+<!-- Map Center Visualizations: Polygons, Drift Tracks & Detections -->
+<div class="absolute inset-0 pointer-events-none">
+<!-- SVG Vector Layer for Protected Area & Drift Tracks -->
+<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Gradient for Drift Vector -->
+<lineargradient id="driftGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FF6B61" stop-opacity="0.9"></stop>
+<stop offset="35%" stop-color="#FFB547" stop-opacity="0.8"></stop>
+<stop offset="70%" stop-color="#00E5FF" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#75E6DA" stop-opacity="0.2"></stop>
+</lineargradient>
+<!-- Marker arrow marker -->
+<marker id="arrow" markerheight="6" markerwidth="6" orient="auto-start-reverse" refx="5" refy="5" viewbox="0 0 10 10">
+<path d="M 0 0 L 10 5 L 0 10 z" fill="#00E5FF"></path>
+</marker>
+</defs>
+<!-- Marine Protected Reserve Habitat Polygon Overlay -->
+<polygon fill="rgba(255, 107, 97, 0.08)" points="340,140 680,180 760,360 480,410 320,310" stroke="#FF6B61" stroke-dasharray="6,4" stroke-width="1.8"></polygon>
+<!-- Text label inside reserve -->
+<text fill="#FF6B61" font-family="JetBrains Mono" font-size="11" font-weight="600" opacity="0.85" x="440" y="210">
+                    Tavaru Reef Marine Reserve
+                  </text>
+<text fill="#91A9BB" font-family="JetBrains Mono" font-size="9" x="440" y="226">
+                    Critical Coral Nursery Zone [RESTRICTED]
+                  </text>
+<!-- Secondary Habitat Zone B -->
+<circle cx="210" cy="380" fill="rgba(0, 229, 255, 0.04)" r="85" stroke="#16B8A6" stroke-dasharray="4,4" stroke-width="1.2"></circle>
+<text fill="#16B8A6" font-family="JetBrains Mono" font-size="10" x="165" y="385">ZONE B: SHALLOW LAGOON</text>
+<!-- Drift Trajectory Curve for OR-882 (Lagrangian Projection) -->
+<!-- Origin: (520, 270) -> T+12h: (590, 310) -> T+24h: (640, 370) -> T+36h: (680, 430) -> T+48h: (700, 480) -->
+<path d="M 520,270 C 580,290 630,340 690,440" fill="none" marker-end="url(#arrow)" stroke="url(#driftGradient)" stroke-dasharray="6,3" stroke-width="2.5"></path>
+<!-- Drift Projection Waypoint Markers -->
+<circle cx="585" cy="315" fill="#FFB547" r="4" stroke="#061522" stroke-width="1.5"></circle>
+<text fill="#FFB547" font-family="JetBrains Mono" font-size="9" x="595" y="318">+12h (1.4kts)</text>
+<circle cx="635" cy="365" fill="#00E5FF" r="4" stroke="#061522" stroke-width="1.5"></circle>
+<text fill="#00E5FF" font-family="JetBrains Mono" font-size="9" x="645" y="368">+24h (1.2kts)</text>
+<circle cx="675" cy="420" fill="#75E6DA" r="4" stroke="#061522" stroke-width="1.5"></circle>
+<text fill="#75E6DA" font-family="JetBrains Mono" font-size="9" x="685" y="423">+48h Projected</text>
+</svg>
+<!-- Detection Marker 1: OR-882 [SELECTED HIGH RISK - Ghost Net] -->
+<div class="absolute top-[260px] left-[510px] pointer-events-auto cursor-pointer group">
+<!-- Pulsing Halo Rings -->
+<div class="absolute -top-3.5 -left-3.5 w-11 h-11 rounded-full bg-ocean-riskHigh/20 pulse-ring pointer-events-none"></div>
+<div class="absolute -top-3.5 -left-3.5 w-11 h-11 rounded-full bg-ocean-riskHigh/20 pulse-ring-delayed pointer-events-none"></div>
+<!-- Target Core Pin -->
+<div class="relative w-4 h-4 rounded-full bg-ocean-riskHigh border-2 border-white shadow-[0_0_12px_#FF6B61] flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+</div>
+<!-- Tactical Tooltip HUD Tag (Always Visible) -->
+<div class="absolute left-6 -top-8 w-52 bg-ocean-sidebar/95 border border-ocean-riskHigh/60 rounded p-2 text-xs backdrop-blur shadow-xl pointer-events-none">
+<div class="flex items-center justify-between font-mono">
+<span class="text-ocean-riskHigh font-bold font-display">OR-2024-094</span>
+<span class="text-[9px] px-1 rounded bg-ocean-riskHigh/20 text-ocean-riskHigh font-semibold">GHOST NET 94.2%</span>
+</div>
+<div class="text-[10px] text-ocean-textPrimary font-mono mt-0.5">Ghost Gillnet (~45m span)</div>
+<div class="text-[9px] text-ocean-aqua font-mono mt-0.5">Depth: 14m • Heading: SSE 162°</div>
+</div>
+</div>
+<!-- Detection Marker 2: OR-879 [MEDIUM RISK - Synthetic Rope Line] -->
+<div class="absolute top-[180px] left-[260px] pointer-events-auto cursor-pointer">
+<div class="relative w-3.5 h-3.5 rounded-full bg-ocean-riskMed border border-white shadow-[0_0_8px_#FFB547]"></div>
+<!-- Label on hover -->
+<div class="absolute left-5 -top-3 px-2 py-0.5 rounded bg-ocean-sidebar/90 border border-ocean-border text-[10px] font-mono text-ocean-textPrimary whitespace-nowrap shadow">
+                    OR-879 • rope_line (89.6%)
+                  </div>
+</div>
+<!-- Detection Marker 3: OR-875 [LOW RISK - Submerged Net Section] -->
+<div class="absolute top-[370px] left-[320px] pointer-events-auto cursor-pointer">
+<div class="relative w-3 h-3 rounded-full bg-ocean-teal border border-white"></div>
+<div class="absolute left-4 -top-2 px-1.5 py-0.5 rounded bg-ocean-sidebar/80 border border-ocean-border text-[9px] font-mono text-ocean-textSecondary whitespace-nowrap">
+                    OR-875 • 81.4%
+                  </div>
+</div>
+<!-- Detection Marker 4: OR-870 [HIGH RISK - Near Reef Boundary] -->
+<div class="absolute top-[170px] left-[610px] pointer-events-auto cursor-pointer">
+<div class="relative w-3.5 h-3.5 rounded-full bg-ocean-riskHigh border border-white shadow-[0_0_8px_#FF6B61]"></div>
+<div class="absolute left-5 -top-3 px-2 py-0.5 rounded bg-ocean-sidebar/90 border border-ocean-riskHigh/50 text-[10px] font-mono text-ocean-riskHigh whitespace-nowrap shadow">
+                    OR-870 • fishing_net (91.0%)
+                  </div>
+</div>
+</div>
+<!-- Map Bottom Controls & Floating Legend -->
+<div class="relative z-10 flex items-end justify-between pt-20">
+<!-- Map Scale Bar & Compass -->
+<div class="flex items-center gap-4 bg-ocean-sidebar/90 border border-ocean-border backdrop-blur px-3 py-2 rounded-lg text-[10px] font-mono">
+<!-- Compass Rose -->
+<div class="flex items-center gap-1.5 border-r border-ocean-border pr-3">
+<svg class="w-4 h-4 text-ocean-cyan" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<polygon fill="currentColor" points="12 2 15 9 12 7 9 9 12 2"></polygon>
+<polygon fill="#91A9BB" points="12 22 9 15 12 17 15 15 12 22"></polygon>
+</svg>
+<span class="font-bold text-ocean-textPrimary">N</span>
+</div>
+<!-- Scale Bar -->
+<div>
+<div class="flex justify-between text-[9px] text-ocean-textSecondary mb-0.5">
+<span>0</span>
+<span>5 km</span>
+<span>10 km</span>
+</div>
+<div class="h-1.5 w-28 border-b-2 border-l-2 border-r-2 border-ocean-cyan flex">
+<div class="w-1/2 bg-ocean-cyan/30"></div>
+<div class="w-1/2 bg-ocean-cyan/80"></div>
+</div>
+</div>
+</div>
+<!-- Compact Map Legend -->
+<div class="flex items-center gap-3 bg-ocean-sidebar/90 border border-ocean-border backdrop-blur px-3 py-2 rounded-lg text-[10px] font-mono">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-ocean-riskHigh inline-block"></span>
+<span class="text-ocean-textSecondary">Ghost Net (High)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-ocean-riskMed inline-block"></span>
+<span class="text-ocean-textSecondary">Rope Line</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-3 h-0.5 bg-ocean-cyan inline-block border-t border-dashed"></span>
+<span class="text-ocean-textSecondary">Lagrangian Drift</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 border border-dashed border-ocean-riskHigh bg-ocean-riskHigh/20 inline-block"></span>
+<span class="text-ocean-textSecondary">Reef Reserve</span>
+</div>
+</div>
+<!-- Floating Zoom Controls -->
+<div class="flex flex-col gap-1 bg-ocean-sidebar/90 border border-ocean-border rounded-lg p-1 backdrop-blur shadow-lg">
+<button class="w-7 h-7 flex items-center justify-center rounded bg-ocean-surface text-ocean-textPrimary hover:bg-ocean-cyan hover:text-ocean-main transition-colors text-sm font-bold" title="Zoom In">+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-ocean-surface text-ocean-textPrimary hover:bg-ocean-cyan hover:text-ocean-main transition-colors text-sm font-bold" title="Zoom Out">−</button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-ocean-surface text-ocean-textSecondary hover:text-ocean-textPrimary transition-colors" title="Recenter View">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="3"></circle>
+<path d="M3 12h3m12 0h3M12 3v3m0 12v3"></path>
+</svg>
+</button>
+<button class="w-7 h-7 flex items-center justify-center rounded bg-ocean-surface text-ocean-textSecondary hover:text-ocean-textPrimary transition-colors" title="Toggle Fullscreen">
+<svg class="w-3 h-3" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- END: OceanGISMapCenterpiece -->
+<!-- BEGIN: PriorityObservationsPanel (35% on desktop -> col-span-4) -->
+<div class="lg:col-span-4 bg-ocean-card border border-ocean-border rounded-xl flex flex-col justify-between overflow-hidden shadow-xl" data-purpose="priority-observations-panel">
+<!-- Panel Header -->
+<div class="p-4 border-b border-ocean-border bg-ocean-sidebar/60 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h2 class="text-sm font-display font-bold text-ocean-textPrimary uppercase tracking-wider">Priority Observations</h2>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-ocean-riskHigh/20 text-ocean-riskHigh border border-ocean-riskHigh/40">
+                  4 QUEUED
+                </span>
+</div>
+<div class="relative">
+<select class="bg-ocean-surface border border-ocean-border rounded text-[11px] font-mono text-ocean-textPrimary py-1 pl-2 pr-6 focus:outline-none focus:border-ocean-cyan cursor-pointer">
+<option>Sort: Risk Score ↓</option>
+<option>Sort: Time Detected</option>
+<option>Sort: Proximity to Reef</option>
+</select>
+</div>
+</div>
+<!-- Observations Card List -->
+<div class="p-4 space-y-3.5 overflow-y-auto max-h-[510px]">
+<!-- Card 1: OR-2024-094 (Primary Target) -->
+<div class="p-3.5 rounded-lg bg-ocean-surface/40 border border-ocean-cyan/40 hover:border-ocean-cyan transition-all shadow-sm group">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-xs font-mono font-bold text-ocean-cyan group-hover:underline">#OR-2024-094</span>
+<p class="text-sm font-semibold text-ocean-textPrimary mt-0.5">fishing_net (Ghost Gillnet ~45m)</p>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-ocean-riskHigh/20 text-ocean-riskHigh border border-ocean-riskHigh/40">
+                    CRITICAL RISK 96/100
+                  </span>
+</div>
+<!-- Metadata Row -->
+<div class="mt-2.5 grid grid-cols-2 gap-2 text-[11px] font-mono text-ocean-textSecondary bg-ocean-main/60 p-2 rounded border border-ocean-border/60">
+<div>
+<span class="text-[10px] text-ocean-textSecondary block">CONFIDENCE:</span>
+<span class="text-ocean-textPrimary font-semibold">94.2% (YOLOv8-seg)</span>
+</div>
+<div>
+<span class="text-[10px] text-ocean-textSecondary block">COORDINATES:</span>
+<span class="text-ocean-textPrimary">17.286° S, 178.410° E</span>
+</div>
+<div class="col-span-2">
+<span class="text-[10px] text-ocean-aqua block">DRIFT ESTIMATE:</span>
+<span class="text-ocean-textPrimary">SSE at 1.4 kts towards shallow reef crest</span>
+</div>
+</div>
+<!-- Risk Rationale -->
+<p class="mt-2 text-xs text-ocean-textSecondary leading-relaxed">
+<strong class="text-ocean-riskHigh font-medium">Risk Rationale:</strong> Immediate entanglement hazard to live Acropora coral colonies and green sea turtle nesting transit corridor.
+                </p>
+<!-- Actions -->
+<div class="mt-3 flex items-center gap-2">
+<button class="flex-1 py-1.5 px-3 rounded bg-ocean-cyan text-ocean-main font-semibold text-xs hover:bg-ocean-aqua transition-colors flex items-center justify-center gap-1 shadow-[0_0_10px_rgba(0,229,255,0.3)]">
+<span>View Details &amp; Vectors</span>
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<button class="py-1.5 px-3 rounded bg-ocean-surface border border-ocean-border text-ocean-textPrimary hover:bg-ocean-border transition-colors text-xs font-mono">
+                    Dispatch Task
+                  </button>
+</div>
+</div>
+<!-- Card 2: OR-2024-089 (Medium Risk) -->
+<div class="p-3.5 rounded-lg bg-ocean-sidebar/40 border border-ocean-border hover:border-ocean-riskMed/60 transition-all">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-xs font-mono font-semibold text-ocean-riskMed">#OR-2024-089</span>
+<p class="text-sm font-medium text-ocean-textPrimary mt-0.5">rope_line (Synthetic Mooring Line ~80m)</p>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-ocean-riskMed/20 text-ocean-riskMed border border-ocean-riskMed/40">
+                    MEDIUM RISK 68/100
+                  </span>
+</div>
+<div class="mt-2 grid grid-cols-2 gap-1 text-[11px] font-mono text-ocean-textSecondary">
+<div>Conf: <span class="text-ocean-textPrimary">89.6%</span></div>
+<div>Coords: <span class="text-ocean-textPrimary">17.341° S, 178.502° E</span></div>
+</div>
+<p class="mt-2 text-xs text-ocean-textSecondary">
+<strong class="text-ocean-riskMed font-medium">Risk Rationale:</strong> Semi-submerged navigation propeller hazard for local artisanal craft; stable coastal eddy.
+                </p>
+<div class="mt-3 flex items-center justify-end">
+<button class="py-1 px-3 rounded bg-ocean-surface text-ocean-textPrimary text-xs hover:text-ocean-cyan font-mono border border-ocean-border">
+                    Inspect Run →
+                  </button>
+</div>
+</div>
+<!-- Card 3: OR-2024-082 (High Risk) -->
+<div class="p-3.5 rounded-lg bg-ocean-sidebar/40 border border-ocean-border hover:border-ocean-riskHigh/60 transition-all">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-xs font-mono font-semibold text-ocean-riskHigh">#OR-2024-082</span>
+<p class="text-sm font-medium text-ocean-textPrimary mt-0.5">fishing_net (Trawl Net Bundle)</p>
+</div>
+<span class="px-2 py-0.5 rounded text-[10px] font-mono font-semibold bg-ocean-riskHigh/20 text-ocean-riskHigh border border-ocean-riskHigh/40">
+                    HIGH RISK 88/100
+                  </span>
+</div>
+<div class="mt-2 grid grid-cols-2 gap-1 text-[11px] font-mono text-ocean-textSecondary">
+<div>Conf: <span class="text-ocean-textPrimary">91.0%</span></div>
+<div>Coords: <span class="text-ocean-textPrimary">17.219° S, 178.384° E</span></div>
+</div>
+<p class="mt-2 text-xs text-ocean-textSecondary">
+<strong class="text-ocean-riskHigh font-medium">Risk Rationale:</strong> Near reserve northern pass; direct threat to manta ray foraging zone.
+                </p>
+<div class="mt-3 flex items-center justify-end">
+<button class="py-1 px-3 rounded bg-ocean-surface text-ocean-textPrimary text-xs hover:text-ocean-cyan font-mono border border-ocean-border">
+                    Inspect Run →
+                  </button>
+</div>
+</div>
+</div>
+<!-- Academic Disclaimer Footer Note -->
+<div class="p-3 bg-ocean-sidebar border-t border-ocean-border text-[10px] font-mono text-ocean-textSecondary text-center leading-normal">
+              * Detections and risk indexes are algorithmic estimations generated for academic demonstration.
+            </div>
+</div>
+<!-- END: PriorityObservationsPanel -->
+</section>
+<!-- END: MainMiddleSplitSection -->
+<!-- BEGIN: BottomAnalyticsRow (3 Equal Column Cards) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6" data-purpose="bottom-telemetry-and-analytics">
+<!-- Card 1: AI Detection Overview (YOLOv8 Distribution) -->
+<div class="bg-ocean-card border border-ocean-border rounded-xl p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-ocean-border">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-ocean-cyan" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+<path d="M12 2a10 10 0 0 1 10 10" stroke-width="2"></path>
+</svg>
+<h3 class="text-xs font-mono font-bold text-ocean-textPrimary tracking-wide uppercase">AI Detection Distribution</h3>
+</div>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-ocean-surface text-ocean-cyan">YOLOv8s-seg</span>
+</div>
+<!-- Bar / Distribution breakdown -->
+<div class="mt-4 space-y-3 font-mono">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="text-ocean-textPrimary font-medium">fishing_net</span>
+<span class="text-ocean-cyan font-bold">68% (101 items)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-ocean-surface overflow-hidden">
+<div class="h-full bg-ocean-cyan rounded-full" style="width: 68%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="text-ocean-textPrimary font-medium">rope_line</span>
+<span class="text-ocean-aqua font-bold">32% (47 items)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-ocean-surface overflow-hidden">
+<div class="h-full bg-ocean-aqua rounded-full" style="width: 32%;"></div>
+</div>
+</div>
+</div>
+<!-- Metrics -->
+<div class="mt-5 grid grid-cols-2 gap-2 p-2.5 rounded-lg bg-ocean-surface/40 border border-ocean-border text-center font-mono">
+<div>
+<div class="text-[10px] text-ocean-textSecondary">Mean Confidence</div>
+<div class="text-sm font-bold text-ocean-textPrimary mt-0.5">88.4% mAP50</div>
+</div>
+<div>
+<div class="text-[10px] text-ocean-textSecondary">Avg Latency</div>
+<div class="text-sm font-bold text-ocean-cyan mt-0.5">42 ms / frame</div>
+</div>
+</div>
+</div>
+<p class="mt-4 text-[11px] text-ocean-textSecondary font-mono border-t border-ocean-border/60 pt-2">
+              Model trained on marine debris orthoimagery &amp; underwater UAV datasets.
+            </p>
+</div>
+<!-- Card 2: Oceanographic & Environmental Conditions -->
+<div class="bg-ocean-card border border-ocean-border rounded-xl p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-ocean-border">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-ocean-teal" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 00-9.78 2.096A4.001 4.001 0 003 15z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<h3 class="text-xs font-mono font-bold text-ocean-textPrimary tracking-wide uppercase">Environmental Conditions</h3>
+</div>
+<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-ocean-surface text-ocean-teal">DEMO DATA MODE</span>
+</div>
+<!-- Hydrodynamic Telemetry Rows -->
+<div class="mt-4 space-y-2.5 font-mono text-xs">
+<div class="flex items-center justify-between py-1 border-b border-ocean-border/40">
+<span class="text-ocean-textSecondary flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-ocean-cyan" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    Sea Surface Current:
+                  </span>
+<span class="text-ocean-textPrimary font-semibold">1.42 kts @ 162° SSE</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-ocean-border/40">
+<span class="text-ocean-textSecondary flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-ocean-aqua" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"></path></svg>
+                    Wind Vector:
+                  </span>
+<span class="text-ocean-textPrimary font-semibold">14.5 kts (Trade Wind ENE)</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-ocean-border/40">
+<span class="text-ocean-textSecondary flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-ocean-textSecondary" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M3 10h18M3 14h18"></path></svg>
+                    Significant Wave Height:
+                  </span>
+<span class="text-ocean-textPrimary font-semibold">1.8 m (Period 7.2s)</span>
+</div>
+<div class="flex items-center justify-between py-1 border-b border-ocean-border/40">
+<span class="text-ocean-textSecondary flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-ocean-teal" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Water Temperature:
+                  </span>
+<span class="text-ocean-cyan font-semibold">24.6°C (Stable range)</span>
+</div>
+<div class="flex items-center justify-between py-1">
+<span class="text-ocean-textSecondary flex items-center gap-1.5">
+<svg class="w-3.5 h-3.5 text-ocean-review" fill="none" stroke="currentColor" viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle></svg>
+                    Tide State:
+                  </span>
+<span class="text-ocean-textPrimary font-semibold">Ebb tide (-0.4m below datum)</span>
+</div>
+</div>
+</div>
+<div class="mt-2 text-[10px] font-mono text-ocean-textSecondary flex items-center gap-1">
+<span>● Source: Simulated NOAA WaveWatch III &amp; HYCOM feeds</span>
+</div>
+</div>
+<!-- Card 3: Recent Activity & Audit Timeline -->
+<div class="bg-ocean-card border border-ocean-border rounded-xl p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-ocean-border">
+<div class="flex items-center gap-2">
+<svg class="w-4 h-4 text-ocean-cyan" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<h3 class="text-xs font-mono font-bold text-ocean-textPrimary tracking-wide uppercase">Operational Audit Log</h3>
+</div>
+<span class="text-[10px] font-mono text-ocean-textSecondary">LIVE FEED</span>
+</div>
+<!-- Activity Timeline List -->
+<div class="mt-4 space-y-3 font-mono text-xs">
+<div class="flex items-start gap-2.5">
+<div class="w-2 h-2 rounded-full bg-ocean-cyan mt-1 flex-shrink-0"></div>
+<div>
+<p class="text-ocean-textPrimary text-[11px] leading-tight">
+                      Drift model re-calculated for <span class="text-ocean-cyan font-bold">OR-2024-094</span> based on updated tidal ebb flow.
+                    </p>
+<span class="text-[10px] text-ocean-textSecondary">12m ago • Lagrangian Engine</span>
+</div>
+</div>
+<div class="flex items-start gap-2.5">
+<div class="w-2 h-2 rounded-full bg-ocean-success mt-1 flex-shrink-0"></div>
+<div>
+<p class="text-ocean-textPrimary text-[11px] leading-tight">
+                      YOLOv8 inference completed on UAV Survey Batch #42 (3 nets, 1 rope line identified).
+                    </p>
+<span class="text-[10px] text-ocean-textSecondary">34m ago • Edge Inference</span>
+</div>
+</div>
+<div class="flex items-start gap-2.5">
+<div class="w-2 h-2 rounded-full bg-ocean-review mt-1 flex-shrink-0"></div>
+<div>
+<p class="text-ocean-textPrimary text-[11px] leading-tight">
+                      Observation <span class="text-ocean-review">OR-2024-081</span> marked verified by marine GIS analyst.
+                    </p>
+<span class="text-[10px] text-ocean-textSecondary">1h ago • Analyst Lead</span>
+</div>
+</div>
+<div class="flex items-start gap-2.5">
+<div class="w-2 h-2 rounded-full bg-ocean-riskHigh mt-1 flex-shrink-0"></div>
+<div>
+<p class="text-ocean-textPrimary text-[11px] leading-tight">
+                      High-risk proximity threshold alert triggered on <span class="text-ocean-riskHigh font-medium">Tavaru Reef Reserve</span>.
+                    </p>
+<span class="text-[10px] text-ocean-textSecondary">2h ago • Automated Geofence</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-2 border-t border-ocean-border/60 flex items-center justify-between text-[10px] font-mono text-ocean-textSecondary">
+<span>SYSTEM HEALTH: 100% OPERATIONAL</span>
+<a class="text-ocean-cyan hover:underline" href="#logs">Full Log →</a>
+</div>
+</div>
+</section>
+<!-- END: BottomAnalyticsRow -->
+</main>
+<!-- END: DashboardBodyContent -->
+<!-- BEGIN: ApplicationFooter -->
+<footer class="mt-auto px-8 py-4 border-t border-ocean-border bg-ocean-sidebar/40 text-xs font-mono text-ocean-textSecondary flex flex-wrap items-center justify-between gap-4" data-purpose="app-footer">
+<div class="flex items-center gap-3">
+<span class="text-ocean-textPrimary font-semibold">OceanRescue Marine AI Decision-Support Platform</span>
+<span class="text-ocean-border">|</span>
+<span>Third-Year Computer Engineering Capstone Mini-Project</span>
+</div>
+<div class="flex items-center gap-4 text-[11px]">
+<span class="text-ocean-aqua">"Every Net Found. Every Life Saved."</span>
+<span class="text-ocean-border">|</span>
+<span>Baseline Model: YOLOv8-seg (PyTorch / TensorRT)</span>
+</div>
+</footer>
+<!-- END: ApplicationFooter -->
+</div>
+<!-- END: MainContentArea -->
+</div>
+<!-- END: ApplicationLayout -->
+</body></html>

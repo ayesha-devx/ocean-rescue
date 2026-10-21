@@ -1,0 +1,664 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.7 375dc00a",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-10T14:34:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "way",
+      "id": 131560969,
+      "center": {
+        "lat": 17.6495814,
+        "lon": 73.9111968
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "historic": "fort",
+        "name": "Sajjangad",
+        "wikidata": "Q7402696",
+        "wikimedia_commons": "Category:Sajjangad",
+        "wikipedia": "en:Sajjangad"
+      }
+    },
+    {
+      "type": "way",
+      "id": 420138328,
+      "center": {
+        "lat": 19.2504745,
+        "lon": 72.8227845
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "natural": "wetland",
+        "source": "PGS",
+        "wetland": "mangrove"
+      }
+    },
+    {
+      "type": "way",
+      "id": 473741969,
+      "center": {
+        "lat": 17.725909,
+        "lon": 73.817647
+      },
+      "tags": {
+        "area": "yes",
+        "boundary": "protected_area",
+        "name": "Kaas Valley of Flowers"
+      }
+    },
+    {
+      "type": "way",
+      "id": 670197606,
+      "center": {
+        "lat": 18.4204791,
+        "lon": 72.9659826
+      },
+      "tags": {
+        "alt_name": "Phansad WLS",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Phansad Wildlife Sanctuary",
+        "name:mr": "\u092b\u0923\u0938\u093e\u0921 \u0935\u0928\u094d\u092f\u091c\u0940\u0935 \u0905\u092d\u092f\u093e\u0930\u0923\u094d\u092f",
+        "protect_class": "4",
+        "wikidata": "Q7180496",
+        "wikipedia": "en:Phansad Wildlife Sanctuary"
+      }
+    },
+    {
+      "type": "way",
+      "id": 670296587,
+      "center": {
+        "lat": 19.4686226,
+        "lon": 73.7849735
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Kalsubai Harishchandragad Wildlife Sanctuary",
+        "name:mr": "\u0915\u0933\u0938\u0942\u092c\u093e\u0908 \u0939\u0930\u093f\u0936\u094d\u091a\u0902\u0926\u094d\u0930\u0917\u0921 \u0905\u092d\u092f\u093e\u0930\u0923\u094d\u092f",
+        "protect_class": "4",
+        "wikidata": "Q137008662",
+        "wikipedia": "en:Kalsubai Harishchandragad Wildlife Sanctuary"
+      }
+    },
+    {
+      "type": "way",
+      "id": 678002187,
+      "center": {
+        "lat": 16.0408333,
+        "lon": 73.44375
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Malvan Marine Sanctuary",
+        "protect_class": "4",
+        "source": "https://www.icsf.net/wp-content/uploads/2021/02/138_malvan_marine_sanctuary__notification_dated_13th_april_1987.pdf",
+        "wikidata": "Q13119963"
+      }
+    },
+    {
+      "type": "way",
+      "id": 678083291,
+      "center": {
+        "lat": 16.3628158,
+        "lon": 73.9373458
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Radhanagari WLS",
+        "name:mr": "\u0930\u093e\u0927\u093e\u0928\u0917\u0930\u0940 \u0905\u092d\u092f\u093e\u0930\u0923\u094d\u092f",
+        "protect_class": "4",
+        "wikidata": "Q2125633"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1180661104,
+      "center": {
+        "lat": 15.6063241,
+        "lon": 73.7355862
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Chapora Fort Heritage Landscape",
+        "protect_class": "22"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1420881076,
+      "center": {
+        "lat": 15.5707452,
+        "lon": 73.9843605
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Kolamwada Lake Zone Of Influence",
+        "protect_class": "12",
+        "protection_title": "Wetland Zone of Influence",
+        "source": "https://gswa.goa.gov.in/wp-content/uploads/2023/04/Draft-Notification-Kolamwada-Lake.pdf"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1445403008,
+      "center": {
+        "lat": 15.5345358,
+        "lon": 73.8136933
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Pilerne Lake Notified Wetland",
+        "protect_class": "12",
+        "protection_title": "Notified Wetland",
+        "source": "https://gswa.goa.gov.in/wp-content/uploads/2022/04/Final-Notification-of-Pilerne-Lake.pdf;https://mapwarper.net/maps/94562"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1445431397,
+      "center": {
+        "lat": 15.4910077,
+        "lon": 73.9281419
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Carambolim Lake Notified Wetland",
+        "protect_class": "12",
+        "protection_title": "Notified Wetland"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1445450552,
+      "center": {
+        "lat": 15.4934889,
+        "lon": 73.9182514
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Carambolim Lake Zone Of Influence",
+        "protect_class": "12",
+        "protection_title": "Wetland Zone of Influence"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1445451348,
+      "center": {
+        "lat": 15.5354842,
+        "lon": 73.8167121
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Pilerne Lake Zone Of Influence",
+        "protect_class": "12",
+        "protection_title": "Wetland Zone of Influence"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1445693939,
+      "center": {
+        "lat": 15.48639,
+        "lon": 73.8880013
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Toyyar Lake Zone Of Influence",
+        "protect_class": "12",
+        "protection_title": "Wetland Zone of Influence"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1445693940,
+      "center": {
+        "lat": 15.486925,
+        "lon": 73.8861895
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Toyyar Lake Notified Wetland",
+        "protect_class": "12",
+        "protection_title": "Notified Wetland",
+        "source": "https://gswa.goa.gov.in/wp-content/uploads/2022/04/Final-Notification-Toyyar-Lake.pdf;https://mapwarper.net/maps/98549"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1445696860,
+      "center": {
+        "lat": 15.4879738,
+        "lon": 73.885013
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Toyyar Lake Zone Of Influence",
+        "protect_class": "12",
+        "protection_title": "Wetland Zone of Influence"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1446605928,
+      "center": {
+        "lat": 15.5657896,
+        "lon": 73.9897966
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Kolamwada Lake Protected Area",
+        "protect_class": "12",
+        "protection_title": "Notified Wetland",
+        "source": "https://gswa.goa.gov.in/wp-content/uploads/2023/04/Draft-Notification-Kolamwada-Lake.pdf"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 3963830,
+      "center": {
+        "lat": 19.6039071,
+        "lon": 73.2844733
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Tansa WLS",
+        "protect_class": "4",
+        "protection_title": "Wildlife Sanctuary",
+        "ref:IUNC": "IV",
+        "ref:WDPA": "1827",
+        "source": "Gazette",
+        "type": "boundary",
+        "wikidata": "Q105847575",
+        "wikipedia": "en:Tansa Wildlife Sanctuary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 6245228,
+      "center": {
+        "lat": 19.2406231,
+        "lon": 72.9206076
+      },
+      "tags": {
+        "boundary": "national_park",
+        "image": "File:Entrance of Sanjay Gandhi National Park.JPG",
+        "leisure": "nature_reserve",
+        "name": "Sanjay Gandhi National Park",
+        "name:etymology:wikidata": "Q730045",
+        "name:hi": "\u0938\u0902\u091c\u092f \u0917\u093e\u0902\u0927\u0940 \u0930\u093e\u0937\u094d\u091f\u094d\u0930\u0940\u092f \u0905\u092d\u092f\u093e\u0930\u0923\u094d\u092f",
+        "name:mr": "\u0938\u0902\u091c\u092f \u0917\u093e\u0902\u0927\u0940 \u0930\u093e\u0937\u094d\u091f\u094d\u0930\u0940\u092f \u0905\u092d\u092f\u093e\u0930\u0923\u094d\u092f",
+        "old_name": "Borivali National Park",
+        "operator": "Ministry of Environment and Forests",
+        "protect_class": "2",
+        "protection_title": "National Park",
+        "ref:WDPA": "10241",
+        "short_name": "SGNP",
+        "source": "https://mapwarper.net/maps/108838",
+        "start_date": "1969",
+        "type": "boundary",
+        "website": "https://sgnp.maharashtra.gov.in/",
+        "wikidata": "Q648907",
+        "wikipedia": "en:Sanjay Gandhi National Park"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 6245905,
+      "center": {
+        "lat": 19.2449041,
+        "lon": 72.8326598
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "description": "Mangroves",
+        "natural": "wetland",
+        "type": "multipolygon",
+        "wetland": "mangrove"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 6245906,
+      "center": {
+        "lat": 19.2053107,
+        "lon": 72.8140317
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "description": "Mangroves",
+        "natural": "wetland",
+        "type": "multipolygon",
+        "wetland": "mangrove"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 9323916,
+      "center": {
+        "lat": 18.4292833,
+        "lon": 73.4358358
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Tamhini WLS",
+        "name:mr": "\u0924\u093e\u092e\u094d\u0939\u093f\u0923\u0940 \u0905\u092d\u092f\u093e\u0930\u0923\u094d\u092f",
+        "protect_class": "4",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 9479789,
+      "center": {
+        "lat": 17.4207408,
+        "lon": 73.7274829
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Sahyadri Tiger Reserve",
+        "name:mr": "\u0938\u0939\u094d\u092f\u093e\u0926\u094d\u0930\u0940 \u0935\u094d\u092f\u093e\u0918\u094d\u0930 \u092a\u094d\u0930\u0915\u0932\u094d\u092a",
+        "protect_class": "4",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 15073373,
+      "center": {
+        "lat": 19.1147679,
+        "lon": 72.9628854
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Thane Creek Flamingo Sanctuary",
+        "name:mr": "\u0920\u093e\u0923\u0947 \u0930\u094b\u0939\u093f\u0924 \u0905\u092d\u092f\u093e\u0930\u0923\u094d\u092f",
+        "note": "check mapping",
+        "protect_class": "4",
+        "source": "https://mangroves.maharashtra.gov.in/Site/SiteInfo/Pdf/TCFS-RMP.pdf",
+        "type": "multipolygon"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19107931,
+      "center": {
+        "lat": 15.5174945,
+        "lon": 73.8621333
+      },
+      "tags": {
+        "addr:state": "Goa",
+        "boundary": "protected_area",
+        "description": "The extent of Eco-sensitive Zone shall be upto the river bank abutting the sanctuary on the three sides of the Wildlife Sanctuary and to the extent of 100 meters on the eastern side towards Chorao village",
+        "name": "Salim Ali Bird Sanctuary Eco-sensitive Zone",
+        "protect_class": "6",
+        "source": "https://moef.gov.in/uploads/2017/06/S.O.%20No.%20607%2C%20%5B23.02.2015%5D%20Final%20ESZ%20Notification%20on%20Dr.%20Salim%20Ali%20Wildlife%20Sanctuary%20Goa_0.pdf",
+        "type": "multipolygon"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19107932,
+      "center": {
+        "lat": 15.5165642,
+        "lon": 73.8538714
+      },
+      "tags": {
+        "addr:state": "Goa",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Salim Ali Bird Sanctuary",
+        "protect_class": "4",
+        "salt": "yes",
+        "source": "https://lawmdls.keltron.in/fromserver/lawmodules/Publication/uploading/13/102/201pub_SO%20607.pdf",
+        "tidal": "no",
+        "type": "multipolygon",
+        "wikidata": "Q4806672"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19713220,
+      "center": {
+        "lat": 15.9345475,
+        "lon": 74.0135193
+      },
+      "tags": {
+        "description": "https://corridorcoalition.org/Profiles/CorridorProfile_Sahyadri_Konkan.pdf",
+        "leisure": "nature_reserve",
+        "name": "Radhanagari - Goa Tiger Corridor",
+        "source": "https://ntca.gov.in/assets/uploads/Reports/corridor/connecting_tiger_populations.pdf",
+        "type": "multipolygon"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19761557,
+      "center": {
+        "lat": 15.4910799,
+        "lon": 73.9281472
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Carambolim Lake Buffer Zone",
+        "protect_class": "12",
+        "protection_title": "50m Wetland Buffer Zone",
+        "type": "multipolygon"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19761583,
+      "center": {
+        "lat": 15.5344996,
+        "lon": 73.8136652
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Pilerne Lake Buffer Zone",
+        "protect_class": "12",
+        "protection_title": "50m Wetland Buffer Zone",
+        "type": "multipolygon"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 19764093,
+      "center": {
+        "lat": 15.4869095,
+        "lon": 73.8861814
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Toyyar Lake Buffer Zone",
+        "protect_class": "12",
+        "protection_title": "50m Wetland Buffer Zone",
+        "type": "multipolygon"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21057070,
+      "center": {
+        "lat": 19.6142145,
+        "lon": 73.2761048
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Tansa WLS ESZ",
+        "protect_class": "6",
+        "protection_title": "Eco Sensitive Zone",
+        "source": "Gazette",
+        "type": "multipolygon"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21057459,
+      "center": {
+        "lat": 19.409118,
+        "lon": 72.9241776
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Tungareshwar WLS ESZ",
+        "protect_class": "6",
+        "source": "Gazetta",
+        "type": "multipolygon"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21057460,
+      "center": {
+        "lat": 19.3908054,
+        "lon": 72.9349493
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Tungareshwar Wildlife Sanctuary",
+        "name:mr": "\u0924\u0941\u0902\u0917\u093e\u0930\u0947\u0936\u094d\u0935\u0930 \u0905\u092d\u092f\u093e\u0930\u0923\u094d\u092f",
+        "protect_class": "4",
+        "source": "Gazette",
+        "type": "multipolygon",
+        "wikidata": "Q60753866",
+        "wikipedia": "en:Tungareshwar Wildlife Sanctuary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21060057,
+      "center": {
+        "lat": 19.2399713,
+        "lon": 72.9160237
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Sanjay Gandhi National Park ESZ (Proposed)",
+        "protect_class": "6",
+        "protection_title": "Eco Sensitive Zone",
+        "source": "https://mapwarper.net/maps/108838",
+        "type": "multipolygon"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21064608,
+      "center": {
+        "lat": 19.1081816,
+        "lon": 72.9528665
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Thane Creek Flamingo Sanctuary ESZ (Proposed)",
+        "protect_class": "6",
+        "protection_title": "Eco Sensitive Zone",
+        "source": "https://mangroves.maharashtra.gov.in/Site/SiteInfo/Pdf/TCFS-RMP.pdf",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21064757,
+      "center": {
+        "lat": 19.126819,
+        "lon": 73.583529
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Bhimashankar WLS ESZ (Proposed)",
+        "protect_class": "6",
+        "source": "Gazette",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21064758,
+      "center": {
+        "lat": 19.1127314,
+        "lon": 73.558917
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Bhimashankar WLS",
+        "name:mr": "\u092d\u0940\u092e\u093e\u0936\u0902\u0915\u0930 \u0905\u092d\u092f\u093e\u0930\u0923\u094d\u092f",
+        "protect_class": "4",
+        "source": "Gazette",
+        "type": "boundary",
+        "wikidata": "Q854971",
+        "wikimedia_commons": "Category:Bhimashankar Wildlife Sanctuary",
+        "wikipedia": "en:Bhimashankar Wildlife Sanctuary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21066179,
+      "center": {
+        "lat": 18.9028677,
+        "lon": 73.0951524
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Karnala Bird Sanctuary ESZ (Proposed)",
+        "protect_class": "6",
+        "source": "Gazette",
+        "type": "boundary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21066180,
+      "center": {
+        "lat": 18.8792737,
+        "lon": 73.1127691
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "name": "Karnala Bird Sanctuary",
+        "name:mr": "\u0915\u0930\u094d\u0928\u093e\u0933\u093e \u0905\u092d\u092f\u093e\u0930\u0923\u094d\u092f",
+        "protect_class": "4",
+        "source": "Gazette",
+        "type": "multipolygon",
+        "wikidata": "Q6372818",
+        "wikimedia_commons": "Category:Karnala Bird Sanctuary",
+        "wikipedia": "en:Karnala Bird Sanctuary"
+      }
+    },
+    {
+      "type": "relation",
+      "id": 21200803,
+      "center": {
+        "lat": 15.2912007,
+        "lon": 74.145123
+      },
+      "tags": {
+        "boundary": "protected_area",
+        "name": "Western Ghats Eco-Sensitive Area in Goa (Proposed)",
+        "protect_class": "5",
+        "protection_title": "Eco-Sensitive Areas",
+        "source": "https://allmaps.xyz/images/84a1972cb4d255ee/{z}/{x}/{y}@2x.png",
+        "type": "boundary"
+      }
+    }
+  ]
+}

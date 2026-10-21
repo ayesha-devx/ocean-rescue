@@ -1,0 +1,22 @@
+{
+  "wdpa_api": {
+    "url": "https://www.protectedplanet.net/api/v3/protected_areas?country=IND&marine=1&page=1&per_page=50",
+    "status": 500,
+    "usable": false
+  },
+  "mpatlas": {
+    "url": "https://mpatlas.org/api/mpa/?format=json&country=IND&is_mpa=true&page=1&page_size=100",
+    "status": 404,
+    "usable": false
+  },
+  "osm_overpass": {
+    "url": "https://overpass-api.de/api/interpreter",
+    "status": "HTTP Error 406: Not Acceptable",
+    "usable": false
+  },
+  "wdpa_manual": {
+    "file": "c:\\Users\\KRIN\\Downloads\\ocean rescue dataset\\sensitive_marine_areas\\raw\\india_coastal_mpas_wdpa_sourced.json",
+    "count": 9
+  },
+  "timestamp": "2026-10-10T14:31:41.165792Z"
+}

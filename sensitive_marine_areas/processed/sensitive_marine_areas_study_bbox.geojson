@@ -1,0 +1,121 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "dataset": "OceanRescue Dataset 7 \u2014 Sensitive Marine Areas",
+    "compiled": "2026-10-10",
+    "study_region": "Arabian Sea 14-20N, 68-74E",
+    "total_features": 12,
+    "in_bbox_count": 2,
+    "crs": "EPSG:4326 (WGS84)",
+    "geometry_note": "Geometry types are labelled in geometry_type field. Point_Centroid = approximate centroid from WDPA website. Polygon_Approximate = bbox approximation; NOT a legal boundary. Full polygon boundaries require authenticated WDPA bulk download.",
+    "sources": [
+      "WDPA / Protected Planet (protectedplanet.net) \u2014 CC BY 4.0 non-commercial",
+      "Ramsar RSIS (rsis.ramsar.org) \u2014 open access, citation required",
+      "MoEFCC Wildlife Division notifications",
+      "IUCN Pakistan MPA reports (2017, 2024, 2025)",
+      "Marine Regions / VLIZ (marineregions.org) for EEZ reference"
+    ],
+    "licence_note": "WDPA data: CC BY 4.0, non-commercial use only. Full polygon geometries must be downloaded from protectedplanet.net after free registration. This file contains APPROXIMATE centroids and bounding-box polygons only.",
+    "description": "Filtered to study bbox only"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              73.4,
+              15.95
+            ],
+            [
+              73.55,
+              15.95
+            ],
+            [
+              73.55,
+              16.15
+            ],
+            [
+              73.4,
+              16.15
+            ],
+            [
+              73.4,
+              15.95
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "wdpa_id": "15868",
+        "name": "Malvan Marine Sanctuary",
+        "designation": "Wildlife Sanctuary",
+        "iucn_cat": "IV",
+        "marine_type": "Coastal/Marine",
+        "area_km2": 29.12,
+        "status": "Designated",
+        "status_year": 1987,
+        "state": "Maharashtra",
+        "country": "India",
+        "geometry_type": "Polygon_Approximate",
+        "in_study_bbox": true,
+        "category": "Marine Protected Area",
+        "ramsar_id": null,
+        "source_url": "https://www.protectedplanet.net/15868",
+        "notes": "Centroid 16.06N, 73.47E. Approx polygon bbox derived from published boundary description. Full boundary in WDPA (auth download required). Covers coral reefs and rocky substrate off Sindhudurg coast. Area: core 3.2 km2 + buffer 25.95 km2 = 29.12 km2 total.",
+        "compiled_date": "2026-10-10"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              68.0,
+              14.0
+            ],
+            [
+              74.0,
+              14.0
+            ],
+            [
+              74.0,
+              20.0
+            ],
+            [
+              68.0,
+              20.0
+            ],
+            [
+              68.0,
+              14.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "wdpa_id": "EEZ-IND",
+        "name": "India Exclusive Economic Zone (within study bbox segment)",
+        "designation": "EEZ",
+        "iucn_cat": "N/A",
+        "marine_type": "Maritime Zone",
+        "area_km2": 0,
+        "status": "Established",
+        "status_year": 1977,
+        "state": "Multiple states",
+        "country": "India",
+        "geometry_type": "Polygon_Approximate",
+        "in_study_bbox": true,
+        "category": "EEZ Reference Zone",
+        "ramsar_id": null,
+        "source_url": "https://www.marineregions.org/eez.php",
+        "notes": "Approximate bbox outline of Indian EEZ portion within the study region. Precise EEZ boundary from Marine Regions / VLIZ. Not a protected area \u2014 included for jurisdictional reference only.",
+        "compiled_date": "2026-10-10"
+      }
+    }
+  ]
+}

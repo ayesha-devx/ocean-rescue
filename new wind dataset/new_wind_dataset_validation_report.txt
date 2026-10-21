@@ -1,0 +1,207 @@
+﻿======================================================================
+OCEANRESCUE - NEW WIND NetCDF VALIDATION REPORT
+Generated : 2026-10-10T14:54:26+05:30  (local)  |  2026-10-10T09:24:26Z (UTC)
+Validated by : Antigravity AI (Google DeepMind)
+======================================================================
+
+----------------------------------------------------------------------
+1. FILE INFORMATION
+----------------------------------------------------------------------
+  Filename      : new wind dataset.nc
+  Full path     : c:\Users\KRIN\Downloads\ocean rescue dataset\new wind dataset\
+  Size          : 233,649 bytes  (228.2 KB)
+  Last modified : 2026-10-10 14:50:52 (local)
+  Format        : NETCDF4 / HDF5
+
+----------------------------------------------------------------------
+2. FILE OPEN CHECK
+----------------------------------------------------------------------
+  netCDF4 library : PASS - opened successfully (read-only)
+  xarray  library : PASS - opened successfully (read-only)
+  Reported format : NETCDF4
+
+NOTE: The file was opened READ-ONLY for inspection.
+      No modifications were made to the NetCDF file.
+
+----------------------------------------------------------------------
+3. GLOBAL ATTRIBUTES & DATA SOURCE
+----------------------------------------------------------------------
+  Conventions    : CF-1.7
+  Institution    : European Centre for Medium-Range Weather Forecasts (ECMWF)
+  GRIB Centre    : ecmf (European Centre for Medium-Range Weather Forecasts)
+  Conversion     : GRIB to CDM+CF via cfgrib-0.9.15.1 / ecCodes-2.48.2
+  Stream         : oper (Operational analysis / high-resolution forecast)
+  Step Type      : instant
+
+  KEY ADVANTAGE OVER PREVIOUS SCATTEROMETER DATASET:
+  This dataset is an ECMWF atmospheric model reanalysis / operational
+  field, providing continuous, gap-free, gridded wind fields across
+  both ocean and land for every hour of the 3-day simulation window.
+
+----------------------------------------------------------------------
+4. DIMENSIONS & COORDINATES
+----------------------------------------------------------------------
+  Dimensions:
+  -----------
+  Dimension     Size   Meaning
+  ---------     ----   -------
+  vvalid_time     72    72 hourly time steps (1-hour interval)
+  latitude       25    25 latitude grid points (0.25 deg grid)
+  longitude      25    25 longitude grid points (0.25 deg grid)
+
+  Coordinates:
+  ------------
+  Coordinate    Dimension     Shape   Type      Range / Values             Units
+  ----------    ---------     -----   ----      --------------             -----
+  vvalid_time    vvalid_time    (72,)   int64     2026-09-01 00:00 to        seconds since 1970-01-01
+                                                2026-09-03 23:00 UTC
+  latitude      latitude      (25,)   float64   20.0000 N down to 14.0000 N degrees_north
+  longitude     longitude     (25,)   float64   68.0000 E to 74.0000 E     degrees_east
+
+  Auxiliary / Scalar Variables:
+  -----------------------------
+  number        ()            scalar  int64     0 (ensemble member numerical id)
+  expver        (vvalid_time,) (72,)   str       Experiment version identifier
+
+----------------------------------------------------------------------
+5. 10-METRE WIND VARIABLES & UNITS
+----------------------------------------------------------------------
+  Variable   Dimensions                 Shape       Type     Long Name                   Standard Name   Units      Fill Value
+  --------   ----------                 -----       ----     ---------                   -------------   -----      ----------
+  u10        (vvalid_time,lat,lon)       (72,25,25)  float32  10 metre U wind component   eastward_wind   m s**-1    NaN
+  v10        (vvalid_time,lat,lon)       (72,25,25)  float32  10 metre V wind component   northward_wind  m s**-1    NaN
+
+  VERIFICATION OF WIND COMPONENTS:
+  - Eastward wind component  (u10) : PRESENT  [PASS] -> units: m s**-1 (m/s)
+  - Northward wind component (v10) : PRESENT  [PASS] -> units: m s**-1 (m/s)
+  - Both components represent standard 10-metre surface wind forcing.
+
+----------------------------------------------------------------------
+6. TIME RANGE & TEMPORAL RESOLUTION
+----------------------------------------------------------------------
+  Time axis units : seconds since 1970-01-01 (proleptic_gregorian calendar)
+  Number of steps : 72 timestamps
+  Time interval   : Exactly 1.0 hour (uniform, continuous, no gaps)
+  Start timestamp : 2026-09-01 00:00:00 UTC
+  End timestamp   : 2026-09-03 23:00:00 UTC
+  Total span      : 72 hours (3 complete days)
+
+  Temporal Coverage Status: FULLY COVERED (covers full Sep 1-3, 2026 window)
+
+----------------------------------------------------------------------
+7. GEOGRAPHIC COVERAGE & SPATIAL RESOLUTION
+----------------------------------------------------------------------
+  Coordinate   Min       Max       N-points   Spacing    Target Range   Status
+  ----------   ---       ---       --------   -------    ------------   ------
+  latitude     14.0000   20.0000   25         0.25 deg   14.0 - 20.0 N  EXACT MATCH [PASS]
+  longitude    68.0000   74.0000   25         0.25 deg   68.0 - 74.0 E  EXACT MATCH [PASS]
+
+  Spatial resolution : 0.25 degrees (~25 km)
+  Grid points total  : 25 x 25 = 625 grid points per time step
+
+  Latitude Grid Note:
+  - Latitude values are stored in decreasing order:
+    [20.00, 19.75, 19.50, ..., 14.50, 14.25, 14.00]
+  - Longitude values are stored in increasing order:
+    [68.00, 68.25, 68.50, ..., 73.50, 73.75, 74.00]
+
+----------------------------------------------------------------------
+8. MISSING-VALUE & DATA STATISTICS
+----------------------------------------------------------------------
+  Variable   Total Grid Points   Missing (NaN)   Missing %   Valid Points
+  --------   -----------------   -------------   ---------   ------------
+  u10        45,000              0               0.00 %      45,000
+  v10        45,000              0               0.00 %      45,000
+
+  Per-timestep missing count : 0 / 625 (0.00%) for all 72 time steps.
+
+  Statistical Summary (All 45,000 valid points):
+  ----------------------------------------------------------------------
+  Metric        u10 (Eastward, m/s)   v10 (Northward, m/s)
+  ------        -------------------   --------------------
+  Minimum       -0.458923             -3.196182
+  Maximum       +10.829803            +5.289337
+  Mean          +6.360376             +1.340383
+  Std Dev        1.936994              1.479472
+
+  Physical Interpretation:
+  - Strong positive u10 mean (+6.36 m/s) reflects the prevailing westerly
+    monsoon flow in the Arabian Sea during early September.
+  - Maximum wind speed ~11 m/s (moderate breeze / fresh breeze) is
+    physically realistic and consistent with regional meteorological
+    expectations.
+  - Zero out-of-range or unphysical spikes.
+
+----------------------------------------------------------------------
+9. SUITABILITY FOR COMBINING WITH CURRENTS & WAVES DATASETS
+----------------------------------------------------------------------
+  Comparison Table Across All 3 OceanRescue Datasets:
+  ----------------------------------------------------------------------
+  Feature             Currents Dataset        Waves Dataset           New Wind Dataset
+  -------             ----------------        -------------           ----------------
+  Source              CMEMS Mercator GLO12    CMEMS METEO-FRANCE      ECMWF Model
+  Variables           uo, vo (m/s)            VHM0 (m), VTM10 (s),    u10, v10 (m/s)
+                                              VMDR (deg)
+  Spatial Resolution  ~0.083 deg (~9 km)      ~0.083 deg (~9 km)      0.25 deg (~25 km)
+  Grid Dimensions     73 lat x 72 lon         73 lat x 73 lon         25 lat x 25 lon
+  Lat Range           14.0 to 20.0 N          14.0 to 20.0 N          14.0 to 20.0 N
+  Lon Range           68.0 to 74.0 E          68.0 to 74.0 E          68.0 to 74.0 E
+  Time Range          Sep 1 00:00 -           Sep 1 00:00 -           Sep 1 00:00 -
+                      Sep 3 00:00 UTC         Sep 3 00:00 UTC         Sep 3 23:00 UTC
+  Time Resolution     6-hourly (9 steps)      3-hourly (17 steps)     1-hourly (72 steps)
+  Data Completeness   10.39% land mask        10.4-11.5% land mask    100% complete (0% NaN)
+
+  Integration Analysis:
+  1. Temporal Alignment:
+     - 1-hourly wind resolution provides excellent continuous forcing for
+       Lagrangian particle tracking and drift modeling.
+     - Subsumes the 6-hourly current timestamps and 3-hourly wave timestamps
+       without any temporal extrapolation needed.
+  2. Spatial Alignment:
+     - Exactly shares the 14-20 N, 68-74 E bounding box with currents and waves.
+     - 0.25 deg grid can be easily interpolated onto the 0.083 deg ocean grid
+       using standard bilinear or spline 2D spatial interpolation.
+  3. Physical Completeness:
+     - Full 100% data coverage means wind drag / leeway calculations can be
+       evaluated everywhere across the domain without swath-gap dropouts.
+
+----------------------------------------------------------------------
+10. WARNINGS & IMPLEMENTATION NOTES
+----------------------------------------------------------------------
+  [NOTE 1 - LATITUDE ORDERING]
+  Latitude is indexed in decreasing order (20.0 down to 14.0).
+  When interpolating with SciPy/xarray, ensure coordinates are sorted
+  monotonically if required by your interpolation routine (e.g.,
+  ds.sortby('latitude') in xarray).
+
+  [NOTE 2 - TIME COORDINATE NAME]
+  The time dimension/coordinate is named valid_time (standard for ECMWF
+  GRIB-converted CF datasets), whereas currents/waves use time. Rename
+  or map valid_time -> time when merging datasets in xarray.
+
+  [NOTE 3 - SPATIAL INTERPOLATION]
+  Because wind is on a 0.25 deg grid while currents/waves are on ~0.083 deg,
+  regridding the wind dataset to match the 0.083 deg ocean mesh (or
+  interpolating directly at particle positions) will yield consistent
+  tri-forcing (Current + Wave Stokes Drift + Windage).
+
+======================================================================
+VERDICT:  PASS
+======================================================================
+
+All inspected parameters meet project requirements:
+  [PASS] File opens cleanly with both netCDF4 and xarray (read-only)
+  [PASS] Both 10 m wind components present: u10 (m s**-1) & v10 (m s**-1)
+  [PASS] Time coordinate covers Sep 1 00:00 to Sep 3 23:00, 2026 (72 hours)
+  [PASS] Exactly 1-hour temporal resolution (uniform, no gaps)
+  [PASS] Geographic boundaries exactly match 14.0-20.0 N and 68.0-74.0 E
+  [PASS] 0.00% missing values (complete data across all 45,000 points)
+  [PASS] Physically consistent values for post-monsoon Arabian Sea
+  [PASS] Highly suitable for coupling with OceanRescue currents and waves
+
+The file is CLEAN, COMPLETE, VALID, and HIGHLY SUITABLE for OceanRescue
+drift modeling.
+
+======================================================================
+END OF REPORT
+======================================================================

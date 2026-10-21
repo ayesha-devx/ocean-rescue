@@ -1,0 +1,154 @@
+﻿================================================================================
+OceanRescue Third-Year Mini-Project
+Dataset 6: Fishing-Gear Incident Reports - Validation Report
+================================================================================
+Report generated : 10-Oct-2026
+Study region     : Arabian Sea  |  14 to 20 N, 68 to 74 E
+Files validated  :
+  (1) fishing_gear_incidents/processed/synthetic_aldfg_incidents.csv
+  (2) fishing_gear_incidents/processed/synthetic_aldfg_incidents.json
+  (3) fishing_gear_incidents/dataset6_research_report.txt
+Real-data source : None (no real ALDFG dataset obtained — see research report)
+================================================================================
+
+--------------------------------------------------------------------------------
+SECTION A - REAL DATA AUDIT RESULT
+--------------------------------------------------------------------------------
+As documented in dataset6_research_report.txt, a systematic search of all six
+mandated sources was performed. No source provided a directly downloadable,
+georeferenced ALDFG point dataset for the exact study region without a formal
+account or data-sharing agreement.
+
+  Source                       | Real Records Obtained
+  -----------------------------|----------------------
+  GGGI Portal                  | 0 (account required)
+  Global Ghost Gear Portal     | 0 (redirects to GGGI)
+  Olive Ridley Project         | 0 (MOU required)
+  FAO ALDFG Survey             | 0 (input-only portal)
+  Marine Debris Tracker        | 0 (account + email request)
+  Ocean Conservancy TIDES      | 0 (coastal/beach data only, not ALDFG)
+
+TOTAL REAL RECORDS IN DATABASE : 0
+Status of real data : PENDING formal access requests (see Next Steps in
+                      research report for contact details).
+
+--------------------------------------------------------------------------------
+SECTION B - SYNTHETIC DATASET VALIDATION
+--------------------------------------------------------------------------------
+File: fishing_gear_incidents/processed/synthetic_aldfg_incidents.csv
+
+Check 1 - File opens and parses
+  Result : PASS
+  Rows   : 50 (header excluded)
+  Cols   : 11
+
+Check 2 - Schema compliance
+  Required fields present: id, date, latitude, longitude, source,
+                           report_type, gear_type, status, confidence,
+                           notes, source_url
+  Result : PASS — all 11 fields present in correct order.
+
+Check 3 - Synthetic labelling (CRITICAL INTEGRITY CHECK)
+  Rows where source = "SYNTHETIC_LABELED"   : 50 / 50
+  Rows where confidence = "SYNTHETIC"       : 50 / 50
+  Rows with fabrication warning in notes    : 50 / 50
+  Result : PASS — all records are correctly and consistently labelled synthetic.
+
+Check 4 - Geographic bounds (study region: 14-20N, 68-74E)
+  Latitude  min : 14.0916  (in range [14.00, 20.00])  OK
+  Latitude  max : 19.9978  (in range [14.00, 20.00])  OK
+  Longitude min : 68.1192  (in range [68.00, 74.00])  OK
+  Longitude max : 73.8265  (in range [68.00, 74.00])  OK
+  Out-of-bounds  : 0 records
+  Result : PASS
+
+Check 5 - Date range
+  Date min : 2020-01-01
+  Date max : 2026-09-30
+  Format   : ISO 8601 (YYYY-MM-DD) throughout
+  Future dates beyond report date: 0 (all within dataset generation bounds)
+  Result : PASS
+
+Check 6 - Gear-type distribution
+  gillnet        :  32 (64%) -- slightly high due to random seed; acceptable
+  longline       :   6 (12%)
+  trawl_net      :   6 (12%)
+  purse_seine    :   4 (8%)
+  monofilament   :   2 (4%)
+  Unknown/blank  :   0
+  Result : PASS — all values from controlled vocabulary.
+
+Check 7 - Status distribution
+  confirmed_adrift   : 12 (24%)
+  entangled_fauna    : 11 (22%)
+  recovered          : 11 (22%)
+  beached            :  8 (16%)
+  observed_floating  :  8 (16%)
+  Unknown/blank      :  0
+  Result : PASS — all values from controlled vocabulary.
+
+Check 8 - Duplicate IDs
+  Unique IDs  : 50
+  Duplicate   : 0
+  Result : PASS
+
+Check 9 - Missing values
+  Null or empty cells across all fields : 0
+  Result : PASS
+
+Check 10 - JSON counterpart (synthetic_aldfg_incidents.json)
+  Metadata block present      : YES
+  WARNING field present       : YES
+  record_count in metadata    : 50 (matches CSV)
+  Schema list in metadata     : YES (all 11 fields listed)
+  Result : PASS
+
+--------------------------------------------------------------------------------
+SECTION C - FOLDER STRUCTURE VERIFICATION
+--------------------------------------------------------------------------------
+fishing_gear_incidents/
+  raw/                             [exists, empty - awaiting real data download]
+  processed/
+    synthetic_aldfg_incidents.csv  [exists, 50 rows]
+    synthetic_aldfg_incidents.json [exists, 50 records]
+  dataset6_research_report.txt     [exists]
+  dataset6_validation_report.txt   [this file]
+
+All folders and files: PRESENT
+
+--------------------------------------------------------------------------------
+SECTION D - COMPATIBILITY WITH OTHER DATASETS
+--------------------------------------------------------------------------------
+For integration into the OceanRescue drift-modelling pipeline:
+
+  Coordinate system : WGS84 decimal degrees (matches Datasets 1-5)
+  Spatial coverage  : 14.09-20.00N, 68.12-73.83E
+                      (within the 14-20N, 68-74E study region)
+  Temporal coverage : 2020-01-01 to 2026-09-30
+                      (spans all other dataset periods for testing purposes)
+  Missing CRS file  : No CRS metadata file needed for CSV point data.
+                      WGS84 should be assumed by all downstream tools.
+
+  Integration note  : The synthetic CSV can be read directly by GeoPandas:
+    import geopandas as gpd, pandas as pd
+    df = pd.read_csv("synthetic_aldfg_incidents.csv")
+    gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.longitude, df.latitude),
+                           crs="EPSG:4326")
+
+================================================================================
+FINAL VERDICT
+================================================================================
+
+  Real ALDFG data obtained      : NONE (pending formal data-access requests)
+  Synthetic dataset integrity   : PASS (all 10 checks passed)
+  Labelling integrity           : PASS (100% of rows marked SYNTHETIC)
+  Folder structure              : PASS (all files present)
+
+Overall Dataset 6 Status: PARTIAL
+  - Real data: NOT YET OBTAINED
+  - Synthetic fallback: READY FOR PIPELINE TESTING
+  - Data acquisition roadmap: DOCUMENTED in research report
+
+================================================================================
+END OF VALIDATION REPORT
+================================================================================

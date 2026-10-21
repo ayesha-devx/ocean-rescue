@@ -1,0 +1,241 @@
+======================================================================
+OCEANRESCUE - GEBCO BATHYMETRY NetCDF VALIDATION REPORT
+Generated : 2026-10-10T15:33:29+05:30  (local)  |  2026-10-10T10:03:29Z (UTC)
+Validated by : Antigravity AI (Google DeepMind)
+======================================================================
+
+----------------------------------------------------------------------
+1. FILE INFORMATION & INTEGRITY
+----------------------------------------------------------------------
+  Filename      : gebco_2026_n20.0_s14.0_w68.0_e74.0.nc
+  Full path     : c:\Users\KRIN\Downloads\ocean rescue dataset\bathymetry dataset\
+  Size          : 4,175,444 bytes  (4077.6 KB / 3.98 MB)
+  Last modified : 2026-10-10 15:20:12 (local)
+  Format        : NETCDF4 / HDF5requiring registration.
+  ORP data is proprietary/research-use only.
+  FAO portal is input-oriented, not download-oriented.
+  Marine Debris Tracker has general debris, not ALDFG-specific.
+  Ocean Conservancy ICC data covers general coastal cleanup.
+  The fallback is a labeled synthetic dataset.
+  
+  Now let me write both reports and create a synthetic dataset.
+  
+  I now have a complete picture of all six sources. Let me write the research report and create the labeled synthetic dataset:
+  
+  Working
+
+  Access Mode Check:
+  - Opened with netCDF4 in READ-ONLY mode: PASS
+  - Opened with xarray in READ-ONLY mode : PASS
+  - File modifications                   : NONE (Original preserved intact)
+
+----------------------------------------------------------------------
+2. GLOBAL METADATA & DATA SOURCE
+----------------------------------------------------------------------
+  Title           : The GEBCO_2026 Grid - a continuous terrain model for oceans and land at 15 arc-second intervals
+  Institution     : General Bathymetric Chart of the Oceans (GEBCO) / BODC / Nippon Foundation - GEBCO Seabed 2030 Project
+  Dataset DOI     : 10.5285/4f68d5c7-45eb-f999-e063-7086abc036fa
+  Conventions     : CF-1.6 / GDAL 3.10.3
+  Base Map        : SRTM15+ Version 2.8 (Tozer et al., 2019) augmented with Seabed 2030 compilations
+  GeoTransform    : 68.0 0.004166666666666669 0 20.0 0 -0.004166666666666669
+  CRS             : WGS 84 (EPSG:4326), Ellipsoid WGS 84
+
+----------------------------------------------------------------------
+3. VARIABLES, DIMENSIONS & DATA TYPES
+----------------------------------------------------------------------
+  Dimensions:
+  -----------
+  Dimension  Size   Meaning
+  ---------  ----   -------
+  lat        1440   1440 grid lines in latitude (15 arc-second spacing)
+  lon        1440   1440 grid lines in longitude (15 arc-second spacing)
+  Total Grid Cells: 2,073,600 (1440 x 1440)
+
+  All Variables:
+  --------------
+  Variable   Dimensions  Shape        Data Type  Units          Standard Name                Long Name
+  --------   ----------  -----        ---------  -----          -------------                ---------
+  crs        ()          ()           |S1 (char) N/A            N/A                          CRS definition
+  lat        ('lat',)    (1440,)      float64    degrees_north  latitude                     latitude
+  lon        ('lon',)    (1440,)      float64    degrees_east   longitude                    longitude
+  elevation  ('lat','lon')(1440,1440) int16      m              height_above_mean_sea_level  Elevation relative to sea level
+
+----------------------------------------------------------------------
+4. COORDINATE RANGES & GRID SPACING
+----------------------------------------------------------------------
+  Latitude (`lat`):
+  - Minimum coordinate (center) : 14.002083 degrees_north
+  - Maximum coordinate (center) : 19.997917 degrees_north
+  - Grid spacing (dlat)         : 0.00416667 degrees = 1/240 deg = 15.00 arc-sec (~463 m)
+  - Spacing uniformity          : Uniform (min = max = 0.00416667 deg)
+
+  Longitude (`lon`):
+  - Minimum coordinate (center) : 68.002083 degrees_east
+  - Maximum coordinate (center) : 73.997917 degrees_east
+  - Grid spacing (dlon)         : 0.00416667 degrees = 1/240 deg = 15.00 arc-sec (~463 m)
+  - Spacing uniformity          : Uniform (min = max = 0.00416667 deg)
+
+----------------------------------------------------------------------
+5. BATHYMETRY / ELEVATION VARIABLE DETAILS & STATISTICS
+----------------------------------------------------------------------
+  Variable Name         : elevation
+  Standard Name         : height_above_mean_sea_level
+  SDN Parameter Name    : Sea floor height (above mean sea level) {bathymetric height}
+  Data Type             : int16
+  Units                 : m (meters)
+  Fill Value (_FillValue): -32767
+
+  Completeness & Missing Value Statistics:
+  ----------------------------------------
+  Total Grid Points     : 2,073,600
+  Missing / NaN Count   : 0
+  Missing Percentage    : 0.0000 %  (100.00% complete digital elevation model)
+  Valid Grid Points     : 2,073,600
+
+  Elevation Statistics (All 2,073,600 points):
+  ------------------------------------------------
+  Minimum Elevation     : -4231.00 m  (Deepest Arabian Sea abyss, ~4.23 km depth)
+  Maximum Elevation     : 1460.00 m  (Highest Western Ghats / Sahyadri coastal peak)
+  Mean Elevation        : -1690.07 m
+  Standard Deviation    : 1612.38 m
+
+  Domain Segmentation:
+  --------------------
+  - Ocean Bathymetry (elevation < 0 m) : 1,843,706 points (88.91 %)
+  - Land Elevation   (elevation > 0 m) : 228,994 points (11.04 %)
+  - Sea Level / Coast (elevation = 0 m): 900 points (0.04 %)
+
+----------------------------------------------------------------------
+6. VERTICAL CONVENTION (POSITIVE-UP vs POSITIVE-DOWN)
+----------------------------------------------------------------------
+  Vertical Reference: POSITIVE-UP (Height above Mean Sea Level)
+  Verified by:
+  - Global attribute `geospatial_vertical_positive: up`
+  - Variable standard_name `height_above_mean_sea_level`
+  - Long name `Elevation relative to sea level`
+
+  Physical Interpretation of Values:
+  ----------------------------------
+  1. POSITIVE VALUES (> 0 m):
+     Represent terrestrial land elevation above mean sea level.
+     Range: 0 m to +1,460 m (Western Ghats mountains & Indian mainland).
+
+  2. NEGATIVE VALUES (< 0 m):
+     Represent seabed bathymetric depth below mean sea level.
+     Range: 0 m down to -4,231 m (Arabian Sea continental shelf, slope, and abyss).
+
+  3. ZERO VALUE (= 0 m):
+     Represents Mean Sea Level / the coastline boundary.
+
+  Mathematical Conversion Rule for Hydrodynamics / Shoaling:
+  - When water depth H > 0 is needed for wave dispersion, shallow-water shoaling,
+    or bottom friction:
+      water_depth = np.where(elevation < 0, -elevation, 0.0)
+  - When masking ocean vs land:
+      is_ocean = (elevation < 0)
+      is_land  = (elevation >= 0)
+
+----------------------------------------------------------------------
+7. GEOGRAPHIC BOUNDS CONFIRMATION (14-20 N, 68-74 E)
+----------------------------------------------------------------------
+  Requested Bounding Box : North 20.0 deg, South 14.0 deg, West 68.0 deg, East 74.0 deg
+
+  Grid Registration : Pixel-is-Area / Cell-Centered
+  Cell Dimensions   : 15.0 arc-sec (1/240 deg); Half-cell offset = 7.5 arc-sec (1/480 deg = ~0.002083 deg)
+
+  Bounding Box Analysis:
+  ----------------------
+  Bound   Target    Center Point     Outer Cell Edge Calculation      Status
+  -----   ------    ------------     ---------------------------      ------
+  South   14.00 N   14.002083 N      14.002083 - 0.002083 = 14.000000 N  EXACT MATCH [PASS]
+  North   20.00 N   19.997917 N      19.997917 + 0.002083 = 20.000000 N  EXACT MATCH [PASS]
+  West    68.00 E   68.002083 E      68.002083 - 0.002083 = 68.000000 E  EXACT MATCH [PASS]
+  East    74.00 E   73.997917 E      73.997917 + 0.002083 = 74.000000 E  EXACT MATCH [PASS]
+
+  Verification: The grid spans exactly 6.0000 degrees latitude by 6.0000 degrees
+  longitude (1440 x 1440 cells), covering the entire Arabian Sea study domain.
+
+----------------------------------------------------------------------
+8. COORDINATE & DATA INTEGRITY AUDIT
+----------------------------------------------------------------------
+  Check Description               Verified Result                  Verdict
+  -----------------               ---------------                  -------
+  Latitude Monotonicity           Strictly increasing (14.002 to 19.998 N) [PASS]
+  Longitude Monotonicity          Strictly increasing (68.002 to 73.998 E) [PASS]
+  Duplicate Latitude Points       0 duplicates found               [PASS]
+  Duplicate Longitude Points      0 duplicates found               [PASS]
+  Invalid Latitude Values         0 invalid / NaN / Inf points     [PASS]
+  Invalid Longitude Values        0 invalid / NaN / Inf points     [PASS]
+  Unexpected Missing Elevation    0 missing values (100% complete) [PASS]
+  Unphysical Spikes / Outliers    None (min -4231 m, max +1460 m)  [PASS]
+
+----------------------------------------------------------------------
+9. MULTI-DATASET COMPATIBILITY MATRIX (OceanRescue Project)
+----------------------------------------------------------------------
+  Comparison Across All 4 Project Datasets:
+  ----------------------------------------------------------------------
+  Feature             Currents Dataset        Waves Dataset           ERA5 Wind Dataset       GEBCO Bathymetry
+  -------             ----------------        -------------           -----------------       ----------------
+  Source              CMEMS Mercator GLO12    CMEMS METEO-FRANCE      ECMWF Model             GEBCO_2026 Grid
+  Variables           uo, vo (m/s)            VHM0 (m), VTM10 (s),    u10, v10 (m/s)          elevation (m)
+                                              VMDR (deg)
+  Spatial Resolution  ~0.083 deg (~9 km)      ~0.083 deg (~9 km)      0.25 deg (~25 km)       15 arc-sec (~463 m)
+  Grid Dimensions     73 lat x 72 lon         73 lat x 73 lon         25 lat x 25 lon         1440 lat x 1440 lon
+  Lat Extent          14.0 to 20.0 N          14.0 to 20.0 N          14.0 to 20.0 N          14.0 to 20.0 N
+  Lon Extent          68.0 to 74.0 E          68.0 to 74.0 E          68.0 to 74.0 E          68.0 to 74.0 E
+  Temporal Nature     6-hourly (9 steps)      3-hourly (17 steps)     1-hourly (72 steps)     Static (Time-invariant)
+  Completeness        10.39% land mask        10.4-11.5% land mask    100% complete (0% NaN)  100% complete (0% NaN)
+
+----------------------------------------------------------------------
+10. LIMITATIONS & RESAMPLING / INTERPOLATION REQUIREMENTS
+----------------------------------------------------------------------
+  A. Resolution Discrepancy & Grid Alignment:
+     - GEBCO bathymetry is at 15 arc-seconds (~463 m), which is ~20x higher
+       resolution than the ocean current and wave models (~9 km), and ~54x
+       higher resolution than the wind model (~25 km).
+     - Because the grids have different resolutions and coordinate centers,
+       direct element-wise operations between arrays are not possible without
+       resampling or point interpolation.
+
+  B. Recommended Spatial Handling Workflows:
+
+     1. Eulerian Grid Coarsening (Hydrodynamic & Wave Modelling):
+        - When running coupled Eulerian grid models on the 0.083 deg ocean grid,
+          downsample/average the 15 arc-second GEBCO bathymetry onto the 0.083 deg
+          mesh using 2D block averaging or bilinear interpolation:
+          `bathy_ocean = ds_bathy.interp(lat=ds_curr.latitude, lon=ds_curr.longitude)`
+
+     2. Lagrangian Particle Tracking (ALDFG Drift & Beaching):
+        - In Lagrangian drift simulations (e.g. OceanParcels / custom RK4 drift),
+          keep GEBCO at its native 15 arc-second (~463 m) resolution.
+        - Interpolate water depth at the exact continuous particle coordinates
+          (lon_p, lat_p) at each trajectory time-step.
+        - High-resolution bathymetry enables precise detection of debris stranding
+          on reefs, sandbars, and the shallow Indian coastline.
+
+  C. Coordinate Ordering Note:
+     - Bathymetry `lat` is sorted in ascending order (14.002 to 19.998 N).
+     - Currents and waves `latitude` are also ascending (14.0 to 20.0 N).
+     - ERA5 wind `latitude` is descending (20.0 down to 14.0 N).
+     - Ensure coordinate monotonicity is aligned before calling multi-dataset
+       interpolation routines.
+
+======================================================================
+VERDICT:  PASS
+======================================================================
+
+All validation checks strictly pass without defects:
+  [PASS] File opened cleanly with netCDF4 and xarray in read-only mode
+  [PASS] Bathymetry variable `elevation` correctly structured (int16, meters)
+  [PASS] 100% data completeness (0 missing / NaN values across 2,073,600 cells)
+  [PASS] Geographic boundaries perfectly match North 20, South 14, West 68, East 74
+  [PASS] Coordinate integrity verified: strictly monotonic, 0 duplicates, 0 invalid
+  [PASS] Positive-up convention verified from metadata and physical terrain distribution
+  [PASS] Realistic physical elevation range (-4,231 m ocean abyss to +1,460 m Western Ghats)
+  [PASS] Fully suitable for integration with OceanRescue currents, waves, and wind datasets
+
+The file is CLEAN, COMPLETE, VALID, and READY for OceanRescue modeling.
+
+======================================================================
+END OF REPORT
+======================================================================

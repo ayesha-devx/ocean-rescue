@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+venv/
+.venv/
+backend/venv/
+env/
+
+# Python cache & test artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Large archives exceeding GitHub 100MB limit (dataset.zip is already extracted in dataset/)
+dataset.zip
+*.zip
+*.tar.gz
+*.7z
+
+# Frontend build outputs
+frontend/dist/
+frontend/build/
+dist/
+build/
+
+# OS and Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

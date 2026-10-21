@@ -1,0 +1,902 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "source": "OpenStreetMap Overpass API (overpass.openstreetmap.fr)",
+    "query_bbox": "14-20N, 68-74E",
+    "fetched": "2026-10-10",
+    "total": 37,
+    "in_bbox": 35,
+    "licence": "ODbL 1.0 (OpenStreetMap contributors)",
+    "note": "Center-point geometry only. OSM boundaries may be incomplete; cross-reference with WDPA for official boundaries."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9111968,
+          17.6495814
+        ]
+      },
+      "properties": {
+        "osm_id": 131560969,
+        "osm_type": "way",
+        "name": "Sajjangad",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "",
+        "wdpa_id": "",
+        "lat_center": 17.6495814,
+        "lon_center": 73.9111968,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.817647,
+          17.725909
+        ]
+      },
+      "properties": {
+        "osm_id": 473741969,
+        "osm_type": "way",
+        "name": "Kaas Valley of Flowers",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "",
+        "wdpa_id": "",
+        "lat_center": 17.725909,
+        "lon_center": 73.817647,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9659826,
+          18.4204791
+        ]
+      },
+      "properties": {
+        "osm_id": 670197606,
+        "osm_type": "way",
+        "name": "Phansad Wildlife Sanctuary",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "4",
+        "wdpa_id": "",
+        "lat_center": 18.4204791,
+        "lon_center": 72.9659826,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7849735,
+          19.4686226
+        ]
+      },
+      "properties": {
+        "osm_id": 670296587,
+        "osm_type": "way",
+        "name": "Kalsubai Harishchandragad Wildlife Sanctuary",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "4",
+        "wdpa_id": "",
+        "lat_center": 19.4686226,
+        "lon_center": 73.7849735,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.44375,
+          16.0408333
+        ]
+      },
+      "properties": {
+        "osm_id": 678002187,
+        "osm_type": "way",
+        "name": "Malvan Marine Sanctuary",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "4",
+        "wdpa_id": "",
+        "lat_center": 16.0408333,
+        "lon_center": 73.44375,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9373458,
+          16.3628158
+        ]
+      },
+      "properties": {
+        "osm_id": 678083291,
+        "osm_type": "way",
+        "name": "Radhanagari WLS",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "4",
+        "wdpa_id": "",
+        "lat_center": 16.3628158,
+        "lon_center": 73.9373458,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7355862,
+          15.6063241
+        ]
+      },
+      "properties": {
+        "osm_id": 1180661104,
+        "osm_type": "way",
+        "name": "Chapora Fort Heritage Landscape",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "22",
+        "wdpa_id": "",
+        "lat_center": 15.6063241,
+        "lon_center": 73.7355862,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9843605,
+          15.5707452
+        ]
+      },
+      "properties": {
+        "osm_id": 1420881076,
+        "osm_type": "way",
+        "name": "Kolamwada Lake Zone Of Influence",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.5707452,
+        "lon_center": 73.9843605,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8136933,
+          15.5345358
+        ]
+      },
+      "properties": {
+        "osm_id": 1445403008,
+        "osm_type": "way",
+        "name": "Pilerne Lake Notified Wetland",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.5345358,
+        "lon_center": 73.8136933,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9281419,
+          15.4910077
+        ]
+      },
+      "properties": {
+        "osm_id": 1445431397,
+        "osm_type": "way",
+        "name": "Carambolim Lake Notified Wetland",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.4910077,
+        "lon_center": 73.9281419,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9182514,
+          15.4934889
+        ]
+      },
+      "properties": {
+        "osm_id": 1445450552,
+        "osm_type": "way",
+        "name": "Carambolim Lake Zone Of Influence",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.4934889,
+        "lon_center": 73.9182514,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8167121,
+          15.5354842
+        ]
+      },
+      "properties": {
+        "osm_id": 1445451348,
+        "osm_type": "way",
+        "name": "Pilerne Lake Zone Of Influence",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.5354842,
+        "lon_center": 73.8167121,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8880013,
+          15.48639
+        ]
+      },
+      "properties": {
+        "osm_id": 1445693939,
+        "osm_type": "way",
+        "name": "Toyyar Lake Zone Of Influence",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.48639,
+        "lon_center": 73.8880013,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8861895,
+          15.486925
+        ]
+      },
+      "properties": {
+        "osm_id": 1445693940,
+        "osm_type": "way",
+        "name": "Toyyar Lake Notified Wetland",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.486925,
+        "lon_center": 73.8861895,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.885013,
+          15.4879738
+        ]
+      },
+      "properties": {
+        "osm_id": 1445696860,
+        "osm_type": "way",
+        "name": "Toyyar Lake Zone Of Influence",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.4879738,
+        "lon_center": 73.885013,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9897966,
+          15.5657896
+        ]
+      },
+      "properties": {
+        "osm_id": 1446605928,
+        "osm_type": "way",
+        "name": "Kolamwada Lake Protected Area",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.5657896,
+        "lon_center": 73.9897966,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.2844733,
+          19.6039071
+        ]
+      },
+      "properties": {
+        "osm_id": 3963830,
+        "osm_type": "relation",
+        "name": "Tansa WLS",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "4",
+        "wdpa_id": "1827",
+        "lat_center": 19.6039071,
+        "lon_center": 73.2844733,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9206076,
+          19.2406231
+        ]
+      },
+      "properties": {
+        "osm_id": 6245228,
+        "osm_type": "relation",
+        "name": "Sanjay Gandhi National Park",
+        "boundary": "national_park",
+        "leisure": "nature_reserve",
+        "protect_class": "2",
+        "wdpa_id": "10241",
+        "lat_center": 19.2406231,
+        "lon_center": 72.9206076,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.4358358,
+          18.4292833
+        ]
+      },
+      "properties": {
+        "osm_id": 9323916,
+        "osm_type": "relation",
+        "name": "Tamhini WLS",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "4",
+        "wdpa_id": "",
+        "lat_center": 18.4292833,
+        "lon_center": 73.4358358,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.7274829,
+          17.4207408
+        ]
+      },
+      "properties": {
+        "osm_id": 9479789,
+        "osm_type": "relation",
+        "name": "Sahyadri Tiger Reserve",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "4",
+        "wdpa_id": "",
+        "lat_center": 17.4207408,
+        "lon_center": 73.7274829,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9628854,
+          19.1147679
+        ]
+      },
+      "properties": {
+        "osm_id": 15073373,
+        "osm_type": "relation",
+        "name": "Thane Creek Flamingo Sanctuary",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "4",
+        "wdpa_id": "",
+        "lat_center": 19.1147679,
+        "lon_center": 72.9628854,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8621333,
+          15.5174945
+        ]
+      },
+      "properties": {
+        "osm_id": 19107931,
+        "osm_type": "relation",
+        "name": "Salim Ali Bird Sanctuary Eco-sensitive Zone",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "6",
+        "wdpa_id": "",
+        "lat_center": 15.5174945,
+        "lon_center": 73.8621333,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8538714,
+          15.5165642
+        ]
+      },
+      "properties": {
+        "osm_id": 19107932,
+        "osm_type": "relation",
+        "name": "Salim Ali Bird Sanctuary",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "4",
+        "wdpa_id": "",
+        "lat_center": 15.5165642,
+        "lon_center": 73.8538714,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.0135193,
+          15.9345475
+        ]
+      },
+      "properties": {
+        "osm_id": 19713220,
+        "osm_type": "relation",
+        "name": "Radhanagari - Goa Tiger Corridor",
+        "boundary": "",
+        "leisure": "nature_reserve",
+        "protect_class": "",
+        "wdpa_id": "",
+        "lat_center": 15.9345475,
+        "lon_center": 74.0135193,
+        "in_study_bbox": false,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.9281472,
+          15.4910799
+        ]
+      },
+      "properties": {
+        "osm_id": 19761557,
+        "osm_type": "relation",
+        "name": "Carambolim Lake Buffer Zone",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.4910799,
+        "lon_center": 73.9281472,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8136652,
+          15.5344996
+        ]
+      },
+      "properties": {
+        "osm_id": 19761583,
+        "osm_type": "relation",
+        "name": "Pilerne Lake Buffer Zone",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.5344996,
+        "lon_center": 73.8136652,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.8861814,
+          15.4869095
+        ]
+      },
+      "properties": {
+        "osm_id": 19764093,
+        "osm_type": "relation",
+        "name": "Toyyar Lake Buffer Zone",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "12",
+        "wdpa_id": "",
+        "lat_center": 15.4869095,
+        "lon_center": 73.8861814,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.2761048,
+          19.6142145
+        ]
+      },
+      "properties": {
+        "osm_id": 21057070,
+        "osm_type": "relation",
+        "name": "Tansa WLS ESZ",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "6",
+        "wdpa_id": "",
+        "lat_center": 19.6142145,
+        "lon_center": 73.2761048,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9241776,
+          19.409118
+        ]
+      },
+      "properties": {
+        "osm_id": 21057459,
+        "osm_type": "relation",
+        "name": "Tungareshwar WLS ESZ",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "6",
+        "wdpa_id": "",
+        "lat_center": 19.409118,
+        "lon_center": 72.9241776,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9349493,
+          19.3908054
+        ]
+      },
+      "properties": {
+        "osm_id": 21057460,
+        "osm_type": "relation",
+        "name": "Tungareshwar Wildlife Sanctuary",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "4",
+        "wdpa_id": "",
+        "lat_center": 19.3908054,
+        "lon_center": 72.9349493,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9160237,
+          19.2399713
+        ]
+      },
+      "properties": {
+        "osm_id": 21060057,
+        "osm_type": "relation",
+        "name": "Sanjay Gandhi National Park ESZ (Proposed)",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "6",
+        "wdpa_id": "",
+        "lat_center": 19.2399713,
+        "lon_center": 72.9160237,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.9528665,
+          19.1081816
+        ]
+      },
+      "properties": {
+        "osm_id": 21064608,
+        "osm_type": "relation",
+        "name": "Thane Creek Flamingo Sanctuary ESZ (Proposed)",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "6",
+        "wdpa_id": "",
+        "lat_center": 19.1081816,
+        "lon_center": 72.9528665,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.583529,
+          19.126819
+        ]
+      },
+      "properties": {
+        "osm_id": 21064757,
+        "osm_type": "relation",
+        "name": "Bhimashankar WLS ESZ (Proposed)",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "6",
+        "wdpa_id": "",
+        "lat_center": 19.126819,
+        "lon_center": 73.583529,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.558917,
+          19.1127314
+        ]
+      },
+      "properties": {
+        "osm_id": 21064758,
+        "osm_type": "relation",
+        "name": "Bhimashankar WLS",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "4",
+        "wdpa_id": "",
+        "lat_center": 19.1127314,
+        "lon_center": 73.558917,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.0951524,
+          18.9028677
+        ]
+      },
+      "properties": {
+        "osm_id": 21066179,
+        "osm_type": "relation",
+        "name": "Karnala Bird Sanctuary ESZ (Proposed)",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "6",
+        "wdpa_id": "",
+        "lat_center": 18.9028677,
+        "lon_center": 73.0951524,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.1127691,
+          18.8792737
+        ]
+      },
+      "properties": {
+        "osm_id": 21066180,
+        "osm_type": "relation",
+        "name": "Karnala Bird Sanctuary",
+        "boundary": "protected_area",
+        "leisure": "nature_reserve",
+        "protect_class": "4",
+        "wdpa_id": "",
+        "lat_center": 18.8792737,
+        "lon_center": 73.1127691,
+        "in_study_bbox": true,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.145123,
+          15.2912007
+        ]
+      },
+      "properties": {
+        "osm_id": 21200803,
+        "osm_type": "relation",
+        "name": "Western Ghats Eco-Sensitive Area in Goa (Proposed)",
+        "boundary": "protected_area",
+        "leisure": "",
+        "protect_class": "5",
+        "wdpa_id": "",
+        "lat_center": 15.2912007,
+        "lon_center": 74.145123,
+        "in_study_bbox": false,
+        "geometry_note": "OSM center point of relation/way",
+        "source": "OpenStreetMap via Overpass API"
+      }
+    }
+  ]
+}

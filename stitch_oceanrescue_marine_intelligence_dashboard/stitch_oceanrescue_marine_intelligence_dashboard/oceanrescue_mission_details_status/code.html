@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface-dim" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OceanRescue — Marine Geospatial AI Decision-Support Platform</title>
+<!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary": "#690007",
+            "secondary": "#50dbc8",
+            "inverse-surface": "#d5e4f7",
+            "on-surface": "#d5e4f7",
+            "surface-bright": "#2c3b49",
+            "tertiary-container": "#ffc2bc",
+            "on-secondary-fixed-variant": "#005048",
+            "on-error": "#690005",
+            "primary-container": "#00e5ff",
+            "primary": "#c3f5ff",
+            "tertiary-fixed-dim": "#ffb4ac",
+            "error": "#ffb4ab",
+            "surface-container-highest": "#283644",
+            "error-container": "#93000a",
+            "on-tertiary-fixed-variant": "#8c1617",
+            "on-background": "#d5e4f7",
+            "on-primary": "#00363d",
+            "on-surface-variant": "#bac9cc",
+            "on-secondary": "#003731",
+            "on-tertiary-container": "#a62b27",
+            "secondary-container": "#00b1a0",
+            "outline": "#849396",
+            "on-error-container": "#ffdad6",
+            "inverse-on-surface": "#243240",
+            "surface-dim": "#061421",
+            "surface-tint": "#00daf3",
+            "outline-variant": "#3b494c",
+            "primary-fixed": "#9cf0ff",
+            "surface-container-lowest": "#020f1c",
+            "on-secondary-container": "#003d36",
+            "tertiary": "#ffe8e5",
+            "surface-variant": "#283644",
+            "surface-container-high": "#1d2b39",
+            "surface-container-low": "#0e1d2a",
+            "secondary-fixed-dim": "#50dbc8",
+            "surface-container": "#12212e",
+            "on-tertiary-fixed": "#410003",
+            "on-primary-container": "#00626e",
+            "inverse-primary": "#006875",
+            "on-primary-fixed-variant": "#004f58",
+            "secondary-fixed": "#71f8e4",
+            "tertiary-fixed": "#ffdad6",
+            "primary-fixed-dim": "#00daf3",
+            "on-secondary-fixed": "#00201c",
+            "on-primary-fixed": "#001f24",
+            "surface": "#061421",
+            "background": "#061421"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "1.5rem",
+            "margin": "1rem",
+            "margin-desktop": "1.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-2xl": "3rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "telemetry-display": ["JetBrains Mono"],
+            "body-md": ["Inter"],
+            "label-sm": ["JetBrains Mono"],
+            "headline-xl": ["Space Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "headline-lg": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "body-lg": ["Inter"],
+            "label-lg": ["JetBrains Mono"],
+            "body-sm": ["Inter"],
+            "headline-sm": ["Space Grotesk"],
+            "headline-xl-mobile": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "telemetry-display": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "headline-lg": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-sm": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    };
+  </script>
+<style data-purpose="layout-grid-and-effects">
+    @layer base {
+      html {
+        overscroll-behavior: none;
+      }
+    }
+    /* Custom tactical scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #061421;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1d2b39;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00e5ff;
+    }
+  </style>
+<meta content="web_dashboard" name="shell-type"/>
+</head>
+<body class="bg-surface-dim text-on-surface font-body-md text-body-md antialiased selection:bg-primary-container selection:text-surface-dim">
+<!-- Left Sidebar (Fixed) -->
+<aside class="fixed inset-y-0 left-0 w-64 z-40 bg-surface-container-low border-r border-outline-variant/30 flex flex-col justify-between select-none" data-purpose="sidebar">
+<div class="flex flex-col h-full">
+<!-- Brand Header -->
+<div class="p-space-md border-b border-outline-variant/30">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded bg-surface-container border border-primary-container/40 flex items-center justify-center text-primary-container shadow-[0_0_12px_rgba(0,229,255,0.25)] flex-shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
+<path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
+<path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
+</svg>
+</div>
+<div class="min-w-0 flex-1">
+<div class="font-headline-sm text-headline-sm text-on-surface tracking-wider leading-none truncate">OceanRescue</div>
+<p class="font-label-sm text-label-sm text-primary-container uppercase tracking-wider mt-1 truncate">Tactical GIS Engine • Online</p>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between font-label-sm text-label-sm">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-primary-container/10 text-primary-container border border-primary-container/30">
+            DEMO v0.9
+          </span>
+<span class="text-on-surface-variant font-mono">YOLOv8-seg</span>
+</div>
+</div>
+<!-- Navigation List -->
+<div class="flex-1 overflow-y-auto px-space-xs py-space-sm">
+<div class="px-3 py-1 font-label-sm text-label-sm text-outline uppercase tracking-wider">Navigation Feed</div>
+<nav class="space-y-0.5" data-active-classes="bg-primary-container/15 text-primary-container font-semibold border-l-2 border-primary-container pl-[10px]">
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="dashboard" href="#dashboard">Dashboard</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="ocean-map" href="#ocean-map">Ocean Map</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="ai-detection" href="#ai-detection">AI Detection</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="detection-details" href="#detection-details">Detection Details</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="drift-forecast" href="#drift-forecast">Drift Forecast</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="risk-assessment" href="#risk-assessment">Risk Assessment</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="recovery-planning" href="#recovery-planning">Recovery Planning</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="mission-details" href="#mission-details">Mission Details</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="reports-analytics" href="#reports-analytics">Reports &amp; Analytics</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="data-sources" href="#data-sources">Data Sources</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="settings" href="#settings">Settings</a>
+</nav>
+</div>
+<!-- Telemetry Footer Widget -->
+<div class="p-space-sm border-t border-outline-variant/30 bg-surface-container/60">
+<div class="font-label-sm text-label-sm space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">MODEL ENGINE</span>
+<span class="text-secondary flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span> YOLOv8s-seg
+            </span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">DATASET</span>
+<span class="text-on-surface font-medium">SIMULATED / DEMO</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">LATENCY</span>
+<span class="text-primary-container font-medium">38 ms (TensorRT)</span>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container animate-ping"></div>
+<p class="font-label-sm text-[9px] text-on-surface-variant leading-tight truncate">
+            OceanRescue System Active
+          </p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top Header (Fixed with matching left offset) -->
+<header class="fixed top-0 left-64 right-0 z-30 bg-surface-container-low/90 backdrop-blur border-b border-outline-variant/30" data-purpose="top-navigation-header">
+<div class="h-16 px-space-md flex items-center justify-between gap-space-md">
+<!-- Left breadcrumb / telemetry notice -->
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="hidden sm:flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span>OceanRescue</span>
+<span class="text-outline-variant">/</span>
+<span class="text-primary-container font-medium truncate">Tactical Operations</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-tertiary-container/10 text-tertiary-fixed-dim border border-tertiary-fixed-dim/30 flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+          SIMULATED DATASET [DEMO RUN]
+        </span>
+</div>
+<!-- Center Search & Quick Telemetry -->
+<div class="hidden xl:flex items-center gap-space-sm flex-1 max-w-lg">
+<div class="relative w-full">
+<input class="w-full bg-surface-container border border-outline-variant/40 rounded pl-8 pr-3 py-1.5 text-body-sm text-on-surface placeholder-on-surface-variant focus:outline-none focus:border-primary-container font-telemetry-display text-xs" placeholder="Search target, observation ID or lat/lon..." type="text"/>
+<svg class="w-3.5 h-3.5 text-on-surface-variant absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 bg-surface-container px-2 py-1.5 rounded border border-outline-variant/30 whitespace-nowrap">
+<svg class="w-3.5 h-3.5 text-primary-container" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+<polyline points="12 6 12 12 16 14" stroke-width="2"></polyline>
+</svg>
+          14:32 UTC
+        </span>
+</div>
+<!-- Right Utilities & Profile Avatar -->
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<!-- Coordinate Datum Switch -->
+<div class="flex items-center bg-surface-container border border-outline-variant/40 rounded p-0.5 font-label-sm text-label-sm">
+<button class="px-2 py-1 rounded bg-surface-container-high text-primary-container font-semibold">WGS84</button>
+<button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface transition-colors">UTM</button>
+</div>
+<!-- Notification Bell -->
+<button class="relative p-2 rounded bg-surface-container border border-outline-variant/40 text-on-surface-variant hover:text-on-surface transition-colors" title="Notifications">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error-container ring-1 ring-surface-container"></span>
+</button>
+<!-- User Profile Avatar -->
+<div class="flex items-center gap-2 pl-2 border-l border-outline-variant/40">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 border border-primary-container/50 flex items-center justify-center font-label-sm text-label-sm font-bold text-primary-container">
+            CE
+          </div>
+<div class="text-left hidden md:block">
+<div class="font-label-md text-label-md leading-tight text-on-surface font-semibold">Eng. Team Lead</div>
+<div class="font-label-sm text-[10px] text-on-surface-variant leading-tight">Y3 Project Admin</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Layout Area -->
+<div class="pl-64 flex flex-col min-h-screen">
+<main class="pt-16 p-space-md flex-1"><div class="flex flex-col w-full">
+<!-- Operational Breadcrumb & Mission Header Bar -->
+<section class="bg-surface-container-low rounded-xl p-space-md shadow-md mb-space-md">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-sm">
+<div class="min-w-0">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm text-outline mb-1">
+<span>OceanRescue</span>
+<span>/</span>
+<span>Tactical Operations</span>
+<span>/</span>
+<span>Mission Execution</span>
+<span>/</span>
+<span class="text-primary-container font-mono font-semibold">#MP-2024-088</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+            MISSION DETAILS // OPERATION NET-RETRIEVE
+          </h1>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-label-sm text-label-sm font-bold bg-secondary/15 text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            RECOVERY IN PROGRESS
+          </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm font-bold bg-error-container/40 text-error">
+<span class="material-symbols-outlined text-[13px]">warning</span>
+            TIER 1 CRITICAL (RISK 96/100)
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+          Target Net <span class="font-mono text-primary font-semibold">#OR-2024-094</span> (Monofilament Gillnet ~45m, 340m²) • Intercept Asset: <span class="font-semibold text-on-surface">R/V Pelagic Sentinel</span> (Team Orca-3) • Created <span class="font-mono text-outline">2024-10-24 12:45 UTC</span>
+</p>
+</div>
+<!-- Quick Action Pill Group -->
+<div class="flex items-center gap-space-xs flex-shrink-0">
+<button class="px-3 py-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface text-body-sm font-medium transition-colors flex items-center gap-1.5 shadow-sm" id="btn-open-fieldnote">
+<span class="material-symbols-outlined text-base text-primary-container">note_add</span>
+          Add Field Note
+        </button>
+<button class="px-3 py-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface text-body-sm font-medium transition-colors flex items-center gap-1.5 shadow-sm" id="btn-evidence-trigger">
+<span class="material-symbols-outlined text-base text-secondary">videocam</span>
+          ROV Camera
+        </button>
+<button class="px-4 py-2 rounded bg-primary-container text-on-primary font-headline-sm text-headline-sm uppercase tracking-wider font-bold transition-all shadow-[0_0_16px_rgba(0,229,255,0.35)] hover:shadow-[0_0_22px_rgba(0,229,255,0.6)] flex items-center gap-1.5" id="btn-complete-modal">
+<span class="material-symbols-outlined text-lg">check_circle</span>
+          Complete Mission
+        </button>
+</div>
+</div>
+</section>
+<!-- Mission Stage Stepper (6 Sequential Phases) -->
+<section class="bg-surface-container-low rounded-xl p-space-md shadow-md mb-space-md">
+<div class="flex items-center justify-between pb-2 mb-3">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Mission Lifecycle Progression</span>
+<span class="font-label-sm text-label-sm text-secondary font-mono">Phase 5 of 6 active • Station-Keeping @ 0.4 kts</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-6 gap-2 relative">
+<!-- Step 1 -->
+<div class="p-2.5 rounded bg-surface-container flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">01</span>
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-on-surface">Planned</div>
+<div class="font-label-sm text-[10px] text-outline font-mono">12:45 UTC • Auth Net</div>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="p-2.5 rounded bg-surface-container flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">02</span>
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-on-surface">Authorized</div>
+<div class="font-label-sm text-[10px] text-outline font-mono">13:10 UTC • Ops Lead</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="p-2.5 rounded bg-surface-container flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">03</span>
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-on-surface">Dispatched</div>
+<div class="font-label-sm text-[10px] text-outline font-mono">14:45 UTC • Pier 4</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="p-2.5 rounded bg-surface-container flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">04</span>
+<span class="material-symbols-outlined text-secondary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-on-surface">En Route</div>
+<div class="font-label-sm text-[10px] text-outline font-mono">Arrived 15:42 UTC</div>
+</div>
+</div>
+<!-- Step 5 (Active) -->
+<div class="p-2.5 rounded bg-surface-container-high ring-2 ring-primary-container shadow-[0_0_16px_rgba(0,229,255,0.25)] flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary-container font-bold">05 CURRENT</span>
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-ping"></span>
+</div>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-primary-container font-bold truncate">Recovery Active</div>
+<div class="font-label-sm text-[10px] text-secondary font-mono">Grapple locked @ -28m</div>
+</div>
+</div>
+<!-- Step 6 -->
+<div class="p-2.5 rounded bg-surface-container/40 opacity-60 flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">06</span>
+<span class="material-symbols-outlined text-outline text-sm">hourglass_empty</span>
+</div>
+<div class="mt-2">
+<div class="font-headline-sm text-headline-sm text-on-surface-variant">Completed</div>
+<div class="font-label-sm text-[10px] text-outline font-mono">Pending verification</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Asymmetric Multi-Column Workspace -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-md mb-space-md">
+<!-- Left Column (GIS Map + Event Stream + Outcome Dossier) - 7 cols -->
+<div class="xl:col-span-7 flex flex-col gap-space-md min-w-0">
+<!-- Tactical Geospatial Map HUD Panel -->
+<section class="bg-surface-container-low rounded-xl overflow-hidden shadow-lg flex flex-col">
+<!-- Map Control / Header Strip -->
+<div class="p-space-sm bg-surface-container flex items-center justify-between text-on-surface">
+<div class="flex items-center gap-space-xs font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-primary-container text-base">explore</span>
+<span class="font-semibold tracking-wider uppercase">Tactical Intercept GIS Vector Canvas</span>
+<span class="text-outline">|</span>
+<span class="font-mono text-outline">WGS84 • 17°18'38" S, 178°26'06" E</span>
+</div>
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary-container font-mono">Zoom 14.8x</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-secondary font-mono">Bathymetry: -38m</span>
+</div>
+</div>
+<!-- Geospatial Canvas with Data Map & Overlays -->
+<div class="relative w-full h-[410px] bg-surface-dim overflow-hidden select-none">
+<!-- Synthetic Marine GIS Map Background -->
+<div class="absolute inset-0 w-full h-full bg-cover bg-center opacity-40 mix-blend-luminosity filter contrast-125" data-alt="Satellite bathymetric aerial view of tropical marine reef channel with turquoise shallows transitioning into deep navy bathymetric trench with ocean current ripples." data-location="Tavaru Reef, Fiji" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAeLF4k2TVSzGWqNnFS6A-L7Wr7_UFFURWEj2zcRWtgb1m83XjsZJjsnU50rCNLLyvYjeU0UUdtolHA5ujhiwbGGZUSH6MdFwz4lnrYCFCGWnxEarP7j9n_ekVeCun_VLjXXUsllC2AmumgOGs7hyLg6j8e1x8l3Dm7Wtb_Sk7kvTuKMbMfRFYRr7biqzpnrQ2R8CtRngKtV8Ju62vvVsa24JQMNqhVuJ_bOUE4sSmbOm9H7ZqYv7Ka');"></div>
+<!-- Bathymetric Tactical Contour Vector Overlay -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none" fill="none" viewbox="0 0 800 450">
+<defs>
+<pattern height="50" id="tactical-grid" patternunits="userSpaceOnUse" width="50">
+<path class="text-outline-variant/30" d="M 50 0 L 0 0 0 50" fill="none" stroke="currentColor" stroke-width="0.5"></path>
+</pattern>
+<lineargradient id="coralglow" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#ff6b61" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#ff6b61" stop-opacity="0.05"></stop>
+</lineargradient>
+</defs>
+<rect fill="url(#tactical-grid)" height="100%" width="100%"></rect>
+<!-- Bathymetric depth contour lines -->
+<path d="M-50,120 Q120,90 280,150 T600,140 T850,90" opacity="0.3" stroke="#00daf3" stroke-dasharray="3 4" stroke-width="1"></path>
+<text class="font-mono text-[9px]" fill="#849396" x="710" y="85">-15m CONTOUR</text>
+<path d="M-30,220 Q160,180 340,240 T720,210 T850,260" opacity="0.45" stroke="#00daf3" stroke-dasharray="2 2" stroke-width="1.2"></path>
+<text class="font-mono text-[9px]" fill="#849396" x="680" y="205">-38m INTERCEPT CONTOUR</text>
+<path d="M-40,340 Q220,310 420,360 T780,310 T850,380" opacity="0.25" stroke="#00daf3" stroke-width="1.4"></path>
+<text class="font-mono text-[9px]" fill="#849396" x="720" y="305">-120m SHELF</text>
+<!-- Exclusion Zone A: Tavaru Marine Sanctuary -->
+<polygon fill="url(#coralglow)" points="460,40 760,30 780,240 520,220" stroke="#ff6b61" stroke-dasharray="4 3" stroke-width="1.5"></polygon>
+<text class="font-mono text-[10px] font-bold" fill="#ffb4ac" x="480" y="65">SANCTUARY ZONE A (RESTRICTED)</text>
+<text class="font-mono text-[9px]" fill="#bac9cc" x="480" y="80">500m Ecological Buffer Active</text>
+<!-- Transit Breadcrumb Path from Lautoka Pier 4 -->
+<path d="M 60,390 Q 140,320 220,270 T 360,210" fill="none" stroke="#50dbc8" stroke-dasharray="6 4" stroke-width="2.5"></path>
+<!-- Target Ghost Net Polygon Overlay -->
+<polygon fill="#ff6b61" fill-opacity="0.5" points="360,205 390,215 385,235 350,225" stroke="#ffb4ac" stroke-width="1.5"></polygon>
+<circle class="animate-pulse" cx="372" cy="220" opacity="0.8" r="28" stroke="#ff6b61" stroke-dasharray="3 3" stroke-width="1"></circle>
+<!-- Vessel Dynamic Positioning Station-Keeping Circle -->
+<circle cx="360" cy="205" opacity="0.6" r="45" stroke="#00e5ff" stroke-dasharray="4 2" stroke-width="1"></circle>
+<circle cx="360" cy="205" fill="#00e5ff" r="4"></circle>
+<!-- ROV Tether line heading subsea -->
+<line stroke="#50dbc8" stroke-width="2" x1="360" x2="375" y1="205" y2="218"></line>
+</svg>
+<!-- Live Interactive Pins & Callout Badges -->
+<div class="absolute top-[165px] left-[320px] pointer-events-auto transform -translate-x-1/2 -translate-y-1/2">
+<div class="bg-surface-container-high/95 backdrop-blur p-2 rounded shadow-xl border-l-2 border-primary-container text-on-surface">
+<div class="flex items-center gap-1.5 font-label-sm text-[10px] font-bold text-primary-container uppercase">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+                R/V Pelagic Sentinel
+              </div>
+<div class="font-label-sm text-[10px] text-outline font-mono mt-0.5">
+                SOG: 0.4 kts • HDG: 168° • DP-Locked
+              </div>
+</div>
+</div>
+<div class="absolute top-[230px] left-[420px] pointer-events-auto">
+<div class="bg-surface-container-high/95 backdrop-blur p-2 rounded shadow-xl border-l-2 border-error text-on-surface">
+<div class="flex items-center gap-1.5 font-label-sm text-[10px] font-bold text-error uppercase">
+<span class="material-symbols-outlined text-xs">anchor</span>
+                TARGET: #OR-2024-094
+              </div>
+<div class="font-label-sm text-[10px] text-outline font-mono mt-0.5">
+                Depth: -38.2m • Tension: 1.8T Lock
+              </div>
+</div>
+</div>
+<!-- Staging Port Origin Badge -->
+<div class="absolute bottom-5 left-5 bg-surface-container/90 backdrop-blur px-3 py-1.5 rounded text-on-surface font-label-sm text-label-sm shadow-md">
+<span class="text-outline">ORIGIN:</span> Lautoka Staging Pier 4 (Dep: 14:45 UTC)
+          </div>
+<!-- On-Map Telemetry HUD Widget (Bottom Right) -->
+<div class="absolute bottom-4 right-4 bg-surface-container-high/90 backdrop-blur p-3 rounded shadow-xl max-w-xs">
+<div class="font-label-sm text-label-sm text-primary-container font-semibold uppercase mb-1 flex items-center justify-between">
+<span>Station Oceanography</span>
+<span class="material-symbols-outlined text-xs text-secondary">water_drop</span>
+</div>
+<div class="grid grid-cols-2 gap-x-3 gap-y-1 font-label-sm text-[11px] font-mono text-outline">
+<div>Drift: <span class="text-on-surface font-bold">1.2 kts SSE</span></div>
+<div>Wave Swell: <span class="text-on-surface font-bold">1.5m @ 8.2s</span></div>
+<div>Water Temp: <span class="text-on-surface font-bold">26.3°C</span></div>
+<div>Ebb Window: <span class="text-tertiary-fixed-dim font-bold">Closes 18:30</span></div>
+</div>
+</div>
+</div>
+<!-- Subsea Depth & Tension Graph Mini-Dock -->
+<div class="p-space-md bg-surface-container-low grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<div class="bg-surface-container p-3 rounded">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>ROV-03 DEPTH</span>
+<span class="text-secondary font-mono">-28.4 m</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 74%"></div>
+</div>
+<span class="font-label-sm text-[10px] text-outline mt-1 block">Target seabed depth: -38.2 m</span>
+</div>
+<div class="bg-surface-container p-3 rounded">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>WINCH HYDRAULIC TENSION</span>
+<span class="text-primary-container font-mono">1.8 Tons</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 51%"></div>
+</div>
+<span class="font-label-sm text-[10px] text-outline mt-1 block">Winch Max Capacity: 3.5 Tons</span>
+</div>
+<div class="bg-surface-container p-3 rounded">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span>SANCTUARY SEPARATION</span>
+<span class="text-secondary font-mono">1.20 NM</span>
+</div>
+<div class="w-full bg-surface-container-highest h-2 rounded-full mt-2 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 85%"></div>
+</div>
+<span class="font-label-sm text-[10px] text-outline mt-1 block">Critical Zone Buffer: 500 m Safe</span>
+</div>
+</div>
+</section>
+<!-- Chronological Event Stream & Field Updates -->
+<section class="bg-surface-container-low rounded-xl p-space-md shadow-md">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">history</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Field Updates &amp; Forensic Timeline</h2>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono">5 logs verified • Auto-sync</span>
+</div>
+<div class="space-y-space-sm relative">
+<!-- Timeline Vertical Track -->
+<div class="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-container-high">
+<!-- Log Entry 1 (Active) -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-primary-container shadow-[0_0_8px_rgba(0,229,255,0.8)] flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-dim"></span>
+</div>
+<div class="bg-surface-container p-3 rounded">
+<div class="flex items-center justify-between mb-1">
+<span class="font-headline-sm text-headline-sm text-primary-container font-semibold">ROV Grapple Hook Engaged</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">16:15 UTC</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                  Tethered ROV-03 confirmed positive mechanical lock on headrope of monofilament net. Hydraulic tension stable at 1.8T. Beginning slow vertical retrieval hoist.
+                </p>
+<div class="mt-2 flex items-center gap-space-xs text-[11px] font-mono text-outline">
+<span class="text-secondary">Logged by: M. Chen (ROV Specialist)</span>
+<span>•</span>
+<span>Telemetry frame #9410</span>
+</div>
+</div>
+</div>
+<!-- Log Entry 2 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-secondary flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-dim"></span>
+</div>
+<div class="bg-surface-container p-3 rounded">
+<div class="flex items-center justify-between mb-1">
+<span class="font-headline-sm text-headline-sm text-secondary font-semibold">On-Scene Visual Acquired</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">15:58 UTC</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface">
+                  Sub-surface camera 4K feed confirmed target #OR-2024-094 entangled across limestone outcrop, clear of live coral heads. No megafauna entrapment detected on preliminary scan.
+                </p>
+<div class="mt-2 flex items-center gap-space-xs text-[11px] font-mono text-outline">
+<span class="text-secondary">Logged by: Dr. S. Nair (Bio Observer)</span>
+</div>
+</div>
+</div>
+<!-- Log Entry 3 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+</div>
+<div class="bg-surface-container p-3 rounded">
+<div class="flex items-center justify-between mb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Arrived at Intercept Waypoint Bravo</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">15:42 UTC</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Station-keeping dynamic positioning activated at 17.3105° S, 178.4350° E. Weather window confirmed stable. ROV pre-dive systems green.
+                </p>
+<div class="mt-2 text-[11px] font-mono text-outline">
+                  Logged by: Capt. J. Vosa (Vessel Master)
+                </div>
+</div>
+</div>
+<!-- Log Entry 4 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+</div>
+<div class="bg-surface-container p-3 rounded">
+<div class="flex items-center justify-between mb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-semibold">Vessel Dispatched from Staging Pier 4</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">14:45 UTC</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Master authorized departure with 3 crew aboard. Transit speed maintained at 14.0 kts across open bay.
+                </p>
+</div>
+</div>
+<!-- Log Entry 5 -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-4 h-4 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+</div>
+<div class="bg-surface-container p-3 rounded">
+<div class="flex items-center justify-between mb-1">
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-semibold">Lead Authorized Mission Plan</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">13:10 UTC</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Operational clearance signed off by Project Lead. Marine Sanctuary Authority notified of adjacent salvage path.
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Inline Note Dispatcher -->
+<div class="mt-space-md pt-space-sm bg-surface-container p-space-sm rounded flex flex-col sm:flex-row items-center gap-space-sm">
+<input class="w-full bg-surface-container-low text-on-surface placeholder-outline font-body-sm text-body-sm px-3 py-2 rounded focus:outline-none focus:ring-1 focus:ring-primary-container" id="quick-field-note" placeholder="Type tactical field note or ROV observation timestamp..." type="text"/>
+<button class="w-full sm:w-auto px-4 py-2 bg-secondary text-on-secondary font-headline-sm text-headline-sm rounded uppercase font-bold hover:bg-secondary-fixed transition-colors flex items-center justify-center gap-1 flex-shrink-0" id="btn-submit-quicknote">
+<span class="material-symbols-outlined text-base">send</span>
+            Post Note
+          </button>
+</div>
+</section>
+<!-- Recovery Outcome & Field Evidence Recording Dossier -->
+<section class="bg-surface-container-low rounded-xl p-space-md shadow-md">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-base">assignment_turned_in</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Recovery Outcome &amp; Evidence Dossier</h2>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono">ISO 14001 / ALDFG Protocol</span>
+</div>
+<!-- Status Selector Chips -->
+<div class="mb-space-md">
+<label class="block font-label-sm text-label-sm text-outline mb-2 uppercase">Projected Mission Outcome Classification</label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+<button class="px-3 py-2 rounded bg-primary-container text-on-primary font-label-sm text-label-sm font-bold text-center ring-2 ring-primary-container">
+              Full Recovery (Projected)
+            </button>
+<button class="px-3 py-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm text-center">
+              Partial Recovery
+            </button>
+<button class="px-3 py-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm text-center">
+              Not Found / Drifted
+            </button>
+<button class="px-3 py-2 rounded bg-surface-container hover:bg-surface-container-high text-error font-label-sm text-label-sm text-center">
+              Aborted (Safety)
+            </button>
+</div>
+</div>
+<!-- Recovered Physical Metrics Cards -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-xs mb-space-md">
+<div class="bg-surface-container p-3 rounded">
+<div class="font-label-sm text-[10px] text-outline uppercase">Est. Dry Mass</div>
+<div class="font-telemetry-display text-headline-md text-on-surface font-bold font-mono">~380 kg</div>
+<div class="font-label-sm text-[10px] text-secondary font-mono mt-0.5">1.2 T biofouled wet</div>
+</div>
+<div class="bg-surface-container p-3 rounded">
+<div class="font-label-sm text-[10px] text-outline uppercase">Measured Length</div>
+<div class="font-telemetry-display text-headline-md text-primary-container font-bold font-mono">45.2 m</div>
+<div class="font-label-sm text-[10px] text-outline font-mono mt-0.5">Monofilament mesh</div>
+</div>
+<div class="bg-surface-container p-3 rounded">
+<div class="font-label-sm text-[10px] text-outline uppercase">Polymer Spec</div>
+<div class="font-telemetry-display text-headline-md text-on-surface font-bold font-mono">HDPE</div>
+<div class="font-label-sm text-[10px] text-secondary font-mono mt-0.5">High recyclability</div>
+</div>
+<div class="bg-surface-container p-3 rounded">
+<div class="font-label-sm text-[10px] text-outline uppercase">Bycatch Audit</div>
+<div class="font-telemetry-display text-headline-md text-secondary font-bold font-mono">0 MORT</div>
+<div class="font-label-sm text-[10px] text-secondary font-mono mt-0.5">2 Lobsters freed</div>
+</div>
+</div>
+<!-- Evidence Media & Subsea Grab Cam View -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-sm mb-space-md">
+<div class="relative rounded-lg overflow-hidden bg-surface-dim h-44 group">
+<img class="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity" data-alt="Underwater robotic camera view of a discarded green monofilament ghost fishing net caught on a deep coral limestone reef with tactical HUD crosshairs, depth telemetry timestamp and cyan lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5tQ_N-pcazLSksy0cZapVfxdhrtc1KJBRxdUxuaKNvyqx3PwC04_PZUb7H3jzXEqN15-zkcvP0lQwdtmQiIa9u266rWjI8PT_g1-rGLbC5wrKv4yMK_X5tMcbLe9BFj4khZ_oEZignz2uZNg3euy_gAVShqtv8mFwGX5NvOWiP8FjKMU2rA9b_HD4A3F-r-WdsKECDt9iz7BuCOICnVvUaQfDo7hWY-3LlMPuSVGoC0UZionzLUSD"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent"></div>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-dim/80 backdrop-blur font-mono text-[10px] text-secondary flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+              ROV-03 // HEADCAM 4K
+            </div>
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between font-mono text-[10px] text-primary">
+<span>DEPTH: -28.4M</span>
+<span>16:15:32 UTC</span>
+</div>
+</div>
+<div class="relative rounded-lg overflow-hidden bg-surface-dim h-44 group">
+<img class="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity" data-alt="Deck of marine research vessel with salvage crew securing a wet retrieved ghost fishing net with yellow cranes, safety winches and biohazard holding bins under overcast oceanic light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU_bHI719BJkfODkMFuCK9-BUfAPeE4r9EO8DGYgFRJ-QNgxK3mglth0u-eSveOqH-4RnbOixq-jtoAuXw-d9xzFHTiYgX2kSDALgbqKLAxi6wEs6eZOFVNDFUVbHLNFLx4hTXhjbzVrwMWDffeoAnoX1kdJ0DtZakhOnYaa5T0A4uVSwwjgeXdGxstwUnNb3qQbireSpcTWVZ1FTrGDZ2f_OeUgeIMzxnzAHPApN2QJ8m6l9JTtU-"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent"></div>
+<div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-surface-dim/80 backdrop-blur font-mono text-[10px] text-primary-container flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">deck</span>
+              AFT DECK CRANE VIEW
+            </div>
+<div class="absolute bottom-2 left-2 right-2 flex items-center justify-between font-mono text-[10px] text-outline">
+<span>CRANE ARM: STANDBY</span>
+<span>WINCH: 1.8T</span>
+</div>
+</div>
+</div>
+<!-- Summary & Supervisor Sign-Off Field -->
+<div class="bg-surface-container p-3 rounded">
+<label class="block font-label-sm text-label-sm text-outline uppercase mb-1">Supervisor Operational Sign-Off Stamp</label>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+              Operational compliance certified under Marine Environmental Salvage Regulation MES-401. Digital hash: <span class="font-mono text-primary text-xs">0x8F9B...D412</span>
+</div>
+<div class="px-3 py-1.5 rounded bg-surface-container-high text-secondary font-mono font-semibold text-label-sm whitespace-nowrap">
+              SIGNATURE: DR. S. NAIR
+            </div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column (Target Telemetry + Fleet Manifest + Action Center) - 5 cols -->
+<div class="xl:col-span-5 flex flex-col gap-space-md min-w-0">
+<!-- Target Information & Environmental Telemetry Card -->
+<section class="bg-surface-container-low rounded-xl p-space-md shadow-md">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-base">radar</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Target Intelligence &amp; Sensor Telemetry</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary-container/20 text-primary-container font-mono text-label-sm font-bold">YOLOv8: 94.2%</span>
+</div>
+<div class="bg-surface-container p-space-sm rounded mb-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface font-semibold">Gear Classification</span>
+<span class="font-label-sm text-label-sm text-secondary font-mono uppercase">fishing_net (Derelict Gillnet)</span>
+</div>
+<div class="mt-2 text-xs font-mono text-outline grid grid-cols-2 gap-y-1">
+<div>Initial Fix: <span class="text-on-surface">17.2860° S, 178.4100° E</span></div>
+<div>Current Fix: <span class="text-primary-container">17.3105° S, 178.4350° E</span></div>
+<div>Cumulative Drift: <span class="text-on-surface">2.41 NM SSE</span></div>
+<div>Estimated Age: <span class="text-on-surface">14 - 21 Days</span></div>
+</div>
+</div>
+<!-- In-situ Environmental Conditions Grid -->
+<div class="grid grid-cols-2 gap-space-xs mb-space-sm">
+<div class="bg-surface-container p-2.5 rounded">
+<div class="flex items-center gap-1 font-label-sm text-[10px] text-outline">
+<span class="material-symbols-outlined text-xs text-primary-container">waves</span>
+              SWELL &amp; PERIOD
+            </div>
+<div class="font-telemetry-display text-headline-sm text-on-surface font-mono font-bold mt-1">1.5m @ 8.2s</div>
+<div class="font-label-sm text-[10px] text-secondary font-mono">Safe retrieval limit (&lt;2.2m)</div>
+</div>
+<div class="bg-surface-container p-2.5 rounded">
+<div class="flex items-center gap-1 font-label-sm text-[10px] text-outline">
+<span class="material-symbols-outlined text-xs text-secondary">air</span>
+              SURFACE CURRENT
+            </div>
+<div class="font-telemetry-display text-headline-sm text-on-surface font-mono font-bold mt-1">1.3 kts</div>
+<div class="font-label-sm text-[10px] text-outline font-mono">Bearing 160° SSE</div>
+</div>
+<div class="bg-surface-container p-2.5 rounded">
+<div class="flex items-center gap-1 font-label-sm text-[10px] text-outline">
+<span class="material-symbols-outlined text-xs text-primary">device_thermostat</span>
+              SEA SURFACE TEMP
+            </div>
+<div class="font-telemetry-display text-headline-sm text-on-surface font-mono font-bold mt-1">26.3°C</div>
+<div class="font-label-sm text-[10px] text-secondary font-mono">Nominal sensor band</div>
+</div>
+<div class="bg-surface-container p-2.5 rounded">
+<div class="flex items-center gap-1 font-label-sm text-[10px] text-outline">
+<span class="material-symbols-outlined text-xs text-tertiary-fixed-dim">schedule</span>
+              TIDAL EBB WINDOW
+            </div>
+<div class="font-telemetry-display text-headline-sm text-tertiary-fixed-dim font-mono font-bold mt-1">2h 15m</div>
+<div class="font-label-sm text-[10px] text-tertiary-fixed-dim font-mono">Slack water @ 18:30 UTC</div>
+</div>
+</div>
+<div class="bg-error-container/20 rounded p-2.5 flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-base flex-shrink-0 mt-0.5">shield</span>
+<div class="font-body-sm text-body-sm text-on-error-container">
+<span class="font-semibold text-error">Ecological Threat Vector:</span> Proximity to Tavaru Coral Sanctuary (1.20 NM). Retrieval within ebb window prevents gear drift across coral nursery reef crest.
+          </div>
+</div>
+</section>
+<!-- Team, Vessel & Operational Equipment Manifest -->
+<section class="bg-surface-container-low rounded-xl p-space-md shadow-md">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-base">directions_boat</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Vessel &amp; Equipment Manifest</h2>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-mono">Fleet Unit #03</span>
+</div>
+<!-- Vessel Bio Card -->
+<div class="bg-surface-container p-3 rounded mb-space-sm flex items-center justify-between">
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">R/V Pelagic Sentinel</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">24m Aluminum Catamaran • Station Call: VNZ-4891</div>
+</div>
+<div class="text-right">
+<div class="font-label-sm text-label-sm text-primary-container font-mono font-semibold">TEAM ORCA-3</div>
+<div class="font-label-sm text-[10px] text-secondary font-mono">VHF Ch 16 / Starlink OK</div>
+</div>
+</div>
+<!-- Crew Roles -->
+<div class="space-y-1.5 mb-space-md font-body-sm text-body-sm">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container/60">
+<span class="text-on-surface font-medium">Capt. J. Vosa</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">Vessel Master &amp; DP Pilot</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container/60">
+<span class="text-on-surface font-medium">M. Chen</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">ROV Subsea Engineer</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container/60">
+<span class="text-on-surface font-medium">Dr. S. Nair</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">Marine Biologist &amp; Bycatch Officer</span>
+</div>
+</div>
+<!-- Hardware Checklist -->
+<div class="space-y-2">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">task_alt</span>
+<span class="font-label-sm text-label-sm text-on-surface">3.5T Hydraulic Net Winch</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary font-mono text-label-sm font-bold">ONLINE (1.8T LOAD)</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-base">task_alt</span>
+<span class="font-label-sm text-label-sm text-on-surface">Inspection ROV-03 (150m Tether)</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-primary-container/15 text-primary-container font-mono text-label-sm font-bold">DEPLOYED @ -28M</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">task_alt</span>
+<span class="font-label-sm text-label-sm text-on-surface">Biohazard HDPE Containment Bin</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-mono text-label-sm">DECK PREPPED</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">task_alt</span>
+<span class="font-label-sm text-label-sm text-on-surface">Wildlife Release &amp; Disentangle Kit</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-mono text-label-sm">STATIONED</span>
+</div>
+</div>
+</section>
+<!-- Operational Command & Control Action Center -->
+<section class="bg-surface-container-low rounded-xl p-space-md shadow-md">
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-space-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-base">bolt</span>
+          Tactical Command Dispatch Actions
+        </h2>
+<div class="space-y-space-xs">
+<!-- Primary CTA Button with Glow -->
+<button class="w-full py-3.5 px-4 rounded bg-primary-container text-on-primary font-headline-sm text-headline-sm font-bold uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(0,229,255,0.45)] hover:shadow-[0_0_30px_rgba(0,229,255,0.7)] flex items-center justify-center gap-2" id="btn-primary-finalize">
+<span class="material-symbols-outlined text-xl">fact_check</span>
+            Complete Mission &amp; Archive Report
+          </button>
+<div class="grid grid-cols-2 gap-space-xs pt-1">
+<button class="py-2.5 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors flex items-center justify-center gap-1.5" id="btn-update-status">
+<span class="material-symbols-outlined text-sm text-primary">update</span>
+              Update Status
+            </button>
+<button class="py-2.5 px-3 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors flex items-center justify-center gap-1.5" id="btn-upload-evidence">
+<span class="material-symbols-outlined text-sm text-secondary">cloud_upload</span>
+              Upload Optical Data
+            </button>
+</div>
+<button class="w-full py-2.5 px-3 rounded bg-error-container/20 hover:bg-error-container/30 text-error font-label-sm text-label-sm font-semibold transition-colors flex items-center justify-center gap-1.5 mt-2" id="btn-hazard-abort">
+<span class="material-symbols-outlined text-sm">emergency</span>
+            Report Operational Issue / Safety Abort
+          </button>
+</div>
+</section>
+</div>
+</div>
+<!-- Academic Honesty & Capstone Disclaimers Banner -->
+<section class="bg-surface-container-lowest rounded-lg p-space-sm text-on-surface-variant flex flex-col md:flex-row items-center justify-between gap-space-sm shadow-inner">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-base">school</span>
+<p class="font-label-sm text-label-sm leading-relaxed">
+<span class="font-bold text-on-surface">Simulated Operational Dataset [Demo Run]</span> — Mission tracking reflects third-year computer engineering capstone demonstration protocols. Field actions, ROV telemetry, and sensor vectors represent synthesized scenario execution.
+      </p>
+</div>
+<div class="flex items-center gap-space-xs font-mono text-[10px] text-outline flex-shrink-0">
+<span>REF: ENGR-399-CAPSTONE</span>
+<span>•</span>
+<span class="text-secondary">SYSTEM TIME 16:22:04 UTC</span>
+</div>
+</section>
+<!-- Interactive Modal Dialogue: Finalize Mission Confirmation -->
+<div class="fixed inset-0 z-50 bg-surface-dim/80 backdrop-blur-md hidden items-center justify-center p-4" id="modal-finalize">
+<div class="bg-surface-container rounded-xl max-w-lg w-full p-space-md shadow-2xl space-y-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-2 text-primary-container">
+<span class="material-symbols-outlined text-2xl">verified</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Finalize ALDFG Recovery</h3>
+</div>
+<button class="text-outline hover:text-on-surface" id="btn-close-modal">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        You are about to sign off on Mission <span class="text-primary font-mono font-semibold">#MP-2024-088</span> for target <span class="text-primary font-mono font-semibold">#OR-2024-094</span>. This action triggers automated carbon balance accounting, updates marine reserve habitat protection metrics, and writes forensic records to the capstone database.
+      </p>
+<div class="p-3 bg-surface-container-low rounded space-y-2 font-mono text-xs text-outline">
+<div class="flex justify-between">
+<span>Total Retained Mass:</span>
+<span class="text-on-surface font-bold">~380 kg dry (HDPE)</span>
+</div>
+<div class="flex justify-between">
+<span>Sanctuary Impact:</span>
+<span class="text-secondary font-bold">0 m penetration (Buffer Intact)</span>
+</div>
+<div class="flex justify-between">
+<span>Vessel:</span>
+<span class="text-on-surface font-bold">R/V Pelagic Sentinel</span>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-sm pt-space-xs">
+<button class="px-4 py-2 rounded bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:text-on-surface transition-colors" id="btn-cancel-modal">
+          Cancel &amp; Return
+        </button>
+<button class="px-5 py-2 rounded bg-primary-container text-on-primary font-headline-sm text-headline-sm font-bold uppercase transition-all shadow-[0_0_14px_rgba(0,229,255,0.4)] hover:shadow-[0_0_20px_rgba(0,229,255,0.6)]" id="btn-confirm-modal">
+          Confirm &amp; Seal Mission
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interactions for modal and field note simulation
+  (function () {
+    const modal = document.getElementById('modal-finalize');
+    const btnOpenModal = document.getElementById('btn-complete-modal');
+    const btnPrimaryFinalize = document.getElementById('btn-primary-finalize');
+    const btnCloseModal = document.getElementById('btn-close-modal');
+    const btnCancelModal = document.getElementById('btn-cancel-modal');
+    const btnConfirmModal = document.getElementById('btn-confirm-modal');
+    const quickNoteInput = document.getElementById('quick-field-note');
+    const btnSubmitQuickNote = document.getElementById('btn-submit-quicknote');
+    const btnOpenFieldNote = document.getElementById('btn-open-fieldnote');
+
+    function openModal() {
+      if (modal) modal.classList.remove('hidden'), modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      if (modal) modal.classList.add('hidden'), modal.classList.remove('flex');
+    }
+
+    if (btnOpenModal) btnOpenModal.addEventListener('click', openModal);
+    if (btnPrimaryFinalize) btnPrimaryFinalize.addEventListener('click', openModal);
+    if (btnCloseModal) btnCloseModal.addEventListener('click', closeModal);
+    if (btnCancelModal) btnCancelModal.addEventListener('click', closeModal);
+
+    if (btnConfirmModal) {
+      btnConfirmModal.addEventListener('click', function () {
+        btnConfirmModal.innerText = 'MISSION FINALIZED ✓';
+        btnConfirmModal.classList.remove('bg-primary-container');
+        btnConfirmModal.classList.add('bg-secondary');
+        setTimeout(() => {
+          closeModal();
+          alert('Mission #MP-2024-088 successfully finalized and archived to Capstone Research Datastore.');
+        }, 600);
+      });
+    }
+
+    if (btnOpenFieldNote && quickNoteInput) {
+      btnOpenFieldNote.addEventListener('click', () => {
+        quickNoteInput.focus();
+        quickNoteInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    }
+
+    if (btnSubmitQuickNote && quickNoteInput) {
+      btnSubmitQuickNote.addEventListener('click', () => {
+        if (!quickNoteInput.value.trim()) return;
+        alert('Field Note logged at ' + new Date().toISOString().substring(11, 19) + ' UTC: "' + quickNoteInput.value + '"');
+        quickNoteInput.value = '';
+      });
+    }
+  })();
+</script></main>
+<footer class="px-space-md py-space-sm border-t border-outline-variant/20 bg-surface-container-low/40 font-label-sm text-label-sm text-on-surface-variant flex flex-wrap items-center justify-between gap-space-sm" data-purpose="app-footer">
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface font-semibold">OceanRescue Marine AI Decision-Support Platform</span>
+<span class="text-outline-variant">|</span>
+<span>Third-Year Computer Engineering Capstone</span>
+</div>
+<div class="flex items-center gap-space-sm text-[11px]">
+<span class="text-secondary">"Every Net Found. Every Life Saved."</span>
+<span class="text-outline-variant">|</span>
+<span>Baseline Model: YOLOv8-seg (TensorRT)</span>
+</div>
+</footer>
+</div>
+</body></html>

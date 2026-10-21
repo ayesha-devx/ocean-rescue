@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface-dim" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>OceanRescue — Marine Geospatial AI Decision-Support Platform</title>
+<!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary": "#690007",
+            "secondary": "#50dbc8",
+            "inverse-surface": "#d5e4f7",
+            "on-surface": "#d5e4f7",
+            "surface-bright": "#2c3b49",
+            "tertiary-container": "#ffc2bc",
+            "on-secondary-fixed-variant": "#005048",
+            "on-error": "#690005",
+            "primary-container": "#00e5ff",
+            "primary": "#c3f5ff",
+            "tertiary-fixed-dim": "#ffb4ac",
+            "error": "#ffb4ab",
+            "surface-container-highest": "#283644",
+            "error-container": "#93000a",
+            "on-tertiary-fixed-variant": "#8c1617",
+            "on-background": "#d5e4f7",
+            "on-primary": "#00363d",
+            "on-surface-variant": "#bac9cc",
+            "on-secondary": "#003731",
+            "on-tertiary-container": "#a62b27",
+            "secondary-container": "#00b1a0",
+            "outline": "#849396",
+            "on-error-container": "#ffdad6",
+            "inverse-on-surface": "#243240",
+            "surface-dim": "#061421",
+            "surface-tint": "#00daf3",
+            "outline-variant": "#3b494c",
+            "primary-fixed": "#9cf0ff",
+            "surface-container-lowest": "#020f1c",
+            "on-secondary-container": "#003d36",
+            "tertiary": "#ffe8e5",
+            "surface-variant": "#283644",
+            "surface-container-high": "#1d2b39",
+            "surface-container-low": "#0e1d2a",
+            "secondary-fixed-dim": "#50dbc8",
+            "surface-container": "#12212e",
+            "on-tertiary-fixed": "#410003",
+            "on-primary-container": "#00626e",
+            "inverse-primary": "#006875",
+            "on-primary-fixed-variant": "#004f58",
+            "secondary-fixed": "#71f8e4",
+            "tertiary-fixed": "#ffdad6",
+            "primary-fixed-dim": "#00daf3",
+            "on-secondary-fixed": "#00201c",
+            "on-primary-fixed": "#001f24",
+            "surface": "#061421",
+            "background": "#061421"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "1.5rem",
+            "margin": "1rem",
+            "margin-desktop": "1.5rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-2xl": "3rem",
+            "space-xl": "2rem"
+          },
+          "fontFamily": {
+            "telemetry-display": ["JetBrains Mono"],
+            "body-md": ["Inter"],
+            "label-sm": ["JetBrains Mono"],
+            "headline-xl": ["Space Grotesk"],
+            "label-md": ["JetBrains Mono"],
+            "headline-lg": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "body-lg": ["Inter"],
+            "label-lg": ["JetBrains Mono"],
+            "body-sm": ["Inter"],
+            "headline-sm": ["Space Grotesk"],
+            "headline-xl-mobile": ["Space Grotesk"]
+          },
+          "fontSize": {
+            "telemetry-display": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "600" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "500" }],
+            "headline-lg": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-sm": ["16px", { "lineHeight": "22px", "fontWeight": "600" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    };
+  </script>
+<style data-purpose="layout-grid-and-effects">
+    @layer base {
+      html {
+        overscroll-behavior: none;
+      }
+    }
+    /* Custom tactical scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #061421;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1d2b39;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #00e5ff;
+    }
+  </style>
+<meta content="web_dashboard" name="shell-type"/>
+</head>
+<body class="bg-surface-dim text-on-surface font-body-md text-body-md antialiased selection:bg-primary-container selection:text-surface-dim">
+<!-- Left Sidebar (Fixed) -->
+<aside class="fixed inset-y-0 left-0 w-64 z-40 bg-surface-container-low border-r border-outline-variant/30 flex flex-col justify-between select-none" data-purpose="sidebar">
+<div class="flex flex-col h-full">
+<!-- Brand Header -->
+<div class="p-space-md border-b border-outline-variant/30">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded bg-surface-container border border-primary-container/40 flex items-center justify-center text-primary-container shadow-[0_0_12px_rgba(0,229,255,0.25)] flex-shrink-0">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
+<path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
+<path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
+</svg>
+</div>
+<div class="min-w-0 flex-1">
+<div class="font-headline-sm text-headline-sm text-on-surface tracking-wider leading-none truncate">OceanRescue</div>
+<p class="font-label-sm text-label-sm text-primary-container uppercase tracking-wider mt-1 truncate">Tactical GIS Engine • Online</p>
+</div>
+</div>
+<div class="mt-3 flex items-center justify-between font-label-sm text-label-sm">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded bg-primary-container/10 text-primary-container border border-primary-container/30">
+            DEMO v0.9
+          </span>
+<span class="text-on-surface-variant font-mono">YOLOv8-seg</span>
+</div>
+</div>
+<!-- Navigation List -->
+<div class="flex-1 overflow-y-auto px-space-xs py-space-sm">
+<div class="px-3 py-1 font-label-sm text-label-sm text-outline uppercase tracking-wider">Navigation Feed</div>
+<nav class="space-y-0.5" data-active-classes="bg-primary-container/15 text-primary-container font-semibold border-l-2 border-primary-container pl-[10px]">
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="dashboard" href="#dashboard">Dashboard</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="ocean-map" href="#ocean-map">Ocean Map</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="ai-detection" href="#ai-detection">AI Detection</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="detection-details" href="#detection-details">Detection Details</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="drift-forecast" href="#drift-forecast">Drift Forecast</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="risk-assessment" href="#risk-assessment">Risk Assessment</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="recovery-planning" href="#recovery-planning">Recovery Planning</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="mission-details" href="#mission-details">Mission Details</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="reports-analytics" href="#reports-analytics">Reports &amp; Analytics</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="data-sources" href="#data-sources">Data Sources</a>
+<a class="flex items-center px-3 py-2 rounded text-body-sm text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="settings" href="#settings">Settings</a>
+</nav>
+</div>
+<!-- Telemetry Footer Widget -->
+<div class="p-space-sm border-t border-outline-variant/30 bg-surface-container/60">
+<div class="font-label-sm text-label-sm space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">MODEL ENGINE</span>
+<span class="text-secondary flex items-center gap-1 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span> YOLOv8s-seg
+            </span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">DATASET</span>
+<span class="text-on-surface font-medium">SIMULATED / DEMO</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">LATENCY</span>
+<span class="text-primary-container font-medium">38 ms (TensorRT)</span>
+</div>
+</div>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container animate-ping"></div>
+<p class="font-label-sm text-[9px] text-on-surface-variant leading-tight truncate">
+            OceanRescue System Active
+          </p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top Header (Fixed with matching left offset) -->
+<header class="fixed top-0 left-64 right-0 z-30 bg-surface-container-low/90 backdrop-blur border-b border-outline-variant/30" data-purpose="top-navigation-header">
+<div class="h-16 px-space-md flex items-center justify-between gap-space-md">
+<!-- Left breadcrumb / telemetry notice -->
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="hidden sm:flex items-center gap-1.5 font-label-sm text-label-sm text-on-surface-variant">
+<span>OceanRescue</span>
+<span class="text-outline-variant">/</span>
+<span class="text-primary-container font-medium truncate">Tactical Operations</span>
+</div>
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold bg-tertiary-container/10 text-tertiary-fixed-dim border border-tertiary-fixed-dim/30 flex-shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+          SIMULATED DATASET [DEMO RUN]
+        </span>
+</div>
+<!-- Center Search & Quick Telemetry -->
+<div class="hidden xl:flex items-center gap-space-sm flex-1 max-w-lg">
+<div class="relative w-full">
+<input class="w-full bg-surface-container border border-outline-variant/40 rounded pl-8 pr-3 py-1.5 text-body-sm text-on-surface placeholder-on-surface-variant focus:outline-none focus:border-primary-container font-telemetry-display text-xs" placeholder="Search target, observation ID or lat/lon..." type="text"/>
+<svg class="w-3.5 h-3.5 text-on-surface-variant absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 bg-surface-container px-2 py-1.5 rounded border border-outline-variant/30 whitespace-nowrap">
+<svg class="w-3.5 h-3.5 text-primary-container" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+<polyline points="12 6 12 12 16 14" stroke-width="2"></polyline>
+</svg>
+          14:32 UTC
+        </span>
+</div>
+<!-- Right Utilities & Profile Avatar -->
+<div class="flex items-center gap-space-sm flex-shrink-0">
+<!-- Coordinate Datum Switch -->
+<div class="flex items-center bg-surface-container border border-outline-variant/40 rounded p-0.5 font-label-sm text-label-sm">
+<button class="px-2 py-1 rounded bg-surface-container-high text-primary-container font-semibold">WGS84</button>
+<button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface transition-colors">UTM</button>
+</div>
+<!-- Notification Bell -->
+<button class="relative p-2 rounded bg-surface-container border border-outline-variant/40 text-on-surface-variant hover:text-on-surface transition-colors" title="Notifications">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+<span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-error-container ring-1 ring-surface-container"></span>
+</button>
+<!-- User Profile Avatar -->
+<div class="flex items-center gap-2 pl-2 border-l border-outline-variant/40">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 border border-primary-container/50 flex items-center justify-center font-label-sm text-label-sm font-bold text-primary-container">
+            CE
+          </div>
+<div class="text-left hidden md:block">
+<div class="font-label-md text-label-md leading-tight text-on-surface font-semibold">Eng. Team Lead</div>
+<div class="font-label-sm text-[10px] text-on-surface-variant leading-tight">Y3 Project Admin</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Layout Area -->
+<div class="pl-64 flex flex-col min-h-screen">
+<main class="pt-16 p-space-md flex-1"><div class="flex flex-col w-full space-y-space-md">
+<!-- Academic Prototype Verification Banner -->
+<div class="bg-surface-container-low px-space-md py-space-xs rounded-lg flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded font-label-sm text-label-sm bg-surface-container-highest text-secondary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-fixed"></span>
+        DECISION-SUPPORT SYSTEM ACTIVE
+      </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant truncate">
+        Transit vectors, waypoints, and intercept time-windows are hydrodynamically modeled advisory heuristics for human-in-the-loop salvage masters.
+      </span>
+</div>
+<div class="flex items-center gap-space-sm font-label-sm text-label-sm text-outline">
+<span>DATUM: <strong class="text-on-surface font-label-sm text-label-sm">WGS84 NAV</strong></span>
+<span>•</span>
+<span>MODEL: <strong class="text-secondary font-label-sm text-label-sm">HYCOM-Lagrangian-v4</strong></span>
+</div>
+</div>
+<!-- 1. TOP MISSION OVERVIEW BAR -->
+<div class="bg-surface-container p-space-md rounded-xl space-y-space-sm">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<!-- Left: Dossier Title & Target Info -->
+<div class="space-y-1">
+<div class="flex flex-wrap items-center gap-2">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container text-on-primary font-bold">
+            MISSION DOSSIER
+          </span>
+<span class="font-label-lg text-label-lg text-primary tracking-wide">
+            #MP-2024-088 // OPERATION NET-RETRIEVE
+          </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error-container text-on-error-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>
+            TIER 1 CRITICAL (RISK 96/100)
+          </span>
+</div>
+<div class="flex flex-wrap items-center gap-x-3 gap-y-1 font-body-sm text-body-sm text-on-surface-variant">
+<span>Target: <strong class="text-on-surface font-medium">#OR-2024-094</strong> (Derelict Monofilament Gillnet, ~45m, 340m²)</span>
+<span>•</span>
+<span>Fix: <span class="font-label-sm text-label-sm text-primary">17.2860° S, 178.4100° E</span></span>
+<span>•</span>
+<span class="text-tertiary-fixed-dim font-medium">Imminent Reef Stranding: ~19.5h</span>
+</div>
+</div>
+<!-- Right: Workflow Stage Stepper -->
+<div class="flex items-center gap-1 bg-surface-container-low p-1.5 rounded-lg flex-shrink-0">
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded bg-primary-container text-on-primary font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-primary"></span>
+          1. DRAFT [ACTIVE]
+        </div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded text-on-surface-variant font-label-sm text-label-sm">
+<span>2. LEAD REVIEW</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded text-on-surface-variant font-label-sm text-label-sm">
+<span>3. AUTHORIZED</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded text-on-surface-variant font-label-sm text-label-sm">
+<span>4. DISPATCHED</span>
+</div>
+</div>
+</div>
+<!-- Quick Telemetry Ribbon -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm pt-space-xs">
+<div class="bg-surface-container-low p-space-sm rounded">
+<span class="font-label-sm text-label-sm text-outline block">TARGET INTERCEPT WINDOW</span>
+<span class="font-telemetry-display text-headline-sm text-primary-container">&lt; 14h 00m</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded">
+<span class="font-label-sm text-label-sm text-outline block">EST. VESSEL TRANSIT</span>
+<span class="font-telemetry-display text-headline-sm text-secondary">1h 12m (16.4 NM)</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded">
+<span class="font-label-sm text-label-sm text-outline block">ASSIGNED RECOVERY CREW</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Team Orca-3 (RV Pelagic)</span>
+</div>
+<div class="bg-surface-container-low p-space-sm rounded">
+<span class="font-label-sm text-label-sm text-outline block">TIDE DYNAMICS</span>
+<span class="font-headline-sm text-headline-sm text-tertiary-fixed-dim">Ebb Inflow @ 17:15 UTC</span>
+</div>
+</div>
+</div>
+<!-- 2. MAIN OPERATIONAL GRID (60% Map & Comparison / 40% Action & Plan) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md items-start">
+<!-- LEFT COLUMN: ~60% (Col 1-7) -->
+<div class="lg:col-span-7 flex flex-col space-y-space-md">
+<!-- A. RECOVERY OPERATIONS GIS MAP HUD -->
+<div class="bg-surface-container rounded-xl overflow-hidden relative shadow-lg">
+<!-- Map Header bar -->
+<div class="p-space-sm bg-surface-container-high flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-body-lg">explore</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Tactical Intercept GIS Canvas</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-primary font-mono">
+              ZOOM: 11.4x // EPSG:3857
+            </span>
+</div>
+<!-- GIS Layer Toggles -->
+<div class="flex items-center gap-1 font-label-sm text-label-sm">
+<button class="px-2 py-1 rounded bg-primary-container text-on-primary font-semibold">Route</button>
+<button class="px-2 py-1 rounded bg-surface-container text-secondary">Drift +18h</button>
+<button class="px-2 py-1 rounded bg-surface-container text-on-surface-variant">Bathymetry</button>
+<button class="px-2 py-1 rounded bg-surface-container text-error">Sanctuary Zone</button>
+</div>
+</div>
+<!-- SVG Tactical Marine Chart Canvas -->
+<div class="relative w-full h-[460px] bg-surface-dim overflow-hidden select-none">
+<svg class="w-full h-full" fill="none" viewbox="0 0 800 460" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<!-- Grid Pattern -->
+<pattern height="40" id="nautical-grid" patternunits="userSpaceOnUse" width="40">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1d2b39" stroke-dasharray="2 2" stroke-width="0.75"></path>
+</pattern>
+<!-- Coral Zone Pattern -->
+<pattern height="8" id="coral-hatch" patterntransform="rotate(45 0 0)" patternunits="userSpaceOnUse" width="8">
+<line opacity="0.35" stroke="#ffb4ab" stroke-width="1.5" x1="0" x2="0" y1="0" y2="8"></line>
+</pattern>
+<!-- Radial Glow for target -->
+<radialgradient cx="50%" cy="50%" id="target-glow" r="50%">
+<stop offset="0%" stop-color="#ffb4ab" stop-opacity="0.8"></stop>
+<stop offset="100%" stop-color="#ffb4ab" stop-opacity="0"></stop>
+</radialgradient>
+</defs>
+<!-- Grid Base -->
+<rect fill="#061421" height="100%" width="100%"></rect>
+<rect fill="url(#nautical-grid)" height="100%" width="100%"></rect>
+<!-- Bathymetric Depth Contours -->
+<path d="M -20,120 Q 200,90 420,140 T 820,110" fill="none" stroke="#1d2b39" stroke-width="1.5"></path>
+<text class="font-label-sm text-[9px]" fill="#849396" x="20" y="115">CONTOUR -120m (DEEP PELAGIC)</text>
+<path d="M -20,240 Q 240,210 460,260 T 820,220" fill="none" stroke="#283644" stroke-width="1.5"></path>
+<text class="font-label-sm text-[9px]" fill="#849396" x="20" y="235">CONTOUR -45m (SHELF BREAK)</text>
+<path d="M 120,380 Q 340,320 540,340 T 820,300" fill="none" stroke="#3b494c" stroke-width="2"></path>
+<text class="font-label-sm text-[9px]" fill="#50dbc8" x="140" y="375">CONTOUR -15m (REEF FRINGE)</text>
+<!-- Tavaru Marine Reserve Zone A Boundary -->
+<path d="M 440,40 L 760,20 L 780,240 L 520,260 Z" fill="url(#coral-hatch)"></path>
+<path d="M 440,40 L 760,20 L 780,240 L 520,260 Z" fill="none" stroke="#ffb4ab" stroke-dasharray="6 4" stroke-width="2"></path>
+<rect fill="#12212e" height="24" opacity="0.9" rx="4" width="220" x="450" y="48"></rect>
+<text class="font-label-sm text-[10px] font-semibold tracking-wider" fill="#ffb4ab" x="460" y="64">
+              TAVARU MARINE RESERVE [ZONE A - NO WAKE]
+            </text>
+<!-- Lagrangian Net Drift Trajectory (+0h to +18h) -->
+<!-- Drift vector spline -->
+<path d="M 280,70 Q 360,110 440,165 T 570,220" fill="none" stroke="#ffb4ab" stroke-dasharray="4 4" stroke-width="3"></path>
+<!-- Drift intervals -->
+<!-- +6h Marker: Waypoint Alpha -->
+<circle cx="360" cy="118" fill="#12212e" r="5" stroke="#00e5ff" stroke-width="2"></circle>
+<text class="font-label-sm text-[10px] font-mono" fill="#c3f5ff" x="372" y="114">WP ALPHA (+6h Drift)</text>
+<text class="font-label-sm text-[9px]" fill="#849396" x="372" y="126">Depth: 85m // Swell 2.2m</text>
+<!-- +12h Marker: Waypoint Bravo (RECOMMENDED) -->
+<circle cx="440" cy="165" fill="#00e5ff" opacity="0.25" r="9"></circle>
+<circle cx="440" cy="165" fill="#00e5ff" r="5" stroke="#00363d" stroke-width="2"></circle>
+<rect fill="#0e1d2a" height="32" rx="4" stroke="#00e5ff" stroke-width="1.5" width="168" x="455" y="152"></rect>
+<text class="font-label-sm text-[10px] font-bold" fill="#00e5ff" x="462" y="167">★ WP BRAVO (RECOMMENDED)</text>
+<text class="font-label-sm text-[9px] font-mono" fill="#50dbc8" x="462" y="179">ETA 15:45 UTC // Dep 38m</text>
+<!-- +18h Marker: Waypoint Charlie (Critical Coral Stranding Hazard) -->
+<circle cx="570" cy="220" fill="#ffb4ab" r="5" stroke="#690005" stroke-width="2"></circle>
+<text class="font-label-sm text-[10px] font-mono" fill="#ffb4ab" x="582" y="218">WP CHARLIE (+18h Fringe)</text>
+<text class="font-label-sm text-[9px]" fill="#ffb4ab" x="582" y="230">DRAFT HAZARD: &lt;4m DEPTH</text>
+<!-- Proposed Transit Route (Lautoka Pier -> Waypoint Bravo) -->
+<!-- Route 1: Deep Water Channel (Default Cyan Polyline) -->
+<path d="M 120,400 L 190,320 L 320,240 L 440,165" stroke="#00e5ff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Turn Waypoint 1 -->
+<circle cx="190" cy="320" fill="#00e5ff" r="4"></circle>
+<text class="font-label-sm text-[9px] font-mono" fill="#c3f5ff" x="135" y="315">CH-TURN 1 (032°T)</text>
+<!-- Turn Waypoint 2 -->
+<circle cx="320" cy="240" fill="#00e5ff" r="4"></circle>
+<text class="font-label-sm text-[9px] font-mono" fill="#c3f5ff" x="270" y="232">OUTER SHELF (048°T)</text>
+<!-- Alternative Route 2: Shallow Reef Shortcut (Dashed Magenta/Purple) -->
+<path d="M 120,400 Q 260,370 440,165" opacity="0.5" stroke="#ffe8e5" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<text class="font-label-sm text-[9px]" fill="#ffe8e5" opacity="0.8" x="220" y="380">ALT ROUTE 2 (Shallow Shoals)</text>
+<!-- Staging Port: Lautoka Outer Station Pier 4 -->
+<circle cx="120" cy="400" fill="#00b1a0" r="8"></circle>
+<circle cx="120" cy="400" r="14" stroke="#00b1a0" stroke-dasharray="2 2" stroke-width="1"></circle>
+<rect fill="#12212e" height="28" rx="4" width="180" x="30" y="415"></rect>
+<text class="font-label-sm text-[10px] font-bold" fill="#50dbc8" x="40" y="430">R/V PELAGIC SENTINEL</text>
+<text class="font-label-sm text-[9px]" fill="#849396" x="40" y="440">Staging Pier 4 (17.3400° S)</text>
+<!-- Current Target Marker: #OR-2024-094 -->
+<circle cx="280" cy="70" fill="url(#target-glow)" r="18"></circle>
+<circle cx="280" cy="70" fill="#93000a" r="7" stroke="#ffb4ab" stroke-width="2"></circle>
+<rect fill="#1d2b39" height="26" rx="4" width="165" x="180" y="32"></rect>
+<text class="font-label-sm text-[10px] font-bold" fill="#ffb4ab" x="188" y="45">TARGET FIX #OR-2024-094</text>
+<text class="font-label-sm text-[9px]" fill="#bac9cc" x="188" y="55">17.2860° S, 178.4100° E</text>
+<!-- Wind/Current Ocean Vector Compass Rose -->
+<g transform="translate(730, 400)">
+<circle cx="0" cy="0" fill="#0e1d2a" r="28"></circle>
+<line stroke="#3b494c" stroke-width="1" x1="0" x2="0" y1="-24" y2="24"></line>
+<line stroke="#3b494c" stroke-width="1" x1="-24" x2="24" y1="0" y2="0"></line>
+<!-- Wind vector arrow -->
+<path d="M 0,-18 L -4,-8 L 0,-11 L 4,-8 Z" fill="#00e5ff"></path>
+<text class="font-label-sm text-[8px] font-bold" fill="#00e5ff" x="-3" y="-22">N</text>
+<text class="font-label-sm text-[8px]" fill="#849396" x="-16" y="14">1.4 kts</text>
+<text class="font-label-sm text-[8px]" fill="#50dbc8" x="-18" y="24">SE Swell</text>
+</g>
+<!-- Scale Bar -->
+<g transform="translate(30, 360)">
+<line stroke="#d5e4f7" stroke-width="2" x1="0" x2="92" y1="0" y2="0"></line>
+<line stroke="#d5e4f7" stroke-width="2" x1="0" x2="0" y1="-4" y2="4"></line>
+<line stroke="#d5e4f7" stroke-width="1.5" x1="46" x2="46" y1="-2" y2="2"></line>
+<line stroke="#d5e4f7" stroke-width="2" x1="92" x2="92" y1="-4" y2="4"></line>
+<text class="font-label-sm text-[9px] font-mono" fill="#d5e4f7" x="0" y="-8">0</text>
+<text class="font-label-sm text-[9px] font-mono" fill="#d5e4f7" x="40" y="-8">2.5 NM</text>
+<text class="font-label-sm text-[9px] font-mono" fill="#d5e4f7" x="82" y="-8">5.0 NM</text>
+</g>
+</svg>
+<!-- Floating Map HUD Widgets -->
+<div class="absolute top-3 left-3 bg-surface-container/90 backdrop-blur p-2 rounded flex flex-col gap-1 font-label-sm text-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span>LIVE CURRENT: 1.4 kts @ 142° SE</span>
+</div>
+<div class="text-outline text-[10px]">WAVE SWELL: 1.6m // PERIOD: 8.4s</div>
+</div>
+<!-- Bottom Right Coordinate Readout -->
+<div class="absolute bottom-3 right-24 bg-surface-container/90 backdrop-blur px-2.5 py-1 rounded font-label-sm text-label-sm text-primary">
+            CURSOR: 17°18'42"S, 178°25'14"E
+          </div>
+</div>
+</div>
+<!-- B. CANDIDATE RECOVERY INTERCEPT COMPARISON -->
+<div class="bg-surface-container rounded-xl p-space-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Candidate Intercept Locations</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Hydrodynamic drift intercept solutions ranked by risk, sea room &amp; transit clearance</p>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container-high px-2 py-1 rounded">
+            3 SOLUTIONS COMPUTED
+          </span>
+</div>
+<!-- Candidate Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm pt-space-xs">
+<!-- Option 1: Waypoint Bravo (SELECTED / RECOMMENDED) -->
+<div class="bg-surface-container-high p-space-sm rounded-lg flex flex-col justify-between space-y-3 relative overflow-hidden">
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary-container text-on-primary font-bold">
+                  ★ RECOMMENDED
+                </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">94% FEASIBILITY</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Waypoint Bravo</div>
+<div class="font-label-sm text-label-sm text-outline">Outer Reef Cut (+12h Drift)</div>
+<div class="space-y-1 pt-1 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex justify-between">
+<span>Transit Distance:</span>
+<strong class="text-on-surface font-mono">16.4 NM</strong>
+</div>
+<div class="flex justify-between">
+<span>Transit Time:</span>
+<strong class="text-secondary font-mono">1h 12m</strong>
+</div>
+<div class="flex justify-between">
+<span>Sea Depth:</span>
+<strong class="text-on-surface font-mono">38m (Safe)</strong>
+</div>
+<div class="flex justify-between">
+<span>Coral Margin:</span>
+<strong class="text-primary font-mono">1.2 NM Clearance</strong>
+</div>
+</div>
+</div>
+<button class="w-full py-1.5 rounded bg-primary-container text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+              SELECTED ROUTE
+            </button>
+</div>
+<!-- Option 2: Waypoint Alpha -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between space-y-3">
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container text-on-surface-variant">
+                  OPTION 2
+                </span>
+<span class="font-label-sm text-label-sm text-primary font-bold">82% FEASIBILITY</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Waypoint Alpha</div>
+<div class="font-label-sm text-label-sm text-outline">Deep Pelagic Shelf (+6h Drift)</div>
+<div class="space-y-1 pt-1 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex justify-between">
+<span>Transit Distance:</span>
+<strong class="text-on-surface font-mono">22.1 NM</strong>
+</div>
+<div class="flex justify-between">
+<span>Transit Time:</span>
+<strong class="text-on-surface font-mono">1h 38m</strong>
+</div>
+<div class="flex justify-between">
+<span>Sea Depth:</span>
+<strong class="text-on-surface font-mono">85m (Deep)</strong>
+</div>
+<div class="flex justify-between">
+<span>Coral Margin:</span>
+<strong class="text-on-surface font-mono">4.8 NM (Swell 2.2m)</strong>
+</div>
+</div>
+</div>
+<button class="w-full py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm">
+              Switch Intercept
+            </button>
+</div>
+<!-- Option 3: Waypoint Charlie -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between space-y-3">
+<div class="space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-error-container text-on-error-container">
+                  CRITICAL RISK
+                </span>
+<span class="font-label-sm text-label-sm text-error font-bold">45% FEASIBILITY</span>
+</div>
+<div class="font-headline-sm text-headline-sm text-on-surface">Waypoint Charlie</div>
+<div class="font-label-sm text-label-sm text-outline">Lagoon Fringe (+18h Horizon)</div>
+<div class="space-y-1 pt-1 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex justify-between">
+<span>Transit Distance:</span>
+<strong class="text-on-surface font-mono">12.8 NM</strong>
+</div>
+<div class="flex justify-between">
+<span>Transit Time:</span>
+<strong class="text-on-surface font-mono">58m</strong>
+</div>
+<div class="flex justify-between">
+<span>Sea Depth:</span>
+<strong class="text-error font-mono">&lt; 4m (Hazard)</strong>
+</div>
+<div class="flex justify-between">
+<span>Coral Margin:</span>
+<strong class="text-error font-mono">Imminent Snag</strong>
+</div>
+</div>
+</div>
+<button class="w-full py-1.5 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm">
+              Switch Intercept
+            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: ~40% (Col 8-12) -->
+<div class="lg:col-span-5 flex flex-col space-y-space-md">
+<!-- A. ROUTE PLANNER & VESSEL ASSIGNMENT -->
+<div class="bg-surface-container rounded-xl p-space-md space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-body-lg">directions_boat</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Vessel &amp; Route Telemetry</h3>
+</div>
+<span class="font-label-sm text-label-sm text-primary">TRANSIT ID #TR-088</span>
+</div>
+<!-- Vessel Selection Card -->
+<div class="bg-surface-container-high p-space-sm rounded-lg space-y-2">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-outline block">ASSIGNED SALVAGE VESSEL</span>
+<div class="font-headline-sm text-headline-sm text-on-surface">R/V Pelagic Sentinel</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">24m Aluminum Catamaran • Shallow 1.2m Draft</p>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+              READY
+            </span>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1 font-label-sm text-label-sm text-on-surface-variant">
+<div class="bg-surface-container-low p-2 rounded">
+<span class="text-outline block text-[10px]">PAYLOAD CAPACITY</span>
+<span class="text-on-surface font-mono">Hydraulic Net Winch (3.5T)</span>
+</div>
+<div class="bg-surface-container-low p-2 rounded">
+<span class="text-outline block text-[10px]">INSPECTION ROV</span>
+<span class="text-on-surface font-mono">ROV-03 (Tether 150m)</span>
+</div>
+</div>
+</div>
+<!-- Route Metrics Summary -->
+<div class="space-y-2 pt-1">
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-on-surface-variant">Departure Staging Base:</span>
+<strong class="text-on-surface font-mono">Lautoka Marine Station Pier 4</strong>
+</div>
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-on-surface-variant">Target Intercept Point:</span>
+<strong class="text-primary font-mono">WP Bravo (17.3105° S, 178.4350° E)</strong>
+</div>
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-on-surface-variant">Planned Cruise Speed:</span>
+<strong class="text-on-surface font-mono">14.0 kts (Twin Yanmar Diesel)</strong>
+</div>
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-on-surface-variant">Calculated Transit Duration:</span>
+<strong class="text-secondary font-mono">1h 10m (ETA: 15:45 UTC)</strong>
+</div>
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-on-surface-variant">Safe Ebb Return Window:</span>
+<strong class="text-tertiary-fixed-dim font-mono">Prior to 18:30 UTC</strong>
+</div>
+</div>
+<!-- Route Alternatives & Safety Checklist -->
+<div class="pt-2 border-t border-outline-variant/30 space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline">SAFETY CLEARANCE GATES</span>
+<span class="font-label-sm text-label-sm text-secondary">3 OF 3 VERIFIED</span>
+</div>
+<div class="space-y-1.5 font-label-sm text-label-sm">
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+                Depth Draft Clearance (Min 18.2m)
+              </span>
+<span class="text-secondary font-mono">PASSED</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>
+                Wave/Swell Threshold (&lt; 2.5m ceiling)
+              </span>
+<span class="text-secondary font-mono">PASSED (1.6m)</span>
+</div>
+<div class="flex items-center justify-between p-2 rounded bg-surface-container-low">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[16px]">verified</span>
+                Sanctuary Permit Clearance
+              </span>
+<span class="text-primary font-mono">#MPA-9921</span>
+</div>
+</div>
+</div>
+<!-- Route Channel Switch Buttons -->
+<div class="flex items-center gap-2 pt-1 font-label-sm text-label-sm">
+<button class="flex-1 py-1.5 rounded bg-primary-container/20 text-primary-container font-semibold">
+            Route 1: Deep Channel (Active)
+          </button>
+<button class="flex-1 py-1.5 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface">
+            Route 2: Direct Reef Shortcut
+          </button>
+</div>
+</div>
+<!-- B. MISSION CONFIGURATION & FIELD PROTOCOL -->
+<div class="bg-surface-container rounded-xl p-space-md space-y-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-body-lg">assignment</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Mission Configuration &amp; Notes</h3>
+</div>
+<div class="space-y-space-sm">
+<div>
+<label class="font-label-sm text-label-sm text-outline block mb-1">OPERATION TITLE</label>
+<input class="w-full bg-surface-container-low text-on-surface font-body-sm text-body-sm p-2 rounded border border-outline-variant/40 focus:border-primary-container focus:outline-none" type="text" value="OP-NET-094: Tavaru Acropora Safeguard Salvage"/>
+</div>
+<div class="grid grid-cols-2 gap-space-sm">
+<div>
+<label class="font-label-sm text-label-sm text-outline block mb-1">FIELD SALVAGE CREW</label>
+<div class="bg-surface-container-low p-2 rounded font-body-sm text-body-sm text-on-surface truncate">
+                Team Orca-3 (Lead: J. Vasconcelos)
+              </div>
+</div>
+<div>
+<label class="font-label-sm text-label-sm text-outline block mb-1">EST. DEPARTURE TIME</label>
+<div class="bg-surface-container-low p-2 rounded font-label-sm text-label-sm text-secondary">
+                14:45 UTC (in ~13 mins)
+              </div>
+</div>
+</div>
+<!-- Environmental Safety Alert Box -->
+<div class="bg-surface-container-low p-space-sm rounded-lg space-y-2">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm text-error">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<strong>CRITICAL FIELD CONSTRAINTS</strong>
+</div>
+<ul class="font-body-sm text-body-sm text-on-surface-variant space-y-1 list-disc pl-4 text-xs">
+<li>
+<strong class="text-on-surface">Tethering Hazard:</strong> Derelict net has high float density. Free-diver entanglement hazard: ROV-03 grapple pass required before winch lock.
+              </li>
+<li>
+<strong class="text-on-surface">Tidal Ebb Window:</strong> Outer pass begins rapid tidal drawdown at 17:15 UTC. All extraction equipment must clear outer reef before 18:30 UTC.
+              </li>
+</ul>
+</div>
+</div>
+</div>
+<!-- C. OPERATIONAL ACTION BAR & SUBMISSION -->
+<div class="bg-surface-container-high p-space-md rounded-xl space-y-space-sm">
+<div class="flex flex-col sm:flex-row gap-space-sm">
+<button class="flex-1 py-2.5 px-3 rounded bg-surface-container hover:bg-surface-bright text-on-surface font-label-sm text-label-sm flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+            Save Draft Plan
+          </button>
+<button class="py-2.5 px-3 rounded bg-surface-container hover:bg-surface-bright text-on-surface font-label-sm text-label-sm flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+            Recalculate
+          </button>
+</div>
+<!-- Primary Glow Action Button -->
+<button class="w-full py-3 px-4 rounded bg-primary-container text-on-primary font-headline-sm text-headline-sm uppercase tracking-wider font-bold shadow-md hover:shadow-xl transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-on-primary">send</span>
+          Submit for Human Lead Authorization
+        </button>
+<p class="font-label-sm text-[10px] text-outline text-center leading-relaxed">
+          OceanRescue Marine AI Decision-Support Pipeline • Salvage transit requires formal vessel master sign-off and on-scene environmental hazard risk assessment.
+        </p>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Interactive micro-interaction for intercept solution cards
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (btn.innerText.includes('Switch Intercept')) {
+          alert('Re-routing transit calculation to selected waypoint...');
+        }
+      });
+    });
+  });
+</script></main>
+<footer class="px-space-md py-space-sm border-t border-outline-variant/20 bg-surface-container-low/40 font-label-sm text-label-sm text-on-surface-variant flex flex-wrap items-center justify-between gap-space-sm" data-purpose="app-footer">
+<div class="flex items-center gap-space-sm">
+<span class="text-on-surface font-semibold">OceanRescue Marine AI Decision-Support Platform</span>
+<span class="text-outline-variant">|</span>
+<span>Third-Year Computer Engineering Capstone</span>
+</div>
+<div class="flex items-center gap-space-sm text-[11px]">
+<span class="text-secondary">"Every Net Found. Every Life Saved."</span>
+<span class="text-outline-variant">|</span>
+<span>Baseline Model: YOLOv8-seg (TensorRT)</span>
+</div>
+</footer>
+</div>
+</body></html>

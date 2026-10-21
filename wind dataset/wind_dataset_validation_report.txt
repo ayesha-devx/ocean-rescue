@@ -1,0 +1,291 @@
+﻿======================================================================
+OCEANRESCUE - WIND NetCDF VALIDATION REPORT
+Generated : 2026-10-10T14:25:57+05:30  (local)  |  2026-10-10T08:55:57Z (UTC)
+Validated by : Antigravity AI (Google DeepMind)
+======================================================================
+
+----------------------------------------------------------------------
+1. FILE INFORMATION
+----------------------------------------------------------------------
+  Filename      : wind dataset.nc
+  Full path     : c:\Users\KRIN\Downloads\ocean rescue dataset\wind dataset\
+  Size          : 29,628 bytes  (28.9 KB)
+  Last modified : 2026-10-10 14:24:19 (local)
+  Format        : NETCDF4 / HDF5
+
+  NOTE: 28.9 KB is very small compared to the ocean currents file
+  (388.6 KB) and wave file (1,080.4 KB). This is consistent with the
+  sparse nature of scatterometer observations (not a full model grid).
+
+----------------------------------------------------------------------
+2. FILE OPEN CHECK
+----------------------------------------------------------------------
+  netCDF4 library : PASS - opened successfully (read-only)
+  xarray  library : PASS - opened successfully (read-only)
+  Reported format : NETCDF4
+
+NOTE: The file was opened READ-ONLY for inspection.
+      No modifications were made to the NetCDF file.
+
+----------------------------------------------------------------------
+3. GLOBAL ATTRIBUTES
+----------------------------------------------------------------------
+  Conventions   : CF-1.11
+  Title         : Global Ocean - Wind - HY-2B HSCAT - 25km daily Ascending V2
+  Institution   : EUMETSAT/OSI SAF/KNMI
+  Source        : HY-2B HSCAT  (HaiYang-2B scatterometer)
+  References    : https://osi-saf.eumetsat.int/ | https://scatterometer.knmi.nl/
+  Comment       : Orbit period and inclination are constant values.
+                  All wind directions in oceanographic convention
+                  (0 deg. flowing North).
+  Product ID    : WIND_GLO_PHY_L3_NRT_012_002
+  Dataset ID    : cmems_obs-wind_glo_phy_nrt_l3-hy2b-hscat-asc-0.25deg_P1D-i_202311
+  Download date : 2026-10-10T08:54:18 UTC
+
+  IMPORTANT NOTE ON DATA SOURCE:
+  This is a SCATTEROMETER OBSERVATION product (HY-2B HSCAT satellite),
+  NOT a model reanalysis or NWP forecast. Key implications:
+    - Data exists only where the satellite swath overflew the region.
+    - Daily composites mask swaths not covered on a given day.
+    - Temporal resolution is 1 pass per day (ascending orbit only).
+    - The "model wind" variables are stress-equivalent winds backed by
+      ECMWF operational model collocations, not pure observations.
+
+----------------------------------------------------------------------
+4. DIMENSIONS
+----------------------------------------------------------------------
+  Dimension     Size   Meaning
+  ---------     ----   -------
+  time            3    3 daily timestamps
+  latitude       24    24 latitude grid points  (0.25 deg grid)
+  longitude      24    24 longitude grid points (0.25 deg grid)
+
+----------------------------------------------------------------------
+5. ALL VARIABLES & UNITS
+----------------------------------------------------------------------
+  Variable                   Dims                  Shape       Type    Long Name                                 Standard Name    Units   FillValue
+  --------                   ----                  -----       ----    ---------                                 -------------    -----   ---------
+  time                       (time,)               (3,)        float64 Time                                      time             seconds since 1970-01-01  None
+  latitude                   (latitude,)           (24,)       float32 Latitude                                  latitude         degrees_north             None
+  longitude                  (longitude,)          (24,)       float32 Longitude                                 longitude        degrees_east              None
+  se_eastward_model_wind     (time,lat,lon)         (3,24,24)   float32 Stress equivalent model wind u component  eastward_wind    m s-1                    NaN
+  se_northward_model_wind    (time,lat,lon)         (3,24,24)   float32 Stress equivalent model wind v component  northward_wind   m s-1                    NaN
+
+  WIND VARIABLE NOTES:
+    - "se_" prefix = Stress Equivalent. These are 10-m neutral winds
+      calibrated to be consistent with ECMWF stress-equivalent winds.
+      They can be used as surface wind forcing in drift models.
+    - background_wind_source : ECMWF (Operational Model)
+    - valid_min / valid_max  : -50.0 to +50.0 m s-1 (per variable metadata)
+    - missing_value sentinel : -32767 (legacy NetCDF convention; actual
+      fill stored as NaN in the float32 arrays)
+
+  VARIABLE NAMING vs REQUEST:
+    Requested "eastward wind component"  -> se_eastward_model_wind  [FOUND]
+    Requested "northward wind component" -> se_northward_model_wind  [FOUND]
+    Units for both : m s-1  [CORRECT]
+
+----------------------------------------------------------------------
+6. COORDINATE RANGES & SPATIAL RESOLUTION
+----------------------------------------------------------------------
+  Coordinate   Min       Max       N-points   Spacing        Target range    Status
+  ----------   ---       ---       --------   -------        ------------    ------
+  latitude     14.1250   19.8750   24         0.25 deg       14.0 - 20.0 N   PARTIAL
+  longitude    68.1250   73.8750   24         0.25 deg       68.0 - 74.0 E   PARTIAL
+
+  Spatial resolution : 0.25 degrees (~25 km)
+  Grid type          : Regular lat/lon grid centred on 0.125-deg offsets
+
+  COVERAGE GAP NOTE:
+  The grid starts at 14.125 N (not 14.000 N) and ends at 19.875 N
+  (not 20.000 N). Similarly 68.125 E to 73.875 E instead of 74.000 E.
+  This is a typical centre-of-cell convention for a 0.25-deg product:
+    - The cell centred at 14.125 N spans 14.000 N - 14.250 N  (covers 14 N)
+    - The cell centred at 19.875 N spans 19.750 N - 20.000 N  (covers 20 N)
+  Therefore the FULL target box 14-20 N, 68-74 E is covered at cell
+  level, but the coordinate values themselves do not reach 14.000 or
+  20.000 exactly. Flagged as PARTIAL for strict boundary interpretation.
+
+----------------------------------------------------------------------
+7. TIME RANGE & TIMESTAMPS
+----------------------------------------------------------------------
+  Time axis units : seconds since 1970-01-01 00:00:00
+  Calendar        : gregorian
+  n_times         : 3
+  Temporal resolution : 1 day (daily ascending-pass composite)
+
+  All 3 timestamps:
+    1.  2026-09-01 00:00:00 UTC   (Day 1)
+    2.  2026-09-02 00:00:00 UTC   (Day 2)
+    3.  2026-09-03 00:00:00 UTC   (Day 3)
+
+  Intervals (h)  : [24.0, 24.0]
+  Min interval   : 24.0 h  |  Max interval : 24.0 h  (uniform)
+  Total span     : 2 days (48 hours)
+  Target coverage: 2026-09-01 to 2026-09-03 UTC  ->  COVERED (3 days)
+
+  TEMPORAL RESOLUTION WARNING:
+  The wind dataset has 1 daily timestamp per day (24-hour resolution).
+  This is significantly coarser than:
+    - Ocean currents dataset : 6-hourly  (4x per day)
+    - Wave dataset           : 3-hourly  (8x per day)
+  Scatterometer overpasses typically occur once per day per satellite.
+  Sub-daily wind variation is NOT captured in this file.
+
+----------------------------------------------------------------------
+8. MISSING VALUE / NaN STATISTICS
+----------------------------------------------------------------------
+  Variable                  Shape     Total Pts  Missing        Missing %  Valid Pts
+  --------                  -----     ---------  -------        ---------  ---------
+  se_eastward_model_wind    (3,24,24)  1,728     1,135          65.68 %    593
+  se_northward_model_wind   (3,24,24)  1,728     1,135          65.68 %    593
+
+  Per-timestep breakdown (critical finding):
+  -----------------------------------------------------------------------
+  Timestep   Date              Missing/Total     Missing %   Status
+  --------   ----              -------------     ---------   ------
+  t=0        2026-09-01        0 / 576           0.0 %       COMPLETE
+  t=1        2026-09-02        576 / 576         100.0 %     ENTIRELY MISSING
+  t=2        2026-09-03        559 / 576         97.0 %      NEAR-ENTIRELY MISSING
+
+  MISSING VALUE INTERPRETATION (VERIFIED):
+  The extremely high missing percentages on Day 2 and Day 3 are NOT
+  due to land masking alone. The breakdown proves this:
+    - Day 1 (2026-09-01): 0% missing -> satellite passed over this
+      region on Sep 1 and captured a full ascending swath.
+    - Day 2 (2026-09-02): 100% missing -> HY-2B HSCAT ascending orbit
+      did NOT overpass this lat/lon box on Sep 2. Complete swath gap.
+    - Day 3 (2026-09-03): 97% missing -> only 17 of 576 grid cells
+      were partially covered. Orbital geometry at the box boundary.
+  
+  This is the fundamental limitation of Level-3 scatterometer data:
+  sparse, orbit-dependent coverage with daily repeat cycles that may
+  miss a specific regional box entirely on some days.
+
+  Land masking may account for some fraction of Day 1 missing values
+  (near the Indian coastline), but cannot explain Day 2 (100%) and
+  Day 3 (97%) gaps — those are purely due to no satellite overpass.
+
+----------------------------------------------------------------------
+9. VALID DATA STATISTICS (valid ocean points only)
+----------------------------------------------------------------------
+  Metric          se_eastward (m/s)   se_northward (m/s)
+  ------          -----------------   ------------------
+  Minimum         +0.260000           -3.390000
+  Maximum         +8.980000           +4.230000
+  Mean            +6.828701           +0.679342
+  Std Dev          2.050668            1.737885
+
+  NOTE: Valid data is entirely from t=0 (2026-09-01) plus 17 cells
+  from t=2 (2026-09-03). Day 2 contributes zero valid values.
+
+----------------------------------------------------------------------
+10. UNUSUAL VALUE CHECKS
+----------------------------------------------------------------------
+  se_eastward_model_wind  : 0 values with |val| > 50 m/s   [PASS]
+  se_northward_model_wind : 0 values with |val| > 50 m/s   [PASS]
+
+  Physical interpretation of valid values (2026-09-01 data):
+    - Eastward winds +0.26 to +8.98 m/s  (westerly, moderate)
+    - Northward winds -3.39 to +4.23 m/s (mixed meridional component)
+    - Prevailing direction: eastward / SW monsoon flow decaying in Sep
+    - Wind speeds up to ~9 m/s are physically reasonable for Sep
+      in the Arabian Sea (post-peak monsoon conditions).
+    - No NaN spikes, no fill-value leakage, no unphysical extremes.
+
+----------------------------------------------------------------------
+11. SCATTEROMETER LIMITATIONS FOR OCEANRESCUE DRIFT MODELLING
+----------------------------------------------------------------------
+  Limitation 1 - TEMPORAL GAPS (CRITICAL):
+    Only 1 of 3 days (2026-09-01) has complete spatial coverage.
+    2026-09-02 has ZERO valid wind observations in this region.
+    2026-09-03 has only 17 valid grid cells (out of 576).
+    Using this file alone provides wind forcing for only ~33% of the
+    target 2-day simulation window.
+
+  Limitation 2 - TEMPORAL RESOLUTION (SIGNIFICANT):
+    24-hour daily composites cannot represent diurnal wind variability,
+    monsoon gusts, or intra-day sea breeze patterns important for
+    near-coastal ALDFG drift.
+
+  Limitation 3 - SPATIAL RESOLUTION (MODERATE):
+    0.25 deg (~25 km) is coarser than the ocean currents (0.083 deg,
+    ~9 km) and wave (0.083 deg, ~9 km) datasets. Interpolation will
+    be required to couple this with the other forcing datasets.
+
+  Limitation 4 - ASCENDING ORBIT ONLY:
+    The dataset ID includes "asc" (ascending passes only). Descending
+    passes are excluded. A full L3 product uses both passes for better
+    spatial coverage; this subset halves coverage probability.
+
+  Limitation 5 - STRESS EQUIVALENT vs TRUE WIND:
+    The "se_" prefix indicates stress-equivalent winds. For drift
+    modelling using a windage coefficient applied directly to wind
+    speed, the difference from true 10-m winds is small but non-zero.
+    For rigorous use, users should be aware of this distinction.
+
+----------------------------------------------------------------------
+12. GEOGRAPHIC COVERAGE SUMMARY
+----------------------------------------------------------------------
+  Target       : 14.000 - 20.000 N,  68.000 - 74.000 E
+  File covers  : 14.125 - 19.875 N,  68.125 - 73.875 E
+  Interpretation: Cell-centred grid; full target box covered at
+                  cell level (see Section 6 for details)
+  Verdict      : PARTIAL  (boundary cells offset by 0.125 deg)
+
+----------------------------------------------------------------------
+13. SUITABILITY SUMMARY FOR OCEANRESCUE DRIFT MODELLING
+----------------------------------------------------------------------
+  Criterion                              Assessment          Flag
+  ---------                              ----------          ----
+  Wind variables present (u, v)          YES                 OK
+  Correct units (m s-1)                  YES                 OK
+  CF-1.11 conventions                    YES                 OK
+  Geographic coverage 14-20N, 68-74E     Cell-level only     PARTIAL
+  Time coverage Sep 1-3 2026             3 timestamps        PARTIAL
+  Data completeness                      Day 1 only (33%)    WARNING
+  Temporal resolution                    24h (daily)         WARNING
+  Spatial resolution                     0.25 deg (~25 km)   WARNING
+  Ascending-only coverage                Half-pass product   WARNING
+  No unphysical values                   YES                 OK
+
+======================================================================
+VERDICT:  PASS WITH WARNINGS
+======================================================================
+
+The wind dataset file is structurally valid and opens correctly. The
+required wind components (eastward and northward) are present with
+correct units (m s-1) and physically plausible values.
+
+However, three significant limitations make it unsuitable as the sole
+wind forcing input for a full 2-day (Sep 1-3 2026) drift simulation:
+
+  [WARNING 1] Only Day 1 (2026-09-01) has complete spatial coverage.
+              Day 2 is 100% missing. Day 3 is 97% missing.
+              This is NOT land masking — it is orbital swath absence.
+
+  [WARNING 2] 24-hour temporal resolution is much coarser than the
+              companion ocean currents (6-hourly) and wave (3-hourly)
+              datasets, limiting sub-daily drift accuracy.
+
+  [WARNING 3] 0.25-deg spatial resolution is 3x coarser than the
+              other datasets; spatial interpolation will be needed.
+
+RECOMMENDATION FOR OCEANRESCUE:
+  Option A: Use this dataset for Day 1 only and source a gap-filled
+            or model-based wind product (e.g., ERA5, ECMWF HRES, or
+            CMEMS WIND_GLO_PHY_CLIMA product) for Days 2-3.
+  Option B: Supplement with the companion descending-pass product
+            ("desc" variant from the same CMEMS dataset) to improve
+            coverage probability.
+  Option C: Use a model wind reanalysis (e.g., ERA5 10-m u/v at
+            hourly resolution) as the primary wind forcing, and use
+            this scatterometer file only for validation/comparison.
+
+The file is CLEAN and VALID for the data it contains.
+Suitability as a COMPLETE forcing input: PARTIAL / NOT RECOMMENDED
+  for multi-day simulation without gap-filling.
+
+======================================================================
+END OF REPORT
+======================================================================

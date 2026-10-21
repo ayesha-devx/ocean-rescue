@@ -1,0 +1,158 @@
+﻿======================================================================
+OCEANRESCUE - NetCDF VALIDATION REPORT
+Generated : 2026-10-10T13:46:51+05:30  (local)  |  2026-10-10T08:16:51Z (UTC)
+Validated by : Antigravity AI (Google DeepMind)
+======================================================================
+
+----------------------------------------------------------------------
+1. FILE INFORMATION
+----------------------------------------------------------------------
+  Filename      : ocean rescue datasets ocean currents.nc
+  Full path     : c:\Users\KRIN\Downloads\ocean rescue dataset\ocean currents dataset\
+  Size          : 397,885 bytes  (388.6 KB)
+  Last modified : 2026-10-10 13:02:11 (local)
+  Format        : NetCDF-4 / HDF5
+
+----------------------------------------------------------------------
+2. FILE OPEN CHECK
+----------------------------------------------------------------------
+  netCDF4 library : PASS - opened successfully (read-only)
+  xarray library  : PASS - opened successfully (read-only)
+
+NOTE: The file was opened READ-ONLY for inspection.
+      No modifications were made to the NetCDF file.
+
+----------------------------------------------------------------------
+3. GLOBAL ATTRIBUTES
+----------------------------------------------------------------------
+  Conventions    : CF-1.11
+  Title          : Instantaneous fields for GLOBAL_ANALYSISFORECAST_PHY_001_024
+  Institution    : Mercator Ocean
+  Producer       : CMEMS - Global Monitoring and Forecasting Centre
+  Source model   : MERCATOR GLO12
+  Dataset ID     : cmems_mod_glo_phy-cur_anfc_0.083deg_PT6H-i_202406
+  Download date  : 2026-10-10T07:32:09 UTC
+
+----------------------------------------------------------------------
+4. DIMENSIONS
+----------------------------------------------------------------------
+  Dimension     Size   Meaning
+  ---------     ----   -------
+  time            9    9 time snapshots (6-hourly)
+  depth           1    1 depth level (surface)
+  latitude       73    73 latitude grid points
+  longitude      72    72 longitude grid points
+
+----------------------------------------------------------------------
+5. VARIABLES & UNITS
+----------------------------------------------------------------------
+  Variable    Dimensions              Shape        Type     Long Name                    Units                    Fill Value
+  --------    ----------              -----        ----     ---------                    -----                    ----------
+  time        (time,)                 (9,)         float64  Time                         seconds since 1970-01-01  None
+  depth       (depth,)                (1,)         float32  Depth                        m                         None
+  latitude    (latitude,)             (73,)        float32  Latitude                     degrees_north             None
+  longitude   (longitude,)            (72,)        float32  Longitude                    degrees_east              None
+  uo          (time, depth, lat, lon) (9,1,73,72)  float32  Eastward sea-water velocity  m s-1                     NaN
+  vo          (time, depth, lat, lon) (9,1,73,72)  float32  Northward sea-water velocity m s-1                     NaN
+
+----------------------------------------------------------------------
+6. COORDINATE DETAILS
+----------------------------------------------------------------------
+  Latitude range     : 73 points, ~0.083 deg spacing
+  Longitude range    : 72 points, ~0.083 deg spacing
+  Spatial resolution : ~0.083 degrees (~9 km)
+
+----------------------------------------------------------------------
+7. DATE / TIME RANGE
+----------------------------------------------------------------------
+  9 time steps at 6-hour intervals:
+
+    2026-09-01 00:00 UTC
+    2026-09-01 06:00 UTC
+    2026-09-01 12:00 UTC
+    2026-09-01 18:00 UTC
+    2026-09-02 00:00 UTC
+    2026-09-02 06:00 UTC
+    2026-09-02 12:00 UTC
+    2026-09-02 18:00 UTC
+    2026-09-03 00:00 UTC
+
+  First timestamp : 2026-09-01 00:00 UTC
+  Last timestamp  : 2026-09-03 00:00 UTC
+  Total span      : 2 days (48 hours)
+  Step interval   : 6 hours (uniform, no gaps)
+
+----------------------------------------------------------------------
+8. DEPTH
+----------------------------------------------------------------------
+  Number of depth levels : 1  (surface only)
+  Depth value            : ~0.494 m  (effectively the sea surface layer)
+  Units                  : m (metres, positive down)
+
+  This single-level configuration is ideal for floating ALDFG
+  (Abandoned, Lost, or Discarded Fishing Gear) drift simulation,
+  as floating debris stays near the surface.
+
+----------------------------------------------------------------------
+9. MISSING VALUE / NaN STATISTICS
+----------------------------------------------------------------------
+  Variable   Total Grid Points   Missing (NaN)   Missing %   Valid Points
+  --------   -----------------   -------------   ---------   ------------
+  uo         47,304              4,914           10.39 %     42,390
+  vo         47,304              4,914           10.39 %     42,390
+
+  NOTE: The ~10% missing values are land-mask points - grid cells that
+  fall over land (Indian coastline, Sri Lanka, etc.). This is expected
+  and correct for any ocean-domain dataset. All ocean grid cells are
+  fully valid and contain no anomalous NaN values.
+
+----------------------------------------------------------------------
+10. DATA STATISTICS (valid ocean points only)
+----------------------------------------------------------------------
+  Metric        uo (Eastward, m/s)   vo (Northward, m/s)
+  ------        ------------------   -------------------
+  Minimum       -0.250743            -0.542414
+  Maximum       +0.274052            +0.126317
+  Mean          +0.076595            -0.102548
+  Std Dev        0.064653             0.083056
+
+----------------------------------------------------------------------
+11. VARIABLE PRESENCE CHECK
+----------------------------------------------------------------------
+  Variable   Long Name                       Present?
+  --------   ---------                       --------
+  uo         Eastward sea-water velocity     FOUND  [PASS]
+  vo         Northward sea-water velocity    FOUND  [PASS]
+
+----------------------------------------------------------------------
+12. SUITABILITY FOR OCEANRESCUE DRIFT FORECASTING
+----------------------------------------------------------------------
+  Criterion                          Assessment
+  ---------                          ----------
+  uo & vo in m/s                     Correct units for Lagrangian drift simulation
+  6-hourly temporal resolution       Adequate for prototype ALDFG drift modelling
+  0.083 deg (~9 km) spatial res.     Coarse but standard for regional prototyping
+  Single depth level (surface)       Ideal - floating ALDFG stays near the surface
+  Arabian Sea / Indian Ocean region  Matches Indian coastal scenario
+  CF-1.11 standard                   Compatible with xarray, parcels, etc.
+  CMEMS / Mercator GLO12 source      Reliable, peer-reviewed operational forecast model
+
+======================================================================
+VERDICT:  PASS
+======================================================================
+
+All inspected parameters are consistent and valid:
+  - File opens cleanly with both netCDF4 and xarray (read-only)
+  - Required velocity variables (uo, vo) are present with correct units (m s-1)
+  - Dimensions are internally consistent: (9, 1, 73, 72)
+  - 9 time steps at uniform 6-hour intervals over 2026-09-01 to 2026-09-03
+  - Single surface depth level - suitable for surface drift simulation
+  - ~10.39% NaN values explained entirely by land masking (expected)
+  - CF-1.11 conventions followed; CMEMS Mercator GLO12 operational source
+  - No data corruption, no anomalous values, no structural errors detected
+
+The file is CLEAN, VALID, and SUITABLE for OceanRescue drift forecasting.
+
+======================================================================
+END OF REPORT
+======================================================================
