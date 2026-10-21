@@ -1,0 +1,115 @@
+================================================================================
+OceanRescue Third-Year Mini-Project
+Stage 3A: Baseline Drift Simulation Output Audit Report
+================================================================================
+Audit Date       : 10-Oct-2026
+Study Region     : Arabian Sea  |  Latitude 14.0° N to 20.0° N, Longitude 68.0° E to 74.0° E
+Project Title    : OceanRescue: AI-Driven Geospatial Intelligence for Detection,
+                   Drift Forecasting, and Retrieval Optimization of ALDFG
+Workspace        : C:\Users\KRIN\Downloads\ocean rescue dataset\dataset_integration\stage3\
+Audited Files    :
+  (1) simulate_aldfg_drift.py
+  (2) initial_particles.csv
+  (3) drift_trajectories.csv
+  (4) drift_trajectories.geojson
+  (5) stage3_validation_report.txt
+================================================================================
+
+--------------------------------------------------------------------------------
+1. AUDIT SUMMARY & VERDICT
+--------------------------------------------------------------------------------
+A comprehensive read-only audit of all Stage 3A outputs was executed across 8
+verification tasks.
+
+  Final Audit Verdict: PASS
+
+  Key Verification Results:
+  - Total Initial Particles     : 50 unique particles (PARTICLE_001 to PARTICLE_050)
+  - Total Trajectory Records    : 2,422 CSV rows
+  - Completed Trajectories      : 47 particles (94.0%)
+  - Land Collision Terminations : 3 particles (6.0%)
+  - Out-of-Bounds Terminations  : 0 particles (0.0%)
+  - Missing Data Terminations   : 0 particles (0.0%)
+  - GeoJSON Trajectory Features : 50 LineString features
+  - Spatial & Domain Bounds     : 100% within 14.0–20.0°N and 68.0–74.0°E (0 points on land)
+  - Timestamp Sequences        : 100% monotonic, unique, and bounded within Sept 1–3, 2026
+  - Physics Parameters         : Windage Cw = 0.03 (3.0%), Stokes drift = 0.0 m/s (baseline)
+
+--------------------------------------------------------------------------------
+2. DETAILED AUDIT TASK BREAKDOWN
+--------------------------------------------------------------------------------
+
+[CHECK 1] Particle & Record Counts
+  - Initial Particles CSV : 50 rows, 50 unique particle IDs (`PARTICLE_001` to `PARTICLE_050`).
+  - Trajectories CSV      : 2,422 rows total across 50 particle trajectories.
+  - GeoJSON Features      : 50 LineString features matching the 50 particle tracks.
+  - Verdict               : PASS
+
+[CHECK 2] Timestamp Sequence & Ordering
+  - Time Range            : 2026-09-01T00:00:00 to 2026-09-03T00:00:00 UTC (49 hourly steps).
+  - Monotonicity          : 100% of particle trajectories display strictly increasing timestamps.
+  - Uniqueness            : 100% of timestamps are unique per particle (no duplicate hours).
+  - Verdict               : PASS
+
+[CHECK 3] Termination Status & Reconciliation
+  - Claimed in Report     : 47 Completed, 3 Land Collisions.
+  - CSV Status Verification:
+    * 47 particles completed all 48 hours (49 timestamp rows each = 2,303 rows).
+    * 3 particles encountered land collisions (PARTICLE_001, PARTICLE_010, PARTICLE_020)
+      and terminated cleanly at their collision points (119 total rows).
+    * Mathematical Sum: 2,303 + 119 = 2,422 CSV rows. Exact 100% reconciliation!
+  - Verdict               : PASS
+
+[CHECK 4] CSV vs GeoJSON Feature Alignment
+  - Particle IDs Match    : 100% match between CSV particle IDs and GeoJSON feature properties.
+  - Coordinate Alignment  : 100% match between CSV coordinate sequences and GeoJSON LineStrings.
+  - Termination Points    : GeoJSON LineString endpoints match the exact final CSV positions.
+  - Verdict               : PASS
+
+[CHECK 5] Domain & Land Collision Enforcements
+  - Latitude Range        : 14.03596° N to 19.51587° N (Within 14.0° to 20.0° N domain).
+  - Longitude Range       : 68.16667° E to 73.65751° E (Within 68.0° to 74.0° E domain).
+  - Land Mask Audit       : 0 active or completed trajectory positions fall on land (`land_mask == 0`).
+  - Coastal Stepping      : Particles approaching coastlines trigger `LAND_COLLISION` before crossing.
+  - Verdict               : PASS
+
+[CHECK 6] Missing Environmental Velocity Handling
+  - Exception Handling    : If bilinear spatial interpolation returns NaN over missing velocity
+                            regions, trajectory status sets to `MISSING_DATA` and terminates.
+  - Dataset Cleanliness   : 0 missing data terminations occurred (Stage 2 NetCDF is complete over ocean).
+  - Verdict               : PASS
+
+[CHECK 7] Windage Coefficient & Stokes Baseline Assumptions
+  - Applied Windage Cw    : 0.03 (3.0% factor) verified in code, report, and CSV records.
+  - Stokes Drift Baseline : Set to 0.0 m/s by default for baseline run (documented as assumption).
+  - Verdict               : PASS
+
+[CHECK 8] Reproducibility & Report Consistency
+  - Random Seed           : Fixed seed 42 used in `simulate_aldfg_drift.py`.
+  - Re-execution Test     : Running `simulate_aldfg_drift.py` generates identical files and metrics.
+  - Verdict               : PASS
+
+--------------------------------------------------------------------------------
+3. DISTINCTION OF DEFECTS VS LIMITATIONS
+--------------------------------------------------------------------------------
+  - Actual Defects Found  : NONE (0 errors, 0 invalid positions, 0 format mismatches).
+  - Methodological Limits :
+    1. Windage Cw = 0.03 is an assumed uncalibrated parameter (real ALDFG windage varies
+       by gear type, buoyancy, and submersion).
+    2. Wave-induced Stokes drift is set to 0.0 m/s in baseline (requires spectral wave model).
+    3. Hourly RK1/Euler advection step is suitable for baseline; higher-order RK4 can be
+       used for fine-scale turbulence in future iterations.
+
+================================================================================
+4. FINAL AUDIT RECOMMENDATION & NEXT STEP
+================================================================================
+
+  Audit Recommendation   : READY FOR STAGE 3B / STAGE 4 (Retrieval Path Planning)
+
+  Next Recommended Step  : Proceed to Stage 3B (Retrieval Path Planning & Environmental Risk Optimization).
+                           In Stage 3B, integrate environmental sensitivity weighting (Malvan MPA)
+                           and bathymetric depth constraints to calculate optimal recovery routes.
+
+================================================================================
+END OF STAGE 3A OUTPUT AUDIT REPORT
+================================================================================

@@ -1,0 +1,155 @@
+Loading dataset.json ...
+
+=== TOP-LEVEL KEYS ===
+['categories', 'images', 'annotations']
+
+=== CATEGORIES (40 total) ===
+  [  1]  supercat=can_metal                       name=can_metal
+  [  2]  supercat=tarp_plastic                    name=tarp_plastic
+  [  3]  supercat=container_plastic               name=container_plastic
+  [  4]  supercat=bottle_plastic                  name=bottle_plastic
+  [  5]  supercat=tube_cement                     name=tube_cement
+  [  6]  supercat=plant                           name=plant
+  [  7]  supercat=container_middle_size_metal     name=container_middle_size_metal
+  [  8]  supercat=animal_etc                      name=animal_etc
+  [  9]  supercat=animal_sponge                   name=animal_sponge
+  [ 10]  supercat=bottle_glass                    name=bottle_glass
+  [ 11]  supercat=wreckage_metal                  name=wreckage_metal
+  [ 12]  supercat=unknown_instance                name=unknown_instance
+  [ 13]  supercat=pipe_plastic                    name=pipe_plastic
+  [ 14]  supercat=net_plastic                     name=net_plastic
+  [ 15]  supercat=animal_shells                   name=animal_shells
+  [ 16]  supercat=rope_fiber                      name=rope_fiber
+  [ 17]  supercat=animal_urchin                   name=animal_urchin
+  [ 18]  supercat=cup_plastic                     name=cup_plastic
+  [ 19]  supercat=brick_clay                      name=brick_clay
+  [ 20]  supercat=bag_plastic                     name=bag_plastic
+  [ 21]  supercat=sanitaries_plastic              name=sanitaries_plastic
+  [ 22]  supercat=clothing_fiber                  name=clothing_fiber
+  [ 23]  supercat=cup_ceramic                     name=cup_ceramic
+  [ 24]  supercat=boot_rubber                     name=boot_rubber
+  [ 25]  supercat=tire_rubber                     name=tire_rubber
+  [ 26]  supercat=jar_glass                       name=jar_glass
+  [ 27]  supercat=rov_cable                       name=rov_cable
+  [ 28]  supercat=rov_tortuga                     name=rov_tortuga
+  [ 29]  supercat=branch_wood                     name=branch_wood
+  [ 30]  supercat=furniture_wood                  name=furniture_wood
+  [ 31]  supercat=snack_wrapper_plastic           name=snack_wrapper_plastic
+  [ 32]  supercat=lid_plastic                     name=lid_plastic
+  [ 33]  supercat=cardboard_paper                 name=cardboard_paper
+  [ 34]  supercat=rope_plastic                    name=rope_plastic
+  [ 35]  supercat=cable_metal                     name=cable_metal
+  [ 36]  supercat=animal_fish                     name=animal_fish
+  [ 37]  supercat=snack_wrapper_paper             name=snack_wrapper_paper
+  [ 38]  supercat=rov_vehicle_leg                 name=rov_vehicle_leg
+  [ 39]  supercat=rov_bluerov                     name=rov_bluerov
+  [ 40]  supercat=animal_starfish                 name=animal_starfish
+
+=== NET/ROPE RELATED CATEGORIES ===
+  FOUND: id= 14  name=net_plastic  supercat=net_plastic
+  FOUND: id= 16  name=rope_fiber  supercat=rope_fiber
+  FOUND: id= 27  name=rov_cable  supercat=rov_cable
+  FOUND: id= 34  name=rope_plastic  supercat=rope_plastic
+  FOUND: id= 35  name=cable_metal  supercat=cable_metal
+
+=== IMAGES ===
+Total images in JSON: 8610
+Resolutions:
+  1920x1080: 8610 images
+First 5 image entries:
+  id=0  file_name=1.jpg  1920x1080
+  id=1  file_name=10.jpg  1920x1080
+  id=2  file_name=100.jpg  1920x1080
+  id=3  file_name=1000.jpg  1920x1080
+  id=4  file_name=1001.jpg  1920x1080
+
+=== IMAGE FILE EXISTENCE CHECK (first 200) ===
+  Checked 200: 0 found, 200 missing
+  Missing samples:
+    1.jpg
+    10.jpg
+    100.jpg
+    1000.jpg
+    1001.jpg
+
+=== ANNOTATIONS ===
+Total annotations: 31555
+  With bbox:           31555
+  Invalid bbox (w<=0 or h<=0): 0
+  With segmentation:   31555
+  Without segmentation:0
+
+=== ANNOTATION COUNTS PER CATEGORY ===
+  [ 17] animal_urchin                                 6462
+  [  8] animal_etc                                    3749
+  [ 25] tire_rubber                                   2556
+  [ 10] bottle_glass                                  2331
+  [ 16] rope_fiber                                    2039
+  [  5] tube_cement                                   1404
+  [  4] bottle_plastic                                1261
+  [ 12] unknown_instance                              1195
+  [  1] can_metal                                     1130
+  [  9] animal_sponge                                 1110
+  [ 15] animal_shells                                 995
+  [ 36] animal_fish                                   985
+  [ 14] net_plastic                                   960
+  [ 20] bag_plastic                                   882
+  [ 19] brick_clay                                    606
+  [  6] plant                                         472
+  [ 38] rov_vehicle_leg                               461
+  [ 29] branch_wood                                   430
+  [ 27] rov_cable                                     389
+  [ 18] cup_plastic                                   329
+  [ 22] clothing_fiber                                298
+  [ 11] wreckage_metal                                265
+  [ 31] snack_wrapper_plastic                         172
+  [ 24] boot_rubber                                   161
+  [ 13] pipe_plastic                                  155
+  [ 35] cable_metal                                   149
+  [ 23] cup_ceramic                                   123
+  [  3] container_plastic                             84
+  [ 26] jar_glass                                     62
+  [  7] container_middle_size_metal                   60
+  [ 39] rov_bluerov                                   58
+  [ 21] sanitaries_plastic                            55
+  [ 28] rov_tortuga                                   55
+  [  2] tarp_plastic                                  31
+  [ 32] lid_plastic                                   20
+  [ 40] animal_starfish                               17
+  [ 30] furniture_wood                                15
+  [ 33] cardboard_paper                               13
+  [ 34] rope_plastic                                  8
+  [ 37] snack_wrapper_paper                           8
+
+=== ANNOTATION COVERAGE ===
+  Images with >=1 annotation: 8610
+  Images with no annotations: 0
+
+=== NET/ROPE ANNOTATION COUNTS ===
+  Total net/rope annotations: 3545
+    [ 14] net_plastic: 960
+    [ 16] rope_fiber: 2039
+    [ 27] rov_cable: 389
+    [ 34] rope_plastic: 8
+    [ 35] cable_metal: 149
+
+=== PHYSICAL IMAGE COUNTS PER SITE/CAMERA ===
+  Bistrina/Bluerobotics HD: 1390 images
+  Bistrina/Paralenz Vaquita Gen 2: 2069 images
+  Bistrina/SIP-E323CV: 193 images
+  >> Bistrina subtotal: 3652
+  Jakljan/Bluerobotics HD: 241 images
+  Jakljan/Paralenz Vaquita: 65 images
+  >> Jakljan subtotal: 306
+  Lokrum/Bluerobotics HD: 556 images
+  Lokrum/Paralenz Vaquita Gen 2: 77 images
+  Lokrum/SIP-E323CV: 339 images
+  >> Lokrum subtotal: 972
+  Marseille/SIP-E323CV: 3441 images
+  >> Marseille subtotal: 3441
+  Slano/Bluerobotics HD: 168 images
+  Slano/Paralenz Vaquita: 71 images
+  >> Slano subtotal: 239
+  TOTAL physical files: 8610
+
+=== AUDIT COMPLETE ===

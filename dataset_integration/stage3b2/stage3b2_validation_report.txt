@@ -1,0 +1,116 @@
+================================================================================
+OceanRescue Third-Year Mini-Project
+Stage 3B.2: Retrieval Route Optimization Benchmark - Validation Report
+================================================================================
+Report Generated : 10-Oct-2026
+Study Region     : Arabian Sea  |  Latitude 14.0° N to 20.0° N, Longitude 68.0° E to 74.0° E
+Project Title    : OceanRescue: AI-Driven Geospatial Intelligence for Detection,
+                   Drift Forecasting, and Retrieval Optimization of ALDFG
+Stage Objective  : Implement and benchmark water-safe vessel retrieval route optimization
+                   algorithms across Stage 3B.1 recovery candidate search locations.
+================================================================================
+
+--------------------------------------------------------------------------------
+1. EXECUTIVE SUMMARY & STAGE 3B.2 VERDICT
+--------------------------------------------------------------------------------
+The Stage 3B.2 retrieval route optimization benchmark was executed successfully and
+validated against all mandatory water-safety and environmental constraint rules.
+
+  Stage 3B.2 Final Verdict : PASS WITH WARNINGS
+
+  Key Output Files Created in `dataset_integration/stage3b2/`:
+    (1) optimize_recovery_routes.py : Standalone reproducible routing pipeline script
+    (2) route_comparison.csv       : Comparative tabular metrics for NN and 2-Opt tours
+    (3) optimized_routes.geojson   : GeoJSON LineStrings for vessel transit paths
+    (4) stage3b2_validation_report.txt : This validation report document
+
+--------------------------------------------------------------------------------
+2. VESSEL CONFIGURATION & EXPERIMENTAL ASSUMPTIONS
+--------------------------------------------------------------------------------
+  - Configured Departure Origin : Lat 16.05° N, Lon 73.45° E (`DEMO_ORIGIN_MALVAN_PORT`)
+                                  (Synthetic demonstration test origin off Malvan coast).
+  - Configured Vessel Speed     : 10.0 knots (~18.52 km/h).
+  - Research Operating Depth    : 10.0 m to 2000.0 m.
+  - Excluded Service Time       : Transit duration estimates reflect water transit ONLY
+                                  (Excludes gear recovery/search handling time at candidates).
+
+--------------------------------------------------------------------------------
+3. CANDIDATE FILTERING & EXCLUSION RECONCILIATION
+--------------------------------------------------------------------------------
+  - Total Stage 3B.1 Candidates : 37 candidates
+  - Eligible Depth-Suitable     : 21 candidates (56.8%)
+  - Excluded Candidates         : 16 candidates (43.2%)
+
+  Exclusion Breakdown:
+    * Deep Water Operational Limit (>2000m) : 14 candidates (RECOVERY_CANDIDATE_004, 005, 006, 012, 017, 019, 020, 022, 023, 025, 028, 030, 031, 033)
+    * Coastal / Land Hazard                 : 2 candidates (RECOVERY_CANDIDATE_013, 016)
+
+--------------------------------------------------------------------------------
+4. WATER-SAFE GRID ROUTING & LAND-OBSTACLE AVOIDANCE
+--------------------------------------------------------------------------------
+  - Water Path Validation Method: A* Shortest Path search on Stage 2 73x73 ocean grid (`land_mask == 1`).
+  - Land-Crossing Violations   : 0 legs crossed land (100% water-safe navigation).
+  - Disconnected Water Bridging: ZERO silent bridging. All route segments adhere strictly to ocean cells.
+
+--------------------------------------------------------------------------------
+5. ROUTING ALGORITHM BENCHMARK RESULTS
+--------------------------------------------------------------------------------
+
+  Metric / Parameter           | Nearest-Neighbor Baseline | 2-Opt Route Improvement  | Improvement Delta
+  -----------------------------|---------------------------|--------------------------|------------------
+  Total Tour Distance (km)     |    2006.01 km       |    1867.04 km    | -138.97 km (6.93%)
+  Est. Transit Duration (hrs)  |     108.32 hours    |     100.81 hours | -7.50 hours
+  Eligible Candidates Visited  |         21 candidates |         21 candidates | 0
+  Land-Crossing Violations     |          0                |          0               | 0
+
+  Key Finding: 2-Opt pairwise edge swap optimization reduced total vessel transit distance
+  from 2006.01 km to 1867.04 km, achieving a 6.93% distance reduction.
+
+--------------------------------------------------------------------------------
+6. SENSITIVE MARINE AREA & LEGAL DISCLAIMER AUDIT
+--------------------------------------------------------------------------------
+  - Malvan Marine Sanctuary   : Proximity checked to approximate bounding box (`15.95°–16.15°N, 73.40°–73.55°E`).
+                                Reported strictly as advisory proximity.
+  - India EEZ Segment         : 100% EXCLUDED from protected-area scoring.
+  - Legal Access Assertions   : ZERO legal restrictions asserted based on approximate boundaries.
+  - Environmental Penalties   : ZERO fabricated environmental penalty weights applied.
+
+--------------------------------------------------------------------------------
+7. VALIDATION & INTEGRITY CHECKS
+--------------------------------------------------------------------------------
+
+Check 1 - Input & Prior Stage Integrity
+  - All Stage 2 NetCDF, Stage 3A CSV/GeoJSON, Stage 3B.1 files remain 100% UNCHANGED.
+  - Result: PASS
+
+Check 2 - Water-Safe Navigation Compliance
+  - 100% of route segments verified against land mask; 0 land-crossing violations.
+  - Result: PASS
+
+Check 3 - Route Optimization Efficacy
+  - 2-Opt heuristic successfully reduced baseline distance by 138.97 km (6.93%).
+  - Result: PASS
+
+Check 4 - Scope Boundary Compliance
+  - No AI model training, autonomous retrieval, or global optimality claimed.
+  - Result: PASS
+
+--------------------------------------------------------------------------------
+8. WARNINGS & SCIENTIFIC LIMITATIONS
+--------------------------------------------------------------------------------
+  - WARNING 1: Vessel speed (10 knots) and departure origin (Malvan Port) are synthetic
+               demonstration parameters. Real operations require actual port departure logs.
+  - WARNING 2: Ocean grid resolution (0.0833° ~ 9 km) is suitable for macro-scale research routing.
+               It is NOT a nautical chart and cannot replace official hydrographic navigation data.
+  - WARNING 3: Transit time estimates exclude search, deployment, and retrieval recovery operations.
+
+================================================================================
+FINAL VERDICT FOR STAGE 3B.2 ROUTING BENCHMARK
+================================================================================
+
+  Stage 3B.2 Status : COMPLETED SUCCESSFULLY
+  Overall Verdict   : PASS WITH WARNINGS
+
+================================================================================
+END OF STAGE 3B.2 VALIDATION REPORT
+================================================================================

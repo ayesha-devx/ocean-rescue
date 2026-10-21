@@ -1,0 +1,114 @@
+================================================================================
+OceanRescue Third-Year Mini-Project
+Stage 3A: Baseline ALDFG Drift Trajectory Simulator - Validation Report
+================================================================================
+Report Generated : 10-Oct-2026
+Study Region     : Arabian Sea  |  Latitude 14.0° N to 20.0° N, Longitude 68.0° E to 74.0° E
+Project Title    : OceanRescue: AI-Driven Geospatial Intelligence for Detection,
+                   Drift Forecasting, and Retrieval Optimization of ALDFG
+Stage Objective  : Implement a reproducible 48-hour baseline Lagrangian drift simulation
+                   using the validated Stage 2 environmental NetCDF dataset.
+================================================================================
+
+--------------------------------------------------------------------------------
+1. EXECUTIVE SUMMARY & VERDICT
+--------------------------------------------------------------------------------
+The Stage 3A Baseline ALDFG Drift Trajectory Simulator was implemented and fully
+validated against physics movement unit tests and environmental constraints.
+
+  Stage 3A Final Verdict : PASS
+
+  Key Output Files Created in `dataset_integration/stage3/`:
+    (1) simulate_aldfg_drift.py    : Standalone reproducible simulation script
+    (2) initial_particles.csv      : Initial metadata for 50 demo particles
+    (3) drift_trajectories.csv     : Hourly trajectory positions & velocity records (2422 rows)
+    (4) drift_trajectories.geojson : GeoJSON LineStrings for mapping particle tracks
+    (5) stage3_validation_report.txt: This validation report document
+
+--------------------------------------------------------------------------------
+2. DRIFT PHYSICS EQUATIONS & MATHEMATICAL MODEL
+--------------------------------------------------------------------------------
+The baseline Lagrangian particle tracking advection equation is defined as:
+
+    V_drift = V_current + C_w * V_wind + V_stokes
+
+  Where:
+    - V_current = (uo, vo) : Ocean current velocity components (m/s) from Copernicus Marine.
+    - V_wind    = (u10, v10): 10-meter wind velocity components (m/s) from ECMWF ERA5.
+    - C_w                   : Assumed windage drag coefficient (Configured: 0.03 = 3.0%).
+                              (Note: C_w is an assumed parameter, uncalibrated for specific gear types).
+    - V_stokes              : Set to 0.0 m/s by default for baseline simulation.
+                              (Note: Wave Stokes drift requires full spectral wave-drift modeling).
+
+  Geographic Displacement Equations:
+    dx_meters = (uo + C_w * u10) * dt_seconds
+    dy_meters = (vo + C_w * v10) * dt_seconds
+
+    dlat_degrees = dy_meters / (R_earth * pi / 180)   [R_earth = 6,371,000 m]
+    dlon_degrees = dx_meters / (R_earth * cos(lat_rad) * pi / 180)
+
+--------------------------------------------------------------------------------
+3. SIMULATION EXECUTION & PARTICLES METRICS
+--------------------------------------------------------------------------------
+  - Total Demonstration Particles : 50 particles
+  - Random Initialization Seed    : 42 (100% Reproducible)
+  - Initialization Filter          : `land_mask == 1` & `water_depth > 20m`
+  - Integration Time Step         : 1 hour (dt = 3,600 s)
+  - Simulation Period             : Sept 1, 2026 00:00 UTC to Sept 3, 2026 00:00 UTC (48 hours)
+
+  Particle Trajectory Outcomes:
+    * Completed 48-Hour Drift      : 47 particles (94.0%)
+    * Terminated by Land Collision : 3 particles (6.0%)
+    * Terminated by Out-of-Bounds  : 0 particles (0.0%)
+    * Terminated by Missing Data   : 0 particles (0.0%)
+
+--------------------------------------------------------------------------------
+4. VALIDATION & SANITY CHECKS
+--------------------------------------------------------------------------------
+
+Check 1 - Analytical Movement Math Unit Test
+  - Constant velocity test: u = 1.0 m/s, v = 0.5 m/s over 3,600 seconds at Lat 17°N.
+  - Calculated dlon/dlat match analytical predictions to < 1e-6 degrees error.
+  - Result: PASS
+
+Check 2 - Initial Particle Placement
+  - 100% of initialized particles fall inside valid ocean cells (`land_mask == 1`).
+  - Result: PASS
+
+Check 3 - Land Collision & Boundary Enforcements
+  - No particles passed through land. Trajectories colliding with coastline or boundary
+    terminated cleanly with explicit status `LAND_COLLISION` or `OUT_OF_BOUNDS`.
+  - Result: PASS
+
+Check 4 - Zero-Filling & Data Integrity
+  - Zero missing ocean velocities were filled with zero.
+  - Result: PASS
+
+Check 5 - Dataset Integrity Safeguard
+  - All Stage 2 files and original input NetCDF files remain 100% UNCHANGED.
+  - Result: PASS
+
+Check 6 - Scope Boundary Compliance
+  - No synthetic Dataset 6 points used as real observations.
+  - No AI training, risk scoring, or route optimization implemented.
+  - Result: PASS
+
+--------------------------------------------------------------------------------
+5. SCIENTIFIC LIMITATIONS & NEXT STAGE RECOMMENDATIONS
+--------------------------------------------------------------------------------
+  - Windage Parameterization : C_w = 0.03 is an assumed value. Real ALDFG windage varies
+                               by gear type (partially submerged monofilament net vs floating buoyed longline).
+  - Wave Stokes Drift        : Wave drift set to 0.0 m/s in baseline. Stokes drift parameterization
+                               can be integrated in future sub-models.
+  - Next Recommended Step    : Stage 3B — Retrieval Path Planning & Risk Optimization.
+
+================================================================================
+FINAL VERDICT FOR STAGE 3A DRIFT SIMULATOR
+================================================================================
+
+  Stage 3A Status : COMPLETED SUCCESSFULLY
+  Overall Verdict : PASS
+
+================================================================================
+END OF STAGE 3A VALIDATION REPORT
+================================================================================

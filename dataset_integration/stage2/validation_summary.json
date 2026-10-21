@@ -1,0 +1,83 @@
+{
+  "file_path": "c:\\Users\\KRIN\\Downloads\\ocean rescue dataset\\dataset_integration\\stage2\\aligned_environmental_data.nc",
+  "size_bytes": 14790025,
+  "dims": {
+    "time": 49,
+    "latitude": 73,
+    "longitude": 73
+  },
+  "lat_range": [
+    14.0,
+    20.0
+  ],
+  "lon_range": [
+    68.0,
+    74.0
+  ],
+  "time_range": [
+    "2026-09-01T00:00:00",
+    "2026-09-03T00:00:00"
+  ],
+  "stats": {
+    "uo": {
+      "min": -0.25073793517009135,
+      "max": 0.274051476698914,
+      "nan_count": 34251,
+      "pct_nan": 13.12
+    },
+    "vo": {
+      "min": -0.5424019749449369,
+      "max": 0.12627564228723895,
+      "nan_count": 34251,
+      "pct_nan": 13.12
+    },
+    "u10": {
+      "min": -0.27252197265625,
+      "max": 10.829803466796875,
+      "nan_count": 0,
+      "pct_nan": 0.0
+    },
+    "v10": {
+      "min": -3.1961822509765625,
+      "max": 5.289337158203125,
+      "nan_count": 0,
+      "pct_nan": 0.0
+    },
+    "VHM0": {
+      "min": 0.4100006818771375,
+      "max": 2.929999828338623,
+      "nan_count": 31458,
+      "pct_nan": 12.05
+    },
+    "VTM10": {
+      "min": 6.519995649655652,
+      "max": 10.969999313354492,
+      "nan_count": 31458,
+      "pct_nan": 12.05
+    },
+    "VMDR": {
+      "min": 222.86998573370366,
+      "max": 268.92997068780267,
+      "nan_count": 28665,
+      "pct_nan": 10.98
+    },
+    "elevation": {
+      "min": -4108.5000000000055,
+      "max": 1368.4999999999927,
+      "nan_count": 288,
+      "pct_nan": 5.4
+    },
+    "water_depth": {
+      "min": 1.2789769243681803e-12,
+      "max": 4108.5000000000055,
+      "nan_count": 827,
+      "pct_nan": 15.52
+    },
+    "land_mask": {
+      "min": 0.0,
+      "max": 1.0,
+      "nan_count": 0,
+      "pct_nan": 0.0
+    }
+  }
+}

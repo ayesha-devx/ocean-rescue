@@ -1,0 +1,63 @@
+dataset,source_id,source_name,source_supercategory,source_count,target_id,target_name,target_supercategory,mapping_status,confidence,is_environmental_debris,notes
+seaclear,1,can_metal,can_metal,1130,5,debris_can,marine_debris_general,DIRECT_MAPPED,HIGH,True,Direct beverage/food can match
+seaclear,2,tarp_plastic,tarp_plastic,31,11,debris_tarp,marine_debris_general,DIRECT_MAPPED,HIGH,True,Plastic tarpaulins and sheets
+seaclear,3,container_plastic,container_plastic,84,6,debris_container,marine_debris_general,MERGED_MAPPED,HIGH,True,Merged with container_middle_size_metal into debris_container
+seaclear,4,bottle_plastic,bottle_plastic,1261,3,debris_bottle,marine_debris_general,MERGED_MAPPED,HIGH,True,Merged with bottle_glass into debris_bottle
+seaclear,5,tube_cement,tube_cement,1404,14,debris_other,marine_debris_general,MERGED_MAPPED,HIGH,True,Construction cement debris mapped to debris_other
+seaclear,6,plant,plant,472,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Seagrass/algae. Excluded from environmental debris
+seaclear,7,container_middle_size_metal,container_middle_size_metal,60,6,debris_container,marine_debris_general,MERGED_MAPPED,HIGH,True,Metal drums and containers mapped to debris_container
+seaclear,8,animal_etc,animal_etc,3749,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Miscellaneous marine fauna. Excluded from debris
+seaclear,9,animal_sponge,animal_sponge,1110,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Sea sponge fauna. Excluded from debris
+seaclear,10,bottle_glass,bottle_glass,2331,3,debris_bottle,marine_debris_general,MERGED_MAPPED,HIGH,True,Glass bottles merged with plastic bottles into debris_bottle
+seaclear,11,wreckage_metal,wreckage_metal,265,12,debris_wreckage,marine_debris_general,DIRECT_MAPPED,HIGH,True,Metal wreckage scrap
+seaclear,12,unknown_instance,unknown_instance,1195,14,debris_other,marine_debris_general,MERGED_MAPPED,HIGH,True,Unclassified debris fragments mapped to debris_other
+seaclear,13,pipe_plastic,pipe_plastic,155,8,debris_pipe,marine_debris_general,DIRECT_MAPPED,HIGH,True,Plastic pipes and tubing
+seaclear,14,net_plastic,net_plastic,960,1,fishing_net,aldfg_priority,DIRECT_MAPPED,HIGH,True,Core ALDFG: fishing nets and ghost nets
+seaclear,15,animal_shells,animal_shells,995,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Mollusk shells. Excluded from debris
+seaclear,16,rope_fiber,rope_fiber,2039,2,rope_line,aldfg_priority,MERGED_MAPPED,HIGH,True,Core ALDFG: fiber cordage and lines. Merged with rope_plastic
+seaclear,17,animal_urchin,animal_urchin,6462,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Sea urchin organisms (dominant bio class). Excluded
+seaclear,18,cup_plastic,cup_plastic,329,7,debris_cup,marine_debris_general,MERGED_MAPPED,HIGH,True,Merged with cup_ceramic into debris_cup
+seaclear,19,brick_clay,brick_clay,606,14,debris_other,marine_debris_general,MERGED_MAPPED,HIGH,True,Clay bricks/masonry debris mapped to debris_other
+seaclear,20,bag_plastic,bag_plastic,882,4,debris_bag,marine_debris_general,DIRECT_MAPPED,HIGH,True,Plastic bags and sheeting
+seaclear,21,sanitaries_plastic,sanitaries_plastic,55,14,debris_other,marine_debris_general,MERGED_MAPPED,HIGH,True,Sanitary plastics mapped to debris_other
+seaclear,22,clothing_fiber,clothing_fiber,298,10,debris_clothing,marine_debris_general,DIRECT_MAPPED,HIGH,True,Clothing and fabric debris
+seaclear,23,cup_ceramic,cup_ceramic,123,7,debris_cup,marine_debris_general,MERGED_MAPPED,HIGH,True,Ceramic cups merged into debris_cup
+seaclear,24,boot_rubber,boot_rubber,161,14,debris_other,marine_debris_general,MERGED_MAPPED,HIGH,True,Rubber boots/footwear mapped to debris_other
+seaclear,25,tire_rubber,tire_rubber,2556,14,debris_other,marine_debris_general,MERGED_MAPPED,HIGH,True,Rubber vehicle tires mapped to debris_other
+seaclear,26,jar_glass,jar_glass,62,14,debris_other,marine_debris_general,MERGED_MAPPED,HIGH,True,Glass jars mapped to debris_other
+seaclear,27,rov_cable,rov_cable,389,101,rov_equipment,rov_equipment_excluded,EXCLUDED_ROV,HIGH,False,ROV tether cable. EXCLUDED from environmental debris
+seaclear,28,rov_tortuga,rov_tortuga,55,101,rov_equipment,rov_equipment_excluded,EXCLUDED_ROV,HIGH,False,Tortuga ROV component. EXCLUDED from debris
+seaclear,29,branch_wood,branch_wood,430,13,debris_branch_wood,marine_debris_general,DIRECT_MAPPED,HIGH,True,Driftwood/branches
+seaclear,30,furniture_wood,furniture_wood,15,14,debris_other,marine_debris_general,MERGED_MAPPED,HIGH,True,Wood furniture debris mapped to debris_other
+seaclear,31,snack_wrapper_plastic,snack_wrapper_plastic,172,9,debris_snack_wrapper,marine_debris_general,MERGED_MAPPED,HIGH,True,Plastic snack wrappers merged into debris_snack_wrapper
+seaclear,32,lid_plastic,lid_plastic,20,14,debris_other,marine_debris_general,MERGED_MAPPED,HIGH,True,Plastic bottle/cup lids mapped to debris_other
+seaclear,33,cardboard_paper,cardboard_paper,13,14,debris_other,marine_debris_general,MERGED_MAPPED,HIGH,True,Cardboard waste mapped to debris_other
+seaclear,34,rope_plastic,rope_plastic,8,2,rope_line,aldfg_priority,MERGED_MAPPED,HIGH,True,Core ALDFG: plastic cordage/lines merged into rope_line
+seaclear,35,cable_metal,cable_metal,149,15,uncertain_cable_metal,uncertain_infrastructure,UNCERTAIN_AMBIGUOUS,LOW,False,Heavy industrial metal cable. Ambiguous: mooring/infrastructure/tether/trawl wire. Kept distinct
+seaclear,36,animal_fish,animal_fish,985,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Fish organisms. Excluded from debris
+seaclear,37,snack_wrapper_paper,snack_wrapper_paper,8,9,debris_snack_wrapper,marine_debris_general,MERGED_MAPPED,HIGH,True,Paper snack wrappers merged into debris_snack_wrapper
+seaclear,38,rov_vehicle_leg,rov_vehicle_leg,461,101,rov_equipment,rov_equipment_excluded,EXCLUDED_ROV,HIGH,False,ROV landing frame. EXCLUDED from debris
+seaclear,39,rov_bluerov,rov_bluerov,58,101,rov_equipment,rov_equipment_excluded,EXCLUDED_ROV,HIGH,False,BlueROV vehicle body. EXCLUDED from debris
+seaclear,40,animal_starfish,animal_starfish,17,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Starfish organisms. Excluded from debris
+trashcan_instance,1,rov,rov,3317,101,rov_equipment,rov_equipment_excluded,EXCLUDED_ROV,HIGH,False,ROV body and components. EXCLUDED from debris
+trashcan_instance,2,plant,plant,507,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Underwater vegetation. Excluded from debris
+trashcan_instance,3,animal_fish,animal_fish,764,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Fish fauna. Excluded from debris
+trashcan_instance,4,animal_starfish,animal_starfish,398,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Starfish organisms. Excluded from debris
+trashcan_instance,5,animal_shells,animal_shells,249,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Mollusk shells. Excluded from debris
+trashcan_instance,6,animal_crab,animal_crab,309,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Crab organisms. Excluded from debris
+trashcan_instance,7,animal_eel,animal_eel,343,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Eel organisms. Excluded from debris
+trashcan_instance,8,animal_etc,animal_etc,235,201,marine_biology,marine_bio_excluded,EXCLUDED_BIO,HIGH,False,Miscellaneous marine organisms. Excluded from debris
+trashcan_instance,9,trash_clothing,trash_clothing,82,10,debris_clothing,marine_debris_general,DIRECT_MAPPED,HIGH,True,Fabric and clothing debris
+trashcan_instance,10,trash_pipe,trash_pipe,156,8,debris_pipe,marine_debris_general,DIRECT_MAPPED,HIGH,True,Pipe/conduit debris
+trashcan_instance,11,trash_bottle,trash_bottle,126,3,debris_bottle,marine_debris_general,DIRECT_MAPPED,HIGH,True,Bottles (glass/plastic)
+trashcan_instance,12,trash_bag,trash_bag,908,4,debris_bag,marine_debris_general,DIRECT_MAPPED,HIGH,True,Plastic bags and sheeting
+trashcan_instance,13,trash_snack_wrapper,trash_snack_wrapper,84,9,debris_snack_wrapper,marine_debris_general,DIRECT_MAPPED,HIGH,True,Snack food packaging wrappers
+trashcan_instance,14,trash_can,trash_can,459,5,debris_can,marine_debris_general,DIRECT_MAPPED,HIGH,True,Metal cans
+trashcan_instance,15,trash_cup,trash_cup,59,7,debris_cup,marine_debris_general,DIRECT_MAPPED,HIGH,True,Plastic/paper/ceramic cups
+trashcan_instance,16,trash_container,trash_container,510,6,debris_container,marine_debris_general,DIRECT_MAPPED,HIGH,True,Buckets tubs and food containers
+trashcan_instance,17,trash_unknown_instance,trash_unknown_instance,2756,14,debris_other,marine_debris_general,MERGED_MAPPED,HIGH,True,Unclassified debris (absorbed cages gloves tires boxes wire in conversion)
+trashcan_instance,18,trash_branch,trash_branch,336,13,debris_branch_wood,marine_debris_general,DIRECT_MAPPED,HIGH,True,Submerged wood branches
+trashcan_instance,19,trash_wreckage,trash_wreckage,165,12,debris_wreckage,marine_debris_general,DIRECT_MAPPED,HIGH,True,Wreckage and structural fragments
+trashcan_instance,20,trash_tarp,trash_tarp,121,11,debris_tarp,marine_debris_general,DIRECT_MAPPED,HIGH,True,Plastic tarpaulins
+trashcan_instance,21,trash_rope,trash_rope,117,2,rope_line,aldfg_priority,DIRECT_MAPPED,HIGH,True,Core ALDFG: rope and cordage lines
+trashcan_instance,22,trash_net,trash_net,127,1,fishing_net,aldfg_priority,DIRECT_MAPPED,HIGH,True,Core ALDFG: fishing net debris

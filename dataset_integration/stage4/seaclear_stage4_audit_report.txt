@@ -1,0 +1,377 @@
+================================================================================
+OceanRescue Third-Year Mini-Project
+Stage 4.1: SeaClear Marine Debris Dataset — Read-Only Audit Report
+================================================================================
+Report Generated : 17-Oct-2026
+Audit Type        : READ-ONLY (No original files modified, converted, or overwritten)
+Dataset Path      : C:\Users\KRIN\Downloads\ocean rescue dataset\sea clear dataset\
+                    Seaclear Marine Debris Dataset\
+Annotation File   : dataset.json (39,545,954 bytes ~ 37.7 MB)
+Script Saved At   : dataset_integration/stage4/seaclear_audit.py
+================================================================================
+
+
+--------------------------------------------------------------------------------
+1. FOLDER STRUCTURE CONFIRMED
+--------------------------------------------------------------------------------
+
+Root-level contents:
+  README.txt      (678 bytes)
+  dataset.json    (39,545,954 bytes -- sole COCO annotation file)
+  Bistrina/       (Croatian site)
+  Jakljan/        (Croatian site)
+  Lokrum/         (Croatian site)
+  Marseille/      (French site)
+  Slano/          (Croatian site)
+
+Site / Camera sub-folder tree:
+  Bistrina/
+    - Bluerobotics HD/
+    - Paralenz Vaquita Gen 2/
+    - SIP-E323CV/
+  Jakljan/
+    - Bluerobotics HD/
+    - Paralenz Vaquita/
+  Lokrum/
+    - Bluerobotics HD/
+    - Paralenz Vaquita Gen 2/
+    - SIP-E323CV/
+  Marseille/
+    - SIP-E323CV/
+  Slano/
+    - Bluerobotics HD/
+    - Paralenz Vaquita/
+
+Total site-camera pairs: 9
+COCO annotation files  : 1 (dataset.json -- covers the entire dataset)
+Image format           : JPEG (.jpg) exclusively
+
+
+--------------------------------------------------------------------------------
+2. PHYSICAL IMAGE COUNT PER SITE/CAMERA
+--------------------------------------------------------------------------------
+
+  Site          Camera                          Images
+  ----------------------------------------------------------
+  Bistrina      Bluerobotics HD                  1,390
+  Bistrina      Paralenz Vaquita Gen 2           2,069
+  Bistrina      SIP-E323CV                         193
+  >> Bistrina subtotal:                          3,652
+  ----------------------------------------------------------
+  Jakljan       Bluerobotics HD                    241
+  Jakljan       Paralenz Vaquita                    65
+  >> Jakljan subtotal:                             306
+  ----------------------------------------------------------
+  Lokrum        Bluerobotics HD                    556
+  Lokrum        Paralenz Vaquita Gen 2              77
+  Lokrum        SIP-E323CV                         339
+  >> Lokrum subtotal:                              972
+  ----------------------------------------------------------
+  Marseille     SIP-E323CV                       3,441
+  >> Marseille subtotal:                         3,441
+  ----------------------------------------------------------
+  Slano         Bluerobotics HD                    168
+  Slano         Paralenz Vaquita                    71
+  >> Slano subtotal:                               239
+  ----------------------------------------------------------
+  TOTAL physical images on disk:                 8,610
+  TOTAL images in dataset.json:                  8,610
+  Disk vs. JSON match:                           YES [PASS]
+
+NOTE: The dataset.json stores bare filenames (e.g. "1.jpg", "2809.jpg",
+      "2021_09_16_16_15_03_Front_03-26-08.jpg") with NO site/camera prefix.
+      All 8,610 filenames resolve correctly by basename search across the
+      9 site-camera folders. Zero missing image files detected.
+
+
+--------------------------------------------------------------------------------
+3. IMAGE METADATA VALIDATION
+--------------------------------------------------------------------------------
+
+  Total images in JSON:       8,610  (matches README "8610 images" claim)
+  Uniform resolution:         1920 x 1080 px  -- ALL 8,610 images
+  Duplicate resolutions:      NONE (exactly one resolution class)
+  COCO JSON top-level keys:   ['categories', 'images', 'annotations']
+  "info" / "licenses" block:  ABSENT (not present in this dataset.json)
+
+  Filename naming conventions observed:
+    - Numeric only (Bistrina BlueroboticHD, Marseille SIP): e.g. "1.jpg" ... "4997.jpg"
+    - Timestamp-based (Bistrina SIP): "2021_09_16_16_15_03_Front_03-26-08.jpg"
+    - Cam-timestamp (Jakljan, Lokrum, Slano): "Cam1_16_23_22_10_11_2020.mp4_00831.jpg"
+
+
+--------------------------------------------------------------------------------
+4. ANNOTATION CATEGORIES -- FULL 40-CLASS LIST
+--------------------------------------------------------------------------------
+
+  [ 1] can_metal                  [11] wreckage_metal         [21] sanitaries_plastic
+  [ 2] tarp_plastic               [12] unknown_instance       [22] clothing_fiber
+  [ 3] container_plastic          [13] pipe_plastic           [23] cup_ceramic
+  [ 4] bottle_plastic             [14] net_plastic  *NET*     [24] boot_rubber
+  [ 5] tube_cement                [15] animal_shells          [25] tire_rubber
+  [ 6] plant                      [16] rope_fiber   *ROPE*    [26] jar_glass
+  [ 7] container_middle_size_metal[17] animal_urchin          [27] rov_cable
+  [ 8] animal_etc                 [18] cup_plastic            [28] rov_tortuga
+  [ 9] animal_sponge              [19] brick_clay             [29] branch_wood
+  [10] bottle_glass               [20] bag_plastic            [30] furniture_wood
+                                  [31] snack_wrapper_plastic  [36] animal_fish
+                                  [32] lid_plastic            [37] snack_wrapper_paper
+                                  [33] cardboard_paper        [38] rov_vehicle_leg
+                                  [34] rope_plastic *ROPE*    [39] rov_bluerov
+                                  [35] cable_metal            [40] animal_starfish
+
+  Supercategory scheme: All 40 categories use their own name as supercategory
+  (supercategory == name for every entry; no hierarchical grouping).
+
+  Category breakdown by type:
+    Litter/debris    : 25 classes (plastic, metal, glass, rubber, wood, etc.)
+    Animals/plants   : 7 classes  (urchin, shells, fish, sponge, plant, etc.)
+    ROV equipment    : 4 classes  (rov_cable, rov_tortuga, rov_vehicle_leg, rov_bluerov)
+    Rope/net debris  : 3 classes  (net_plastic, rope_fiber, rope_plastic)
+    Unknown          : 1 class    (unknown_instance)
+
+  Claimed in README: "40 object categories" -- CONFIRMED [PASS]
+
+
+--------------------------------------------------------------------------------
+5. NET AND ROPE CLASS IDENTIFICATION
+--------------------------------------------------------------------------------
+
+  Categories matching net/rope/cable keywords:
+
+  ID    Name              Supercategory     Notes
+  -----------------------------------------------------------------------
+  14    net_plastic       net_plastic       PRIMARY -- plastic fishing/ghost nets
+  16    rope_fiber        rope_fiber        PRIMARY -- natural/synthetic fiber ropes
+  27    rov_cable         rov_cable         ROV umbilical; NOT environmental debris
+  34    rope_plastic      rope_plastic      PRIMARY -- plastic ropes/lines
+  35    cable_metal       cable_metal       Metal cables; ambiguous (ROV/mooring)
+  -----------------------------------------------------------------------
+
+  Net/rope DEBRIS classes (excluding ROV equipment):
+    net_plastic  (id=14):   960 annotations
+    rope_fiber   (id=16): 2,039 annotations
+    rope_plastic (id=34):     8 annotations
+    Net + Rope debris TOTAL: 3,007 annotations
+
+  ROV/equipment cables (NOT environmental debris):
+    rov_cable    (id=27):   389 annotations
+    cable_metal  (id=35):   149 annotations  [ambiguous]
+
+  Combined all net/rope/cable (all 5 classes): 3,545 annotations
+
+
+--------------------------------------------------------------------------------
+6. ANNOTATION COUNTS PER CATEGORY (sorted by count, descending)
+--------------------------------------------------------------------------------
+
+  [ID]   Category Name                          Count
+  -------------------------------------------------------
+  [ 17]  animal_urchin                           6,462   <- most common
+  [  8]  animal_etc                              3,749
+  [ 25]  tire_rubber                             2,556
+  [ 10]  bottle_glass                            2,331
+  [ 16]  rope_fiber              *ROPE*          2,039
+  [  5]  tube_cement                             1,404
+  [  4]  bottle_plastic                          1,261
+  [ 12]  unknown_instance                        1,195
+  [  1]  can_metal                               1,130
+  [  9]  animal_sponge                           1,110
+  [ 15]  animal_shells                             995
+  [ 36]  animal_fish                               985
+  [ 14]  net_plastic             *NET*             960
+  [ 20]  bag_plastic                               882
+  [ 19]  brick_clay                                606
+  [  6]  plant                                     472
+  [ 38]  rov_vehicle_leg                           461
+  [ 29]  branch_wood                               430
+  [ 27]  rov_cable                                 389
+  [ 18]  cup_plastic                               329
+  [ 22]  clothing_fiber                            298
+  [ 11]  wreckage_metal                            265
+  [ 31]  snack_wrapper_plastic                     172
+  [ 24]  boot_rubber                               161
+  [ 13]  pipe_plastic                              155
+  [ 35]  cable_metal                               149
+  [ 23]  cup_ceramic                               123
+  [  3]  container_plastic                          84
+  [ 26]  jar_glass                                  62
+  [  7]  container_middle_size_metal                60
+  [ 39]  rov_bluerov                                58
+  [ 21]  sanitaries_plastic                         55
+  [ 28]  rov_tortuga                                55
+  [  2]  tarp_plastic                               31
+  [ 32]  lid_plastic                                20
+  [ 40]  animal_starfish                            17
+  [ 30]  furniture_wood                             15
+  [ 33]  cardboard_paper                            13
+  [ 34]  rope_plastic            *ROPE*              8   <- least common debris
+  [ 37]  snack_wrapper_paper                         8
+  -------------------------------------------------------
+  TOTAL                                         31,555
+
+
+--------------------------------------------------------------------------------
+7. BBOX AND SEGMENTATION VALIDATION
+--------------------------------------------------------------------------------
+
+  Total annotations:                  31,555
+  Annotations with bounding box:      31,555  (100%) [PASS]
+  Invalid bbox (w<=0, h<=0, x<0):          0  [PASS]
+  Annotations with segmentation:      31,555  (100%) [PASS]
+  Segmentation format:                Polygon list (all annotations)
+  Annotations without segmentation:       0   [PASS]
+  iscrowd = 1 (crowd annotations):         0  [PASS]
+  Annotations with "area" field:      31,555  (100%)
+
+  Bbox area statistics (sampled 500):
+    Min area:         784.0 px^2
+    Max area:   1,711,251.0 px^2
+    Average:       86,343.8 px^2
+
+  Overall area field statistics (all 31,555 annotations):
+    Min area:           1.00 px^2
+    Max area:   2,071,680.00 px^2
+    Average:       88,627.30 px^2
+
+  Polygon segmentation statistics (sampled 500):
+    Min polygon points:    6
+    Max polygon points:  108
+    Average points:       29.0
+
+  VERDICT: All 31,555 annotations have valid bbox AND polygon segmentation.
+           Zero invalid or degenerate annotations found. [PASS]
+
+
+--------------------------------------------------------------------------------
+8. ANNOTATION COVERAGE PER IMAGE
+--------------------------------------------------------------------------------
+
+  Images with >=1 annotation:   8,610   (100%) [PASS]
+  Images with no annotations:       0   [PASS]
+  Coverage:                       100%  -- Every image is annotated
+
+  Annotations per image distribution:
+    Min:       1 annotation
+    Max:      74 annotations
+    Average:   3.66 annotations
+    Median:    2 annotations
+
+  Histogram (annotations per image):
+    1 ann     :  3,628 images  (42.1%)
+    2-5 ann   :  3,072 images  (35.7%)
+    6-10 ann  :  1,415 images  (16.4%)
+    11-20 ann :    435 images   (5.1%)
+    21-50 ann :     55 images   (0.6%)
+    50+ ann   :      5 images   (0.1%)
+
+
+--------------------------------------------------------------------------------
+9. COMPARISON WITH TRASHCAN DATASET (Stage 1 Audit Reference)
+--------------------------------------------------------------------------------
+
+  Property                   TrashCan Dataset           SeaClear Dataset
+  -----------------------------------------------------------------------
+  Total unique images        7,212                       8,610
+  Total annotations          ~24,464 (train+val)         31,555
+  Annotation format          COCO JSON                   COCO JSON
+  Image resolution           Variable                    1920x1080 (uniform)
+  Annotation types           Bbox + segmentation         Bbox + segmentation
+  Number of categories       27 (instance_version)       40
+  Net class name             trash_net (id=22)           net_plastic (id=14)
+  Rope class name            trash_rope (id=21)          rope_fiber (id=16)
+  Rope class #2              --                          rope_plastic (id=34)
+  Fishing gear class         trash_fishing_gear (id=11)  [no dedicated class]
+  Net annotations            [not re-audited here]       960
+  Rope annotations           [not re-audited here]       2,039 + 8 = 2,047
+  Data acquisition           Curated research dataset    ROV field captures (5 sites)
+  Geographic context         General underwater debris   Adriatic Sea + Marseille
+  ROV equipment categories   None                        4 (rov_cable, tortuga, etc.)
+  Animal categories          None                        6 (urchin, sponge, fish, etc.)
+  Train/val split            Explicit (two JSON files)   None (single JSON)
+  Coverage (% annotated)     Not confirmed               100% (every image annotated)
+  License                    Open academic research      Open academic research
+  -----------------------------------------------------------------------
+
+  KEY DIFFERENCES FOR INTEGRATION:
+  1. SeaClear has MORE images (+1,398) and MORE annotations (+7,091) than TrashCan.
+  2. SeaClear uses a FINER taxonomy (40 vs 27 classes).
+  3. SeaClear separates rope into fiber vs. plastic; TrashCan uses one trash_rope.
+  4. SeaClear uses bare filenames: a loading path-resolver IS REQUIRED.
+  5. SeaClear has NO train/val split -- must be created for ML training.
+  6. SeaClear includes ROV equipment and animal classes not in TrashCan.
+  7. Class mapping required for merging:
+       TrashCan "trash_net"          -> SeaClear "net_plastic"
+       TrashCan "trash_rope"         -> SeaClear "rope_fiber" + "rope_plastic"
+       TrashCan "trash_fishing_gear" -> No direct SeaClear equivalent
+
+
+--------------------------------------------------------------------------------
+10. ISSUES AND LIMITATIONS
+--------------------------------------------------------------------------------
+
+  ISSUE 1 -- No "info" or "licenses" block in dataset.json
+    COCO standard includes these keys; SeaClear's JSON omits them.
+    No version, date, or license metadata is embedded in the file.
+
+  ISSUE 2 -- Bare filename format (no site/camera prefix)
+    Loading code must perform a disk-walk basename resolver.
+    Zero filename collisions detected across 8,610 files.
+
+  ISSUE 3 -- No train/val split defined
+    A single dataset.json covers all 8,610 images with no split.
+    Any ML training workflow must define its own split strategy.
+
+  ISSUE 4 -- Class imbalance
+    animal_urchin (6,462) is 6.7x more frequent than net_plastic (960).
+    rope_plastic has only 8 annotations -- severely underrepresented.
+
+  ISSUE 5 -- ROV equipment categories must be excluded from debris detection
+    4 categories represent the collection ROV itself (rov_cable, rov_tortuga,
+    rov_vehicle_leg, rov_bluerov). These must be filtered for debris detection.
+
+  ISSUE 6 -- cable_metal class ambiguity
+    May represent mooring cables, anchor chains, or ROV cables.
+    No further disambiguation available in the annotation metadata.
+
+  VALIDATION VERDICT: PASS
+    All annotations structurally valid. Zero missing images.
+    Zero degenerate bounding boxes. Zero empty segmentations.
+
+
+--------------------------------------------------------------------------------
+11. SAFETY BOUNDARY COMPLIANCE
+--------------------------------------------------------------------------------
+
+  Original dataset files modified : NONE
+  Annotation conversions performed: NONE
+  Model training performed         : NONE
+  Files written to dataset folder  : NONE
+  Stage 4 outputs written to       : dataset_integration/stage4/ ONLY
+
+
+--------------------------------------------------------------------------------
+12. STAGE 4.1 ARTIFACT SUMMARY
+--------------------------------------------------------------------------------
+
+  Artifact                                              Description
+  -----------------------------------------------------------------------
+  dataset_integration/stage4/seaclear_audit.py          Reproducible audit script
+  dataset_integration/stage4/seaclear_audit_output.txt  Raw script console output
+  dataset_integration/stage4/seaclear_stage4_audit_report.txt  This report
+
+
+================================================================================
+FINAL VERDICT FOR STAGE 4.1
+================================================================================
+
+  Audit Status        : COMPLETED SUCCESSFULLY
+  Dataset Integrity   : PASS -- 8,610 images, 31,555 annotations, 0 errors
+  Net/Rope Classes    : CONFIRMED -- net_plastic (960), rope_fiber (2,039), rope_plastic (8)
+  Modifications Made  : NONE (0 original files touched)
+  Recommended Next    : Stage 4.2 -- SeaClear + TrashCan class mapping and
+                        unified debris annotation schema design.
+
+================================================================================
+END OF STAGE 4.1 SEACLEAR AUDIT REPORT
+================================================================================

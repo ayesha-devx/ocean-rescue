@@ -1,0 +1,134 @@
+{
+  "project": "OceanRescue",
+  "stage": "Stage 1 - Inventory & Readiness Audit",
+  "study_region": {
+    "lat_range": [
+      14.0,
+      20.0
+    ],
+    "lon_range": [
+      68.0,
+      74.0
+    ]
+  },
+  "total_files_cataloged": 21677,
+  "datasets": {
+    "dataset1_currents": {
+      "folder": "ocean currents dataset",
+      "readiness": "READY",
+      "file": "ocean currents dataset/ocean rescue datasets ocean currents.nc",
+      "variables": [
+        "uo",
+        "vo"
+      ],
+      "spatial_res_deg": 0.0833,
+      "temporal_resolution": "6-hourly (00, 06, 12, 18 UTC)",
+      "time_range": [
+        "2026-09-01T00:00:00",
+        "2026-09-03T00:00:00"
+      ],
+      "time_steps": 9
+    },
+    "dataset2_waves": {
+      "folder": "wave dataset",
+      "readiness": "READY",
+      "file": "wave dataset/wave dataset.nc",
+      "variables": [
+        "VHM0",
+        "VTM10",
+        "VMDR"
+      ],
+      "spatial_res_deg": 0.0833,
+      "temporal_resolution": "3-hourly (00, 03, 06, 09, 12, 15, 18, 21 UTC)",
+      "time_range": [
+        "2026-09-01T00:00:00",
+        "2026-09-03T00:00:00"
+      ],
+      "time_steps": 17
+    },
+    "dataset3_original_wind": {
+      "folder": "wind dataset",
+      "readiness": "PARTIAL",
+      "file": "wind dataset/wind dataset.nc",
+      "variables": [
+        "se_eastward_model_wind",
+        "se_northward_model_wind"
+      ],
+      "spatial_res_deg": 0.25,
+      "temporal_resolution": "Daily (24-hourly, 3 timestamps total)",
+      "limitations": "Coarse temporal resolution, non-standard variable names. Replaced by Dataset 4."
+    },
+    "dataset4_new_wind_era5": {
+      "folder": "new wind dataset",
+      "readiness": "READY",
+      "file": "new wind dataset/new wind dataset.nc",
+      "variables": [
+        "u10",
+        "v10"
+      ],
+      "spatial_res_deg": 0.25,
+      "temporal_resolution": "Hourly (1-hourly, 72 timestamps total)",
+      "time_range": [
+        "2026-09-01T00:00:00",
+        "2026-09-03T23:00:00"
+      ],
+      "time_steps": 72
+    },
+    "dataset5_bathymetry": {
+      "folder": "bathymetry dataset",
+      "readiness": "READY WITH WARNINGS",
+      "file": "bathymetry dataset/gebco_2026_n20.0_s14.0_w68.0_e74.0.nc",
+      "variables": [
+        "elevation"
+      ],
+      "spatial_res_deg": 0.004167,
+      "grid_size": [
+        1440,
+        1440
+      ],
+      "temporal_resolution": "Static",
+      "warnings": "Uses GEBCO positive-up elevation convention (depth underwater is negative meters). Must negate for positive depth models."
+    },
+    "dataset6_fishing_gear_incidents": {
+      "folder": "fishing_gear_incidents",
+      "readiness": "PARTIAL",
+      "files": [
+        "processed/synthetic_aldfg_incidents.csv",
+        "processed/synthetic_aldfg_incidents.json"
+      ],
+      "record_count": 50,
+      "real_records": 0,
+      "synthetic_labelled": true,
+      "limitations": "No real ALDFG records obtained yet. 50 synthetic test points ready for pipeline testing."
+    },
+    "dataset7_sensitive_marine_areas": {
+      "folder": "sensitive_marine_areas",
+      "readiness": "READY WITH WARNINGS",
+      "files": [
+        "processed/sensitive_marine_areas_study_bbox.geojson",
+        "processed/sensitive_marine_areas_study_bbox.csv",
+        "processed/osm_protected_areas_bbox_points.geojson"
+      ],
+      "mpas_count": 1,
+      "mpas_name": "Malvan Marine Sanctuary (WDPA 15868)",
+      "warnings": "Malvan geometry is an approximate bounding rectangle. India EEZ polygon present in processed file must be filtered out during environmental risk scoring."
+    },
+    "visual_detection_trashcan": {
+      "folder": "dataset",
+      "readiness": "READY WITH WARNINGS",
+      "instance_train_images": 6065,
+      "instance_val_images": 1147,
+      "material_train_images": 6008,
+      "material_val_images": 1204,
+      "total_unique_images": 7212,
+      "categories": [
+        "trash_net",
+        "trash_rope",
+        "trash_fishing_gear",
+        "trash_container",
+        "etc"
+      ],
+      "limitations": "TrashCan underwater images present. SeaClear dataset not downloaded. Visual detection flags gear/debris, not automatically ALDFG status."
+    }
+  }
+}

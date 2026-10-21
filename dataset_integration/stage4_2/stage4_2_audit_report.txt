@@ -1,0 +1,303 @@
+================================================================================
+OceanRescue Third-Year Mini-Project
+Stage 4.2: Class Mapping, Unified Schema & Data-Leakage Audit Report
+================================================================================
+Report Generated : 17-Oct-2026
+Audit Scope      : SeaClear Marine Debris Dataset + TrashCan 1.0 (instance_version)
+Mode             : READ-ONLY AUDIT & PLANNING MODE (0 original files touched)
+Target Directory : dataset_integration/stage4_2/
+Overall Verdict  : PASS WITH WARNINGS (Data Integrity: PASS, Split Leakage in
+                   original TrashCan: WARNING addressed via Group Split)
+================================================================================
+
+
+1. EXECUTIVE SUMMARY & OBJECTIVES
+--------------------------------------------------------------------------------
+Stage 4.2 establishes the taxonomic and architectural foundation for fusing the
+SeaClear (8,610 images, 31,555 annotations) and TrashCan (7,212 images, 12,128
+annotations) datasets into a single, unified marine debris benchmark.
+
+Key Achievements:
+1. Complete Class Mapping: 100% of categories across SeaClear (40) and TrashCan
+   (22) mapped with full backward traceability to original category IDs and names.
+2. Shared Target Taxonomy: Formalized 17-class target schema prioritizing ALDFG
+   (fishing_net: 1,087 instances; rope_line: 2,164 instances).
+3. Verified Unsupported Classes: Proved that 'trap_cage' is NOT supported in
+   source annotations (SeaClear has 0; TrashCan collapsed cages into unknown).
+4. Disambiguation of 'cable_metal': Preserved 149 heavy industrial metal cables
+   in a distinct uncertain class rather than conflating with rope or ROV tether.
+5. ROV Equipment & Biology Filtered: 4,280 ROV annotations and 16,595 marine
+   organism annotations explicitly isolated and excluded from environmental debris.
+6. Path Resolution: Resolved 100% of SeaClear (8,610) and TrashCan (7,212) images
+   to canonical disk paths with 0 missing files and 0 name collisions.
+7. Critical Data Leakage Discovery: Uncovered that 113 of 115 validation video
+   sequences in the official TrashCan release leak into train (98.3% leakage).
+   Formulated a zero-leakage Group-by-Video split to eliminate temporal bias.
+
+
+2. DATASET INVENTORY AUDITED
+--------------------------------------------------------------------------------
+Dataset 1: SeaClear Marine Debris Dataset
+- Root Path         : sea clear dataset/Seaclear Marine Debris Dataset/
+- Annotation File   : dataset.json (39,545,954 bytes)
+- Images on Disk    : 8,610 JPEG images (1920x1080 uniform)
+- Subdirectories    : 5 sites, 9 site-camera pairs
+- Annotations       : 31,555 instances across 40 classes
+- Integrity Check   : 0 invalid bboxes, 0 invalid segmentations, 0 missing files
+
+Dataset 2: TrashCan 1.0 (Instance Version)
+- Root Path         : dataset/dataset/
+- Train JSON        : instance_version/instances_train_trashcan.json (6,065 images, 9,540 anns)
+- Val JSON          : instance_version/instances_val_trashcan.json (1,147 images, 2,588 anns)
+- Images on Disk    : 7,212 JPEG images in original_data/images/
+- Annotations       : 12,128 instances across 22 classes
+- Video Sequences   : 312 distinct video sequences (vid_XXXXXX)
+- Integrity Check   : 0 invalid bboxes, 0 invalid segmentations, 0 missing files
+
+Combined Totals:
+- Unique Physical Images: 15,822
+- Total COCO Annotations: 43,683
+
+
+3. SHARED TARGET TAXONOMY DEFINITION
+--------------------------------------------------------------------------------
+The target taxonomy is structured into five functional tiers:
+
+TIER 1: ALDFG Priority Classes (Core OceanRescue Focus)
+  [ID  1] fishing_net          : 1,087 annotations (SeaClear: 960, TrashCan: 127)
+  [ID  2] rope_line            : 2,164 annotations (SeaClear: 2,047, TrashCan: 117)
+  [-- --] trap_cage            : 0 annotations [UNSUPPORTED; documented below]
+
+TIER 2: General Marine Debris Classes
+  [ID  3] debris_bottle        : 3,718 annotations (SeaClear: 3,592, TrashCan: 126)
+  [ID  4] debris_bag           : 1,790 annotations (SeaClear: 882, TrashCan: 908)
+  [ID  5] debris_can           : 1,589 annotations (SeaClear: 1,130, TrashCan: 459)
+  [ID  6] debris_container     :   654 annotations (SeaClear: 144, TrashCan: 510)
+  [ID  7] debris_cup           :   511 annotations (SeaClear: 452, TrashCan: 59)
+  [ID  8] debris_pipe          :   311 annotations (SeaClear: 155, TrashCan: 156)
+  [ID  9] debris_snack_wrapper :   264 annotations (SeaClear: 180, TrashCan: 84)
+  [ID 10] debris_clothing      :   380 annotations (SeaClear: 298, TrashCan: 82)
+  [ID 11] debris_tarp          :   152 annotations (SeaClear: 31, TrashCan: 121)
+  [ID 12] debris_wreckage      :   430 annotations (SeaClear: 265, TrashCan: 165)
+  [ID 13] debris_branch_wood   :   766 annotations (SeaClear: 430, TrashCan: 336)
+  [ID 14] debris_other         : 8,843 annotations (SeaClear: 6,087, TrashCan: 2,756)
+
+TIER 3: Uncertain Debris / Maritime Infrastructure
+  [ID 15] uncertain_cable_metal:   149 annotations (SeaClear: 149, TrashCan: 0)
+
+TIER 4: Excluded ROV Equipment (Filtered from Environmental Debris)
+  [ID 101] rov_equipment       : 4,280 annotations (SeaClear: 963, TrashCan: 3,317)
+
+TIER 5: Excluded Marine Biology (Filtered from Environmental Debris)
+  [ID 201] marine_biology      : 16,595 annotations (SeaClear: 13,790, TrashCan: 2,805)
+
+SUMMARY:
+  - Total Environmental Debris Annotations : 22,659 (51.9%)
+  - Total Excluded Non-Debris (ROV + Bio)  : 20,875 (47.8%)
+  - Total Uncertain Infrastructure         :    149 ( 0.3%)
+  - Grand Total                            : 43,683 (100.0%)
+
+
+4. DOCUMENTED CLASS MAPPING TABLE
+--------------------------------------------------------------------------------
+
+A. SeaClear Marine Debris Dataset (40 Categories)
+------------------------------------------------------------------------------------------------------------------------
+Orig ID  Original Category Name         Count  Target ID  Target Class Name      Mapping Status       Debris?  Confidence
+------------------------------------------------------------------------------------------------------------------------
+      1  can_metal                      1,130          5  debris_can             DIRECT_MAPPED        True     HIGH
+      2  tarp_plastic                      31         11  debris_tarp            DIRECT_MAPPED        True     HIGH
+      3  container_plastic                 84          6  debris_container       MERGED_MAPPED        True     HIGH
+      4  bottle_plastic                 1,261          3  debris_bottle          MERGED_MAPPED        True     HIGH
+      5  tube_cement                    1,404         14  debris_other           MERGED_MAPPED        True     HIGH
+      6  plant                            472        201  marine_biology         EXCLUDED_BIO         False    HIGH
+      7  container_middle_size_metal       60          6  debris_container       MERGED_MAPPED        True     HIGH
+      8  animal_etc                     3,749        201  marine_biology         EXCLUDED_BIO         False    HIGH
+      9  animal_sponge                  1,110        201  marine_biology         EXCLUDED_BIO         False    HIGH
+     10  bottle_glass                   2,331          3  debris_bottle          MERGED_MAPPED        True     HIGH
+     11  wreckage_metal                   265         12  debris_wreckage        DIRECT_MAPPED        True     HIGH
+     12  unknown_instance               1,195         14  debris_other           MERGED_MAPPED        True     HIGH
+     13  pipe_plastic                     155          8  debris_pipe            DIRECT_MAPPED        True     HIGH
+     14  net_plastic                      960          1  fishing_net            DIRECT_MAPPED        True     HIGH
+     15  animal_shells                    995        201  marine_biology         EXCLUDED_BIO         False    HIGH
+     16  rope_fiber                     2,039          2  rope_line              MERGED_MAPPED        True     HIGH
+     17  animal_urchin                  6,462        201  marine_biology         EXCLUDED_BIO         False    HIGH
+     18  cup_plastic                      329          7  debris_cup             MERGED_MAPPED        True     HIGH
+     19  brick_clay                       606         14  debris_other           MERGED_MAPPED        True     HIGH
+     20  bag_plastic                      882          4  debris_bag             DIRECT_MAPPED        True     HIGH
+     21  sanitaries_plastic                55         14  debris_other           MERGED_MAPPED        True     HIGH
+     22  clothing_fiber                   298         10  debris_clothing        DIRECT_MAPPED        True     HIGH
+     23  cup_ceramic                      123          7  debris_cup             MERGED_MAPPED        True     HIGH
+     24  boot_rubber                      161         14  debris_other           MERGED_MAPPED        True     HIGH
+     25  tire_rubber                    2,556         14  debris_other           MERGED_MAPPED        True     HIGH
+     26  jar_glass                         62         14  debris_other           MERGED_MAPPED        True     HIGH
+     27  rov_cable                        389        101  rov_equipment          EXCLUDED_ROV         False    HIGH
+     28  rov_tortuga                       55        101  rov_equipment          EXCLUDED_ROV         False    HIGH
+     29  branch_wood                      430         13  debris_branch_wood     DIRECT_MAPPED        True     HIGH
+     30  furniture_wood                    15         14  debris_other           MERGED_MAPPED        True     HIGH
+     31  snack_wrapper_plastic            172          9  debris_snack_wrapper   MERGED_MAPPED        True     HIGH
+     32  lid_plastic                       20         14  debris_other           MERGED_MAPPED        True     HIGH
+     33  cardboard_paper                   13         14  debris_other           MERGED_MAPPED        True     HIGH
+     34  rope_plastic                       8          2  rope_line              MERGED_MAPPED        True     HIGH
+     35  cable_metal                      149         15  uncertain_cable_metal  UNCERTAIN_AMBIGUOUS  False    LOW
+     36  animal_fish                      985        201  marine_biology         EXCLUDED_BIO         False    HIGH
+     37  snack_wrapper_paper                8          9  debris_snack_wrapper   MERGED_MAPPED        True     HIGH
+     38  rov_vehicle_leg                  461        101  rov_equipment          EXCLUDED_ROV         False    HIGH
+     39  rov_bluerov                       58        101  rov_equipment          EXCLUDED_ROV         False    HIGH
+     40  animal_starfish                   17        201  marine_biology         EXCLUDED_BIO         False    HIGH
+------------------------------------------------------------------------------------------------------------------------
+SeaClear Subtotal: 31,555 annotations across 40 classes (100% mapped)
+
+
+B. TrashCan 1.0 (Instance Version, 22 Categories)
+------------------------------------------------------------------------------------------------------------------------
+Orig ID  Original Category Name         Count  Target ID  Target Class Name      Mapping Status       Debris?  Confidence
+------------------------------------------------------------------------------------------------------------------------
+      1  rov                            3,317        101  rov_equipment          EXCLUDED_ROV         False    HIGH
+      2  plant                            507        201  marine_biology         EXCLUDED_BIO         False    HIGH
+      3  animal_fish                      764        201  marine_biology         EXCLUDED_BIO         False    HIGH
+      4  animal_starfish                  398        201  marine_biology         EXCLUDED_BIO         False    HIGH
+      5  animal_shells                    249        201  marine_biology         EXCLUDED_BIO         False    HIGH
+      6  animal_crab                      309        201  marine_biology         EXCLUDED_BIO         False    HIGH
+      7  animal_eel                       343        201  marine_biology         EXCLUDED_BIO         False    HIGH
+      8  animal_etc                       235        201  marine_biology         EXCLUDED_BIO         False    HIGH
+      9  trash_clothing                    82         10  debris_clothing        DIRECT_MAPPED        True     HIGH
+     10  trash_pipe                       156          8  debris_pipe            DIRECT_MAPPED        True     HIGH
+     11  trash_bottle                     126          3  debris_bottle          DIRECT_MAPPED        True     HIGH
+     12  trash_bag                        908          4  debris_bag             DIRECT_MAPPED        True     HIGH
+     13  trash_snack_wrapper               84          9  debris_snack_wrapper   DIRECT_MAPPED        True     HIGH
+     14  trash_can                        459          5  debris_can             DIRECT_MAPPED        True     HIGH
+     15  trash_cup                         59          7  debris_cup             DIRECT_MAPPED        True     HIGH
+     16  trash_container                  510          6  debris_container       DIRECT_MAPPED        True     HIGH
+     17  trash_unknown_instance         2,756         14  debris_other           MERGED_MAPPED        True     HIGH
+     18  trash_branch                     336         13  debris_branch_wood     DIRECT_MAPPED        True     HIGH
+     19  trash_wreckage                   165         12  debris_wreckage        DIRECT_MAPPED        True     HIGH
+     20  trash_tarp                       121         11  debris_tarp            DIRECT_MAPPED        True     HIGH
+     21  trash_rope                       117          2  rope_line              DIRECT_MAPPED        True     HIGH
+     22  trash_net                        127          1  fishing_net            DIRECT_MAPPED        True     HIGH
+------------------------------------------------------------------------------------------------------------------------
+TrashCan Subtotal: 12,128 annotations across 22 classes (100% mapped)
+
+
+5. UNRESOLVED MAPPINGS & SCIENTIFIC JUSTIFICATIONS
+--------------------------------------------------------------------------------
+A. Status of "trap_cage"
+- Examination: Neither SeaClear nor TrashCan provides an actionable `trap_cage` class.
+- In SeaClear: 0 trap/pot/cage classes exist among the 40 categories.
+- In TrashCan: The author conversion script (`trash_can_coco.py`, line 23) listed
+  `'cage'` under `trash_unknown_akas`, collapsing any cage annotations into
+  `trash_unknown_instance`.
+- Determination: Formally marked as UNSUPPORTED. Fabricating annotations or
+  guessing which `unknown_instance` masks are cages without re-annotation would
+  introduce severe label noise.
+
+B. Status of "cable_metal" (SeaClear ID 35, 149 annotations)
+- Examination: SeaClear annotates 149 instances of `cable_metal`.
+- Ambiguity: In underwater imagery, heavy steel wire ropes can represent:
+  (1) Active maritime infrastructure (harbor moorings, submarine telecom armor),
+  (2) Abandoned trawl warps / commercial fishing winch cables (ALDFG),
+  (3) ROV umbilical or tether segments.
+- Determination: Kept as a separate class `uncertain_cable_metal` (Target ID 15)
+  and excluded from environmental debris metrics until confirmed.
+
+C. Exclusion of ROV Equipment
+- Hardware categories: `rov` (TrashCan: 3,317), `rov_cable` (389), `rov_tortuga` (55),
+  `rov_vehicle_leg` (461), `rov_bluerov` (58). Total = 4,280 instances.
+- Rationale: Survey ROVs capture parts of their own chassis, robotic arms, thrusters,
+  and umbilicals in the camera field of view. Training an environmental debris model
+  on ROV hardware would cause severe false detections of the inspection vehicle.
+
+
+6. SEACLEAR PATH RESOLUTION AUDIT
+--------------------------------------------------------------------------------
+- Filename Structure in dataset.json: Bare filenames (e.g. `1.jpg`, `2809.jpg`).
+- Directory Partition: 5 sites, 9 site/camera pairs:
+    Bistrina   / Bluerobotics HD         : 1,390 images
+    Bistrina   / Paralenz Vaquita Gen 2  : 2,069 images
+    Bistrina   / SIP-E323CV              :   193 images
+    Jakljan    / Bluerobotics HD         :   241 images
+    Jakljan    / Paralenz Vaquita        :    65 images
+    Lokrum     / Bluerobotics HD         :   556 images
+    Lokrum     / Paralenz Vaquita Gen 2  :    77 images
+    Lokrum     / SIP-E323CV              :   339 images
+    Marseille  / SIP-E323CV              : 3,441 images
+    Slano      / Bluerobotics HD         :   168 images
+    Slano      / Paralenz Vaquita        :    71 images
+- Total Physical Files on Disk : 8,610
+- Name Collisions across Sites : 0 collisions detected
+- Missing Files                : 0 missing files
+- Resolution Rate              : 100.0% (8,610 / 8,610) [PASS]
+
+
+7. DATA LEAKAGE AUDIT & ZERO-LEAKAGE SPLIT PLAN
+--------------------------------------------------------------------------------
+A. Critical Leakage in Official TrashCan Split:
+- TrashCan images are extracted from underwater video clips (`vid_XXXXXX`).
+- There are 312 distinct video sequences.
+- Official train set contains 310 sequences; val set contains 115 sequences.
+- Overlapping sequences: **113 out of 115 validation sequences also exist in train!**
+- Impact: 98.3% sequence overlap represents extreme temporal leakage. Adjacent video
+  frames from identical camera tracks appear in both train and validation sets,
+  rendering published benchmark results severely over-optimistic.
+
+B. Proposed Zero-Leakage Split Strategy:
+1. TrashCan Group-by-Video Split:
+   - Partition unit: `video_id` (the 312 distinct sequences).
+   - Validation sequences: 63 sequences (~20.2%).
+   - Training sequences: 249 sequences (~79.8%).
+   - Sequence Overlap: **0 sequences (0% leakage)** [PASS].
+
+2. SeaClear Group-by-Deployment Split:
+   - Partition unit: Deployment site / camera pairs.
+   - Proposed partition:
+     - Train Sites: Bistrina (3,652) + Marseille (3,441) = 7,093 images (82.4%).
+     - Val Sites  : Lokrum (972) + Jakljan (306) + Slano (239) = 1,517 images (17.6%).
+   - Deployment Overlap: **0 images overlapping across sites (0% leakage)** [PASS].
+   - Benefit: Evaluates generalizability across completely unseen geographic locations,
+     water turbidities, and seabed geologies.
+
+
+8. OUTPUT ARTIFACTS CREATED IN STAGE 4.2
+--------------------------------------------------------------------------------
+All outputs have been placed strictly in `dataset_integration/stage4_2/`:
+
+1. `class_mapping.json`:
+   Machine-readable mapping table specifying 100% of SeaClear and TrashCan classes,
+   target IDs, target supercategories, confidence scores, and status flags.
+
+2. `class_mapping.csv`:
+   Tabular CSV format for direct review and auditing in spreadsheet tools.
+
+3. `unified_schema.json`:
+   Draft-07 JSON Schema defining the canonical OceanRescue annotation schema
+   including image metadata, split groups, and annotation traceability.
+
+4. `schema_documentation.md`:
+   Comprehensive documentation covering data models, coordinate systems, field
+   definitions, path resolution rules, and split design.
+
+5. `validate_mappings_and_schema.py`:
+   Automated verification script executing end-to-end integrity checks on 15,822
+   images and 43,683 annotations.
+
+6. `stage4_2_audit_report.txt`:
+   This formal audit and validation report.
+
+
+9. VERDICT & NEXT STEPS
+--------------------------------------------------------------------------------
+VERDICT: PASS WITH WARNINGS
+- Data Integrity: PASS (15,822 images and 43,683 annotations valid, 0 errors).
+- Path Resolution: PASS (100% of SeaClear images safely resolved).
+- Class Mapping: PASS (100% of categories preserved and mapped).
+- Warning: Official TrashCan release contains 98.3% sequence leakage across
+  train and val splits. This must be addressed in Stage 4.3 using our Group-by-Video
+  split protocol during dataset consolidation.
+
+Recommended Next Step:
+Proceed to **Stage 4.3: Consolidated Dataset Generation & Split Export**,
+applying the verified mappings, path resolvers, and group-split strategy
+to generate the unified COCO annotation files.
+================================================================================
+END OF STAGE 4.2 AUDIT REPORT
+================================================================================

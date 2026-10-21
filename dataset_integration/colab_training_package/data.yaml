@@ -1,0 +1,19 @@
+# OceanRescue Priority ALDFG Dataset: Fishing Nets & Ropes
+# Target Model: Ultralytics YOLOv8-seg / YOLOv11-seg (Instance Segmentation)
+
+path: /content/colab_training_package # root dataset dir in Google Colab
+train: images/train                   # train images (relative to 'path')
+val: images/val                       # val images (relative to 'path')
+
+# Classes
+nc: 2
+names:
+  0: fishing_net
+  1: rope_line
+
+# Metadata & Provenance
+project: OceanRescue
+version: 1.0.0
+classes_description:
+  0: Submerged fishing nets, ghost nets, gillnets, netting fragments
+  1: Submerged fiber and synthetic ropes, mooring lines, buoy cordage

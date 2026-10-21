@@ -1,0 +1,212 @@
+================================================================================
+OceanRescue Third-Year Mini-Project
+Dataset Integration Stage 1: Inventory & Readiness Audit Report
+================================================================================
+Report Generated : 10-Oct-2026
+Study Region     : Arabian Sea  |  Latitude 14.0° N to 20.0° N, Longitude 68.0° E to 74.0° E
+Project Title    : OceanRescue: AI-Driven Geospatial Intelligence for Detection,
+                   Drift Forecasting, and Retrieval Optimization of ALDFG
+Stage Objective  : Perform an exhaustive read-only audit of all existing project
+                   datasets (1–7 + Visual Detection data). Validate paths, formats,
+                   dimensions, coordinate coverage, variable schemas, licensing,
+                   and known limitations. Determine readiness status for Stage 2.
+================================================================================
+
+--------------------------------------------------------------------------------
+1. EXECUTIVE READINESS SUMMARY & DATASET STATUS
+--------------------------------------------------------------------------------
+All dataset folders and files were scanned recursively in read-only mode. No data
+was merged, resampled, modified, or downloaded during this stage.
+
+  Dataset ID & Name                | Readiness Status    | Key Files & Resolution
+  ---------------------------------|---------------------|----------------------------------------------------
+  Dataset 1: Ocean Currents        | READY               | NetCDF (.nc) | 1/12° (~9 km) | 6-hourly (00,06,12,18)
+  Dataset 2: Wave Dataset          | READY               | NetCDF (.nc) | 1/12° (~9 km) | 3-hourly (00..21)
+  Dataset 3: Original Wind (Scatter)| PARTIAL            | NetCDF (.nc) | 0.25° (~25km) | Daily (24-hourly) [Coarse]
+  Dataset 4: New Wind (ERA5 10m)   | READY               | NetCDF (.nc) | 0.25° (~25km) | 1-hourly (72 steps)
+  Dataset 5: Bathymetry (GEBCO)    | READY WITH WARNINGS | NetCDF (.nc) | 15 arc-sec (~450m) | Static (1440x1440)
+  Dataset 6: Fishing-Gear Incidents| PARTIAL             | CSV/JSON     | Point Data    | 50 Synthetic (0 Real)
+  Dataset 7: Sensitive Marine Areas| READY WITH WARNINGS | GeoJSON/CSV  | Polygons/Pts  | Malvan MPA + 37 OSM Pts
+  Visual Detection (TrashCan)      | READY WITH WARNINGS | JPG / JSON   | 7,212 Images   | COCO Format (Rope/Net/Gear)
+
+--------------------------------------------------------------------------------
+2. DETAILED AUDIT BY DATASET
+--------------------------------------------------------------------------------
+
+[DATASET 1] Ocean Currents Dataset
+  - File Path          : ocean currents dataset/ocean rescue datasets ocean currents.nc
+  - Format & Size      : NetCDF4 (397,885 bytes)
+  - Readability Status : PASS (Opens cleanly via xarray & netCDF4)
+  - Variables & Units  : `uo` (Eastward velocity, m s-1), `vo` (Northward velocity, m s-1)
+  - Dimensions         : {time: 9, depth: 1, latitude: 73, longitude: 72}
+  - Latitude Range     : 14.0000° N to 20.0000° N (73 points, step 0.0833° ~ 1/12°)
+  - Longitude Range    : 68.0000° E to 73.9167° E (72 points, step 0.0833° ~ 1/12°)
+  - Temporal Coverage  : 2026-09-01T00:00:00 to 2026-09-03T00:00:00 (9 timestamps, 6-hourly)
+  - Missing Values     : 0% missing over ocean grid points; land masked cleanly.
+  - Spatial Match      : FULL MATCH with 14.0°–20.0°N, 68.0°–74.0°E study box.
+  - Integration Status : READY for drift modeling pipeline.
+
+[DATASET 2] Wave Dataset
+  - File Path          : wave dataset/wave dataset.nc
+  - Format & Size      : NetCDF4 (1,106,350 bytes)
+  - Readability Status : PASS (Opens cleanly via xarray & netCDF4)
+  - Variables & Units  : `VHM0` (Significant wave height, m),
+                         `VTM10` (Mean wave period, s),
+                         `VMDR` (Mean wave direction, degree)
+  - Dimensions         : {time: 17, latitude: 73, longitude: 73}
+  - Latitude Range     : 14.0000° N to 20.0000° N (73 points, step 0.0833° ~ 1/12°)
+  - Longitude Range    : 68.0000° E to 74.0000° E (73 points, step 0.0833° ~ 1/12°)
+  - Temporal Coverage  : 2026-09-01T00:00:00 to 2026-09-03T00:00:00 (17 timestamps, 3-hourly)
+  - Missing Values     : 0% missing over ocean grid points; land masked cleanly.
+  - Spatial Match      : FULL MATCH with 14.0°–20.0°N, 68.0°–74.0°E study box.
+  - Integration Status : READY for surface Stokes drift modeling.
+
+[DATASET 3] Original Wind Dataset (Scatterometer / Satellite)
+  - File Path          : wind dataset/wind dataset.nc
+  - Format & Size      : NetCDF4 (29,628 bytes)
+  - Readability Status : PASS
+  - Variables & Units  : `se_eastward_model_wind` (m s-1), `se_northward_model_wind` (m s-1)
+  - Dimensions         : {time: 3, latitude: 24, longitude: 24}
+  - Latitude Range     : 14.1250° N to 19.8750° N (24 points, step 0.25°)
+  - Longitude Range    : 68.1250° E to 73.8750° E (24 points, step 0.25°)
+  - Temporal Coverage  : 2026-09-01T00:00:00 to 2026-09-03T00:00:00 (3 timestamps, 24-hourly)
+  - Scientific Defect  : Temporal resolution (1 day) is far too coarse for dynamic drift.
+                         Non-standard variable names. Replaced by Dataset 4.
+  - Integration Status : PARTIAL / DEPRECATED for main pipeline (Use Dataset 4).
+
+[DATASET 4] New Wind Dataset (ERA5 Reanalysis 10m Wind)
+  - File Path          : new wind dataset/new wind dataset.nc
+  - Format & Size      : NetCDF4 (233,649 bytes)
+  - Readability Status : PASS (Opens cleanly via xarray & netCDF4)
+  - Variables & Units  : `u10` (10m U wind component, m s-1),
+                         `v10` (10m V wind component, m s-1)
+  - Dimensions         : {valid_time: 72, latitude: 25, longitude: 25}
+  - Latitude Range     : 14.0000° N to 20.0000° N (25 points, step 0.25°)
+  - Longitude Range    : 68.0000° E to 74.0000° E (25 points, step 0.25°)
+  - Temporal Coverage  : 2026-09-01T00:00:00 to 2026-09-03T23:00:00 (72 timestamps, 1-hourly)
+  - Missing Values     : 0% missing across full grid.
+  - Spatial Match      : FULL MATCH with 14.0°–20.0°N, 68.0°–74.0°E study box.
+  - Integration Status : READY for windage drift calculations.
+
+[DATASET 5] GEBCO Bathymetry Dataset
+  - File Path          : bathymetry dataset/gebco_2026_n20.0_s14.0_w68.0_e74.0.nc
+  - Format & Size      : NetCDF4 (316,499 bytes)
+  - Readability Status : PASS
+  - Variables & Units  : `elevation` (Elevation relative to sea level, m)
+  - Dimensions         : {lat: 1440, lon: 1440} (Static 2D Grid)
+  - Latitude Range     : 14.0021° N to 19.9979° N (1440 points, step ~0.004167° / 15 arc-sec)
+  - Longitude Range    : 68.0021° E to 73.9979° E (1440 points, step ~0.004167° / 15 arc-sec)
+  - Spatial Resolution : ~450 meters (15 arc-seconds)
+  - Critical Warning   : Uses GEBCO positive-up elevation convention. Bathymetric ocean depth values
+                         are NEGATIVE numbers (e.g. -3000 m). Coastal/land elevations are
+                         POSITIVE numbers. Pipeline must calculate `depth = -elevation`
+                         for positive depth models.
+  - Integration Status : READY WITH WARNINGS.
+
+[DATASET 6] Fishing-Gear Incident Reports
+  - Files Found        : fishing_gear_incidents/processed/synthetic_aldfg_incidents.csv
+                         fishing_gear_incidents/processed/synthetic_aldfg_incidents.json
+  - Format & Size      : CSV (14.4 KB), JSON (27.4 KB)
+  - Record Count       : 50 records
+  - Real Data Audit    : 0 real ALDFG records obtained (GGGI, FAO, Olive Ridley require formal account/MOU).
+  - Synthetic Status   : 100% of rows explicitly marked `source="SYNTHETIC_LABELED"`,
+                         `confidence="SYNTHETIC"`, with warning in notes field.
+  - Spatial Range      : Lat 14.0916°N to 19.9978°N, Lon 68.1192°E to 73.8265°E (Within Bbox).
+  - Date Range         : 2020-01-01 to 2026-09-30 (ISO 8601 YYYY-MM-DD).
+  - Integration Status : PARTIAL (50 synthetic labeled test points ready for pipeline validation).
+
+[DATASET 7] Sensitive Marine Areas (Protected Zones & EEZ)
+  - Files Found        : sensitive_marine_areas/processed/sensitive_marine_areas_study_bbox.geojson
+                         sensitive_marine_areas/processed/sensitive_marine_areas_study_bbox.csv
+                         sensitive_marine_areas/processed/osm_protected_areas_bbox_points.geojson
+  - Primary Sanctuary  : Malvan Marine Sanctuary (WDPA ID 15868; IUCN Cat IV; ~29.12 km²).
+  - Boundary Type      : Approximate 5-vertex bounding rectangle polygon (`15.95°–16.15°N, 73.40°–73.55°E`).
+  - Critical Warning   : India EEZ segment polygon is present in `sensitive_marine_areas_study_bbox.geojson`.
+                         EEZ is a sovereign maritime boundary, NOT a protected area. Retrieval algorithms
+                         MUST filter by `category == 'Marine Protected Area'` to avoid flagging the whole study box.
+  - OSM Points         : 37 Point centroids (22 coastal/estuarine, 15 terrestrial). Reference points ONLY.
+  - Integration Status : READY WITH WARNINGS.
+
+[VISUAL DETECTION] Underwater Image Dataset (TrashCan)
+  - Files Found        : dataset/dataset/instance_version/instances_train_trashcan.json (6,065 images, 9,540 anns)
+                         dataset/dataset/instance_version/instances_val_trashcan.json (1,147 images, 2,588 anns)
+                         dataset/dataset/material_version/instances_train_trashcan.json (6,008 images, 9,741 anns)
+                         dataset/dataset/material_version/instances_val_trashcan.json (1,204 images, 12,595 anns)
+  - Total Unique Images: 7,212 JPEG images in `dataset/dataset/original_data/images/`
+  - Relevant Classes   : `trash_net` (Cat ID 22), `trash_rope` (Cat ID 21), `trash_fishing_gear` (Cat ID 11).
+  - SeaClear Status    : NOT FOUND in local directory (Pending optional download).
+  - Scientific Note    : Visual detection identifies submerged marine debris / fishing gear. Detected gear is
+                         NOT automatically confirmed to be abandoned, lost, or discarded without temporal drift tracking.
+  - Integration Status : READY WITH WARNINGS.
+
+--------------------------------------------------------------------------------
+3. CROSS-DATASET COMPATIBILITY & GRID MISMATCH MATRIX
+--------------------------------------------------------------------------------
+Before executing Stage 2 (Grid Resampling & Temporal Alignment), the exact spatial
+and temporal parameters must be benchmarked:
+
+  Dataset Name        | Spatial Grid Resolution | Lat/Lon Points | Temporal Interval | Time Steps
+  --------------------|-------------------------|----------------|-------------------|-----------
+  Ocean Currents (1)  | 0.0833° (~9 km)         | 73 x 72         | 6-hourly (00,06..) | 9 steps
+  Waves (2)           | 0.0833° (~9 km)         | 73 x 73         | 3-hourly (00,03..) | 17 steps
+  Original Wind (3)   | 0.2500° (~25 km)        | 24 x 24         | 24-hourly (Daily)  | 3 steps
+  ERA5 Wind (4)       | 0.2500° (~25 km)        | 25 x 25         | 1-hourly (Hourly)  | 72 steps
+  GEBCO Bathymetry (5)| 0.004167° (~450 m)      | 1440 x 1440     | Static (N/A)       | N/A
+  ALDFG Incidents (6) | Point Coordinates       | 50 Points      | Dates 2020–2026   | N/A
+  Sensitive Areas (7) | Polygons & Points       | Vector Layers   | Static (N/A)       | N/A
+
+Key Incompatibilities to Resolve in Stage 2:
+  1. Spatial Resampling Target : Resample 0.25° ERA5 Wind to match the finer 0.0833° (~9 km)
+                                ocean currents and wave grid (73 x 73).
+  2. Temporal Interpolation    : Interpolate 6-hourly currents (9 steps) and 3-hourly waves (17 steps)
+                                to 1-hourly time-steps matching 72-hour ERA5 wind (Sept 1–3, 2026).
+  3. Bathymetric Downsampling  : Regrid high-res 1440x1440 GEBCO depth grid to the 73x73 model mesh
+                                and convert negative elevation to positive bathymetric depth.
+
+--------------------------------------------------------------------------------
+4. SCIENTIFIC, TECHNICAL & LICENSING LIMITATIONS
+--------------------------------------------------------------------------------
+  - Physical Limitations : Windage coefficient ($C_w$) for floating ALDFG varies by buoyancy/submersion
+                           (0.01 to 0.04). Stokes drift from wave period ($VTM10$) must be combined with $u10, v10$.
+  - Incident Limitation  : No real ALDFG incident dataset exists for the 14–20°N, 68–74°E study region.
+                           The 50 synthetic points are labeled for testing drift algorithms only.
+  - Protected Areas Limit: Malvan Marine Sanctuary is an approximate rectangle. Actual reef boundaries
+                           require high-res shapefiles from UNEP-WCMC.
+  - Licensing Summary    :
+    * Copernicus Marine (Currents & Waves) : Free open access (CMEMS License).
+    * ECMWF ERA5 (New Wind) : Copernicus Climate Change Service (C3S) Open License.
+    * GEBCO 2026 (Bathymetry) : GEBCO Sub-Committee on Undersea Feature Names (Open License).
+    * OpenStreetMap (OSM) : ODbL (Open Database License) (c) OpenStreetMap contributors.
+    * TrashCan Dataset : Open academic license for underwater computer vision research.
+
+--------------------------------------------------------------------------------
+5. PRE-INTEGRATION ISSUES TO BE ADDRESSED IN STAGE 2
+--------------------------------------------------------------------------------
+  1. Execute bilinear grid interpolation for ERA5 wind fields onto 0.0833° ocean currents mesh.
+  2. Perform 1-hourly cubic spline temporal alignment across ocean currents and waves.
+  3. Negate GEBCO elevation array (`depth = -elevation`) and extract bathymetric contours for 14–20°N.
+  4. Implement hard category filtering on Dataset 7 (`category == 'Marine Protected Area'`) to exclude EEZ polygon.
+
+--------------------------------------------------------------------------------
+6. VERIFICATION OF INTEGRATION REPORT ARTIFACTS
+--------------------------------------------------------------------------------
+The following inventory and readiness artifacts have been created in `dataset_integration/`:
+
+  Artifact Path                                    | Description
+  -------------------------------------------------|---------------------------------------------------
+  dataset_integration/inventory.csv                | Complete CSV inventory of all workspace files
+  dataset_integration/inventory_manifest.json      | Machine-readable JSON manifest of dataset metadata
+  dataset_integration/dataset_readiness_report.txt | This comprehensive readiness audit report
+
+================================================================================
+FINAL VERDICT FOR INTEGRATION STAGE 1 AUDIT
+================================================================================
+
+  Stage 1 Audit Status : COMPLETED SUCCESSFULLY
+  All 7 Datasets       : INVENTORIED, METADATA EXTRACTED & READINESS RATED
+  Modifications Made   : NONE (0 original files changed or overwritten)
+  Next Recommended Step: PROCEED TO INTEGRATION STAGE 2 (Grid Resampling & Temporal Alignment)
+
+================================================================================
+END OF STAGE 1 READINESS AUDIT REPORT
+================================================================================

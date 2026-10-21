@@ -1,0 +1,124 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "OceanRescueUnifiedMarineDebrisSchema",
+  "description": "JSON Schema specification for OceanRescue unified underwater marine debris dataset, integrating SeaClear and TrashCan with complete lineage, spatial metadata, and split definitions.",
+  "type": "object",
+  "required": ["info", "categories", "images", "annotations"],
+  "properties": {
+    "info": {
+      "type": "object",
+      "required": ["project", "version", "description", "date_created", "source_datasets", "aldfg_priority_classes"],
+      "properties": {
+        "project": { "type": "string", "enum": ["OceanRescue"] },
+        "version": { "type": "string" },
+        "description": { "type": "string" },
+        "date_created": { "type": "string" },
+        "source_datasets": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "aldfg_priority_classes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "supercategory", "is_environmental_debris"],
+        "properties": {
+          "id": { "type": "integer" },
+          "name": { "type": "string" },
+          "supercategory": { "type": "string" },
+          "is_environmental_debris": { "type": "boolean" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "source_dataset",
+          "source_image_id",
+          "file_name",
+          "relative_path",
+          "absolute_path",
+          "width",
+          "height",
+          "split_group",
+          "planned_split"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "source_dataset": { "type": "string", "enum": ["seaclear", "trashcan_instance"] },
+          "source_image_id": { "type": "integer" },
+          "file_name": { "type": "string" },
+          "relative_path": { "type": "string" },
+          "absolute_path": { "type": "string" },
+          "width": { "type": "integer", "minimum": 1 },
+          "height": { "type": "integer", "minimum": 1 },
+          "site": { "type": ["string", "null"] },
+          "camera": { "type": ["string", "null"] },
+          "sequence_id": { "type": "string" },
+          "split_group": { "type": "string" },
+          "planned_split": { "type": "string", "enum": ["train", "val", "test"] }
+        }
+      }
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "image_id",
+          "source_dataset",
+          "source_ann_id",
+          "source_category_id",
+          "source_category_name",
+          "target_category_id",
+          "target_category_name",
+          "target_supercategory",
+          "mapping_status",
+          "is_environmental_debris",
+          "bbox",
+          "segmentation",
+          "area",
+          "iscrowd"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "image_id": { "type": "string" },
+          "source_dataset": { "type": "string", "enum": ["seaclear", "trashcan_instance"] },
+          "source_ann_id": { "type": "integer" },
+          "source_category_id": { "type": "integer" },
+          "source_category_name": { "type": "string" },
+          "target_category_id": { "type": "integer" },
+          "target_category_name": { "type": "string" },
+          "target_supercategory": { "type": "string" },
+          "mapping_status": {
+            "type": "string",
+            "enum": ["DIRECT_MAPPED", "MERGED_MAPPED", "EXCLUDED_ROV", "EXCLUDED_BIO", "UNCERTAIN_AMBIGUOUS", "UNSUPPORTED"]
+          },
+          "is_environmental_debris": { "type": "boolean" },
+          "bbox": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "segmentation": {
+            "type": "array"
+          },
+          "area": { "type": "number", "minimum": 0 },
+          "iscrowd": { "type": "integer", "enum": [0, 1] }
+        }
+      }
+    }
+  }
+}

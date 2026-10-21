@@ -1,0 +1,752 @@
+{
+  "type": "FeatureCollection",
+  "name": "OceanRescue_Recovery_Candidate_Locations",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.39947,
+          15.1834
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_001",
+        "cluster_point_count": 1,
+        "water_depth_m": 70.68,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 85.24,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.33134,
+          17.21937
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_002",
+        "cluster_point_count": 3,
+        "water_depth_m": 1664.65,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 250.37,
+        "unvalidated_prioritization_index": 0.665,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.10706,
+          18.97858
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_003",
+        "cluster_point_count": 1,
+        "water_depth_m": 72.72,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 397.49,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.19948,
+          15.37214
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_004",
+        "cluster_point_count": 2,
+        "water_depth_m": 3801.35,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 454.29,
+        "unvalidated_prioritization_index": 0.42,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          68.91456,
+          16.10232
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_005",
+        "cluster_point_count": 1,
+        "water_depth_m": 3697.55,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 479.18,
+        "unvalidated_prioritization_index": 0.295,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          68.78483,
+          14.46366
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_006",
+        "cluster_point_count": 1,
+        "water_depth_m": 4044.22,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 522.04,
+        "unvalidated_prioritization_index": 0.295,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.17636,
+          19.49393
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_007",
+        "cluster_point_count": 1,
+        "water_depth_m": 26.63,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 393.74,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.73121,
+          16.09775
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_008",
+        "cluster_point_count": 4,
+        "water_depth_m": 109.44,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 71.45,
+        "unvalidated_prioritization_index": 0.79,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.62254,
+          19.01619
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_009",
+        "cluster_point_count": 1,
+        "water_depth_m": 21.02,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 329.19,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.65751,
+          14.8085
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_010",
+        "cluster_point_count": 1,
+        "water_depth_m": 65.31,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 127.45,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.18171,
+          19.42751
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_011",
+        "cluster_point_count": 1,
+        "water_depth_m": 82.07,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 498.88,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          68.70594,
+          18.33554
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_012",
+        "cluster_point_count": 1,
+        "water_depth_m": 3374.46,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 554.53,
+        "unvalidated_prioritization_index": 0.295,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.37434,
+          14.0377
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_013",
+        "cluster_point_count": 2,
+        "water_depth_m": null,
+        "depth_status": "LAND_HAZARD",
+        "dist_malvan_mpa_approx_km": 304.22,
+        "unvalidated_prioritization_index": 0.34,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          73.00866,
+          14.36635
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_014",
+        "cluster_point_count": 1,
+        "water_depth_m": 1044.18,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 181.03,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.23486,
+          18.00468
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_015",
+        "cluster_point_count": 1,
+        "water_depth_m": 83.48,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 309.01,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.64795,
+          14.03903
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_016",
+        "cluster_point_count": 1,
+        "water_depth_m": null,
+        "depth_status": "LAND_HAZARD",
+        "dist_malvan_mpa_approx_km": 227.32,
+        "unvalidated_prioritization_index": 0.215,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.75923,
+          18.58434
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_017",
+        "cluster_point_count": 3,
+        "water_depth_m": 2293.35,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 471.73,
+        "unvalidated_prioritization_index": 0.545,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.96083,
+          16.91329
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_018",
+        "cluster_point_count": 3,
+        "water_depth_m": 52.84,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 96.93,
+        "unvalidated_prioritization_index": 0.665,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.94407,
+          15.82289
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_019",
+        "cluster_point_count": 1,
+        "water_depth_m": 3271.78,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 369.87,
+        "unvalidated_prioritization_index": 0.295,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.12277,
+          18.2164
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_020",
+        "cluster_point_count": 1,
+        "water_depth_m": 2166.39,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 417.11,
+        "unvalidated_prioritization_index": 0.295,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.85657,
+          18.39816
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_021",
+        "cluster_point_count": 2,
+        "water_depth_m": 75.83,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 298.91,
+        "unvalidated_prioritization_index": 0.54,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.1273,
+          14.46241
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_022",
+        "cluster_point_count": 2,
+        "water_depth_m": 2197.35,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 294.66,
+        "unvalidated_prioritization_index": 0.42,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          68.81737,
+          18.86141
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_023",
+        "cluster_point_count": 1,
+        "water_depth_m": 3226.4,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 571.83,
+        "unvalidated_prioritization_index": 0.295,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.65711,
+          17.73087
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_024",
+        "cluster_point_count": 1,
+        "water_depth_m": 34.68,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 192.73,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          68.8339,
+          14.86741
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_025",
+        "cluster_point_count": 1,
+        "water_depth_m": 3964.16,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 504.04,
+        "unvalidated_prioritization_index": 0.295,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.55792,
+          18.13057
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_026",
+        "cluster_point_count": 1,
+        "water_depth_m": 39.41,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 237.71,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.79578,
+          17.73596
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_027",
+        "cluster_point_count": 1,
+        "water_depth_m": 1232.69,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 328.37,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.49137,
+          16.20444
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_028",
+        "cluster_point_count": 1,
+        "water_depth_m": 3221.36,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 310.68,
+        "unvalidated_prioritization_index": 0.295,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.27134,
+          16.51948
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_029",
+        "cluster_point_count": 1,
+        "water_depth_m": 203.93,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 127.25,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.88098,
+          15.63492
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_030",
+        "cluster_point_count": 1,
+        "water_depth_m": 2647.12,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 271.79,
+        "unvalidated_prioritization_index": 0.295,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.17833,
+          16.61892
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_031",
+        "cluster_point_count": 1,
+        "water_depth_m": 3646.35,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 453.36,
+        "unvalidated_prioritization_index": 0.295,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          70.7577,
+          19.3585
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_032",
+        "cluster_point_count": 1,
+        "water_depth_m": 89.87,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 453.38,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.77237,
+          17.32726
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_033",
+        "cluster_point_count": 1,
+        "water_depth_m": 3430.95,
+        "depth_status": "DEEP_WATER_OPERATIONAL_LIMIT",
+        "dist_malvan_mpa_approx_km": 407.85,
+        "unvalidated_prioritization_index": 0.295,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.99662,
+          15.28435
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_034",
+        "cluster_point_count": 1,
+        "water_depth_m": 125.88,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 85.7,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.31293,
+          17.19437
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_035",
+        "cluster_point_count": 1,
+        "water_depth_m": 88.69,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 163.99,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.52459,
+          19.15621
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_036",
+        "cluster_point_count": 1,
+        "water_depth_m": 1304.36,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 529.44,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          72.0193,
+          18.86521
+        ]
+      },
+      "properties": {
+        "candidate_id": "RECOVERY_CANDIDATE_037",
+        "cluster_point_count": 1,
+        "water_depth_m": 70.57,
+        "depth_status": "DEPTH_SUITABLE",
+        "dist_malvan_mpa_approx_km": 335.54,
+        "unvalidated_prioritization_index": 0.415,
+        "source_type": "SIMULATED_TRAJECTORY_CLUSTER_CENTROID",
+        "disclaimer": "UNVALIDATED_RESEARCH_INDEX"
+      }
+    }
+  ]
+}

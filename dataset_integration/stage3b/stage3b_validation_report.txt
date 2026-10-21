@@ -1,0 +1,127 @@
+================================================================================
+OceanRescue Third-Year Mini-Project
+Stage 3B.1: Recovery Candidate & Environmental Constraint Analysis - Validation Report
+================================================================================
+Report Generated : 10-Oct-2026
+Study Region     : Arabian Sea  |  Latitude 14.0° N to 20.0° N, Longitude 68.0° E to 74.0° E
+Project Title    : OceanRescue: AI-Driven Geospatial Intelligence for Detection,
+                   Drift Forecasting, and Retrieval Optimization of ALDFG
+Stage Objective  : Perform spatial clustering of Stage 3A drift trajectories to identify
+                   candidate recovery search locations, sample bathymetry depth constraints,
+                   and evaluate proximity to sensitive marine areas.
+================================================================================
+
+--------------------------------------------------------------------------------
+1. EXECUTIVE SUMMARY & VERDICT
+--------------------------------------------------------------------------------
+The Stage 3B.1 candidate search location extraction and environmental constraint analysis
+was executed successfully and validated against all mandatory integrity rules.
+
+  Stage 3B.1 Final Verdict : PASS WITH WARNINGS
+
+  Key Output Files Created in `dataset_integration/stage3b/`:
+    (1) analyze_recovery_candidates.py : Reproducible Stage 3B.1 candidate analysis script
+    (2) recovery_candidates.csv         : Tabular candidates with depth & sensitivity metrics (37 candidates)
+    (3) recovery_candidates.geojson     : GeoJSON Point features for candidate centroids (37 features)
+    (4) stage3b_validation_report.txt   : This validation report document
+
+--------------------------------------------------------------------------------
+2. SPATIAL CLUSTERING & CANDIDATE EXTRACTION
+--------------------------------------------------------------------------------
+  - Source Trajectories       : 50 Stage 3A drift trajectory endpoints (47 completed, 3 land collided).
+  - Clustering Method         : Spatial distance binning (Radius = 0.4° ~ 44.4 km).
+  - Candidate Centroids Found : 37 recovery candidate locations.
+  - Labeling Integrity        : 100% of candidates explicitly labeled `SIMULATED_TRAJECTORY_CLUSTER_CENTROID`.
+                                Trajectory endpoints are NOT presented as observed fishing gear.
+
+--------------------------------------------------------------------------------
+3. BATHYMETRY & DEPTH CONSTRAINT EVALUATION
+--------------------------------------------------------------------------------
+Bathymetric depth was sampled at each candidate centroid from GEBCO 2026 Grid (`water_depth`):
+
+  - Configured Depth Limits   : Min Depth = 10.0 m (Shallow hazard), Max Depth = 2000.0 m (Deep limit).
+                                (Note: Depth limits are assumed parameters, not universal vessel constraints).
+
+  Depth Suitability Breakdown:
+    * DEPTH_SUITABLE (10m - 2000m)          : 21 candidates (56.8%)
+    * SHALLOW_WATER_HAZARD (<10m)            : 0 candidates (0.0%)
+    * DEEP_WATER_OPERATIONAL_LIMIT (>2000m)  : 14 candidates (37.8%)
+
+--------------------------------------------------------------------------------
+4. SENSITIVE MARINE AREA PROXIMITY & EEZ EXCLUSION
+--------------------------------------------------------------------------------
+  - India EEZ Segment Status  : 100% EXCLUDED from protected-area sensitivity scoring.
+                                (The EEZ is a sovereign maritime boundary under UNCLOS, NOT a protected area).
+  - Malvan Marine Sanctuary   : Distances calculated to approximate bounding box (`15.95°–16.15°N, 73.40°–73.55°E`).
+                                Reported as APPROXIMATE distances (NOT legal boundary assertions).
+  - OSM Protected Area Points : Proximity calculated to 37 coastal/estuarine/wetland centroids.
+  - Synthetic Incidents (Ds 6): Proximity calculated to 50 synthetic incident points (labeled SYNTHETIC).
+
+--------------------------------------------------------------------------------
+5. UNVALIDATED PRIORITIZATION INDEX ($I_{priority}$)
+--------------------------------------------------------------------------------
+A component-based research index was calculated for candidate ranking:
+
+    I_priority = 0.5 * S_density + 0.3 * S_sensitivity + 0.2 * S_depth
+
+  Where:
+    - S_density     = cluster_point_count / max_count
+    - S_sensitivity = 1.0 (if dist <= 20 km to Malvan MPA) else 0.3
+    - S_depth       = 1.0 (if DEPTH_SUITABLE) else 0.2 / 0.4
+
+  CRITICAL DISCLAIMER:
+  `unvalidated_prioritization_index` is an unvalidated baseline research index.
+  It does NOT represent a real-world risk, incident probability, or calibrated score.
+
+--------------------------------------------------------------------------------
+6. VALIDATION & INTEGRITY CHECKS
+--------------------------------------------------------------------------------
+
+Check 1 - Input File Integrity
+  - All Stage 2 NetCDF, Stage 3A CSV/GeoJSON, and original dataset files remain 100% UNCHANGED.
+  - Result: PASS
+
+Check 2 - Source Labeling Integrity
+  - 100% of candidate records explicitly labeled as simulated centroids.
+  - 100% of Dataset 6 points labeled as synthetic incidents.
+  - Result: PASS
+
+Check 3 - India EEZ Exclusion
+  - India EEZ segment (`category == 'EEZ Reference Zone'`) excluded from protected-area scoring.
+  - Result: PASS
+
+Check 4 - Bathymetric Sign & Depth Sampling
+  - Bathymetric depth sampled correctly as positive-down meters.
+  - Result: PASS
+
+Check 5 - Unvalidated Index Disclaimer
+  - All outputs and reports contain explicit scientific disclaimers for the prioritization index.
+  - Result: PASS
+
+Check 6 - Scope Boundary Compliance
+  - No AI model training performed.
+  - No real-world optimality claimed.
+  - No final vessel route optimization or autonomous retrieval executed.
+  - Result: PASS
+
+--------------------------------------------------------------------------------
+7. WARNINGS & SCIENTIFIC LIMITATIONS
+--------------------------------------------------------------------------------
+  - WARNING 1: Malvan Marine Sanctuary geometry is an approximate bounding box.
+               Distances are approximate and must not be used for legal enforcement.
+  - WARNING 2: Depth limits (10m - 2000m) are assumed research parameters. Real vessel
+               constraints depend on vessel draft, winch capacity, and gear type.
+  - WARNING 3: Prioritization index is unvalidated. Real-world validation requires
+               field observation datasets.
+
+================================================================================
+FINAL VERDICT FOR STAGE 3B.1 CANDIDATE ANALYSIS
+================================================================================
+
+  Stage 3B.1 Status : COMPLETED SUCCESSFULLY
+  Overall Verdict   : PASS WITH WARNINGS
+  Next Recommended  : Stage 3B.2 — Retrieval Path & Vessel Route Optimization Benchmark.
+
+================================================================================
+END OF STAGE 3B.1 VALIDATION REPORT
+================================================================================
