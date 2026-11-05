@@ -24,6 +24,16 @@ frontend/build/
 dist/
 build/
 
+# Environment variables & secrets
+.env
+*.env
+.env.*
+!.env.example
+
+# Uploads & evidence storage
+uploads/
+ngo_backend/uploads/
+
 # OS and Editor files
 .DS_Store
 Thumbs.db

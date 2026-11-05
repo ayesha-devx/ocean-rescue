@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OceanRescue — NGO Staff Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            heading: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              white: '#FFFFFF',
+              ice: '#F2FAFA',
+              aqua: '#00C9C1',
+              teal: '#087E8B',
+              navy: '#173B4D',
+              border: '#D8ECEC',
+              surfaceMuted: '#EBF6F6'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F2FAFA;
+      color: #173B4D;
+      font-family: 'Inter', sans-serif;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4 lg:p-8">
+  <div class="w-full max-w-6xl min-h-[700px] bg-white rounded-2xl shadow-xl border border-[#D8ECEC] overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+    
+    <!-- Left Hero Column (60% width on desktop) -->
+    <div class="lg:col-span-7 relative bg-gradient-to-br from-[#087E8B] to-[#173B4D] text-white p-8 lg:p-12 flex flex-col justify-between overflow-hidden">
+      <!-- Background Marine Image with Dark Gradient Overlay for contrast -->
+      <div class="absolute inset-0 z-0">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwz1JdCq0gTtAGhaUBP8k6U4nch37lN3z_VJSUBZzxf8Dd19qpF388bT6bUADhLSkvPSwio-MYjxNechqqOkzYOGDO99Ngrud_f2SVrQqRlUiFpS5RcYod_wTUT1vMQoLF-WnFAVapOwDI0Lcjpi-eHuiU-_eG2sOfnvJ57UzmB3PN4kJ1_3Z748F6Y1E2yJareWEfIwyEszpgLuSeV7gYL4jndYGq0QNum9Ol-KudCFd3zGIIFWZV" alt="Ocean marine life and turtle" class="w-full h-full object-cover opacity-35 mix-blend-overlay">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0b2b3a]/90 via-[#087E8B]/60 to-[#173B4D]/80"></div>
+      </div>
+
+      <!-- Header Content -->
+      <div class="relative z-10 flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 p-1.5 flex items-center justify-center">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiwCiH06fMn1uqRKe2HOv7TxijbrJvJHiyvnbGdcORIZTniyGNFyQyZhewjnLWSdtuFXeKY4hgTBmpbgbWko235ifJPAriAs0M3-XemI8nCwDmo1grIxOEzuCr306t3m4aizpnRlWbZVQFU8LcmpxXa6-KbppKhUTz7slgLB0_RGgY3xj4ITbOLC8wZ_kArx3ieSbEalAZ4p15nlcNPFGqP_h9du6Mk4mH9SYtIN-wDTh4KfPy-Wwm" alt="OceanRescue Logo" class="w-full h-full object-contain">
+        </div>
+        <div>
+          <span class="text-xl font-bold tracking-tight text-white block">OceanRescue</span>
+          <span class="text-xs font-medium tracking-wider uppercase text-[#00C9C1]">Operations Portal</span>
+        </div>
+      </div>
+
+      <!-- Center Hero Message -->
+      <div class="relative z-10 my-12 max-w-lg">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[#00C9C1] text-xs font-semibold mb-6">
+          <span class="w-2 h-2 rounded-full bg-[#00C9C1] animate-pulse"></span>
+          ALDFG Marine Geospatial Intelligence
+        </div>
+        <h1 class="text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
+          Protect Our Oceans.<br>
+          <span class="text-[#00C9C1]">Act With Intelligence.</span>
+        </h1>
+        <p class="mt-4 text-white/80 text-sm lg:text-base leading-relaxed">
+          OceanRescue equips conservation scientists, GIS analysts, and maritime response units to verify reported abandoned fishing gear, leverage computer vision, and coordinate safe recovery missions worldwide.
+        </p>
+
+        <!-- Feature pill metrics -->
+        <div class="grid grid-cols-3 gap-3 mt-8 pt-8 border-t border-white/15">
+          <div>
+            <div class="text-xl font-bold text-white">99.2%</div>
+            <div class="text-xs text-white/70">System Uptime</div>
+          </div>
+          <div>
+            <div class="text-xl font-bold text-[#00C9C1]">AI-Assisted</div>
+            <div class="text-xs text-white/70">Gear Detection</div>
+          </div>
+          <div>
+            <div class="text-xl font-bold text-white">Encrypted</div>
+            <div class="text-xs text-white/70">NGO Workspace</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Tagline -->
+      <div class="relative z-10 flex items-center justify-between text-xs text-white/70 pt-4 border-t border-white/10">
+        <span class="font-medium tracking-wide text-[#00C9C1]">“Every Net Found. Every Life Saved.”</span>
+        <span>Version 2.4.0 (Protected)</span>
+      </div>
+    </div>
+
+    <!-- Right Login Column (40% width on desktop) -->
+    <div class="lg:col-span-5 bg-white p-8 lg:p-12 flex flex-col justify-between">
+      <div class="flex justify-end">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#F2FAFA] border border-[#D8ECEC] text-xs font-medium text-[#087E8B]">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          Authorized Staff Only
+        </span>
+      </div>
+
+      <div class="max-w-sm mx-auto w-full my-auto py-6">
+        <h2 class="text-2xl font-bold text-[#173B4D] tracking-tight">Welcome Back</h2>
+        <p class="text-sm text-gray-500 mt-1">Sign in to your authorized NGO workspace.</p>
+
+        <form class="mt-6 space-y-4" onsubmit="event.preventDefault();">
+          <div>
+            <label class="block text-xs font-semibold text-[#173B4D] uppercase tracking-wider mb-1.5">Staff Email Address</label>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/></svg>
+              </div>
+              <input type="email" value="elena.rostova@oceanrescue.org" class="w-full pl-9 pr-3 py-2.5 bg-[#F2FAFA] border border-[#D8ECEC] rounded-lg text-sm text-[#173B4D] focus:outline-none focus:ring-2 focus:ring-[#00C9C1] focus:bg-white transition-all font-medium">
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="block text-xs font-semibold text-[#173B4D] uppercase tracking-wider">Access Password</label>
+              <a href="#" class="text-xs text-[#087E8B] hover:text-[#00C9C1] font-medium transition-colors">Forgot password?</a>
+            </div>
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              </div>
+              <input type="password" value="••••••••••••" class="w-full pl-9 pr-10 py-2.5 bg-[#F2FAFA] border border-[#D8ECEC] rounded-lg text-sm text-[#173B4D] focus:outline-none focus:ring-2 focus:ring-[#00C9C1] focus:bg-white transition-all">
+              <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between pt-1">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" checked class="w-4 h-4 rounded border-gray-300 text-[#087E8B] focus:ring-[#00C9C1] accent-[#087E8B]">
+              <span class="text-xs text-gray-600 font-normal">Keep session active (8h)</span>
+            </label>
+            <span class="text-[11px] text-gray-400">2FA Verified</span>
+          </div>
+
+          <button type="submit" class="w-full mt-4 py-2.5 px-4 rounded-lg bg-[#00C9C1] hover:bg-[#087E8B] text-[#173B4D] hover:text-white font-semibold text-sm transition-all duration-200 shadow-sm flex items-center justify-center gap-2 group">
+            <span>Sign In to Portal</span>
+            <svg class="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </form>
+
+        <div class="mt-6 p-3 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC] text-xs text-gray-600 flex items-start gap-2.5">
+          <svg class="w-4 h-4 text-[#087E8B] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>For public gear reports or general inquiries, please navigate back to the public website.</span>
+        </div>
+      </div>
+
+      <div class="text-center pt-4 border-t border-[#D8ECEC]">
+        <a href="#" class="inline-flex items-center gap-1.5 text-xs font-medium text-[#087E8B] hover:text-[#00C9C1] transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+          Back to OceanRescue Website
+        </a>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

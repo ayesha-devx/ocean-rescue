@@ -64,7 +64,7 @@ export const MainLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#061522] print:bg-white text-[#EAF6FF] print:text-slate-900 flex font-sans antialiased overflow-x-hidden selection:bg-[#00E5FF]/20 selection:text-[#00E5FF]">
+    <div className="dark min-h-screen bg-[#061522] print:bg-white text-[#EAF6FF] print:text-slate-900 flex font-sans antialiased overflow-x-hidden selection:bg-[#00E5FF]/20 selection:text-[#00E5FF]">
       {/* Persistent Left Tactical Sidebar (Hidden on Print) */}
       <div className="print:hidden">
         <Sidebar mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />

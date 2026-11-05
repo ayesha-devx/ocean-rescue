@@ -1,6 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import 'leaflet/dist/leaflet.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 :root {
   --color-ocean-bg: #061522;
@@ -428,3 +432,108 @@
     fill: #dc2626 !important;
   }
 }
+
+/* ==========================================================================
+   STITCH MARINE EDITORIAL UTILITIES
+   ========================================================================== */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   STITCH MARINE DEEP-TECH EDITORIAL TYPOGRAPHY
+   ========================================================================== */
+[data-theme="stitch"] h1,
+[data-theme="stitch"] h2,
+[data-theme="stitch"] .font-playfair,
+[data-theme="stitch"] .font-headline-lg,
+[data-theme="stitch"] .font-headline-lg-mobile,
+[data-theme="stitch"] .font-headline-md,
+[data-theme="stitch"] .font-headline-md-mobile,
+[data-theme="stitch"] .font-headline-sm,
+[data-theme="stitch"] .font-display-stitch {
+  font-family: 'Playfair Display', Georgia, Cambria, serif !important;
+}
+
+[data-theme="stitch"] .font-title-lg,
+[data-theme="stitch"] .font-title-md,
+[data-theme="stitch"] .font-body-lg,
+[data-theme="stitch"] .font-body-md,
+[data-theme="stitch"] .font-body-sm,
+[data-theme="stitch"] .font-label-md,
+[data-theme="stitch"] .font-label-sm,
+[data-theme="stitch"] .font-jakarta {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+}
+
+/* ==========================================================================
+   OCEANRESCUE LEAFLET MAP & POPUP STYLING
+   ========================================================================== */
+.ocean-leaflet-map .leaflet-popup-content-wrapper {
+  background: #FFFFFF;
+  color: #173B4D;
+  border: 1px solid #D8ECEC;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(23, 59, 77, 0.15), 0 8px 10px -6px rgba(23, 59, 77, 0.1);
+  padding: 0;
+  overflow: hidden;
+}
+
+.ocean-leaflet-map .leaflet-popup-content {
+  margin: 0;
+  line-height: 1.4;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+.ocean-leaflet-map .leaflet-popup-tip {
+  background: #FFFFFF;
+  border: 1px solid #D8ECEC;
+  box-shadow: none;
+}
+
+.ocean-leaflet-map .leaflet-container {
+  font-family: inherit;
+  background-color: #E6F3F3;
+}
+
+.ocean-leaflet-map .leaflet-control-zoom {
+  border: 1px solid #D8ECEC !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(23, 59, 77, 0.08) !important;
+}
+
+.ocean-leaflet-map .leaflet-control-zoom a {
+  background-color: #FFFFFF !important;
+  color: #173B4D !important;
+  border-bottom: 1px solid #D8ECEC !important;
+  transition: all 0.15s ease;
+}
+
+.ocean-leaflet-map .leaflet-control-zoom a:hover {
+  background-color: #F2FAFA !important;
+  color: #087E8B !important;
+}
+
+
+

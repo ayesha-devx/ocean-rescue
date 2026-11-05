@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="web_dashboard" name="shell-type"/>
+<title>Screen 4 — Incident Details &amp; Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    html, body { min-height: 1024px; background-color: #f3fbfb; color: #173B4D; }
+  </style>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              white: '#FFFFFF',
+              ice: '#F2FAFA',
+              aqua: '#00C9C1',
+              teal: '#087E8B',
+              navy: '#173B4D',
+              border: '#D8ECEC',
+              surfaceMuted: '#EBF6F6'
+            }
+          },
+          fontFamily: {
+            heading: ['Space Grotesk', 'sans-serif'],
+            sans: ['Hanken Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-[#F2FAFA] font-sans text-sm text-[#173B4D] antialiased">
+<!-- Shared Sidebar (Matches Screens 2, 3, 5) -->
+<aside class="fixed left-0 top-0 bottom-0 w-64 bg-white border-r border-[#D8ECEC] z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(23,59,77,0.04)]">
+<div class="flex flex-col flex-1 min-h-0">
+<div class="h-16 flex items-center gap-2.5 px-4 border-b border-[#D8ECEC]">
+<img alt="OceanRescue Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiwCiH06fMn1uqRKe2HOv7TxijbrJvJHiyvnbGdcORIZTniyGNFyQyZhewjnLWSdtuFXeKY4hgTBmpbgbWko235ifJPAriAs0M3-XemI8nCwDmo1grIxOEzuCr306t3m4aizpnRlWbZVQFU8LcmpxXa6-KbppKhUTz7slgLB0_RGgY3xj4ITbOLC8wZ_kArx3ieSbEalAZ4p15nlcNPFGqP_h9du6Mk4mH9SYtIN-wDTh4KfPy-Wwm"/>
+<div class="flex flex-col min-w-0">
+<span class="font-heading font-semibold text-base text-[#173B4D] truncate">OceanRescue</span>
+<span class="font-mono text-[10px] uppercase text-[#087E8B] tracking-widest truncate font-semibold">Operations Portal</span>
+</div>
+</div>
+<div class="px-4 py-2.5">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-semibold tracking-wider">Mission Systems</span>
+</div>
+<nav class="flex-1 px-2 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-gray-600 hover:bg-[#F2FAFA] hover:text-[#173B4D] transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span class="font-medium text-xs">Overview</span>
+</a>
+<a aria-current="page" class="flex items-center gap-2.5 px-3 py-2 rounded-lg transition-colors bg-[#EBF6F6] text-[#087E8B] font-semibold border-l-4 border-[#00C9C1]" href="#">
+<span class="material-symbols-outlined text-lg text-[#087E8B]">assignment</span>
+<span class="font-semibold text-xs">Incidents</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-gray-600 hover:bg-[#F2FAFA] hover:text-[#173B4D] transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">filter_center_focus</span>
+<span class="font-medium text-xs">AI Detection</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-gray-600 hover:bg-[#F2FAFA] hover:text-[#173B4D] transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">air</span>
+<span class="font-medium text-xs">Environmental Intelligence</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-gray-600 hover:bg-[#F2FAFA] hover:text-[#173B4D] transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">explore</span>
+<span class="font-medium text-xs">Drift Forecasting</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-gray-600 hover:bg-[#F2FAFA] hover:text-[#173B4D] transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">warning</span>
+<span class="font-medium text-xs">Risk Prioritization</span>
+</a>
+<a class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-gray-600 hover:bg-[#F2FAFA] hover:text-[#173B4D] transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">anchor</span>
+<span class="font-medium text-xs">Recovery Planning</span>
+</a>
+</nav>
+</div>
+<div class="border-t border-[#D8ECEC] p-2 space-y-1 bg-white">
+<nav class="space-y-1 px-2">
+<a class="flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-500 hover:bg-[#F2FAFA] hover:text-[#173B4D] transition-colors text-xs font-medium" href="#">
+<span class="material-symbols-outlined text-lg">help</span>
+<span>Help &amp; Support</span>
+</a>
+<a class="flex items-center gap-2 px-2 py-1.5 rounded-lg text-gray-500 hover:bg-[#F2FAFA] hover:text-[#173B4D] transition-colors text-xs font-medium" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-2 p-2 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC] flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 min-w-0">
+<div class="relative flex-shrink-0">
+<img alt="Elena Rostova" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA9Fl2WfpBnMnRCVnOh45TBWsjzpZGt3wkULSx8tdbEAJdFmWhi22xgo3cGZivKPglTx6r2qWl9s0hISja9Oql7Gp6zrQDojV67Y7JeSx9W9xU48cIAjW8sFCh_NGLtE1g9LQkfaLeg-mPLJlk3LoF7l_MHcf8qZyUnHreMNK_YhTH0IFjRl9Kc3-Rtyi9nA5pyDpCMzfMegr3lpHl90IyLYRKtiBLlLeMwRr3RgnCpNz8TtJFPGu4"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-[#00C9C1] ring-2 ring-white"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-xs text-[#173B4D] truncate">Elena Rostova</span>
+<span class="font-mono text-[10px] text-gray-500 truncate">Lead GIS Analyst</span>
+</div>
+</div>
+<span class="font-mono text-[9px] px-1.5 py-0.5 rounded bg-white text-[#087E8B] font-semibold border border-[#D8ECEC]">ONLINE</span>
+</div>
+</div>
+</aside>
+<!-- Main Application Wrapper -->
+<div class="pl-64">
+<!-- Fixed Top Header -->
+<header class="fixed top-0 left-64 right-0 h-16 bg-white border-b border-[#D8ECEC] z-40 px-8 flex items-center justify-between shadow-[0_1px_4px_rgba(23,59,77,0.02)]">
+<div class="flex items-center gap-2 text-xs">
+<span class="material-symbols-outlined text-lg text-[#087E8B]">satellite_alt</span>
+<span class="font-mono uppercase text-[#087E8B] font-semibold tracking-wider">Marine Sector 04-NW</span>
+<span class="text-gray-300">/</span>
+<span class="font-mono text-gray-600 font-medium">ALDFG Sentinel Telemetry</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-lg text-gray-400 pointer-events-none">search</span>
+<input class="w-72 h-9 pl-9 pr-3 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC] text-xs text-[#173B4D] placeholder:text-gray-400 focus:outline-none focus:border-[#00C9C1] focus:bg-white" placeholder="Search reports, coordinates, tags..." type="text"/>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#EBF6F6] border border-[#D8ECEC]">
+<span class="w-2 h-2 rounded-full bg-[#087E8B] animate-pulse"></span>
+<span class="font-mono text-[10px] uppercase text-[#087E8B] font-semibold">Simulated Data</span>
+</div>
+<button class="relative p-2 rounded-lg text-gray-500 hover:bg-[#F2FAFA] hover:text-[#173B4D] transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+</button>
+<div class="h-6 w-px bg-[#D8ECEC]"></div>
+<div class="flex items-center gap-2">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA9Fl2WfpBnMnRCVnOh45TBWsjzpZGt3wkULSx8tdbEAJdFmWhi22xgo3cGZivKPglTx6r2qWl9s0hISja9Oql7Gp6zrQDojV67Y7JeSx9W9xU48cIAjW8sFCh_NGLtE1g9LQkfaLeg-mPLJlk3LoF7l_MHcf8qZyUnHreMNK_YhTH0IFjRl9Kc3-Rtyi9nA5pyDpCMzfMegr3lpHl90IyLYRKtiBLlLeMwRr3RgnCpNz8TtJFPGu4"/>
+<div class="hidden xl:flex flex-col text-left">
+<span class="font-mono text-xs font-semibold text-[#173B4D]">E. Rostova</span>
+<span class="font-mono text-[10px] text-gray-500 uppercase">Op-Lead</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content Container -->
+<main class="w-full pt-20 px-8 pb-12">
+<!-- Breadcrumb & Primary Command Bar -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 mb-6">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 font-mono text-xs text-gray-500">
+<a class="hover:text-[#087E8B] transition-colors" href="#">Incidents</a>
+<span class="text-gray-300">/</span>
+<span class="text-[#087E8B] font-semibold">OR-2026-001</span>
+<span class="text-gray-300">/</span>
+<span class="text-[#173B4D] font-medium">Review &amp; Verification</span>
+</div>
+<div class="flex flex-wrap items-center gap-3 mt-1">
+<h1 class="font-heading text-2xl font-bold text-[#173B4D] tracking-tight">Incident Details — OR-2026-001</h1>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EBF6F6] text-[#087E8B] font-mono text-xs font-semibold border border-[#D8ECEC]">
+<span class="w-2 h-2 rounded-full bg-[#00C9C1] animate-pulse"></span>
+              Pending Verification
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-gray-100 text-gray-600 font-mono text-xs">
+<span class="material-symbols-outlined text-xs">lock</span>
+              ID #CF-8821
+            </span>
+</div>
+</div>
+<!-- Action Triggers -->
+<div class="flex flex-wrap items-center gap-2.5">
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white border border-[#D8ECEC] text-red-600 font-medium text-xs shadow-sm hover:bg-red-50 hover:border-red-200 transition-all">
+<span class="material-symbols-outlined text-base">block</span>
+<span>Reject Report</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white border border-[#D8ECEC] text-[#087E8B] font-medium text-xs shadow-sm hover:bg-[#F2FAFA] transition-all">
+<span class="material-symbols-outlined text-base">contact_support</span>
+<span>Request Clarification</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#00C9C1] text-[#173B4D] font-semibold text-xs shadow-sm hover:bg-[#087E8B] hover:text-white transition-all">
+<span class="material-symbols-outlined text-base">verified</span>
+<span>Verify Report</span>
+</button>
+</div>
+</div>
+<!-- Asymmetric Two-Column Grid (8 cols Left / 4 cols Right) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+<!-- Left Operational Column (8 cols) -->
+<div class="xl:col-span-8 flex flex-col gap-6">
+<!-- A. Report Information Primary Dossier Card -->
+<section class="bg-white rounded-xl p-6 shadow-sm border border-[#D8ECEC] flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 border-b border-[#D8ECEC]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#087E8B] text-xl">description</span>
+<h2 class="font-heading font-semibold text-base text-[#173B4D]">Field Incident Telemetry</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-medium">Intake Source:</span>
+<span class="font-mono text-xs px-2 py-0.5 rounded bg-[#F2FAFA] border border-[#D8ECEC] text-[#173B4D] font-semibold">Mobile Field App v2.4</span>
+</div>
+</div>
+<!-- 4-Up Grid Metadata -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+<div class="p-3 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC] flex flex-col justify-between">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-semibold">Report Reference</span>
+<div class="mt-1 font-mono text-sm text-[#173B4D] font-bold">OR-2026-001</div>
+<span class="mt-1 font-mono text-[11px] text-[#087E8B]">Sector 04-NW</span>
+</div>
+<div class="p-3 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC] flex flex-col justify-between">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-semibold">Logged Timestamp</span>
+<div class="mt-1 font-mono text-sm text-[#173B4D] font-bold">Oct 24 • 08:42</div>
+<span class="mt-1 font-mono text-[11px] text-gray-500">UTC Marine Time</span>
+</div>
+<div class="p-3 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC] flex flex-col justify-between">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-semibold">Loss Occurrence</span>
+<div class="mt-1 font-mono text-sm text-[#173B4D] font-bold">Oct 22, 2024</div>
+<span class="mt-1 font-mono text-[11px] text-amber-600 font-semibold">~48h submerged</span>
+</div>
+<div class="p-3 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC] flex flex-col justify-between">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-semibold">Reporter Identity</span>
+<div class="mt-1 font-medium text-xs text-[#173B4D] font-semibold">Commercial Fisher</div>
+<span class="mt-1 font-mono text-[10px] text-[#087E8B] font-semibold">Confidential Active</span>
+</div>
+</div>
+<!-- Gear Specifications Banner -->
+<div class="p-4 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-[#EBF6F6] border border-[#D8ECEC] flex items-center justify-center text-[#087E8B]">
+<span class="material-symbols-outlined text-2xl">grid_on</span>
+</div>
+<div class="flex flex-col">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-semibold">Classified Gear Type</span>
+<span class="font-heading font-semibold text-sm text-[#173B4D]">Heavy Monofilament Gillnet</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<span class="font-mono text-[10px] uppercase text-gray-500 block">Estimated Span</span>
+<span class="font-mono text-sm text-[#087E8B] font-bold">180 – 220 m</span>
+</div>
+<div class="text-right">
+<span class="font-mono text-[10px] uppercase text-gray-500 block">Mesh Gauge</span>
+<span class="font-mono text-sm text-[#173B4D] font-bold">14.5 cm</span>
+</div>
+</div>
+</div>
+<!-- Reporter's Field Narrative -->
+<div class="flex flex-col gap-1.5">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-semibold">Field Observations &amp; Threat Context</span>
+<div class="p-4 rounded-lg bg-[#F2FAFA] border-l-4 border-[#087E8B] text-[#173B4D]">
+<p class="text-xs italic leading-relaxed text-[#173B4D]">
+                  “Net was snagged during high swell on rocky pinnacle. Float line severed. Net body remains suspended between 15m and 28m depth. Marine life entanglement risk is imminent due to nearby kelp canopy.”
+                </p>
+<div class="mt-2.5 flex flex-wrap items-center gap-4 text-gray-500 font-mono text-[11px]">
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-[#087E8B]">waves</span> Swell: 2.8m NW
+                  </span>
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-[#087E8B]">speed</span> Current: 1.4 kts SE
+                  </span>
+<span class="inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-[#087E8B]">visibility</span> Vis: 18m
+                  </span>
+</div>
+</div>
+</div>
+</section>
+<!-- B. Reported Location & Marine Chart Preview -->
+<section class="bg-white rounded-xl p-6 shadow-sm border border-[#D8ECEC] flex flex-col gap-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#D8ECEC]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#087E8B] text-xl">explore</span>
+<h2 class="font-heading font-semibold text-base text-[#173B4D]">Geospatial Telemetry &amp; Bathymetry</h2>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC] text-[#087E8B] font-mono text-[11px] font-semibold hover:bg-[#EBF6F6] transition-colors">
+<span>Open in Full GIS Viewer</span>
+<span class="material-symbols-outlined text-xs">open_in_new</span>
+</button>
+</div>
+<!-- Coordinates & Bathymetric Strip -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+<div class="p-3 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC]">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-semibold">Coordinates (DMS &amp; Dec)</span>
+<div class="mt-1 font-mono text-xs text-[#173B4D] font-bold">34°01'08.4"N 119°22'48.0"W</div>
+<div class="text-[#087E8B] font-mono text-[11px]">34.0190, -119.3800</div>
+</div>
+<div class="p-3 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC]">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-semibold">Sanctuary Zone / Sector</span>
+<div class="mt-1 font-semibold text-xs text-[#173B4D] truncate">Channel Islands Sanctuary</div>
+<div class="text-gray-500 font-mono text-[11px]">Eastern Ridge • Sector 4</div>
+</div>
+<div class="p-3 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC]">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-semibold">Depth &amp; Substrate</span>
+<div class="mt-1 font-mono text-xs text-[#173B4D] font-bold">24.0m Seafloor</div>
+<div class="text-gray-500 text-[11px] truncate">Rocky Substrate &amp; Giant Kelp</div>
+</div>
+</div>
+<!-- Marine GIS Bathymetric Visualization Box -->
+<div class="relative w-full h-64 rounded-xl overflow-hidden bg-slate-800 border border-[#D8ECEC] flex items-center justify-center">
+<img alt="Bathymetric Seafloor" class="w-full h-full object-cover opacity-60" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#173B4D]/80 via-transparent to-transparent pointer-events-none"></div>
+<!-- Top Left Badges -->
+<div class="absolute top-3 left-3 flex flex-col gap-1 pointer-events-none">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/90 backdrop-blur text-[#173B4D] text-[10px] font-mono shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#00C9C1]"></span>
+<span>NOAA Bathymetry 1m Contours</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-white/90 backdrop-blur text-[#087E8B] text-[10px] font-mono shadow-sm">
+<span class="material-symbols-outlined text-xs">anchor</span>
+<span>Shipping Lane Buffer: 1.8 nm West</span>
+</div>
+</div>
+<!-- Radar Pin Target -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="relative flex items-center justify-center">
+<div class="w-10 h-10 rounded-full bg-[#00C9C1]/40 animate-ping absolute"></div>
+<div class="w-8 h-8 rounded-full bg-white shadow-lg flex items-center justify-center border-2 border-[#00C9C1]">
+<span class="material-symbols-outlined text-[#087E8B] text-base">pin_drop</span>
+</div>
+</div>
+<div class="mt-2 px-2.5 py-1 rounded bg-white shadow-md text-center pointer-events-none">
+<span class="font-mono text-[10px] text-[#087E8B] font-bold block">TARGET ALDFG #001</span>
+<span class="font-mono text-[9px] text-gray-500">34.0190°N, 119.3800°W</span>
+</div>
+</div>
+<!-- Bottom Profile -->
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between text-gray-700 font-mono text-[10px] pointer-events-none">
+<div class="bg-white/90 backdrop-blur px-2 py-0.5 rounded shadow-sm">
+                  Depth Profile: -15m (Crown) to -28m (Anchor point)
+                </div>
+<div class="bg-white/90 backdrop-blur px-2 py-0.5 rounded shadow-sm flex items-center gap-1">
+<span class="w-4 h-0.5 bg-[#087E8B]"></span> 200m
+                </div>
+</div>
+</div>
+</section>
+<!-- C. Uploaded Field Documentation Photos & Evidence -->
+<section class="bg-white rounded-xl p-6 shadow-sm border border-[#D8ECEC] flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 border-b border-[#D8ECEC]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#087E8B] text-xl">photo_library</span>
+<h2 class="font-heading font-semibold text-base text-[#173B4D]">Field Imagery Documentation</h2>
+</div>
+<span class="font-mono text-[10px] uppercase text-[#087E8B] font-semibold bg-[#EBF6F6] px-2.5 py-1 rounded border border-[#D8ECEC]">
+                2 Attachments Verified
+              </span>
+</div>
+<!-- Primary High-Resolution Evidence Photo Card -->
+<div class="relative w-full rounded-xl overflow-hidden group bg-slate-900 border border-[#D8ECEC] shadow-md">
+<img alt="Underwater net photography" class="w-full h-80 object-cover object-center group-hover:scale-[1.01] transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh0i_ovGvIsdzXBJcHvIFsXN7AdyQYs_UL6AdqgKWR4sgqQzvUu6RxqQo00JdNBeZkYsKzCW8MgJCXt0TSU9HxLmAA_f-Ozg_SBIopqngzzybN-zUNp2QaF6sFr3pkWbn2LFu1XpOUJvogpamrThGLLvpoSu81E1qCGcDdNOEsJx7Qpjt-UllvCqoWlM69zaTv9xUBji1j3XzCczMD_z1KCzfL5_l4Hj0hPIJ8AT6y9mhpC7za4xSv">
+<!-- Inset Badges -->
+<div class="absolute top-3 left-3 bg-[#173B4D]/90 backdrop-blur px-2.5 py-1 rounded text-white font-mono text-[10px] flex items-center gap-1.5 shadow-sm">
+<span class="w-2 h-2 rounded-full bg-[#00C9C1]"></span>
+<span>PRIMARY CANVASSING CAPTURE</span>
+</div>
+<!-- Bottom Metadata Strip -->
+<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#173B4D]/95 via-[#173B4D]/70 to-transparent p-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2 text-white">
+<div class="flex flex-col">
+<span class="font-mono text-xs font-semibold tracking-wide">photo_01_underwater_raw.jpg</span>
+<span class="text-[11px] text-gray-300">Sony Alpha 7R V • 24mm f/2.8 Marine Housing • ISO 400</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-white/20 backdrop-blur font-mono text-[10px] text-[#00C9C1]">4.2 MB</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#087E8B]/60 backdrop-blur font-mono text-[10px]">
+<span class="material-symbols-outlined text-xs text-[#00C9C1]">check_circle</span>
+                    EXIF GPS Validated
+                  </span>
+</div>
+</div>
+</img></div>
+<!-- Thumbnails Gallery -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+<div class="relative rounded-lg overflow-hidden h-20 bg-slate-100 cursor-pointer shadow-sm ring-2 ring-[#00C9C1]">
+<img alt="Underwater thumbnail" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh0i_ovGvIsdzXBJcHvIFsXN7AdyQYs_UL6AdqgKWR4sgqQzvUu6RxqQo00JdNBeZkYsKzCW8MgJCXt0TSU9HxLmAA_f-Ozg_SBIopqngzzybN-zUNp2QaF6sFr3pkWbn2LFu1XpOUJvogpamrThGLLvpoSu81E1qCGcDdNOEsJx7Qpjt-UllvCqoWlM69zaTv9xUBji1j3XzCczMD_z1KCzfL5_l4Hj0hPIJ8AT6y9mhpC7za4xSv"/>
+<div class="absolute bottom-1 left-1 font-mono text-[9px] text-white bg-black/60 px-1 rounded">Angle 01</div>
+</div>
+<div class="relative rounded-lg overflow-hidden h-20 bg-slate-100 cursor-pointer shadow-sm hover:opacity-90 transition-opacity">
+<img alt="Underwater thumbnail 2" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwz1JdCq0gTtAGhaUBP8k6U4nch37lN3z_VJSUBZzxf8Dd19qpF388bT6bUADhLSkvPSwio-MYjxNechqqOkzYOGDO99Ngrud_f2SVrQqRlUiFpS5RcYod_wTUT1vMQoLF-WnFAVapOwDI0Lcjpi-eHuiU-_eG2sOfnvJ57UzmB3PN4kJ1_3Z748F6Y1E2yJareWEfIwyEszpgLuSeV7gYL4jndYGq0QNum9Ol-KudCFd3zGIIFWZV"/>
+<div class="absolute bottom-1 left-1 font-mono text-[9px] text-white bg-black/60 px-1 rounded">Angle 02 • Reef Context</div>
+</div>
+<div class="relative rounded-lg overflow-hidden h-20 bg-[#F2FAFA] border border-[#D8ECEC] flex flex-col items-center justify-center text-center p-2 cursor-pointer hover:bg-[#EBF6F6] transition-colors">
+<span class="material-symbols-outlined text-[#087E8B] text-xl">ssid_chart</span>
+<span class="font-mono text-[10px] text-[#173B4D] font-semibold mt-0.5">Sidescan_04.dat</span>
+<span class="font-mono text-[9px] text-gray-500">Sonar Echogram</span>
+</div>
+<div class="rounded-lg h-20 bg-white border border-dashed border-[#D8ECEC] flex flex-col items-center justify-center text-center p-2 text-gray-500 hover:text-[#087E8B] hover:bg-[#F2FAFA] cursor-pointer transition-all">
+<span class="material-symbols-outlined text-xl">add_photo_alternate</span>
+<span class="font-mono text-[10px] font-medium mt-0.5">Append Visual</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Secondary Analytical Column (4 cols) -->
+<div class="xl:col-span-4 flex flex-col gap-6">
+<!-- D. Reviewer Assessment & Audit Memo -->
+<section class="bg-white rounded-xl p-6 shadow-sm border border-[#D8ECEC] flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 border-b border-[#D8ECEC]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#087E8B] text-xl">rate_review</span>
+<h2 class="font-heading font-semibold text-base text-[#173B4D]">Reviewer Assessment</h2>
+</div>
+<span class="font-mono text-[10px] uppercase text-[#087E8B] font-semibold bg-[#EBF6F6] px-2 py-0.5 rounded border border-[#D8ECEC]">
+                Stage 2 Active
+              </span>
+</div>
+<!-- Reviewer Profile Box -->
+<div class="p-3 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC] flex items-center gap-3">
+<img alt="Elena Rostova" class="w-10 h-10 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA9Fl2WfpBnMnRCVnOh45TBWsjzpZGt3wkULSx8tdbEAJdFmWhi22xgo3cGZivKPglTx6r2qWl9s0hISja9Oql7Gp6zrQDojV67Y7JeSx9W9xU48cIAjW8sFCh_NGLtE1g9LQkfaLeg-mPLJlk3LoF7l_MHcf8qZyUnHreMNK_YhTH0IFjRl9Kc3-Rtyi9nA5pyDpCMzfMegr3lpHl90IyLYRKtiBLlLeMwRr3RgnCpNz8TtJFPGu4"/>
+<div class="flex flex-col min-w-0">
+<span class="font-semibold text-xs text-[#173B4D] truncate">Elena Rostova</span>
+<span class="font-mono text-[11px] text-[#087E8B] truncate">Lead GIS Analyst • Verified Staff</span>
+</div>
+</div>
+<!-- Memo Input -->
+<div class="flex flex-col gap-1.5">
+<label class="font-mono text-[10px] uppercase text-gray-500 font-semibold" for="reviewer-notes">
+                Technical Audit Memo
+              </label>
+<textarea class="w-full p-3 rounded-lg bg-[#F2FAFA] border border-[#D8ECEC] text-xs text-[#173B4D] leading-relaxed focus:outline-none focus:ring-2 focus:ring-[#00C9C1] focus:bg-white resize-none" id="reviewer-notes" rows="4">Visual evidence matches monofilament gillnet construction. Forwarding to AI Detection pipeline for automated line measurement.</textarea>
+<div class="flex items-center justify-between text-gray-400 font-mono text-[10px]">
+<span>Signed cryptographically: SHA-256</span>
+<span>118 chars</span>
+</div>
+</div>
+<!-- Approve Action Button -->
+<button class="w-full py-2.5 px-4 rounded-lg bg-[#00C9C1] text-[#173B4D] font-semibold text-xs hover:bg-[#087E8B] hover:text-white shadow-sm transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-base">auto_awesome</span>
+<span>Approve for AI Detection</span>
+</button>
+<p class="text-[11px] text-gray-500 text-center leading-relaxed">
+              Enqueues incident imagery into YOLOv8 ALDFG neural nets and hydrodynamic drift modeling.
+            </p>
+</section>
+<!-- E. Analysis Readiness & Workflow Pipeline (Vertical Stepper) -->
+<section class="bg-white rounded-xl p-6 shadow-sm border border-[#D8ECEC] flex flex-col gap-4">
+<div class="flex items-center justify-between pb-3 border-b border-[#D8ECEC]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#087E8B] text-xl">timeline</span>
+<h2 class="font-heading font-semibold text-base text-[#173B4D]">Analysis Pipeline</h2>
+</div>
+<span class="font-mono text-xs font-semibold text-[#087E8B]">2 / 6 Ready</span>
+</div>
+<!-- Vertical Pipeline Stepper -->
+<div class="relative flex flex-col gap-4 pl-3">
+<div class="absolute left-5 top-2.5 bottom-2.5 w-0.5 bg-[#D8ECEC]"></div>
+<!-- Step 1: Intake -->
+<div class="relative flex items-start gap-3">
+<div class="w-5 h-5 rounded-full bg-[#10B981] flex items-center justify-center text-white z-10 shadow-sm">
+<span class="material-symbols-outlined text-xs">check</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-semibold text-xs text-[#173B4D]">Report Intake</span>
+<span class="font-mono text-[10px] text-[#10B981] font-semibold">Done</span>
+</div>
+<span class="font-mono text-[10px] text-gray-500">Oct 24 • 08:42 UTC</span>
+</div>
+</div>
+<!-- Step 2: Verification (Active) -->
+<div class="relative flex items-start gap-3">
+<div class="w-5 h-5 rounded-full bg-[#00C9C1] flex items-center justify-center text-[#173B4D] z-10 shadow-sm ring-4 ring-[#00C9C1]/20">
+<span class="material-symbols-outlined text-xs animate-spin">refresh</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-semibold text-xs text-[#087E8B]">NGO Verification</span>
+<span class="font-mono text-[10px] uppercase text-[#087E8B] font-semibold bg-[#EBF6F6] px-1.5 py-0.5 rounded">In Review</span>
+</div>
+<span class="text-[11px] text-gray-500">Reviewer active on station</span>
+</div>
+</div>
+<!-- Step 3: AI Detection -->
+<div class="relative flex items-start gap-3">
+<div class="w-5 h-5 rounded-full bg-[#F2FAFA] border border-[#D8ECEC] flex items-center justify-center text-[#087E8B] z-10 shadow-sm">
+<span class="material-symbols-outlined text-xs">filter_center_focus</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-medium text-xs text-[#173B4D]">AI Detection Matrix</span>
+<span class="font-mono text-[10px] uppercase text-gray-500">Ready</span>
+</div>
+<span class="font-mono text-[10px] text-gray-500">Raw photo primed for segmentation</span>
+</div>
+</div>
+<!-- Step 4: Environmental Intelligence -->
+<div class="relative flex items-start gap-3">
+<div class="w-5 h-5 rounded-full bg-[#F2FAFA] border border-[#D8ECEC] flex items-center justify-center text-gray-400 z-10">
+<span class="material-symbols-outlined text-xs">air</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-medium text-xs text-gray-500">Hydrodynamic Model</span>
+<span class="font-mono text-[10px] uppercase text-gray-400">Queued</span>
+</div>
+<span class="font-mono text-[10px] text-gray-400">Currents &amp; tide sync pending</span>
+</div>
+</div>
+<!-- Step 5: Drift Forecasting -->
+<div class="relative flex items-start gap-3">
+<div class="w-5 h-5 rounded-full bg-[#F2FAFA] border border-[#D8ECEC] flex items-center justify-center text-gray-400 z-10">
+<span class="material-symbols-outlined text-xs">tune</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-medium text-xs text-gray-500">Drift Forecasting</span>
+<span class="font-mono text-[10px] uppercase text-gray-400">Awaiting Run</span>
+</div>
+<span class="font-mono text-[10px] text-gray-400">48h Lagrangian particles</span>
+</div>
+</div>
+<!-- Step 6: Recovery Planning -->
+<div class="relative flex items-start gap-3">
+<div class="w-5 h-5 rounded-full bg-[#F2FAFA] border border-[#D8ECEC] flex items-center justify-center text-gray-400 z-10">
+<span class="material-symbols-outlined text-xs">anchor</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="font-medium text-xs text-gray-500">Recovery Planning</span>
+<span class="font-mono text-[10px] uppercase text-gray-400">Locked</span>
+</div>
+<span class="font-mono text-[10px] text-gray-400">Requires verified trajectory</span>
+</div>
+</div>
+</div>
+</section>
+<!-- F. Audit Log Card -->
+<section class="bg-white rounded-xl p-4 shadow-sm border border-[#D8ECEC] flex flex-col gap-2.5">
+<span class="font-mono text-[10px] uppercase text-gray-500 font-semibold">Incident Audit Trail</span>
+<div class="space-y-2 text-xs">
+<div class="flex items-baseline justify-between">
+<span class="text-gray-600">Report received via mobile app</span>
+<span class="font-mono text-[10px] text-gray-400">08:42</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="text-gray-600">GPS coordinate validation passed</span>
+<span class="font-mono text-[10px] text-gray-400">08:45</span>
+</div>
+<div class="flex items-baseline justify-between">
+<span class="text-gray-600">Assigned to E. Rostova for review</span>
+<span class="font-mono text-[10px] text-[#087E8B] font-semibold">09:10</span>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+</body>
+</html>

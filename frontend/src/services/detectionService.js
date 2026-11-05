@@ -66,9 +66,11 @@ export async function getHealth() {
  * Upload an image file for YOLOv8-seg inference.
  * 
  * @param {File} file - The user selected image file (JPEG, PNG, or WebP)
+ * @param {number|null} reportId - Optional incident report ID to link detections to in PostgreSQL
+ * @param {number|null} conf - Optional confidence threshold (0.0 to 1.0)
  * @returns {Promise<PredictResponse>}
  */
-export async function predictImage(file) {
+export async function predictImage(file, reportId = null, conf = null) {
   // Client-side validations
   if (!file) {
     throw new Error('Please select an image file to upload.');
@@ -100,6 +102,12 @@ export async function predictImage(file) {
 
   const formData = new FormData();
   formData.append('file', file);
+  if (reportId) {
+    formData.append('report_id', reportId);
+  }
+  if (conf !== null && conf !== undefined) {
+    formData.append('conf', conf);
+  }
 
   try {
     const res = await fetch(`${API_BASE_URL}/api/v1/predict`, {
@@ -128,4 +136,206 @@ export async function predictImage(file) {
   }
 }
 
+/**
+ * Execute YOLOv8 detection on an existing report's attached photograph.
+ * Saves candidate detections to PostgreSQL `ai_detections`.
+ * 
+ * @param {number} reportId
+ * @param {number|null} conf
+ */
+export async function runReportInference(reportId, conf = null) {
+  const url = new URL(`${API_BASE_URL}/api/v1/detections/run/${reportId}`);
+  if (conf !== null && conf !== undefined) {
+    url.searchParams.append('conf', conf);
+  }
+
+  const res = await fetch(url.toString(), {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+    },
+  });
+
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || `Inference run failed: HTTP ${res.status}`);
+  }
+
+  return await res.json();
+}
+
+/**
+ * Fetch all saved AI detections linked to a specific report ID.
+ * 
+ * @param {number} reportId
+ */
+export async function getDetectionsByReport(reportId) {
+  const res = await fetch(`${API_BASE_URL}/api/v1/detections/by-report/${reportId}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+    },
+  });
+
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || `Failed to fetch detections: HTTP ${res.status}`);
+  }
+
+  return await res.json();
+}
+
+/**
+ * List detections with optional filtering (status, class, incident ID) and pagination.
+ * 
+ * @param {Object} params
+ * @param {number|null} [params.reportId]
+ * @param {string|null} [params.reviewStatus] - 'pending', 'confirmed', 'rejected', or 'all'
+ * @param {string|null} [params.detectedClass] - 'fishing_net', 'rope_line', or 'all'
+ * @param {string|null} [params.modelName]
+ * @param {number} [params.page=1]
+ * @param {number} [params.pageSize=20]
+ */
+export async function listDetections({
+  reportId = null,
+  reviewStatus = null,
+  detectedClass = null,
+  modelName = null,
+  page = 1,
+  pageSize = 20,
+} = {}) {
+  const url = new URL(`${API_BASE_URL}/api/v1/detections`);
+  if (reportId) url.searchParams.append('report_id', reportId);
+  if (reviewStatus && reviewStatus !== 'all') url.searchParams.append('review_status', reviewStatus);
+  if (detectedClass && detectedClass !== 'all') url.searchParams.append('detected_class', detectedClass);
+  if (modelName) url.searchParams.append('model_name', modelName);
+  url.searchParams.append('page', page);
+  url.searchParams.append('page_size', pageSize);
+
+  const res = await fetch(url.toString(), {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+    },
+  });
+
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || `Failed to list detections: HTTP ${res.status}`);
+  }
+
+  return await res.json();
+}
+
+/**
+ * Fetch an individual detection by ID.
+ * 
+ * @param {number} detectionId
+ */
+export async function getDetectionById(detectionId) {
+  const res = await fetch(`${API_BASE_URL}/api/v1/detections/${detectionId}`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+    },
+  });
+
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || `Failed to fetch detection #${detectionId}: HTTP ${res.status}`);
+  }
+
+  return await res.json();
+}
+
+/**
+ * Confirm gear presence for an individual AI detection.
+ * 
+ * @param {number} detectionId
+ * @param {Object} [options]
+ * @param {string} [options.reviewedBy="NGO Field Officer"]
+ * @param {string} [options.reviewNotes=""]
+ */
+export async function confirmDetection(detectionId, { reviewedBy = 'NGO Field Officer', reviewNotes = '' } = {}) {
+  const res = await fetch(`${API_BASE_URL}/api/v1/detections/${detectionId}/confirm`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      reviewed_by: reviewedBy,
+      review_notes: reviewNotes,
+    }),
+  });
+
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || `Failed to confirm detection #${detectionId}: HTTP ${res.status}`);
+  }
+
+  return await res.json();
+}
+
+/**
+ * Flag an individual AI detection as a false positive with optional explanation.
+ * 
+ * @param {number} detectionId
+ * @param {Object} [options]
+ * @param {string} [options.reviewedBy="NGO Field Officer"]
+ * @param {string} [options.reviewNotes=""]
+ */
+export async function rejectDetection(detectionId, { reviewedBy = 'NGO Field Officer', reviewNotes = '' } = {}) {
+  const res = await fetch(`${API_BASE_URL}/api/v1/detections/${detectionId}/reject`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      reviewed_by: reviewedBy,
+      review_notes: reviewNotes,
+    }),
+  });
+
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || `Failed to reject detection #${detectionId}: HTTP ${res.status}`);
+  }
+
+  return await res.json();
+}
+
+/**
+ * Update an individual AI detection review decision (confirmed, rejected, or pending).
+ * 
+ * @param {number} detectionId
+ * @param {Object} payload
+ * @param {string} payload.reviewStatus - 'confirmed', 'rejected', or 'pending'
+ * @param {string} [payload.reviewedBy="NGO Field Officer"]
+ * @param {string} [payload.reviewNotes=""]
+ */
+export async function reviewDetection(detectionId, { reviewStatus, reviewedBy = 'NGO Field Officer', reviewNotes = '' }) {
+  const res = await fetch(`${API_BASE_URL}/api/v1/detections/${detectionId}/review`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({
+      review_status: reviewStatus,
+      reviewed_by: reviewedBy,
+      review_notes: reviewNotes,
+    }),
+  });
+
+  if (!res.ok) {
+    const errData = await res.json().catch(() => ({}));
+    throw new Error(errData.detail || `Failed to update review for detection #${detectionId}: HTTP ${res.status}`);
+  }
+
+  return await res.json();
+}
+
 export { API_BASE_URL };
+

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-secondary-container": "#006d79", "inverse-primary": "#36dcd4", "on-primary-container": "#004f4b", "outline": "#6b7a78", "on-tertiary-fixed-variant": "#284b5d", "primary-fixed-dim": "#36dcd4", "primary-fixed": "#5ff9f0", "tertiary-fixed": "#c4e7fe", "tertiary": "#416276", "on-tertiary-container": "#284a5c", "on-secondary-fixed": "#001f24", "primary-container": "#00c9c1", "surface-bright": "#f3fbfb", "surface-tint": "#006a65", "on-secondary": "#ffffff", "background": "#f3fbfb", "surface": "#f3fbfb", "on-tertiary": "#ffffff", "outline-variant": "#bacac7", "surface-variant": "#dce4e4", "error": "#ba1a1a", "secondary": "#006874", "inverse-on-surface": "#eaf2f2", "on-background": "#151d1d", "on-primary-fixed-variant": "#00504c", "secondary-fixed-dim": "#79d4e2", "tertiary-fixed-dim": "#a9cbe2", "surface-container": "#e7efef", "on-surface-variant": "#3b4948", "on-error": "#ffffff", "surface-container-highest": "#dce4e4", "on-secondary-fixed-variant": "#004f57", "surface-container-low": "#edf5f5", "surface-container-lowest": "#ffffff", "inverse-surface": "#2a3232", "secondary-fixed": "#96f0ff", "on-primary": "#ffffff", "secondary-container": "#93eefc", "on-error-container": "#93000a", "surface-container-high": "#e2eaea", "surface-dim": "#d3dcdc", "error-container": "#ffdad6", "primary": "#006a65", "on-tertiary-fixed": "#001e2c", "on-primary-fixed": "#00201e", "tertiary-container": "#97b9cf", "on-surface": "#151d1d" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-sm": "0.5rem", "margin": "3rem", "space-xs": "0.25rem", "space-lg": "1.5rem", "space-3xl": "6rem", "gutter": "1.5rem", "gutter-mobile": "1rem", "space-2xl": "4rem", "margin-mobile": "1.25rem", "space-md": "1rem", "space-xl": "2.5rem" }, "fontFamily": { "label-md": ["Plus Jakarta Sans"], "headline-md-mobile": ["Playfair Display"], "body-lg": ["Plus Jakarta Sans"], "headline-md": ["Playfair Display"], "title-lg": ["Plus Jakarta Sans"], "headline-lg": ["Playfair Display"], "display": ["Playfair Display"], "headline-lg-mobile": ["Playfair Display"], "body-md": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-sm": ["Playfair Display"], "display-mobile": ["Playfair Display"], "body-sm": ["Plus Jakarta Sans"], "title-md": ["Plus Jakarta Sans"] }, "fontSize": { "label-md": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.08em", "fontWeight": "700" }], "headline-md-mobile": ["1.5rem", { "lineHeight": "2rem", "fontWeight": "500" }], "body-lg": ["1.125rem", { "lineHeight": "1.875rem", "fontWeight": "400" }], "headline-md": ["2rem", { "lineHeight": "2.5rem", "fontWeight": "500" }], "title-lg": ["1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "700" }], "headline-lg": ["2.75rem", { "lineHeight": "3.25rem", "letterSpacing": "-0.015em", "fontWeight": "600" }], "display": ["3.75rem", { "lineHeight": "4.25rem", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-lg-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["1rem", { "lineHeight": "1.625rem", "fontWeight": "400" }], "label-sm": ["0.6875rem", { "lineHeight": "0.875rem", "letterSpacing": "0.06em", "fontWeight": "600" }], "headline-sm": ["1.375rem", { "lineHeight": "1.75rem", "fontWeight": "500" }], "display-mobile": ["2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-sm": ["0.875rem", { "lineHeight": "1.375rem", "fontWeight": "400" }], "title-md": ["1.125rem", { "lineHeight": "1.5rem", "fontWeight": "600" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface-container-lowest text-on-surface font-body-md text-body-md flex flex-col min-h-screen"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(23,59,77,0.05)]"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="OceanRescue Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XaukLRDUdqzy3Nq8ziomsjjb9xo93Nz3PzieRHaUuEtxiVOj5fR7mqZbQg0vkrIv64oQXEcseCED9gt-sUV8t95PHe-4yp8y97hW4RVXxAKNF-qo3rAbpNTT2pMO9QtD7X7CJnwptTEmOrzgQm3L3dE6trdbj3gwwJztXR0-eTD9JSzkVE3CUWg26Kms5NcptqC4Vfl-4D5PETTIxmh1ln2uFJCmytN5DO5DL5tiBsGqCGAm5qK9OHE2A"/><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface tracking-tight leading-none">OceanRescue</span><span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest mt-0.5">Landing Overview</span></div></div><div class="flex items-center gap-space-xs"><a class="hidden sm:inline-flex items-center justify-center min-h-[44px] px-space-md py-space-xs font-label-md text-label-md text-primary bg-surface-container-low hover:bg-surface-container rounded-full transition-colors" data-path="ngo-login" href="#">NGO Login</a><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT8_Te4x2Ltja9D8piIofoVuf4lDUXzGn5GJDqhxwR-4ZtdK03KIFMKor95F0vlxHUU_JgAAWB5N750uEqbwILIG3hrmdd1vAg1Yw5K0N_fdZuMjLDN_UnPO2EMZz3RqehG5Uivafspe6wPZRyG2ygeaa288KQ9Gikj3MVvp7-9YK_aQ4VA_hQoZjXCpL-U36B9leLq216NukqyJwcdzPFTSv1Pui8PrpcfgayzM7p6fEY4hUgjgmP"/><button aria-label="Menu" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors"><span class="material-symbols-outlined text-[24px]">menu</span></button></div></div></header><main class="flex flex-col relative w-full pt-16 pb-28 bg-surface-container-lowest flex-grow"><div class="flex flex-col w-full text-on-surface">
+<!-- ========================================== -->
+<!-- 1. HERO SECTION                            -->
+<!-- ========================================== -->
+<section class="relative w-full pt-space-lg pb-space-2xl px-gutter-mobile flex flex-col bg-surface-container-lowest overflow-hidden">
+<!-- Eyebrow Tag -->
+<div class="inline-flex items-center gap-space-xs self-start px-space-sm py-1 rounded-full bg-surface-container-low shadow-sm mb-space-md">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">
+        AI-Powered Ocean Conservation
+      </span>
+</div>
+<!-- Main Headline -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight mb-space-sm leading-tight">
+      Every Net Found.<br/>
+<span class="text-primary italic">Every Life Saved.</span>
+</h1>
+<!-- Supporting Narrative -->
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-lg leading-relaxed">
+      Bringing AI, ocean intelligence, and geospatial telemetry together to locate lost fishing gear and guide smarter marine recovery efforts worldwide.
+    </p>
+<!-- CTAs -->
+<div class="flex flex-col sm:flex-row gap-space-sm mb-space-xl z-10">
+<a class="inline-flex items-center justify-center gap-space-xs px-space-lg py-3 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider shadow-md hover:opacity-90 active:scale-[0.99] transition-all" data-path="report-gear" href="#">
+<span>Report Lost Fishing Gear</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+<a class="inline-flex items-center justify-center px-space-lg py-3 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md uppercase tracking-wider hover:bg-surface-container transition-colors" href="#mission">
+        Explore Our Mission
+      </a>
+</div>
+<!-- Asymmetrical Imagery Framing (Inspired by Reference 1 & 2) -->
+<div class="relative w-full mt-space-xs mb-space-sm">
+<!-- Decorative Offset Teal/Aqua Framing Layer -->
+<div class="absolute -top-3 -right-2 w-11/12 h-64 bg-primary-container/20 rounded-xl pointer-events-none transform translate-x-1"></div>
+<!-- Primary Photographic Display -->
+<div class="relative w-full h-72 rounded-xl overflow-hidden shadow-lg bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Cinematic clear turquoise ocean water with a sea turtle swimming over a vibrant coral reef, sunlight rays penetrating the clean surface with pristine tropical water clarity in modern marine editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm5mAZ4IzoYhRXC65eVasnG-vRFGrubVSpCo2C-tv_Qx96Pjwzj4l2uHuqhC5awtza53uSx9Q33PgUi1-yFyyfvg3UyUAFR23p6o5T6b1kyLQLBOwCUxJRye-KMicxxD2CmvKwTTJ_AMW8s6Sm0BQ-Oj-7droD7ZBMUB5y1Ps0E7Uc4VvvrCGA9v6UpNMcFqpY0c6cIfuV5VBwM7Fd2v5V8n-m_iuVSBlJm7TpdEl1y6dy49GnYzQR"/>
+<!-- Subtle technical gradient scrim -->
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/60 via-transparent to-transparent"></div>
+<!-- Marine Telemetry Badge on Image -->
+<div class="absolute bottom-3 left-3 right-3 flex items-center justify-between bg-surface-container-lowest/90 backdrop-blur-md px-space-md py-space-xs rounded-lg shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">radar</span>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-bold leading-none">SECTOR 04-PACIFIC</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">Active Sonar &amp; Drift Sweep</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px] uppercase font-bold">
+            Live Stream
+          </span>
+</div>
+</div>
+<!-- Overlapping Floating Insight Card (Reference 2 style) -->
+<div class="relative -mt-6 mx-3 bg-surface-container-lowest rounded-xl p-space-md shadow-md flex items-center gap-space-sm z-20">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary flex-shrink-0">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-secondary font-bold tracking-wider uppercase">Verified Coordinates</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Coordinating safe salvage with coastal marine units</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Wave Transition Divider: Surface-Container-Lowest to Surface-Container-Low -->
+<div class="w-full overflow-hidden leading-none bg-surface-container-lowest text-surface-container-low -mb-1">
+<svg class="relative block w-full h-8" preserveaspectratio="none" viewbox="0 0 1200 120">
+<path d="M0,0 C150,90 350,-40 500,40 C650,120 900,20 1200,60 L1200,120 L0,120 Z" fill="currentColor"></path>
+</svg>
+</div>
+<!-- ========================================== -->
+<!-- 2. THE PROBLEM (GHOST GEAR CRISIS)        -->
+<!-- ========================================== -->
+<section class="w-full bg-surface-container-low px-gutter-mobile py-space-xl flex flex-col">
+<div class="flex flex-col mb-space-lg">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest font-bold mb-space-xs">
+        The Ghost Gear Crisis
+      </span>
+<h2 class="font-headline-md-mobile text-headline-md-mobile text-on-surface leading-tight">
+        Lost at Sea.<br/>Never Out of Sight.
+      </h2>
+</div>
+<!-- Editorial Narrative -->
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-lg leading-relaxed">
+      Abandoned, lost, and discarded fishing gear (ALDFG) creates perpetual hazards beneath the surface. Synthetic monofilament and heavy industrial nets drift for decades—indiscriminately ensnaring marine life, stripping delicate coral reefs, and degrading into persistent microplastics. Proactive geospatial tracking turns silent aquatic threats into coordinated recovery missions.
+    </p>
+<!-- Asymmetric Editorial Photo Comparison -->
+<div class="relative w-full mb-space-lg">
+<!-- Main Ghost Gear Photo -->
+<div class="w-full h-56 rounded-xl overflow-hidden shadow-sm bg-surface-container relative">
+<img class="w-full h-full object-cover" data-alt="Submerged abandoned ghost fishing net entangling coral shelf underwater, delicate ocean lighting revealing murky marine plastic lines needing recovery intervention" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRmxfEUvcJ6doVmPWR7RStIXJMAVrMOUKr4ZO59Hg26zfdpF2THKHDhfbyVePQ5tfiStE3e7ye2r__AzQ-yGFaHc-QEdLpeFp4wTfX9riQjSGOjpfrmr4eUkIUXLYm5S2GtlKCqHt9hlDIS0g3Odo5rRMj0_thTdBwtXrJRHcsKoJ59WYlDuf0eAY2PW4Oxa3hS9xfLnjeVC2liwf8jH619vmjDS8q8zF8s9dTiqW6RrTGucqaUo7g"/>
+<div class="absolute top-3 left-3 bg-error text-on-error font-label-sm text-label-sm uppercase px-2 py-0.5 rounded shadow-sm font-semibold">
+          Unrecovered ALDFG Hazard
+        </div>
+</div>
+<!-- Accent Offset Coral Recovery Card -->
+<div class="mt-space-sm bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">crisis_alert</span>
+<span class="font-title-md text-title-md text-on-surface">Targeted Extraction</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Without precise coordinates and current drift intelligence, recovery divers spend days searching empty waters. OceanRescue models drift pathways to eliminate the guesswork.
+        </p>
+</div>
+</div>
+</section>
+<!-- Wave Transition Divider: Surface-Container-Low to Surface-Container-Lowest -->
+<div class="w-full overflow-hidden leading-none bg-surface-container-low text-surface-container-lowest -mb-1">
+<svg class="relative block w-full h-8" preserveaspectratio="none" viewbox="0 0 1200 120">
+<path d="M0,60 C300,120 600,0 900,80 C1050,120 1150,40 1200,20 L1200,120 L0,120 Z" fill="currentColor"></path>
+</svg>
+</div>
+<!-- ========================================== -->
+<!-- 3. OUR MISSION (EDITORIAL FOCUS)          -->
+<!-- ========================================== -->
+<section class="w-full bg-surface-container-lowest px-gutter-mobile py-space-xl flex flex-col" id="mission">
+<div class="flex flex-col mb-space-md">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest font-bold mb-space-xs">
+        Our Unified Platform
+      </span>
+<h2 class="font-headline-md-mobile text-headline-md-mobile text-on-surface leading-tight">
+        Turning Ocean Intelligence Into Action
+      </h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-lg leading-relaxed">
+      OceanRescue connects lost-gear reporting, AI-assisted computer vision, hydrodynamic forecasting, and safe maritime dispatch in one centralized decision-support suite for marine protectors.
+    </p>
+<!-- Editorial Asymmetrical Photographic Card with Aqua Frame -->
+<div class="relative w-full my-space-xs">
+<div class="absolute -inset-1.5 bg-primary-container/30 rounded-xl transform -rotate-1 pointer-events-none"></div>
+<div class="relative bg-surface-container rounded-lg overflow-hidden shadow-md">
+<img class="w-full h-60 object-cover" data-alt="Conservation marine biology research ship at sea with oceanographic equipment deployed, calm sapphire water reflecting soft daylight editorial style photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOvtY3AAE7zln20r1EOSbiLy7ddGJIStLciP5aam8qjOLqK8IF7k-B9pnrel1-CHTKFUypV9DhLjAkqO53K34yxekHd0RFvGpOcQgwgXSmy1YFjVYt4TOE6sk0kZet8LoKzqxws7xPCiWs9Ph96vZJf5rjWPPUCcK4XoYRtsmNsI9aOuehXCGQbcD4SdLW5ckmNDNB473rXB7TKqZRmzGG3p9QGmC9gA6HJMBDBttw-6Neia7FJPbV"/>
+<div class="p-space-md bg-surface-container-lowest">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">Field Verification</span>
+<span class="font-label-sm text-label-sm text-outline">Lat 21.3069° N // Lon 157.8583° W</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Empowering certified divers and NGO partner fleets with verified sub-surface telemetry before launching recovery vessels.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- 4. HOW IT WORKS (VERTICAL MOBILE PROCESS)  -->
+<!-- ========================================== -->
+<section class="w-full bg-surface-container-low px-gutter-mobile py-space-xl flex flex-col">
+<div class="flex flex-col mb-space-lg">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest font-bold mb-space-xs">
+        Operational Workflow
+      </span>
+<h2 class="font-headline-md-mobile text-headline-md-mobile text-on-surface leading-tight">
+        From Detection to Retrieval
+      </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs">
+        Five coordinated stages ensuring no lost net continues its destructive path.
+      </p>
+</div>
+<!-- Stepper Container with Vertical Guide Line -->
+<div class="relative flex flex-col gap-space-md">
+<!-- Continuous Vertical Track -->
+<div class="absolute left-5 top-5 bottom-8 w-0.5 bg-primary-container/40 z-0"></div>
+<!-- Step 1 -->
+<div class="relative flex items-start gap-space-md z-10">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-title-md text-title-md font-bold shadow-sm flex-shrink-0">
+          1
+        </div>
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex-grow">
+<div class="flex items-center gap-1.5 mb-1 text-primary">
+<span class="material-symbols-outlined text-[18px]">add_location</span>
+<span class="font-label-md text-label-md uppercase font-bold tracking-wider">Report Lost Gear</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Fishermen, recreational mariners, and divers submit gear type, loss timestamp, GPS coordinates, and optional water photos through our rapid web intake.
+          </p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative flex items-start gap-space-md z-10">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest text-secondary shadow-sm flex items-center justify-center font-title-md text-title-md font-bold flex-shrink-0">
+          2
+        </div>
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex-grow">
+<div class="flex items-center gap-1.5 mb-1 text-secondary">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="font-label-md text-label-md uppercase font-bold tracking-wider">Verify The Report</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Authorized NGO teams review incident inputs, confirm sea conditions, eliminate duplicate alerts, and establish initial threat tier ratings.
+          </p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative flex items-start gap-space-md z-10">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest text-primary shadow-sm flex items-center justify-center font-title-md text-title-md font-bold flex-shrink-0">
+          3
+        </div>
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex-grow">
+<div class="flex items-center gap-1.5 mb-1 text-primary">
+<span class="material-symbols-outlined text-[18px]">memory</span>
+<span class="font-label-md text-label-md uppercase font-bold tracking-wider">Detect and Analyze</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Computer vision algorithms analyze drone surveys, satellite passes, and side-scan sonar feeds to classify net density and composition.
+          </p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative flex items-start gap-space-md z-10">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest text-secondary shadow-sm flex items-center justify-center font-title-md text-title-md font-bold flex-shrink-0">
+          4
+        </div>
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex-grow">
+<div class="flex items-center gap-1.5 mb-1 text-secondary">
+<span class="material-symbols-outlined text-[18px]">timeline</span>
+<span class="font-label-md text-label-md uppercase font-bold tracking-wider">Forecast and Prioritize</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Hydrodynamic ocean drift simulations model probable movement corridors using live tidal, current, and wind feeds to forecast recovery zones.
+          </p>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="relative flex items-start gap-space-md z-10">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary shadow-sm flex items-center justify-center font-title-md text-title-md font-bold flex-shrink-0">
+          5
+        </div>
+<div class="flex flex-col bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex-grow">
+<div class="flex items-center gap-1.5 mb-1 text-primary">
+<span class="material-symbols-outlined text-[18px]">sailing</span>
+<span class="font-label-md text-label-md uppercase font-bold tracking-wider">Plan Recovery</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Offshore recovery vessels receive waypoint coordinates, bathymetric depth profiles, and safe lift plans to retrieve the gear cleanly.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- 5. FEATURE SHOWCASE (EDITORIAL BENTO)     -->
+<!-- ========================================== -->
+<section class="w-full bg-surface-container-lowest px-gutter-mobile py-space-xl flex flex-col">
+<div class="flex flex-col mb-space-lg">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest font-bold mb-space-xs">
+        System Capabilities
+      </span>
+<h2 class="font-headline-md-mobile text-headline-md-mobile text-on-surface leading-tight">
+        Intelligent Marine Conservation Tech
+      </h2>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Feature 01 -->
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">01 // AI Vision</span>
+<span class="material-symbols-outlined text-primary text-[20px]">filter_center_focus</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface">AI-Based Fishing Gear Detection</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Proprietary object detection trained on diverse underwater optical and sonar imagery identifies nylon monofilament, trawl nets, and crab pots with confidence calibration.
+        </p>
+</div>
+<!-- Feature 02: Featured Ocean Teal Accent Panel (Reference Style) -->
+<div class="bg-secondary text-on-secondary rounded-xl p-space-md shadow-md flex flex-col gap-space-xs relative overflow-hidden">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed font-bold">02 // GIS Platform</span>
+<span class="material-symbols-outlined text-primary-fixed text-[20px]">map</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-secondary">Geospatial Incident Mapping</h3>
+<p class="font-body-sm text-body-sm text-on-secondary/90 leading-relaxed">
+          Interactive coordinate mapping overlays international fishing boundaries, sanctuary zones, depth bathymetry, and high-frequency reporting clusters.
+        </p>
+<div class="mt-space-xs inline-flex items-center gap-2 text-primary-fixed font-label-sm text-label-sm">
+<span>Continuous NOAA / Copernicus Bathymetry</span>
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+</div>
+</div>
+<!-- Feature 03 -->
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">03 // Ocean Currents</span>
+<span class="material-symbols-outlined text-primary text-[20px]">air</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Hydrodynamic &amp; Weather Ingestion</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Surface currents, tidal cycles, and sea-surface temperature data stream directly into models to predict how submerged obstacles shift under rough seas.
+        </p>
+</div>
+<!-- Feature 04 -->
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-bold">04 // Trajectory Modeling</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">waves</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Drift Forecasting &amp; Search-Area Bounds</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Monte Carlo dispersion calculations estimate gear movement probability radii over 24 to 72 hours, optimizing search radiuses for volunteer and NGO vessels.
+        </p>
+</div>
+<!-- Feature 05 -->
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">05 // Salvage Planning</span>
+<span class="material-symbols-outlined text-primary text-[20px]">assignment_turned_in</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Risk-Based Recovery Prioritization</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Sorts missions based on ecosystem vulnerability, proximity to shallow coral heads, depth limitations, and seasonal marine mammal migration corridors.
+        </p>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- 6. OUR IMPACT (FACTUAL MISSION GOALS)     -->
+<!-- ========================================== -->
+<section class="w-full bg-surface-container-low px-gutter-mobile py-space-xl flex flex-col">
+<div class="flex flex-col mb-space-lg text-center items-center">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest font-bold mb-space-xs">
+        Conservation Stewardship
+      </span>
+<h2 class="font-headline-md-mobile text-headline-md-mobile text-on-surface leading-tight max-w-xs">
+        Every Recovery Can Make a Difference
+      </h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-space-xs max-w-xs">
+        Purpose-built tech to deliver grounded, measurable ecological relief.
+      </p>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col items-start gap-space-xs">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-[28px]">shield</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Protect Marine Life</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Ghost nets continue trapping turtles, cetaceans, and fish indiscriminately. Recovering derelict gear directly halts unbroken cycles of underwater mortality.
+        </p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col items-start gap-space-xs">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-secondary mb-1">
+<span class="material-symbols-outlined text-[28px]">recycling</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Stem Microplastic Infiltration</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Nets left in reefs abrade under wave action, releasing billions of microfibers into marine food chains. Retrieval ensures synthetic materials are responsibly repurposed.
+        </p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col items-start gap-space-xs">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary mb-1">
+<span class="material-symbols-outlined text-[28px]">speed</span>
+</div>
+<h3 class="font-title-lg text-title-lg text-on-surface">Smarter Recovery Operations</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Vessel fuel, diver safety windows, and daylight hours are precious. OceanRescue's predictive routing maximizes the effectiveness of every maritime excursion.
+        </p>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- 7. FINAL CALL TO ACTION                   -->
+<!-- ========================================== -->
+<section class="w-full bg-surface-container-lowest px-gutter-mobile py-space-xl flex flex-col">
+<!-- Asymmetric Banner Enclosure (Reference Style) -->
+<div class="relative w-full rounded-2xl overflow-hidden shadow-lg bg-surface-container">
+<!-- Background Ambient Photo -->
+<div class="relative h-96 w-full">
+<img class="w-full h-full object-cover" data-alt="Deep blue and azure ocean aerial perspective with clean waves gentle coastal surf crisp daylight marine editorial styling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3141KIWsEyp2GV-kUmZla03epvTv-Ge1Lav5S7z-iHTpia8200sxR0UrkM8GNB0jMZycaYqhXUgTho-QmvBK6FqiNpJQvXycKcWk0t-ODCgiZNTMaXZeGCU3uW9FV2ZoRInNvGYaQhh_gpaf9YNRDtJLXhjtootVlG9Gsuxi_8KUuT5lpVs6fGVU3RLTY3bJ6F3huJeuVDhbgWjGblCIz5wZHNVhRmKlxRBLO7pPanYSsP7g336Ax"/>
+<!-- Gradient Scrim for readable text -->
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/50 to-transparent"></div>
+<!-- Floating Card Content Inside -->
+<div class="absolute inset-0 p-space-lg flex flex-col justify-end text-on-secondary">
+<div class="inline-flex items-center gap-1.5 self-start px-2.5 py-1 rounded-full bg-primary-container text-on-primary-container font-label-sm text-label-sm font-bold uppercase mb-space-sm">
+<span class="material-symbols-outlined text-[14px]">flag</span>
+<span>Join the Alliance</span>
+</div>
+<h2 class="font-headline-md-mobile text-headline-md-mobile text-on-secondary font-medium leading-tight mb-space-xs">
+            Help Us Bring Lost Gear Back Into Sight.
+          </h2>
+<p class="font-body-sm text-body-sm text-on-secondary/80 leading-relaxed mb-space-lg">
+            Every report helps build a clearer picture of lost fishing gear and supports prioritized, timely recovery missions.
+          </p>
+<div class="flex flex-col gap-space-sm">
+<a class="inline-flex items-center justify-center gap-space-xs w-full py-3.5 px-space-md rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md uppercase tracking-wider font-bold shadow-md hover:opacity-90 active:scale-[0.99] transition-all" data-path="report-gear" href="#">
+<span class="material-symbols-outlined text-[20px]">add_location_alt</span>
+<span>Report Lost Fishing Gear</span>
+</a>
+<a class="inline-flex items-center justify-center w-full py-3 px-space-md rounded-lg bg-surface-container-lowest/20 backdrop-blur-md text-on-secondary font-label-md text-label-md uppercase tracking-wider hover:bg-surface-container-lowest/30 transition-all" data-path="how-it-works" href="#">
+              Learn About OceanRescue
+            </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div><footer class="w-full bg-surface-container-low mt-space-2xl px-gutter-mobile py-space-xl"><div class="flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><img alt="OceanRescue Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XaukLRDUdqzy3Nq8ziomsjjb9xo93Nz3PzieRHaUuEtxiVOj5fR7mqZbQg0vkrIv64oQXEcseCED9gt-sUV8t95PHe-4yp8y97hW4RVXxAKNF-qo3rAbpNTT2pMO9QtD7X7CJnwptTEmOrzgQm3L3dE6trdbj3gwwJztXR0-eTD9JSzkVE3CUWg26Kms5NcptqC4Vfl-4D5PETTIxmh1ln2uFJCmytN5DO5DL5tiBsGqCGAm5qK9OHE2A"/><span class="font-title-md text-title-md text-on-surface">OceanRescue</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed max-w-sm">Harnessing ocean intelligence and AI to protect marine life by locating and recovering lost fishing gear.</p><div class="h-[2px] w-12 bg-primary-container rounded-full my-space-xs"></div><div class="grid grid-cols-2 gap-x-gutter-mobile gap-y-space-sm font-label-md text-label-md text-on-surface-variant"><a class="hover:text-primary transition-colors py-1" data-path="landing-overview" href="#">Home</a><a class="hover:text-primary transition-colors py-1" data-path="about-mission" href="#">About</a><a class="hover:text-primary transition-colors py-1" data-path="how-it-works" href="#">How It Works</a><a class="hover:text-primary transition-colors py-1" data-path="conservation-impact" href="#">Our Impact</a><a class="hover:text-primary transition-colors py-1 text-primary" data-path="report-gear" href="#">Report Lost Gear</a><a class="hover:text-primary transition-colors py-1" data-path="ngo-login" href="#">NGO Login</a><a class="hover:text-primary transition-colors py-1" data-path="contact-dispatch" href="#">Contact</a><a class="hover:text-primary transition-colors py-1" data-path="privacy-legal" href="#">Privacy Policy</a></div><div class="pt-space-md flex flex-col gap-1"><p class="font-label-sm text-label-sm text-on-surface-variant/70">© 2025 OceanRescue Alliance. All coordinates and recovery data verified.</p><span class="font-label-sm text-label-sm text-primary tracking-wider uppercase">Telemetry Level 0 // Clean Lat-Long Feeds</span></div></div></footer></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(23,59,77,0.06)]" data-active-classes="text-primary font-bold"><div class="flex justify-around items-center h-16 px-space-xs"><a aria-current="page" class="flex flex-col items-center justify-center w-16 h-12 transition-colors text-primary font-bold" data-path="landing-overview" href="#"><span class="material-symbols-outlined text-[22px]">waves</span><span class="font-label-sm text-label-sm mt-0.5">Home</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-on-surface-variant transition-colors" data-path="how-it-works" href="#"><span class="material-symbols-outlined text-[22px]">radar</span><span class="font-label-sm text-label-sm mt-0.5">How Works</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-on-surface-variant transition-colors" data-path="conservation-impact" href="#"><span class="material-symbols-outlined text-[22px]">public</span><span class="font-label-sm text-label-sm mt-0.5">Impact</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-on-surface-variant transition-colors" data-path="report-gear" href="#"><span class="material-symbols-outlined text-[22px]">add_location_alt</span><span class="font-label-sm text-label-sm mt-0.5">Report</span></a><a class="flex flex-col items-center justify-center w-16 h-12 text-on-surface-variant transition-colors" data-path="ngo-portal" href="#"><span class="material-symbols-outlined text-[22px]">shield_with_heart</span><span class="font-label-sm text-label-sm mt-0.5">NGO Desk</span></a></div></nav></body></html>

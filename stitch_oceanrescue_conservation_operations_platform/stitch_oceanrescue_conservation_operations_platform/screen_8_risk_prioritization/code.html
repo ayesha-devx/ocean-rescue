@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"primary-fixed":"#5ff9f0","on-secondary-fixed-variant":"#004f57","surface-container-highest":"#dce4e4","on-primary":"#ffffff","on-surface":"#151d1d","on-error-container":"#93000a","error-container":"#ffdad6","surface-bright":"#f3fbfb","surface":"#f3fbfb","tertiary":"#416276","on-secondary-fixed":"#001f24","inverse-primary":"#36dcd4","on-background":"#151d1d","primary-fixed-dim":"#36dcd4","on-secondary":"#ffffff","error":"#ba1a1a","surface-container-low":"#edf5f5","on-primary-fixed-variant":"#00504c","secondary":"#006874","tertiary-fixed":"#c4e7fe","outline-variant":"#bacac7","surface-container-high":"#e2eaea","background":"#f3fbfb","surface-tint":"#006a65","secondary-container":"#93eefc","surface-variant":"#dce4e4","inverse-on-surface":"#eaf2f2","outline":"#6b7a78","on-primary-container":"#004f4b","secondary-fixed":"#96f0ff","on-secondary-container":"#006d79","secondary-fixed-dim":"#79d4e2","surface-container-lowest":"#ffffff","on-primary-fixed":"#00201e","on-tertiary-container":"#284a5c","tertiary-fixed-dim":"#a9cbe2","primary":"#006a65","on-tertiary-fixed-variant":"#284b5d","on-surface-variant":"#3b4948","primary-container":"#00c9c1","surface-container":"#e7efef","inverse-surface":"#2a3232","tertiary-container":"#97b9cf","on-tertiary-fixed":"#001e2c","on-error":"#ffffff","surface-dim":"#d3dcdc","on-tertiary":"#ffffff"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-lg":"1.25rem","space-xl":"1.75rem","space-xs":"0.25rem","space-xxs":"0.125rem","gutter-dense":"0.75rem","space-md":"0.75rem","margin":"1.5rem","space-sm":"0.5rem","space-2xl":"2.5rem","margin-dock":"1rem","gutter":"1.25rem"},"fontFamily":{"body-lg":["Hanken Grotesk"],"headline-lg":["Space Grotesk"],"headline-md":["Space Grotesk"],"data-mono-sm":["JetBrains Mono"],"body-md":["Hanken Grotesk"],"display-lg":["Space Grotesk"],"display-sm":["Space Grotesk"],"body-sm":["Hanken Grotesk"],"label-caps":["JetBrains Mono"],"data-mono-lg":["JetBrains Mono"]},"fontSize":{"body-lg":["15px",{"lineHeight":"22px","fontWeight":"400"}],"headline-lg":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["16px",{"lineHeight":"22px","letterSpacing":"-0.005em","fontWeight":"600"}],"data-mono-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.02em","fontWeight":"500"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"display-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"display-sm":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"label-caps":["10px",{"lineHeight":"12px","letterSpacing":"0.08em","fontWeight":"600"}],"data-mono-lg":["14px",{"lineHeight":"20px","letterSpacing":"-0.01em","fontWeight":"500"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 bottom-0 w-64 bg-surface-container-lowest border-r border-surface-container z-50 flex flex-col justify-between shadow-[0_1px_8px_rgba(23,59,77,0.04)]"><div class="flex flex-col flex-1 min-h-0"><div class="h-16 flex items-center gap-space-sm px-space-md border-b border-surface-container"><img alt="OceanRescue Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiwCiH06fMn1uqRKe2HOv7TxijbrJvJHiyvnbGdcORIZTniyGNFyQyZhewjnLWSdtuFXeKY4hgTBmpbgbWko235ifJPAriAs0M3-XemI8nCwDmo1grIxOEzuCr306t3m4aizpnRlWbZVQFU8LcmpxXa6-KbppKhUTz7slgLB0_RGgY3xj4ITbOLC8wZ_kArx3ieSbEalAZ4p15nlcNPFGqP_h9du6Mk4mH9SYtIN-wDTh4KfPy-Wwm"/><div class="flex flex-col min-w-0"><span class="font-headline-md text-headline-md text-on-surface truncate">OceanRescue</span><span class="font-label-caps text-label-caps uppercase text-secondary tracking-widest truncate">Operations Portal</span></div></div><div class="px-space-md py-space-sm"><span class="font-label-caps text-label-caps uppercase text-on-surface-variant font-semibold">Mission Systems</span></div><nav class="flex-1 px-space-xs space-y-space-xxs overflow-y-auto" data-active-classes="bg-surface-container-low text-secondary font-semibold border-l-4 border-primary-container"><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md" data-path="overview" href="#">Overview</a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md" data-path="incidents" href="#">Incidents</a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md" data-path="ai-detection" href="#">AI Detection</a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md" data-path="environmental-intelligence" href="#">Environmental Intelligence</a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md" data-path="drift-forecasting" href="#">Drift Forecasting</a><a aria-current="page" class="flex items-center px-space-sm py-2 rounded-lg transition-colors bg-surface-container-low text-secondary font-semibold border-l-4 border-primary-container" data-path="risk-prioritization" href="#">Risk Prioritization</a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md" data-path="recovery-planning" href="#">Recovery Planning</a><div class="pl-space-md pr-space-xs py-space-xxs"><a class="flex items-center px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-sm text-body-sm" data-path="recovery-mission-details" href="#">Recovery Mission Details</a></div></nav></div><div class="border-t border-surface-container p-space-xs space-y-space-xxs bg-surface-container-lowest"><nav class="space-y-space-xxs px-space-xs" data-active-classes="bg-surface-container-low text-secondary font-semibold"><a class="flex items-center px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md" data-path="help-support" href="#">Help &amp; Support</a><a class="flex items-center px-space-sm py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-body-md text-body-md" data-path="settings" href="#">Settings</a></nav><a class="mt-space-xs p-space-sm rounded-lg bg-surface-container-low border border-surface-container flex items-center justify-between gap-space-sm hover:bg-surface-container transition-colors" data-path="elena-rostova-gis-profile" href="#"><div class="flex items-center gap-space-sm min-w-0"><div class="relative flex-shrink-0"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA9Fl2WfpBnMnRCVnOh45TBWsjzpZGt3wkULSx8tdbEAJdFmWhi22xgo3cGZivKPglTx6r2qWl9s0hISja9Oql7Gp6zrQDojV67Y7JeSx9W9xU48cIAjW8sFCh_NGLtE1g9LQkfaLeg-mPLJlk3LoF7l_MHcf8qZyUnHreMNK_YhTH0IFjRl9Kc3-Rtyi9nA5pyDpCMzfMegr3lpHl90IyLYRKtiBLlLeMwRr3RgnCpNz8TtJFPGu4"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-primary-container ring-2 ring-surface-container-lowest"></span></div><div class="flex flex-col min-w-0"><span class="font-body-md text-body-md font-semibold text-on-surface truncate">Elena Rostova</span><span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant truncate">Lead GIS Analyst</span></div></div><span class="font-label-caps text-label-caps px-1.5 py-0.5 rounded bg-surface-container-highest text-secondary font-semibold border border-outline-variant">ONLINE</span></a></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest border-b border-surface-container z-40 px-space-xl flex items-center justify-between shadow-[0_1px_4px_rgba(23,59,77,0.02)]"><div class="flex items-center gap-space-sm text-on-surface-variant"><span class="material-symbols-outlined text-lg text-secondary">satellite_alt</span><span class="font-data-mono-sm text-data-mono-sm uppercase text-secondary font-semibold tracking-wider">Marine Sector 04-NW</span><span class="text-outline-variant">/</span><span class="font-data-mono-sm text-data-mono-sm text-on-surface font-medium">ALDFG Sentinel Telemetry</span></div><div class="flex items-center gap-space-md"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-3 text-lg text-on-surface-variant pointer-events-none">search</span><input class="w-72 h-9 pl-9 pr-3 rounded-lg bg-surface border border-surface-container font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant focus:outline-none focus:border-primary-container" placeholder="Search reports, coordinates, tags..." type="text"/></div><div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-secondary-container/30 border border-secondary/20"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-caps text-label-caps uppercase text-secondary font-semibold">SIMULATED DATA</span></div><button class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><div class="h-6 w-px bg-surface-container"></div><div class="flex items-center gap-space-xs"><img alt="Elena Rostova avatar" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA9Fl2WfpBnMnRCVnOh45TBWsjzpZGt3wkULSx8tdbEAJdFmWhi22xgo3cGZivKPglTx6r2qWl9s0hISja9Oql7Gp6zrQDojV67Y7JeSx9W9xU48cIAjW8sFCh_NGLtE1g9LQkfaLeg-mPLJlk3LoF7l_MHcf8qZyUnHreMNK_YhTH0IFjRl9Kc3-Rtyi9nA5pyDpCMzfMegr3lpHl90IyLYRKtiBLlLeMwRr3RgnCpNz8TtJFPGu4"/><div class="hidden xl:flex flex-col text-left"><span class="font-data-mono-sm text-data-mono-sm font-semibold text-on-surface">E. Rostova</span><span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Op-Lead</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen px-space-xl py-space-lg"><div class="flex flex-col w-full">
+<!-- Top Context Header & Metadata Bar -->
+<section class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-md mb-space-lg">
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs text-on-surface-variant mb-space-xxs">
+<span class="font-data-mono-sm text-data-mono-sm uppercase tracking-wider text-secondary">Operations</span>
+<span class="text-outline-variant font-data-mono-sm text-data-mono-sm">/</span>
+<span class="font-data-mono-sm text-data-mono-sm font-semibold text-primary">Risk Prioritization</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-sm">
+<h1 class="font-display-sm text-display-sm text-on-surface tracking-tight">Risk Prioritization</h1>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-secondary font-label-caps text-label-caps uppercase tracking-wider">DSS Algorithmic Ranker v3.4</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+        Prioritize potential environmental threats, ecological vulnerability index, and immediate retrieval requirements across active marine sectors.
+      </p>
+</div>
+<!-- Quick Telemetry & Status Pill -->
+<div class="flex items-center gap-space-sm self-start xl:self-auto bg-surface-container-lowest p-space-xs rounded-xl shadow-sm">
+<div class="px-space-sm py-1 rounded bg-secondary-container/40 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+<span class="font-label-caps text-label-caps uppercase text-secondary font-semibold">Live Hydrology Matrix Active</span>
+</div>
+<div class="h-4 w-px bg-surface-container"></div>
+<div class="font-data-mono-sm text-data-mono-sm text-on-surface-variant pr-space-xs">
+        Updated: <span class="text-on-surface font-semibold">04:12 UTC</span>
+</div>
+</div>
+</section>
+<!-- Filter Bar & Tactical Slicers -->
+<section class="w-full bg-surface-container-lowest p-space-md rounded-xl shadow-sm mb-space-lg">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Region Selector -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant font-semibold">Operational Region</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-secondary text-base pointer-events-none">explore</span>
+<select class="w-full h-9 pl-8 pr-3 rounded-lg bg-surface border-0 font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-low transition-colors appearance-none cursor-pointer">
+<option>Pacific Sector 04-NW (Channel Islands)</option>
+<option>Pacific Sector 02-SE (Monterey Bay Shelf)</option>
+<option>Pacific Sector 06-SW (Baja Drift Arc)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-on-surface-variant text-base pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Gear Type Selector -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant font-semibold">Gear Classification</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-secondary text-base pointer-events-none">inventory_2</span>
+<select class="w-full h-9 pl-8 pr-3 rounded-lg bg-surface border-0 font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-low transition-colors appearance-none cursor-pointer">
+<option>All Gear (Gillnets, Traps, Longlines, FADs)</option>
+<option>Pelagic Gillnets (Surface / Sub-surface)</option>
+<option>Demersal Crab &amp; Lobster Traps</option>
+<option>Drifting Fish Aggregating Devices (dFADs)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-on-surface-variant text-base pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Risk Tier -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant font-semibold">Risk Classification</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-secondary text-base pointer-events-none">warning</span>
+<select class="w-full h-9 pl-8 pr-3 rounded-lg bg-surface border-0 font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-low transition-colors appearance-none cursor-pointer">
+<option>All Tiers (Critical, High, Medium, Low)</option>
+<option>Class IV — Critical Threat (90-100)</option>
+<option>Class III — High Risk (70-89)</option>
+<option>Class II — Moderate Impact (40-69)</option>
+<option>Class I — Minimal / Stable (&lt;40)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-on-surface-variant text-base pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Assessment Status -->
+<div class="flex flex-col gap-1">
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant font-semibold">Triage Pipeline Status</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-2.5 text-secondary text-base pointer-events-none">rule</span>
+<select class="w-full h-9 pl-8 pr-3 rounded-lg bg-surface border-0 font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-low transition-colors appearance-none cursor-pointer">
+<option>Needs Evaluation / Evaluated (All)</option>
+<option>Verified (High Confidence)</option>
+<option>Review Complete (Pending Tasking)</option>
+<option>In Review / Missing Telemetry</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 text-on-surface-variant text-base pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Metric Overview Bento Cards (Top Row) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md mb-space-lg">
+<!-- Card 1: Critical -->
+<div class="relative bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-error"></div>
+<div class="flex items-start justify-between">
+<span class="font-label-caps text-label-caps uppercase text-error font-semibold tracking-wider">Critical / Urgent</span>
+<span class="material-symbols-outlined text-error text-lg">crisis_alert</span>
+</div>
+<div class="my-space-xs flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">3</span>
+<span class="font-data-mono-sm text-data-mono-sm text-error font-semibold">CASES</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">
+        Imminent pinniped &amp; kelp canopy threat
+      </div>
+</div>
+<!-- Card 2: High Priority -->
+<div class="relative bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-amber-500"></div>
+<div class="flex items-start justify-between">
+<span class="font-label-caps text-label-caps uppercase text-amber-700 font-semibold tracking-wider">High Priority</span>
+<span class="material-symbols-outlined text-amber-600 text-lg">near_me</span>
+</div>
+<div class="my-space-xs flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">7</span>
+<span class="font-data-mono-sm text-data-mono-sm text-amber-700 font-semibold">CASES</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">
+        Drift trajectory toward marine reserve
+      </div>
+</div>
+<!-- Card 3: Medium Priority -->
+<div class="relative bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-secondary"></div>
+<div class="flex items-start justify-between">
+<span class="font-label-caps text-label-caps uppercase text-secondary font-semibold tracking-wider">Medium Priority</span>
+<span class="material-symbols-outlined text-secondary text-lg">anchor</span>
+</div>
+<div class="my-space-xs flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">14</span>
+<span class="font-data-mono-sm text-data-mono-sm text-secondary font-semibold">CASES</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">
+        Submerged deep-shelf benthos snag
+      </div>
+</div>
+<!-- Card 4: Low Priority -->
+<div class="relative bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-outline-variant"></div>
+<div class="flex items-start justify-between">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant font-semibold tracking-wider">Cataloged / Low</span>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">archive</span>
+</div>
+<div class="my-space-xs flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">22</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant font-semibold">CASES</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">
+        Stable benthic position (&gt;120m)
+      </div>
+</div>
+<!-- Card 5: Awaiting Assessment -->
+<div class="relative bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-tertiary"></div>
+<div class="flex items-start justify-between">
+<span class="font-label-caps text-label-caps uppercase text-tertiary font-semibold tracking-wider">Needs Inputs</span>
+<span class="material-symbols-outlined text-tertiary text-lg">hourglass_empty</span>
+</div>
+<div class="my-space-xs flex items-baseline gap-space-xs">
+<span class="font-display-lg text-display-lg font-bold text-on-surface">4</span>
+<span class="font-data-mono-sm text-data-mono-sm text-tertiary font-semibold">CASES</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant truncate">
+        Missing hydrodynamic radar vector
+      </div>
+</div>
+</section>
+<!-- Notice Sub-banner -->
+<div class="w-full flex items-center justify-between px-space-md py-space-xs mb-space-lg rounded-lg bg-surface-container-low text-on-surface-variant text-body-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-base text-secondary">info</span>
+<span>Calculations reflect multi-criteria analytical weighting of gear mass, drift vector projection, and endangered species migration overlays.</span>
+</div>
+<span class="font-label-caps text-label-caps uppercase px-space-xs py-0.5 rounded bg-surface-container-highest text-secondary font-semibold">
+      SAMPLE COUNTS — ILLUSTRATIVE RISK PROFILES
+    </span>
+</div>
+<!-- Main Content Stage: Assessment Matrix (Left) + Selected Case Deep Dive (Right) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- LEFT PANEL: Risk Matrix Table (8 Cols) -->
+<div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Table Toolbar -->
+<div class="h-14 px-space-md flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-on-surface">Active ALDFG Risk Matrix</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-secondary font-data-mono-sm text-data-mono-sm">46 Records</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="h-8 px-space-sm rounded bg-surface hover:bg-surface-container font-body-sm text-body-sm text-on-surface flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm">tune</span>
+<span>Weight Factors</span>
+</button>
+<button class="h-8 px-space-sm rounded bg-surface hover:bg-surface-container font-body-sm text-body-sm text-on-surface flex items-center gap-1 transition-colors">
+<span class="material-symbols-outlined text-sm">download</span>
+<span>Export Telemetry</span>
+</button>
+</div>
+</div>
+<!-- Density Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="h-9 bg-surface text-on-surface-variant font-label-caps text-label-caps uppercase">
+<th class="px-space-md font-semibold">Incident / Tag</th>
+<th class="px-space-sm font-semibold">Gear Class &amp; Mass</th>
+<th class="px-space-sm font-semibold">Habitat Proximity</th>
+<th class="px-space-sm font-semibold">Entanglement Risk</th>
+<th class="px-space-sm font-semibold">Drift State</th>
+<th class="px-space-sm font-semibold text-right">Composite Index</th>
+<th class="px-space-sm font-semibold">Status</th>
+<th class="px-space-md font-semibold text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-body-sm">
+<!-- Row 1: Selected Case OR-2026-001 -->
+<tr class="h-14 bg-secondary-container/20 hover:bg-secondary-container/30 transition-colors cursor-pointer group" onclick="selectCase('OR-2026-001')">
+<td class="px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-6 rounded-full bg-primary-container"></span>
+<div>
+<div class="font-data-mono-sm text-data-mono-sm font-semibold text-on-surface flex items-center gap-1">
+                        OR-2026-001
+                        <span class="material-symbols-outlined text-xs text-primary">verified</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">33°58'12"N, 119°22'45"W</div>
+</div>
+</div>
+</td>
+<td class="px-space-sm">
+<span class="font-semibold text-on-surface block">Pelagic Gillnet</span>
+<span class="text-on-surface-variant font-data-mono-sm text-[11px]">~200m span (est. 420kg)</span>
+</td>
+<td class="px-space-sm">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-sm text-error">nature</span>
+<span class="font-medium text-[12px]">Kelp Reserve (0.8 nm)</span>
+</div>
+</td>
+<td class="px-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-red-100 text-error">
+                    Pinniped Path (Critical)
+                  </span>
+</td>
+<td class="px-space-sm font-data-mono-sm text-data-mono-sm text-on-surface">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary animate-pulse">north_east</span>
+<span>1.3 kts @ 048°</span>
+</div>
+</td>
+<td class="px-space-sm text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-error-container text-on-error-container font-data-mono-sm font-bold text-[12px]">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                    92/100
+                  </span>
+</td>
+<td class="px-space-sm">
+<span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-label-caps text-label-caps">Verified</span>
+</td>
+<td class="px-space-md text-right">
+<button class="px-space-xs py-1 rounded bg-surface hover:bg-surface-container font-label-caps text-label-caps text-secondary font-semibold transition-colors">
+                    ACTIVE
+                  </button>
+</td>
+</tr>
+<!-- Row 2: OR-2026-008 -->
+<tr class="h-14 bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectCase('OR-2026-008')">
+<td class="px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-6 rounded-full bg-transparent"></span>
+<div>
+<div class="font-data-mono-sm text-data-mono-sm font-semibold text-on-surface">OR-2026-008</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">34°02'44"N, 119°31'10"W</div>
+</div>
+</div>
+</td>
+<td class="px-space-sm">
+<span class="font-semibold text-on-surface block">Ghost Trawl Cluster</span>
+<span class="text-on-surface-variant font-data-mono-sm text-[11px]">~500kg bundled nylon</span>
+</td>
+<td class="px-space-sm">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-sm text-amber-600">water</span>
+<span class="font-medium text-[12px]">Sea Otter Zone (2.1 nm)</span>
+</div>
+</td>
+<td class="px-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-100 text-amber-800">
+                    High (Mammal Dive Line)
+                  </span>
+</td>
+<td class="px-space-sm font-data-mono-sm text-data-mono-sm text-on-surface">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-amber-600">east</span>
+<span>0.9 kts @ 095°</span>
+</div>
+</td>
+<td class="px-space-sm text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-amber-100 text-amber-900 font-data-mono-sm font-bold text-[12px]">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    78/100
+                  </span>
+</td>
+<td class="px-space-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">In Review</span>
+</td>
+<td class="px-space-md text-right">
+<button class="px-space-xs py-1 rounded hover:bg-surface-container font-label-caps text-label-caps text-on-surface-variant transition-colors">
+                    SELECT
+                  </button>
+</td>
+</tr>
+<!-- Row 3: OR-2026-004 -->
+<tr class="h-14 bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectCase('OR-2026-004')">
+<td class="px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-6 rounded-full bg-transparent"></span>
+<div>
+<div class="font-data-mono-sm text-data-mono-sm font-semibold text-on-surface">OR-2026-004</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">33°54'09"N, 119°18'02"W</div>
+</div>
+</div>
+</td>
+<td class="px-space-sm">
+<span class="font-semibold text-on-surface block">Lobster Pot String</span>
+<span class="text-on-surface-variant font-data-mono-sm text-[11px]">18 traps / groundline</span>
+</td>
+<td class="px-space-sm">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-sm text-secondary">anchor</span>
+<span class="font-medium text-[12px]">Deep Coral Pinnacle</span>
+</div>
+</td>
+<td class="px-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-blue-50 text-blue-700">
+                    Moderate (Benthos)
+                  </span>
+</td>
+<td class="px-space-sm font-data-mono-sm text-data-mono-sm text-on-surface">
+<span class="text-on-surface-variant">Static Benthic Snag</span>
+</td>
+<td class="px-space-sm text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-secondary-container/50 text-secondary font-data-mono-sm font-bold text-[12px]">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                    54/100
+                  </span>
+</td>
+<td class="px-space-sm">
+<span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-label-caps text-label-caps">Verified</span>
+</td>
+<td class="px-space-md text-right">
+<button class="px-space-xs py-1 rounded hover:bg-surface-container font-label-caps text-label-caps text-on-surface-variant transition-colors">
+                    SELECT
+                  </button>
+</td>
+</tr>
+<!-- Row 4: OR-2026-012 -->
+<tr class="h-14 bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectCase('OR-2026-012')">
+<td class="px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-6 rounded-full bg-transparent"></span>
+<div>
+<div class="font-data-mono-sm text-data-mono-sm font-semibold text-on-surface">OR-2026-012</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">34°10'15"N, 119°45'20"W</div>
+</div>
+</div>
+</td>
+<td class="px-space-sm">
+<span class="font-semibold text-on-surface block">Longline String</span>
+<span class="text-on-surface-variant font-data-mono-sm text-[11px]">120 circle hooks (~1.8km)</span>
+</td>
+<td class="px-space-sm">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-sm text-amber-600">navigation</span>
+<span class="font-medium text-[12px]">Shipping Ingress (4.2 nm)</span>
+</div>
+</td>
+<td class="px-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-amber-100 text-amber-800">
+                    High (Seabird Diving)
+                  </span>
+</td>
+<td class="px-space-sm font-data-mono-sm text-data-mono-sm text-on-surface">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary">south_east</span>
+<span>1.6 kts @ 142°</span>
+</div>
+</td>
+<td class="px-space-sm text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-amber-100 text-amber-900 font-data-mono-sm font-bold text-[12px]">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    74/100
+                  </span>
+</td>
+<td class="px-space-sm">
+<span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-label-caps text-label-caps">Review Complete</span>
+</td>
+<td class="px-space-md text-right">
+<button class="px-space-xs py-1 rounded hover:bg-surface-container font-label-caps text-label-caps text-on-surface-variant transition-colors">
+                    SELECT
+                  </button>
+</td>
+</tr>
+<!-- Row 5: OR-2026-009 -->
+<tr class="h-14 bg-surface-container-lowest hover:bg-surface-container-low transition-colors cursor-pointer group" onclick="selectCase('OR-2026-009')">
+<td class="px-space-md">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-6 rounded-full bg-transparent"></span>
+<div>
+<div class="font-data-mono-sm text-data-mono-sm font-semibold text-on-surface">OR-2026-009</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">33°48'50"N, 119°05'12"W</div>
+</div>
+</div>
+</td>
+<td class="px-space-sm">
+<span class="font-semibold text-on-surface block">Drifting FAD Bundle</span>
+<span class="text-on-surface-variant font-data-mono-sm text-[11px]">Bamboo raft + PVC tail</span>
+</td>
+<td class="px-space-sm">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-sm text-secondary">explore</span>
+<span class="font-medium text-[12px]">Open Pelagic Shelf (14 nm)</span>
+</div>
+</td>
+<td class="px-space-sm">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-high text-on-surface-variant">
+                    Low (Incidental)
+                  </span>
+</td>
+<td class="px-space-sm font-data-mono-sm text-data-mono-sm text-on-surface">
+<span class="text-tertiary">Awaiting Model Run</span>
+</td>
+<td class="px-space-sm text-right">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-data-mono-sm font-bold text-[12px]">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                    38/100
+                  </span>
+</td>
+<td class="px-space-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps">In Review</span>
+</td>
+<td class="px-space-md text-right">
+<button class="px-space-xs py-1 rounded hover:bg-surface-container font-label-caps text-label-caps text-on-surface-variant transition-colors">
+                    SELECT
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="h-12 px-space-md bg-surface-container-low flex items-center justify-between text-body-sm text-on-surface-variant">
+<span>Showing 1 to 5 of 46 filtered incidents</span>
+<div class="flex items-center gap-space-xs">
+<button class="p-1 rounded bg-surface-container-lowest hover:bg-surface text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<span class="font-data-mono-sm text-data-mono-sm px-2 text-on-surface font-semibold">Page 1 / 10</span>
+<button class="p-1 rounded bg-surface-container-lowest hover:bg-surface text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Spatial Context Visualizer Card -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary">map</span>
+<span class="font-headline-md text-headline-md text-on-surface">Channel Islands Sector 04-NW Spatial Buffer</span>
+</div>
+<span class="font-label-caps text-label-caps text-secondary font-semibold uppercase">Bathymetric Gradient Layer: ACTIVE</span>
+</div>
+<div class="relative w-full h-56 rounded-lg overflow-hidden bg-surface-container-high" data-alt="Satellite GIS topographical overview of Channel Islands marine sanctuary showing underwater depth contours in deep cyan and teal, with high-priority danger envelopes and drift vectors marked across the ocean surface." data-location="Channel Islands, California" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBqDNR-LEeWfwZyi5CKeY1VghuL8_aD7i6WPWsvvpPKYB71S7eEMpsIApLPNKkpjIN548QEwA4TM6kmriIf3O6J39dvcgWaccjZ3ANeDzz1ZoqHsybaaQvpG_YuBPnlw2nGtmg66Pr2vGsFD_5ceCjxpuMFhXL-sl6djLvyo3JppzO2OZ6_7LCBJJ4wrCJ1DagNTMuIEMIBfHGxWhDvZyufV39O1Yygm-OKJ6LXCNgIsDSFtVQbwyf8')">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim/80 via-transparent to-transparent flex items-end p-space-md justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="px-space-sm py-1 rounded bg-surface-container-lowest/90 backdrop-blur text-on-surface flex items-center gap-1.5 shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-error"></span>
+<span class="font-data-mono-sm text-data-mono-sm font-semibold">OR-2026-001 (Critical Anchor)</span>
+</div>
+<div class="px-space-sm py-1 rounded bg-surface-container-lowest/90 backdrop-blur text-on-surface-variant flex items-center gap-1.5 shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+<span class="font-data-mono-sm text-data-mono-sm">OR-2026-008 Buffer</span>
+</div>
+</div>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface bg-surface-container-lowest/90 px-2 py-1 rounded">Scale: 1:50,000</span>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: Selected Case Deep-Dive & Weighting Engine (4-5 Cols) -->
+<div class="lg:col-span-5 xl:col-span-4 flex flex-col gap-space-md">
+<!-- Primary Inspector Card -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-md flex flex-col gap-space-md">
+<!-- Case Header -->
+<div class="flex items-start justify-between pb-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-label-caps text-label-caps uppercase font-bold tracking-wider">
+                PRIORITY CLASS IV
+              </span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">RANK #1</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-1">OR-2026-001</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pelagic Monofilament Gillnet (180–220m span)</p>
+</div>
+<div class="w-14 h-14 rounded-xl bg-error/10 flex flex-col items-center justify-center text-error">
+<span class="font-display-sm text-display-sm font-bold leading-none">92</span>
+<span class="font-label-caps text-label-caps uppercase text-[9px] mt-0.5 font-bold">/100</span>
+</div>
+</div>
+<!-- Metric Weights Breakdown Grid -->
+<div class="flex flex-col gap-space-sm bg-surface-container-low p-space-md rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-secondary font-bold tracking-wider">Multi-Factor Score Weights</span>
+<span class="material-symbols-outlined text-sm text-secondary" title="Calculated via hydrodynamic models and ecological sensor layers">auto_graph</span>
+</div>
+<!-- Weight 1 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-error">pets</span>
+                Wildlife Vulnerability
+              </span>
+<span class="font-data-mono-sm text-data-mono-sm font-bold text-error">94 / 100</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 94%;"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant font-body-sm">High juvenile California sea lion feeding corridor</span>
+</div>
+<!-- Weight 2 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-amber-600">park</span>
+                Habitat Sensitivity
+              </span>
+<span class="font-data-mono-sm text-data-mono-sm font-bold text-amber-600">88 / 100</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-amber-500 rounded-full" style="width: 88%;"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant font-body-sm">Giant kelp (Macrocystis pyrifera) canopy proximity &lt;1 nm</span>
+</div>
+<!-- Weight 3 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary">warning</span>
+                Gear Lethality Factor
+              </span>
+<span class="font-data-mono-sm text-data-mono-sm font-bold text-primary">96 / 100</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 96%;"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant font-body-sm">Unweighted monofilament mesh with continuous ghost-fishing loop</span>
+</div>
+<!-- Weight 4 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center text-body-sm">
+<span class="text-on-surface font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary">trending_up</span>
+                Trajectory Momentum
+              </span>
+<span class="font-data-mono-sm text-data-mono-sm font-bold text-secondary">82 / 100</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 82%;"></div>
+</div>
+<span class="text-[11px] text-on-surface-variant font-body-sm">Projected impact with Anacapa Pinnacle shelf within 18 hrs</span>
+</div>
+</div>
+<!-- Contributing Evidence & ROV Verification -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant font-semibold">Contributing Telemetry Evidence</span>
+<div class="flex gap-space-sm items-center bg-surface p-space-sm rounded-lg">
+<img class="w-16 h-16 rounded object-cover flex-shrink-0" data-alt="Close-up underwater camera capture of a submerged tangled cyan monofilament fishing net trapped over rocky seabed with small marine organisms visible." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQaer5c4GGHk8izH8mxCw_li7uIgolsYN5j0HOdONDhkZpDrpZjpwH8CZCasiTrLUmdBYdujEnLBa59ER1DXAb41q8R0fQws883SrN5g-V6CLVg1FwBpXZJ7D-oVnDfLoQJFlFNmmEmfa-jKAHJ6BGSeA-Rqst6qzxwbF91S-bJtabIHBYB7XZQSCjGGn-2qnk3AdhK8-aLVBgclSjhUQKfx6AuDw_SY708zsig_vZancjYPwBRTgF"/>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1">
+<span class="font-data-mono-sm text-data-mono-sm font-bold text-on-surface truncate">ROV-Tether-04 Frame 1024</span>
+<span class="material-symbols-outlined text-xs text-primary">check_circle</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary font-medium">YOLOv8 Detection: Net 94.6%</span>
+<div class="flex items-center gap-space-xs font-data-mono-sm text-data-mono-sm text-on-surface-variant mt-0.5">
+<span>Depth: -24m</span>
+<span>•</span>
+<span>Swell: 2.8m NW</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Reviewer Memo -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-label-caps text-label-caps uppercase text-secondary font-bold">Reviewer Log (E. Rostova)</span>
+<span class="font-data-mono-sm text-data-mono-sm text-on-surface-variant">03:45 UTC</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface italic">
+            "Critical priority for immediate recovery planning. High snag probability on Anacapa pinnacle; high risk of entrapping pelagic birds and sea lions during upcoming evening low tide."
+          </p>
+</div>
+<!-- Telemetry Data Health Check -->
+<div class="flex items-center justify-between text-body-sm py-1 px-2 rounded bg-emerald-50 text-emerald-800">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base text-emerald-600">cloud_done</span>
+<span class="font-medium text-[12px]">All Hydrodynamic &amp; AIS Feeds Synced</span>
+</div>
+<span class="font-label-caps text-label-caps uppercase text-emerald-700 font-bold">0 Flags</span>
+</div>
+<!-- System Disclaimer Note -->
+<div class="p-space-xs rounded bg-surface text-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider block">
+            DECISION SUPPORT SYSTEM — PROPOSED WEIGHTING FACTORS, NOT A VALIDATED SCIENTIFIC MODEL
+          </span>
+</div>
+<!-- Tactical Actions Rail -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<!-- Primary CTA Button (Aqua) -->
+<button class="w-full h-11 px-space-md rounded-lg bg-primary-container hover:bg-[#00b5ae] text-on-primary-container font-headline-md text-headline-md font-bold flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-[0.99] cursor-pointer">
+<span>Add to Recovery Plan</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+<!-- Secondary Actions -->
+<div class="grid grid-cols-2 gap-space-xs">
+<button class="h-9 px-space-xs rounded-lg bg-surface hover:bg-surface-container-high font-body-sm text-body-sm text-secondary font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-base">assignment</span>
+<span class="truncate">View Dossier</span>
+</button>
+<button class="h-9 px-space-xs rounded-lg bg-surface hover:bg-surface-container-high font-body-sm text-body-sm text-secondary font-semibold flex items-center justify-center gap-1 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-base">waves</span>
+<span class="truncate">Drift Forecast</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Action Assist Box -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-xl">tune</span>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md text-on-surface">Weight Configuration</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Adjust species protection bias</span>
+</div>
+</div>
+<button class="px-space-sm py-1 rounded bg-surface hover:bg-surface-container text-secondary font-label-caps text-label-caps uppercase font-bold transition-colors">
+          CALIBRATE
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function selectCase(incidentId) {
+    // Interactive case selection handler for triage operator ergonomics
+    const rows = document.querySelectorAll('tbody tr');
+    rows.forEach(r => {
+      r.classList.remove('bg-secondary-container/20', 'bg-secondary-container/30');
+      r.classList.add('bg-surface-container-lowest');
+      const indicator = r.querySelector('span.rounded-full');
+      if (indicator) {
+        indicator.classList.remove('bg-primary-container');
+        indicator.classList.add('bg-transparent');
+      }
+    });
+
+    event.currentTarget.classList.remove('bg-surface-container-lowest');
+    event.currentTarget.classList.add('bg-secondary-container/20');
+    const activeIndicator = event.currentTarget.querySelector('span.rounded-full');
+    if (activeIndicator) {
+      activeIndicator.classList.remove('bg-transparent');
+      activeIndicator.classList.add('bg-primary-container');
+    }
+  }
+</script></main></div></body></html>
